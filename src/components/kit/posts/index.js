@@ -90,7 +90,7 @@ function EnhancedPosts(props) {
           ))}
         {!props.posts.length && props.isFetchingPosts && <Loading />}
       </StyledPosts>
-      {props.posts.length && props.posts && filteredPosts.length === 0 && (
+      {props.posts.length && props.posts && filteredPosts.length === 0 ? (
         <StyledNoResults>
           No articles have been posted about {currentFilter}. Be the{" "}
           <Link href="/publish">
@@ -98,7 +98,7 @@ function EnhancedPosts(props) {
           </Link>
           !
         </StyledNoResults>
-      )}
+      ) : null}
     </>
   );
 }
