@@ -33,7 +33,7 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
+src/node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -58,4 +58,27 @@ typings/
 .env
 
 # next.js build output
-.next
+/src/.next
+
+# misc
+.idea/
+
+# wordpress
+/wp-includes
+/wp-content/themes
+/wp-admin
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config.php
+wp-config-sample.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+license.txt
