@@ -1,0 +1,43 @@
+{
+  "name": "DevGulp",
+  "version": "1.0.0",
+  "description": "A community built for developers, by developers.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicer00ster/devgulp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicer00ster/devgulp/issues"
+  },
+  "homepage": "https://github.com/nicer00ster/devgulp#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.17.1",
+    "lodash.shuffle": "^4.2.0",
+    "moment": "^2.24.0",
+    "next": "^9.0.3",
+    "next-offline": "^4.0.3",
+    "nookies": "^2.0.8",
+    "nprogress": "^0.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-spring": "^8.0.27",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-saga": "^1.0.5",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.5.0"
+  }
+}
