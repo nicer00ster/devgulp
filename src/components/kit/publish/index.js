@@ -91,13 +91,13 @@ function EnhancedPublish(props) {
     const mimeTypes = ["image/jpeg", "image/png"];
 
     // Validate MIME type
-    if (mimeTypes.indexOf(files[0].type) == -1) {
-      console.log("error");
-      return;
-    } else {
+    // if (mimeTypes.indexOf(files[0].type) == -1) {
+    //   console.log("error");
+    //   return;
+    // } else {
       data.append("file", files[0]);
       return data;
-    }
+    // }
   }
 
   return (

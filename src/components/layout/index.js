@@ -31,15 +31,17 @@ function Layout(props) {
   }
   return (
     <ThemeProvider theme={theme}>
+      <>
+      <Header />
       <LayoutStyles
         userMenuOpen={props.root.userMenuOpen}
         loginMenuOpen={props.root.loginMenuOpen}
       >
         <GlobalStyles />
-        <Header />
         {props.children}
-        <Footer />
       </LayoutStyles>
+      <Footer />
+      </>
     </ThemeProvider>
   );
 }

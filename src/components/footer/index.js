@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import Link from "next/link";
 import {
   StyledFooterOuter,
@@ -7,9 +8,11 @@ import {
   StyledFooterListItem
 } from "./footer.styles";
 
-function Footer() {
+function Footer(props) {
   return (
-    <StyledFooterOuter>
+    <StyledFooterOuter
+        loginMenuOpen={props.loginMenuOpen}
+        userMenuOpen={props.userMenuOpen}>
       <StyledFooterInner>
         <StyledFooter>
           <StyledFooterList>
@@ -40,4 +43,9 @@ function Footer() {
   );
 }
 
-export default Footer;
+const mapStateToProps = ({ root }) => ({
+    loginMenuOpen: root.loginMenuOpen,
+    userMenuOpen: root.userMenuOpen,
+});
+
+export default connect(mapStateToProps, null)(Footer);

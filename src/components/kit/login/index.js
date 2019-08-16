@@ -37,57 +37,59 @@ function Login(props) {
     }
   });
 
-  return trail.map(({ x, height, ...rest }, index) => (
+  return trail.map(({ x, height, opacity, ...rest }, index) => (
     <StyledLogin
       key={index}
       style={{
+        transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+        opacity: !props.user.isLoggingIn && opacity,
         ...rest,
-        transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
       }}
       disabled={!props.loginMenuOpen || props.user.isLoggingIn}
       aria-busy={props.user.isLoggingIn}
     >
       <StyledFormHeading>Login</StyledFormHeading>
-      <StyledLoginForm
-        onSubmit={e => {
-          e.preventDefault();
-          props.login(username, password);
-        }}
-      >
-        <StyledInput>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            style={usernameError ? { borderBottom: "1px solid tomato" } : {}}
-            {...bindUsername}
-          />
-          <span className="bar" />
-          <label
-            htmlFor="username"
-            style={usernameError ? { color: "tomato" } : {}}
-          >
-            Username
-          </label>
-        </StyledInput>
-        <StyledInput>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            style={passwordError ? { borderBottom: "1px solid tomato" } : {}}
-            {...bindPassword}
-          />
-          <span className="bar" />
-          <label
-            htmlFor="password"
-            style={passwordError ? { color: "tomato" } : {}}
-          >
-            Password
-          </label>
-        </StyledInput>
-        <button type="submit">login</button>
-      </StyledLoginForm>
+      {props.loginMenuOpen && (
+          <StyledLoginForm
+              onSubmit={e => {
+                e.preventDefault();
+                props.login(username, password);
+              }}>
+            <StyledInput>
+              <input
+                  type="text"
+                  name="loginUsername"
+                  id="loginUsername"
+                  style={usernameError ? { borderBottom: "1px solid tomato" } : {}}
+                  {...bindUsername}
+              />
+              <span className="bar" />
+              <label
+                  htmlFor="loginUsername"
+                  style={usernameError ? { color: "tomato" } : {}}
+              >
+                Username
+              </label>
+            </StyledInput>
+            <StyledInput>
+              <input
+                  type="password"
+                  name="loginPassword"
+                  id="loginPassword"
+                  style={passwordError ? { borderBottom: "1px solid tomato" } : {}}
+                  {...bindPassword}
+              />
+              <span className="bar" />
+              <label
+                  htmlFor="loginPassword"
+                  style={passwordError ? { color: "tomato" } : {}}
+              >
+                Password
+              </label>
+            </StyledInput>
+            <button type="submit">login</button>
+          </StyledLoginForm>
+      )}
       <StyledLoginCaret />
       {props.user.isLoggingIn && <Loading />}
     </StyledLogin>

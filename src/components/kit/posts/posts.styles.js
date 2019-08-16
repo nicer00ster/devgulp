@@ -4,6 +4,7 @@ import { animated } from 'react-spring';
 const StyledPosts = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  justify-items: stretch;
   grid-gap: 12px;
   width: 100%;
   list-style: none;
@@ -163,6 +164,7 @@ const StyledDateAuthorDivider = styled.span`
 const StyledNoResults = styled.p`
   margin: 0 auto;
   font-size: 14px;
+  text-align: center;
 `;
 
 export {

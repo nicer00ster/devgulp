@@ -2,8 +2,9 @@ import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
-import SinglePost from "../components/kit/singlePost";
 import { fetchPost } from "../redux/actions";
+import SinglePost from "../components/kit/singlePost";
+import Container from '../components/kit/container';
 
 function Post(props) {
   const router = useRouter();
@@ -13,7 +14,11 @@ function Post(props) {
     props.fetchPost(id);
   }, []);
 
-  return <SinglePost post={props.post} />;
+  return (
+      <Container>
+        <SinglePost post={props.post} />
+      </Container>
+  );
 }
 
 const mapStateToProps = ({ post }) => ({

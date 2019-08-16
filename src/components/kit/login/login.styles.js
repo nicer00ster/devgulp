@@ -31,7 +31,10 @@ const StyledLogin = styled(animated.fieldset)`
   }
 `;
 
-const StyledLoginForm = styled.form``;
+const StyledLoginForm = styled.form`
+  opacity: 1;
+  background-color: ${props => props.theme.colors.white};
+`;
 
 const StyledLoginCaret = styled.div`
   left: 232px;

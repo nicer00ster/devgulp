@@ -1,13 +1,18 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import EnhancedUsers from "../components/kit/users";
 import { fetchUsers } from "../redux/actions";
+import EnhancedUsers from "../components/kit/users";
+import Container from '../components/kit/container';
 
 function Users(props) {
   useEffect(() => {
     props.fetchUsers();
   });
-  return <EnhancedUsers />;
+  return (
+      <Container>
+        <EnhancedUsers />
+      </Container>
+  );
 }
 
 const mapDispatchToProps = {

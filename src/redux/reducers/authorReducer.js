@@ -2,7 +2,7 @@ import * as types from "../constants";
 
 const initialState = {
   author: {},
-  isFetchingAuthor: false,
+  isFetchingAuthor: true,
   hasError: false,
   errorMessage: ""
 };

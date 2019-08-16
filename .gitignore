@@ -67,6 +67,7 @@ typings/
 .htaccess
 /wp-includes
 /wp-content/themes
+/wp-content/uploads
 /wp-admin
 wp-activate.php
 wp-blog-header.php

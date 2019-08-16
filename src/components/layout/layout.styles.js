@@ -7,14 +7,6 @@ const LayoutStyles = styled.main`
   margin: 0 auto;
   position: relative;
   transition: all 0.25s linear;
-  // opacity: ${props =>
-    props.loginMenuOpen || props.userMenuOpen ? "0.4" : "1"};
-  // transform: ${props =>
-    props.loginMenuOpen || props.userMenuOpen ? "scale(0.95)" : ""};
-  // overflow: ${props =>
-    props.loginMenuOpen || props.userMenuOpen ? "hidden" : "visible"};
-  // pointer-events: ${props =>
-    props.loginMenuOpen || props.userMenuOpen ? "none" : "all"};
   padding-left: 1rem;
   padding-right: 1rem;
   ${props => props.theme.mediaQuery.tablet`

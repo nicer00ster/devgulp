@@ -3,15 +3,28 @@ import styled from "styled-components";
 const StyledHeader = styled.header`
   width: 100%;
   position: relative;
-  background-color: ${props => props.theme.colors.white};
+  max-width: ${props => props.theme.breakpoints.desktop}px;
+  // background-color: ${props => props.theme.colors.white};
   padding: 1rem 0;
+  margin: 0 auto;
 `;
 
 const StyledNav = styled.nav`
   display: flex;
+  padding: 0 1rem;
 `;
 
-const StyledFilterNav = styled.div``;
+const StyledFilterNav = styled.div`
+  opacity: ${props =>
+    props.loginMenuOpen || props.userMenuOpen ? "0.4" : "1"};
+  transform: ${props =>
+    props.loginMenuOpen || props.userMenuOpen ? "scale(0.95)" : ""};
+  overflow: ${props =>
+    props.loginMenuOpen || props.userMenuOpen ? "hidden" : "visible"};
+  pointer-events: ${props =>
+    props.loginMenuOpen || props.userMenuOpen ? "none" : "all"};
+  transition: all 0.25s linear;
+`;
 
 const StyledLogin = styled.button`
   display: block;
@@ -141,10 +154,10 @@ const StyledAvatar = styled.button`
   & img {
     width: ${props => (props.size ? `${props.size}px` : "32px")};
     height: ${props => (props.size ? `${props.size}px` : "32px")};
+    object-fit: cover;
     display: inline-block;
     vertical-align: middle;
     border-radius: 100%;
-    border: 0;
   }
 `;
 

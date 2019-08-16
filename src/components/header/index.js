@@ -55,7 +55,9 @@ function Header(props) {
 
   return (
     <StyledHeader ref={ref}>
-      <StyledNav>
+      <StyledNav
+        loginMenuOpen={props.loginMenuOpen}
+        userMenuOpen={props.userMenuOpen}>
         <StyledLogo>
           <Link href="/" prefetch scroll={false}>
             <a>DevGulp</a>
@@ -90,7 +92,9 @@ function Header(props) {
         </StyledMenu>
       </StyledNav>
       {props.router.pathname === "/" && (
-        <StyledFilterNav>
+        <StyledFilterNav
+          loginMenuOpen={props.loginMenuOpen}
+          userMenuOpen={props.userMenuOpen}>
           <StyledFilterItems>
             {props.categories &&
               props.categories.map(category => (

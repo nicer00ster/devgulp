@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import SingleUser from "../components/kit/singleUser";
 import { fetchAuthor } from "../redux/actions";
+import SingleUser from "../components/kit/singleUser";
+import Container from '../components/kit/container';
 
 function User(props) {
   const router = useRouter();
@@ -12,7 +13,11 @@ function User(props) {
     props.fetchAuthor(userId);
   }, []);
 
-  return <SingleUser author={props.author} />;
+  return (
+      <Container>
+        <SingleUser author={props.author} />
+      </Container>
+  );
 }
 
 const mapStateToProps = ({ author }) => ({

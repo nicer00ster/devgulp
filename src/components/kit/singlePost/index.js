@@ -58,7 +58,7 @@ function SinglePost(props) {
             ? post._embedded["wp:featuredmedia"]["0"].source_url
             : "/static/images/default_post.jpeg"
         }
-        alt={post._embedded["wp:featuredmedia"]["0"].title.rendered}
+        alt={post._embedded["wp:featuredmedia"] ? post._embedded["wp:featuredmedia"]["0"].title.rendered : 'Default Post Image'}
       />
       <StyledSinglePostContent
         dangerouslySetInnerHTML={{ __html: post.content.rendered }}

@@ -13,7 +13,6 @@ const StyledUserMenu = styled(animated.fieldset)`
   z-index: 1;
   min-width: 260px;
   background-color: ${props => props.theme.colors.white};
-  height: 400px;
   padding: 0;
   transition: box-shadow 0.25s ease-in;
   &[disabled] {
@@ -51,7 +50,7 @@ const StyledUserInfo = styled.div`
 
 const StyledUserMenuListItem = styled.li`
   position: relative;
-  padding: 1.2rem;
+  padding: 1.2rem 2.4rem;
 `;
 
 const StyledUserMenuDivider = styled.div`
@@ -80,6 +79,18 @@ const StyledUserMenuCaret = styled.div`
   }
 `;
 
+const StyledLogoutButton = styled.button`
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  color: ${props => props.theme.colors.lightBlack};
+  padding-left: 0;
+  transition: color 0.15s ease-in;
+  &:hover, &:focus {
+    color: ${props => props.theme.colors.black};
+  }
+`;
+
 export {
   StyledUserMenu,
   StyledUserMenuList,
@@ -87,5 +98,6 @@ export {
   StyledUserDataListItem,
   StyledUserInfo,
   StyledUserMenuDivider,
-  StyledUserMenuCaret
+  StyledUserMenuCaret,
+  StyledLogoutButton,
 };

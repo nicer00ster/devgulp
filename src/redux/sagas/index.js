@@ -115,11 +115,16 @@ function apiAddPost(token, title, content, categories, featuredMedia) {
 
 async function apiAddMedia(token, media) {
   const formData = await media;
+  let fileName;
+
+  for (let value of formData.values()) {
+    fileName = value.name;
+  }
 
   return axios({
     method: "post",
     headers: {
-      "Content-Disposition": `form-data; filename=user_upload.png`,
+      "Content-Disposition": `form-data; filename=${fileName}`,
       Authorization: `Bearer ${token}`
     },
     data: formData,
@@ -168,6 +173,7 @@ function* registerSaga(data) {
     const response = yield call(apiRegister, data);
     const token = yield call(apiFetchToken, data);
     const result = response.data;
+    setToken(token.data.token);
 
     yield put({ type: types.REGISTER_SUCCESS, result });
     yield put({ type: types.VERIFIED_TOKEN_SUCCESS, token });
@@ -201,11 +207,11 @@ function* fetchUserSaga() {
   try {
     const token = verifyToken("_app");
     if (token) {
-      const validToken = yield call(apiValidateToken, token);
+      const validToken = yield call(apiValidateToken);
       const response = yield call(
         apiFetchUser,
         validToken.data.data.user_id,
-        token
+        token,
       );
       yield put({
         type: types.FETCH_USER_SUCCESS,

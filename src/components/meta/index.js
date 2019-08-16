@@ -61,12 +61,12 @@ function Meta() {
       <link
         rel="preload"
         as="style"
-        href="/static/icons/fontawesome/all.min.css"
+        href="/static/icons/fontawesome/css/all.min.css"
       />
       <link
         rel="stylesheet"
         type="text/css"
-        href="/static/icons/fontawesome/all.min.css"
+        href="/static/icons/fontawesome/css/all.min.css"
       />
     </Head>
   );
