@@ -2,20 +2,38 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 
 import Container from '../components/kit/container';
-import EnhancedPosts from "../components/kit/posts";
+import EnhancedPosts from '../components/kit/posts';
+import Editor from '../components/kit/editor';
+import Hero from '../components/kit/hero';
+import Loading from '../components/kit/loading';
 import { fetchPosts, fetchCategories } from "../redux/actions";
 
 function Index(props) {
   useEffect(() => {
-    props.fetchPosts();
+    props.fetchPosts(props.postCount + 2);
     props.fetchCategories();
-  });
+  }, []);
   return (
+      <>
+      <Hero>
+          <Editor lines={[
+              'Welcome to DevGulp',
+              'Enjoy hassle-free content',
+              'Deliver value to what you\'re passionate about.'
+          ]}/>
+      </Hero>
       <Container>
-        <EnhancedPosts />
+          <EnhancedPosts />
+          {props.isFetchingPosts && <Loading />}
       </Container>
+      </>
   );
 }
+
+const mapStateToProps = ({ posts }) => ({
+    isFetchingPosts: posts.isFetchingPosts,
+    postCount: posts.postCount,
+});
 
 const mapDispatchToProps = {
   fetchPosts,
@@ -23,6 +41,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(
-  null,
-  mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps,
 )(Index);

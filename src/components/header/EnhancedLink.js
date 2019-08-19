@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { withRouter } from "next/router";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { StyledMenuItem } from "./header.styles";
 
-function EnhancedLink({ children, router, href }) {
+function EnhancedLink({ children, href }) {
+  const router = useRouter();
   let activeClass = router.pathname === href ? "active-route" : "";
 
   function handleClick(e) {
@@ -20,4 +20,4 @@ function EnhancedLink({ children, router, href }) {
   );
 }
 
-export default withRouter(EnhancedLink);
+export default EnhancedLink;

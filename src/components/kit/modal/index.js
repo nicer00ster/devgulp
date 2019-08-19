@@ -8,24 +8,21 @@ import {
   StyledCloseModal
 } from "./modal.styles";
 import Portal from "./Portal";
-import { toggleModal } from "../../../redux/actions";
+import { toggleModal, closeModal } from "../../../redux/actions";
 import { useOnClickOutside } from "../../../hooks";
 
 function Modal(props) {
   const ref = useRef();
+  const { closeModal, toggleModal } = props;
 
   const modalTransition = useTransition(props.modalOpen, null, {
-    delay: 1,
+    delay: .5,
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   });
 
-  useOnClickOutside(ref, () => props.toggleModal());
-
-  function closeModal() {
-    return props.toggleModal();
-  }
+  useOnClickOutside(ref, () => closeModal());
 
   function getChildren() {
     return props.children;
@@ -40,8 +37,7 @@ function Modal(props) {
               key={key}
               style={props}
               aria-modal="true"
-              role="dialog"
-            >
+              role="dialog">
               <StyledModalItem ref={ref} key={key} style={props}>
                 <StyledCloseModal
                   className="fa fa-window-close fa-2x"
@@ -62,7 +58,8 @@ const mapStateToProps = ({ root }) => ({
 });
 
 const mapDispatchToProps = {
-  toggleModal
+  toggleModal,
+  closeModal,
 };
 
 export default connect(

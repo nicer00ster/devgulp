@@ -18,7 +18,6 @@ export default function authorReducer(state = initialState, action = {}) {
         errorMessage: ""
       };
     case types.FETCH_AUTHOR_SUCCESS:
-      console.log(action);
       return {
         ...state,
         isFetchingAuthor: false,

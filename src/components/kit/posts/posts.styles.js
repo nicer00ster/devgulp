@@ -21,9 +21,11 @@ const StyledPost = styled(animated.li)`
   transition: all 0.35s ease;
   cursor: pointer;
   height: 150px;
+  bottom: 0;
   &:hover,
   &:active {
     box-shadow: ${props => props.theme.effects.shadowHover};
+    bottom: 4px;
     & .post-image {
       clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
       &:before {

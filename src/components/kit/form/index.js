@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { StyledForm, StyledInput, StyledFormHeading } from "./form.styles";
 import { register } from "../../../redux/actions";
 import { useInput } from "../../../hooks";
+import Button from '../button';
 
 function Form(props) {
   const {
@@ -85,6 +86,7 @@ function Form(props) {
             type="text"
             name="username"
             id="username"
+            autoFocus
             style={usernameError ? { borderBottom: "1px solid tomato" } : {}}
             {...bindUsername}
           />
@@ -143,8 +145,7 @@ function Form(props) {
             Verify Password
           </label>
         </StyledInput>
-        {/*<Button type="submit" text="Get In Touch" loading={isLoading} />*/}
-        <button type="submit">send</button>
+        <Button type="submit">Submit</Button>
       </fieldset>
     </StyledForm>
   );

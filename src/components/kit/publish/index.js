@@ -11,13 +11,14 @@ import {
   StyledPreviewImage,
   StyledPublishCategories,
   StyledPublishConfetti,
-  StyledPublishIcon
+  StyledPublishIcon,
 } from "./publish.styles";
 import Checkbox from "../checkbox";
 import Loading from "../loading";
 import Modal from "../modal";
 import { useInput } from "../../../hooks";
 import { addPost, addMedia, toggleModal } from "../../../redux/actions";
+import { ALLOWED_MIME_TYPES } from "../../../redux/constants";
 
 function EnhancedPublish(props) {
   const [active, setActive] = useState();
@@ -87,17 +88,14 @@ function EnhancedPublish(props) {
   async function handleImage(e) {
     const files = e.target.files;
     const data = new FormData();
-    // Allowed types
-    const mimeTypes = ["image/jpeg", "image/png"];
 
     // Validate MIME type
-    // if (mimeTypes.indexOf(files[0].type) == -1) {
-    //   console.log("error");
-    //   return;
-    // } else {
+    if (ALLOWED_MIME_TYPES.indexOf(files[0].type) == -1) {
+      return new Error('File type not allowed.');
+    } else {
       data.append("file", files[0]);
-      return data;
-    // }
+    }
+    return data;
   }
 
   return (

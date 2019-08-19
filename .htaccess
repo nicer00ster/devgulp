@@ -1,7 +1,7 @@
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
-RewriteEngine On
 RewriteBase /
+RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -17,8 +17,10 @@ SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 </IfModule>
 
 <IfModule mod_headers.c>
-    Header add Access-Control-Allow-Headers "content-disposition"
+    Header add Access-Control-Allow-Headers "Content-Disposition"
 </IfModule>
+
+php_value upload_max_filesize 3M
 
 #<IfModule mod_mime.c>
 #    <FilesMatch "\.(gif|jpe?g|png)$">

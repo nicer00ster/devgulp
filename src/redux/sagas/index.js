@@ -71,21 +71,28 @@ function apiFetchUsers() {
   }).then(users => users);
 }
 
-function apiFetchUser(userId, token) {
+function apiFetchUser(userId) {
   return axios({
     method: "get",
-    headers: {
-      Authorization: `Bearer ${token}`
-    },
     url: `${API_URL}/users/${userId}`
   }).then(user => user);
 }
 
-function apiFetchPosts() {
-  return axios({
+async function apiFetchPosts(postCount) {
+  const posts = await axios({
     method: "get",
-    url: `${API_URL}/posts?_embed`
+    url: `${API_URL}/posts?_embed&per_page=${postCount}`,
   }).then(posts => posts);
+
+  const totalPosts = await axios({
+    method: "get",
+    url: `${API_URL}/posts`,
+  }).then(posts => posts);
+
+  return {
+    posts,
+    totalPosts,
+  }
 }
 
 function apiFetchPost(postId) {
@@ -116,20 +123,33 @@ function apiAddPost(token, title, content, categories, featuredMedia) {
 async function apiAddMedia(token, media) {
   const formData = await media;
   let fileName;
-
-  for (let value of formData.values()) {
-    fileName = value.name;
+  let fileType;
+  // Make sure the Form Data being passed from the client is
+  // an array and we can loop over the values.
+  if(formData.entries().next().done) {
+    for (let value of formData.values()) {
+      fileName = value.name;
+      fileType = value.type;
+    }
+  } else {
+    return types.FILE_TYPE_ERROR;
   }
 
-  return axios({
-    method: "post",
-    headers: {
-      "Content-Disposition": `form-data; filename=${fileName}`,
-      Authorization: `Bearer ${token}`
-    },
-    data: formData,
-    url: `${API_URL}/media`
-  });
+  if(types.ALLOWED_MIME_TYPES.includes(fileType)) {
+    return axios({
+      method: "post",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Disposition": `form-data; filename=${fileName}`,
+      },
+      data: formData,
+      url: `${API_URL}/media`
+    })
+    .then(media => media)
+    .catch(error => ({ error }));
+  } else {
+    return types.FILE_TYPE_ERROR;
+  }
 }
 
 function apiFetchCategories() {
@@ -146,7 +166,7 @@ function* loginSaga(data) {
     const result = response.data;
     setToken(result.token);
 
-    const userData = yield call(apiFetchUser, result.user_id, result.token);
+    const userData = yield call(apiFetchUser, result.user_id);
 
     yield put({
       type: types.LOGIN_SUCCESS,
@@ -211,12 +231,11 @@ function* fetchUserSaga() {
       const response = yield call(
         apiFetchUser,
         validToken.data.data.user_id,
-        token,
       );
       yield put({
         type: types.FETCH_USER_SUCCESS,
         user: response.data,
-        token: token
+        token: token,
       });
     } else {
       yield put({
@@ -231,18 +250,18 @@ function* fetchUserSaga() {
 
 function* fetchAuthorSaga(data) {
   try {
-    const token = verifyToken("_app");
-    const response = yield call(apiFetchUser, data.userId, token);
+    const response = yield call(apiFetchUser, data.userId);
     yield put({ type: types.FETCH_AUTHOR_SUCCESS, user: response.data });
   } catch (error) {
     yield put({ type: types.FETCH_AUTHOR_FAILURE, error });
   }
 }
 
-function* fetchPostsSaga() {
+function* fetchPostsSaga(data) {
+  yield delay(1000);
   try {
-    const response = yield call(apiFetchPosts);
-    yield put({ type: types.FETCH_POSTS_SUCCESS, posts: response.data });
+    const response = yield call(apiFetchPosts, data.postCount);
+    yield put({ type: types.FETCH_POSTS_SUCCESS, posts: response.posts.data, postCount: data.postCount, totalPosts: response.totalPosts.data.length });
   } catch (error) {
     yield put({ type: types.FETCH_POSTS_FAILURE, error });
   }
@@ -250,9 +269,8 @@ function* fetchPostsSaga() {
 
 function* fetchPostSaga(data) {
   try {
-    const token = verifyToken("_app");
     const response = yield call(apiFetchPost, data.postId);
-    const author = yield call(apiFetchUser, response.data.author, token);
+    const author = yield call(apiFetchUser, response.data.author);
     yield put({ type: types.FETCH_POST_SUCCESS, post: response.data, author });
   } catch (error) {
     return yield put({ type: types.FETCH_POST_FAILURE, error });
@@ -289,12 +307,13 @@ function* addPostSaga(data) {
 }
 
 function* addMediaSaga(data) {
-  try {
     const response = yield call(apiAddMedia, data.token, data.media);
-    yield put({ type: types.ADD_MEDIA_SUCCESS, response });
-  } catch (error) {
-    yield put({ type: types.ADD_MEDIA_FAILURE, error });
-  }
+
+    if(response.error) {
+      yield put({ type: types.ADD_MEDIA_FAILURE, error: response.error.message });
+    } else {
+      yield put({ type: types.ADD_MEDIA_SUCCESS, response });
+    }
 }
 
 function* rootSaga() {

@@ -9,6 +9,7 @@ const LayoutStyles = styled.main`
   transition: all 0.25s linear;
   padding-left: 1rem;
   padding-right: 1rem;
+  z-index: ${props => props.userMenuOpen || props.loginMenuOpen ? '-1' : 'unset'};
   ${props => props.theme.mediaQuery.tablet`
     max-width: ${props => props.theme.breakpoints.tablet}px;
   `}

@@ -49,6 +49,7 @@ const StyledPublishTitle = styled.input`
   color: ${props => props.theme.colors.black};
   font-family: "Trirong", serif;
   letter-spacing: 1px;
+  background-color: rgba(0,0,0,0);
   &.error {
     animation: ${shake} 0.5s linear;
   }
@@ -66,6 +67,7 @@ const StyledPublishBody = styled.textarea`
   letter-spacing: 1px;
   resize: none;
   overflow: auto;
+  background-color: rgba(0,0,0,0);
   &.error {
     animation: ${shake} 0.5s linear;
   }

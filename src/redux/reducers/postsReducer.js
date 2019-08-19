@@ -3,6 +3,8 @@ import * as types from "../constants";
 const initialState = {
   posts: [],
   categories: [],
+  postCount: 0,
+  totalPosts: 0,
   isFetchingPosts: false,
   isFetchingCategories: false,
   isAddingPost: false,
@@ -11,8 +13,10 @@ const initialState = {
   imageId: null,
   hasError: false,
   addPostError: false,
+  addMediaError: false,
   errorMessage: "",
   addPostErrorMessage: "",
+  addMediaErrorMessage: "",
   taxonomyFilter: 1
 };
 
@@ -45,15 +49,23 @@ export default function postsReducer(state = initialState, action = {}) {
       return {
         ...state,
         isFetchingPosts: false,
-        posts:
-          state.posts.length > 1
-            ? state.posts
-            : action.posts.map(post => {
-                return {
-                  ...post,
-                  isFiltered: true
-                };
-              })
+        postCount: action.postCount,
+        totalPosts: action.totalPosts,
+        posts: action.posts.map(post => {
+          return {
+            ...post,
+            isFiltered: true,
+          };
+        })
+        // posts:
+        //   state.posts.length > 1
+        //     ? state.posts
+        //     : action.posts.map(post => {
+        //         return {
+        //           ...post,
+        //           isFiltered: true
+        //         };
+        //       })
       };
     case types.FETCH_POSTS_FAILURE:
       return {
@@ -120,13 +132,16 @@ export default function postsReducer(state = initialState, action = {}) {
       return {
         ...state,
         isUploadingImage: false,
+        hasMediaError: false,
         imageUrl: action.response.data.guid.raw,
         imageId: action.response.data.id
       };
     case types.ADD_MEDIA_FAILURE:
       return {
         ...state,
-        isUploadingImage: false
+        isUploadingImage: false,
+        hasMediaError: true,
+        addMediaErrorMessage: action.error,
       };
     default:
       return state;

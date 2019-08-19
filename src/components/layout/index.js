@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
-import { fetchUser } from "../../redux/actions";
+import { fetchUser, screenResize } from "../../redux/actions";
 import Header from "../header";
 import Footer from "../footer";
 import Loading from "../../components/kit/loading";
@@ -25,6 +25,8 @@ const theme = {
 function Layout(props) {
   useEffect(() => {
     props.fetchUser();
+    window.addEventListener('resize', props.screenResize(window.innerWidth));
+    return () => window.removeEventListener('resize', props.screenResize(window.innerWidth));
   }, []);
   if (props.user.checkingCredentials) {
     return <Loading />;
@@ -52,7 +54,8 @@ const mapStateToProps = ({ root, user }) => ({
 });
 
 const mapDispatchToProps = {
-  fetchUser
+  fetchUser,
+  screenResize,
 };
 
 export default connect(

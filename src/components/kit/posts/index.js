@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { useTransition } from "react-spring";
 import Link from "next/link";
 import { connect } from "react-redux";
 import moment from "moment";
+import debounce from 'lodash.debounce';
 import {
   StyledPosts,
   StyledPost,
@@ -18,14 +19,25 @@ import {
   StyledPostImage,
   StyledNoResults
 } from "./posts.styles";
-import Loading from "../loading";
 import { getTaxonomyIcon } from "../../../utils";
+import { fetchPosts } from '../../../redux/actions';
 
 function EnhancedPosts(props) {
   const filteredPosts = props.posts.filter(post => post.isFiltered);
   const currentFilter = props.categories.map(category =>
     category.id === props.taxonomyFilter ? category.name : null
   );
+
+  const fetchPosts = debounce(() => {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+    if(props.postCount >= props.totalPosts) return;
+    props.fetchPosts(props.postCount + 2);
+  }, 1000);
+
+  useEffect(() => {
+    window.addEventListener('scroll', fetchPosts);
+    return () => window.removeEventListener('scroll', fetchPosts);
+  }, [fetchPosts]);
 
   const transitions = useTransition(props.posts, post => post.id, {
     config: {
@@ -88,7 +100,6 @@ function EnhancedPosts(props) {
                 </Link>
               </StyledPost>
           ))}
-        {!props.posts.length && props.isFetchingPosts && <Loading />}
       </StyledPosts>
       {props.posts.length && props.posts && filteredPosts.length === 0 ? (
         <StyledNoResults>
@@ -106,10 +117,17 @@ function EnhancedPosts(props) {
 const mapStateToProps = ({ posts }) => ({
   posts: posts.posts,
   categories: posts.categories,
-  taxonomyFilter: posts.taxonomyFilter
+  taxonomyFilter: posts.taxonomyFilter,
+  postCount: posts.postCount,
+  isFetchingPosts: posts.isFetchingPosts,
+  totalPosts: posts.totalPosts,
 });
+
+const mapDispatchToProps = {
+  fetchPosts,
+};
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps,
 )(EnhancedPosts);

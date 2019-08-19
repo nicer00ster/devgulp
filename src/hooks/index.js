@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import ResizeObserver from "resize-observer-polyfill";
 
 export const useInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -50,4 +51,12 @@ export function useOnClickOutside(ref, handler) {
     // ... passing it into this hook.
     [ref, handler]
   );
+}
+
+export function useMeasure() {
+  const ref = useRef();
+  const [bounds, set] = useState({ left: 0, top: 0, width: 0, height: 0 });
+  const [ro] = useState(() => new ResizeObserver(([entry]) => set(entry.contentRect)));
+  useEffect(() => (ro.observe(ref.current), ro.disconnect), []);
+  return [{ ref }, bounds]
 }

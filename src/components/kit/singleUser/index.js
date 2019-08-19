@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import moment from 'moment';
 import {
     StyledSingleUser,
@@ -9,8 +10,11 @@ import {
     StyledSingleUserDescription,
 } from "./singleUser.styles";
 import { StyledAvatar } from "../../header/header.styles";
+import { toggleModal } from "../../../redux/actions";
 import Background from '../background';
 import Loading from '../loading';
+import Modal from "../modal";
+import { StyledPreviewImage } from "../publish/publish.styles";
 
 function SingleUser(props) {
   const { author, isFetchingAuthor } = props.author;
@@ -35,12 +39,12 @@ function SingleUser(props) {
                           {author.description}
                       </StyledSingleUserDescription>
                   </StyledSingleUserInfo>
-                  <StyledAvatar size={100} style={{ pointerEvents: 'none' }} tabIndex={-1}>
+                  <StyledAvatar size={100} onClick={props.toggleModal}>
                       <img
                           alt="Avatar"
                           style={{ border: '1px solid #1f222e', padding: '4px' }}
                           src={
-                              !author.acf.author
+                              !author.acf.avatar
                                   ? '/static/icons/default_avatar.png'
                                   : author.acf.avatar
                           }
@@ -48,8 +52,15 @@ function SingleUser(props) {
                   </StyledAvatar>
               </StyledSingleUserContent>
           </StyledSingleUserContainer>
+          <Modal>
+              <StyledPreviewImage src={author.acf.avatar} />
+          </Modal>
       </StyledSingleUser>
   );
 }
 
-export default SingleUser;
+const mapStateToProps = {
+    toggleModal,
+};
+
+export default connect(null, mapStateToProps)(SingleUser);

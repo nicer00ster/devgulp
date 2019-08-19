@@ -2,12 +2,23 @@
 export const API_URL = "http://localhost:8000/wp-json/wp/v2";
 export const TOKEN_URL = "http://localhost:8000/wp-json/jwt-auth/v1/token";
 
+export const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/gif', 'image/png', 'image/bmp'];
+export const FILE_TYPE_ERROR = {
+    error: {
+        message: 'File type not allowed.'
+    },
+};
+
 // Global types
 export const SCREEN_RESIZE = "SCREEN_RESIZE";
 export const INPUT = "INPUT";
 export const TOGGLE_LOGIN_MENU = "TOGGLE_LOGIN_MENU";
+export const OPEN_LOGIN_MENU = "OPEN_LOGIN_MENU";
 export const TOGGLE_USER_MENU = "TOGGLE_USER_MENU";
+export const OPEN_USER_MENU = "OPEN_USER_MENU";
 export const TOGGLE_MODAL = "TOGGLE_MODAL";
+export const TOGGLE_SEARCH = "TOGGLE_SEARCH";
+export const CLOSE_MODAL = "CLOSE_MODAL";
 export const FILTER_TAXONOMY = "FILTER_TAXONOMY";
 
 // Auth Types

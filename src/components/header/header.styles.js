@@ -1,12 +1,24 @@
 import styled from "styled-components";
+import { animated } from 'react-spring';
 
 const StyledHeader = styled.header`
   width: 100%;
-  position: relative;
+  position: sticky;
   max-width: ${props => props.theme.breakpoints.desktop}px;
-  // background-color: ${props => props.theme.colors.white};
   padding: 1rem 0;
+  top: 0;
   margin: 0 auto;
+  z-index: 101;
+  transition: all 0.25s ease-in;
+  &.is-scrolled {
+   background-color: ${props => props.theme.colors.white};
+   box-shadow: ${props => props.theme.effects.shadow};
+   max-width: 100%;
+   z-index: 99;
+   & .filter-items {
+    padding: 0;
+   }
+  }
 `;
 
 const StyledNav = styled.nav`
@@ -45,6 +57,7 @@ const StyledLogin = styled.button`
 
 const StyledSignup = styled.li`
   padding: 0 0.5rem;
+  white-space: nowrap;
   & a {
     padding: 0.5rem;
     border-radius: 4px;
@@ -80,7 +93,8 @@ const StyledFilterItems = styled.div`
   display: flex;
   justify-content: center;
   list-style: none;
-  padding: 0;
+  padding: 2rem 0;
+  transition: all 0.25s ease-in;
 `;
 
 const StyledFilterItem = styled.button`
@@ -100,10 +114,15 @@ const StyledFilterItem = styled.button`
   }
 `;
 
-const StyledLogo = styled.div`
+const StyledLogoContainer = styled.div`
   display: flex;
   flex: 1 1 auto;
   align-items: center;
+`;
+
+const StyledLogo = styled(animated.a)`
+  will-change: transform;
+  padding: 0 0.5rem;
 `;
 
 const StyledMenu = styled.ul`
@@ -116,6 +135,7 @@ const StyledMenu = styled.ul`
 
 const StyledMenuItem = styled.li`
   padding: 0 0.5rem;
+  white-space: nowrap;
   & a {
     padding: 0.5rem;
     border-radius: ${props => props.theme.effects.radius};
@@ -144,6 +164,7 @@ const StyledAvatar = styled.button`
   line-height: normal;
   border: 0;
   outline: 0;
+  background-color: rgba(0,0,0,0);
   &:focus > img {
     outline: 1px dotted ${props => props.theme.colors.black};
     outline: -webkit-focus-ring-color auto 5px;
@@ -161,6 +182,51 @@ const StyledAvatar = styled.button`
   }
 `;
 
+const StyledSearch = styled.button`
+  padding: 0 0.5rem;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  i {
+    font-size: 18px;
+  }
+`;
+
+const StyledSearchInput = styled(animated.div)`
+  width: 0;
+  padding-right: .8rem;
+  opacity: 0;
+  input {
+    display: block;
+    background: none;
+    color: ${props => props.theme.colors.black};
+    padding: 4px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    border-bottom: 1px solid ${props => props.theme.colors.lightBlack};
+    &:focus ~ .bar:before {
+      width: 100%;
+    }
+  }
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+    &:before {
+      content: "";
+      height: 2px;
+      width: 0;
+      bottom: 0;
+      position: absolute;
+      background: ${props => props.theme.colors.black};
+      transition: 300ms ease all;
+      left: 0;
+    }
+  }
+`;
+
 export {
   StyledHeader,
   StyledNav,
@@ -170,8 +236,11 @@ export {
   StyledCategoryCount,
   StyledLogin,
   StyledSignup,
+  StyledLogoContainer,
   StyledLogo,
   StyledMenu,
   StyledMenuItem,
-  StyledAvatar
+  StyledAvatar,
+  StyledSearch,
+  StyledSearchInput
 };

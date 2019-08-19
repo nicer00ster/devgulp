@@ -19,19 +19,37 @@ export function handleInput(input, el) {
 
 export function toggleLoginMenu() {
   return {
-    type: types.TOGGLE_LOGIN_MENU
+    type: types.TOGGLE_LOGIN_MENU,
   };
 }
 
 export function toggleUserMenu() {
   return {
-    type: types.TOGGLE_USER_MENU
+    type: types.TOGGLE_USER_MENU,
   };
 }
 
 export function toggleModal() {
   return {
-    type: types.TOGGLE_MODAL
+    type: types.TOGGLE_MODAL,
+  };
+}
+
+export function openLoginMenu() {
+  return {
+    type: types.OPEN_LOGIN_MENU,
+  };
+}
+
+export function toggleSearch() {
+  return {
+    type: types.TOGGLE_SEARCH,
+  }
+}
+
+export function closeModal() {
+  return {
+    type: types.CLOSE_MODAL,
   };
 }
 
@@ -107,9 +125,10 @@ export function fetchUsers() {
   };
 }
 
-export function fetchPosts() {
+export function fetchPosts(postCount) {
   return {
-    type: types.FETCH_POSTS
+    type: types.FETCH_POSTS,
+    postCount,
   };
 }
 

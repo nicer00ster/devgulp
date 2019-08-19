@@ -24,7 +24,7 @@ const StyledFooterInner = styled.div`
 
 const StyledFooter = styled.footer`
   padding: 2rem 0 4rem;
-  min-height: 400px;
+  min-height: 2000px;
 `;
 
 const StyledFooterList = styled.ul`

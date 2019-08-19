@@ -44,7 +44,7 @@ function UserMenu(props) {
           <StyledUserMenuList>
             <StyledUserDataListItem>
               <StyledAvatar size={52}>
-                <Link href={`/user?id=${props.user.id}`}>
+                <Link href={`/user?userId=${props.user.id}`}>
                   <a onClick={props.toggleUserMenu}>
                     <img
                         src={
@@ -73,7 +73,7 @@ function UserMenu(props) {
             </StyledUserMenuListItem>
             <StyledUserMenuDivider />
             <StyledUserMenuListItem>
-              <Link href={`/user?id=${props.user.id}`}>
+              <Link href={`/user?userId=${props.user.id}`}>
                 <a onClick={props.toggleUserMenu}>
                   Profile
                 </a>

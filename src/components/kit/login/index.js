@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import { useTrail } from "react-spring";
 import { StyledLogin, StyledLoginForm, StyledLoginCaret } from "./login.styles";
-import Loading from "../loading";
 import { StyledInput, StyledFormHeading } from "../form/form.styles";
 import { useInput } from "../../../hooks";
-import { login } from "../../../redux/actions";
+import { login, toggleLoginMenu } from "../../../redux/actions";
+import Loading from "../loading";
+import Button from '../button';
 
 const config = { mass: 5, tension: 2000, friction: 100 };
 
@@ -60,6 +61,7 @@ function Login(props) {
                   type="text"
                   name="loginUsername"
                   id="loginUsername"
+                  autoFocus
                   style={usernameError ? { borderBottom: "1px solid tomato" } : {}}
                   {...bindUsername}
               />
@@ -87,7 +89,7 @@ function Login(props) {
                 Password
               </label>
             </StyledInput>
-            <button type="submit">login</button>
+            <Button type="submit">Login</Button>
           </StyledLoginForm>
       )}
       <StyledLoginCaret />
@@ -102,7 +104,8 @@ const mapStateToProps = ({ root, user }) => ({
 });
 
 const mapDispatchToProps = {
-  login
+  login,
+  toggleLoginMenu,
 };
 
 export default connect(

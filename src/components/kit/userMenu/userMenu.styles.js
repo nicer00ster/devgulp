@@ -63,7 +63,7 @@ const StyledUserMenuDivider = styled.div`
 `;
 
 const StyledUserMenuCaret = styled.div`
-  left: 232px;
+  left: 220px;
   clip: rect(0px, 18px, 14px, -4px);
   top: -14px;
   position: absolute;

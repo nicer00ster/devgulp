@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { animated } from 'react-spring';
 
 const StyleSinglePost = styled.article`
+  position:relative;
   margin: 0 auto;
   max-width: 720px;
   width: 100%;
@@ -46,6 +48,19 @@ const StyledSinglePostContent = styled.div`
   font-size: 24px;
 `;
 
+const StyledSidebar = styled(animated.div)`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  top: calc(65px + 54px + 40px);
+  z-index: 99;
+  will-change: opacity;
+  & button {
+    margin: .4rem 0;
+  }
+`;
+
 export {
   StyleSinglePost,
   StyledSinglePostHeading,
@@ -54,5 +69,6 @@ export {
   StyledSinglePostAuthorDate,
   StyledSinglePostDate,
   StyledSinglePostImage,
-  StyledSinglePostContent
+  StyledSinglePostContent,
+  StyledSidebar,
 };

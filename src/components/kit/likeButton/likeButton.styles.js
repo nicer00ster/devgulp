@@ -35,6 +35,9 @@ const StyledLikeButton = styled.button`
       font-size: 18px;
     }
   }
+  &:focus {
+    box-shadow: ${props => props.theme.effects.shadowHover};
+  }
   &.active {
     & div {
       width: 11px;

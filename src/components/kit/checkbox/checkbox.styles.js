@@ -35,8 +35,7 @@ const StyledCheckboxInput = styled.input`
     transition: all 0.25s ease-out;
   }
   &:focus ~ span {
-    outline: 1px dotted #000;
-    outline: -webkit-focus-ring-color auto 5px;
+    outline: none;
   }
 `;
 
