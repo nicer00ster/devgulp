@@ -132,6 +132,12 @@ export function fetchPosts(postCount) {
   };
 }
 
+export function fetchTotalPosts() {
+  return {
+    type: types.FETCH_TOTAL_POSTS,
+  };
+}
+
 export function fetchPost(postId) {
   return {
     type: types.FETCH_POST,
