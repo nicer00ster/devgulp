@@ -75,7 +75,7 @@ export function register(username, email, password, verifyPassword) {
     username,
     email,
     password,
-    verifyPassword
+    verifyPassword,
   };
 }
 
@@ -86,7 +86,7 @@ export function addPost(token, title, content, categories, featuredMedia) {
     title,
     content,
     categories,
-    featuredMedia
+    featuredMedia,
   };
 }
 
@@ -94,14 +94,21 @@ export function addMedia(token, media) {
   return {
     type: types.ADD_MEDIA,
     token,
-    media
+    media,
+  };
+}
+
+export function searchQuery(query) {
+  return {
+    type: types.SEARCH,
+    query,
   };
 }
 
 export function logout() {
   deleteToken();
   return {
-    type: types.LOGOUT
+    type: types.LOGOUT,
   };
 }
 
@@ -121,7 +128,7 @@ export function fetchAuthor(userId) {
 
 export function fetchUsers() {
   return {
-    type: types.FETCH_USERS
+    type: types.FETCH_USERS,
   };
 }
 
@@ -147,6 +154,6 @@ export function fetchPost(postId) {
 
 export function fetchCategories() {
   return {
-    type: types.FETCH_CATEGORIES
+    type: types.FETCH_CATEGORIES,
   };
 }

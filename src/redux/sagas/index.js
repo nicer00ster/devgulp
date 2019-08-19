@@ -156,6 +156,15 @@ function apiFetchCategories() {
   }).then(categories => categories);
 }
 
+function apiSearch(query) {
+  return axios({
+    method: "get",
+    url: `${API_URL}/search?search=${query}&_embed`,
+  }).then(results => results);
+}
+
+// Start sagas.
+// -------------------------------
 function* loginSaga(data) {
   yield delay(2000);
   try {
@@ -322,11 +331,22 @@ function* addMediaSaga(data) {
     }
 }
 
+function* searchSaga(data) {
+  yield delay(500);
+  try {
+    const response = yield call(apiSearch, data.query);
+    yield put({ type: types.SEARCH_SUCCESS, response: response.data });
+  } catch (error) {
+    yield put({ type: types.SEARCH_FAILURE, error });
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeEvery(types.REGISTER, registerSaga),
     takeEvery(types.LOGIN, loginSaga),
     takeEvery(types.LOGOUT, logoutSaga),
+    takeEvery(types.SEARCH, searchSaga),
     takeEvery(types.VERIFIED_TOKEN, fetchTokenSaga),
     takeEvery(types.ADD_POST, addPostSaga),
     takeEvery(types.ADD_MEDIA, addMediaSaga),

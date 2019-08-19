@@ -20,6 +20,7 @@ function Publish(props) {
   return (
       <>
       <Hero>
+
       </Hero>
       <Container>
         <EnhancedPublish />

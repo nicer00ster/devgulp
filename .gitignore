@@ -65,7 +65,8 @@ typings/
 
 # wordpress
 .htaccess
-/wp-includes
+/wp-includes/*
+!/wp-includes/rest-api
 /wp-content/themes
 /wp-content/uploads
 /wp-admin

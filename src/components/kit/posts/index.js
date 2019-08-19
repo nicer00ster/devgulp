@@ -21,6 +21,7 @@ import {
 } from "./posts.styles";
 import { getTaxonomyIcon } from "../../../utils";
 import { fetchPosts } from '../../../redux/actions';
+import PostItem from './PostItem';
 
 function EnhancedPosts(props) {
   const filteredPosts = props.posts.filter(post => post.isFiltered);
@@ -55,50 +56,8 @@ function EnhancedPosts(props) {
       <StyledPosts>
         {props.posts &&
           transitions.map(post => post.item.isFiltered && (
-              <StyledPost key={post.item.id} style={{ opacity: post.props.opacity, transform: post.props.transform }}>
-                <Link href={`/post?id=${post.item.id}`}>
-                  <a>
-                    <StyledPostTaxonomies>
-                      {post.item._embedded["wp:term"]["0"]["0"].name !==
-                      "Uncategorized" &&
-                      post.item._embedded["wp:term"]["0"].map((term, index) => (
-                          <StyledPostTaxonomyItem key={index}>
-                              <span
-                                  className={getTaxonomyIcon(
-                                      post.item._embedded["wp:term"]["0"][index].name
-                                  )}
-                              />
-                          </StyledPostTaxonomyItem>
-                      ))}
-                    </StyledPostTaxonomies>
-                    <StyledPostContent>
-                      <StyledPostTitle>{post.item.title.rendered}</StyledPostTitle>
-                      <StyledPostExcerpt
-                          dangerouslySetInnerHTML={{
-                            __html: post.item.excerpt.rendered
-                          }}
-                      />
-                      <StyledDateAuthor>
-                        <StyledPostDateStamp>
-                          {moment(post.item.date).format("MMM Do")}
-                        </StyledPostDateStamp>
-                        <StyledDateAuthorDivider />
-                        <StyledPostAuthor>
-                          {post.item._embedded["author"]["0"].name}
-                        </StyledPostAuthor>
-                      </StyledDateAuthor>
-                    </StyledPostContent>
-                    <StyledPostImage
-                        className="post-image"
-                        src={
-                          post.item._embedded && post.item._embedded["wp:featuredmedia"]
-                            ? post.item._embedded["wp:featuredmedia"]["0"].source_url
-                            : "/static/images/default_post.jpeg"
-                        }
-                    />
-                  </a>
-                </Link>
-              </StyledPost>
+              <PostItem post={post.item} opacity={post.props.opacity} transform={post.props.transform} />
+
           ))}
       </StyledPosts>
       {props.posts.length && props.posts && filteredPosts.length === 0 ? (

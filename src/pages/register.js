@@ -4,11 +4,14 @@ import Hero from '../components/kit/hero';
 
 function Register() {
   return (
+      <>
+      <Hero>
+
+      </Hero>
       <Container>
-          <Hero>
-              <Form />
-          </Hero>
+          <Form />
       </Container>
+      </>
   );
 }
 

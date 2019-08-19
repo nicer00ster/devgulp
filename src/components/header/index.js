@@ -25,11 +25,13 @@ import {
   toggleLoginMenu,
   toggleUserMenu,
   toggleSearch,
+  searchQuery,
   filterTaxonomy,
 } from "../../redux/actions";
 import {
   useOnClickOutside,
   useMeasure,
+  useInput,
 } from "../../hooks";
 import EnhancedLink from "./EnhancedLink";
 import Login from "../kit/login";
@@ -49,6 +51,14 @@ function Header(props) {
   const [bind, { width }] = useMeasure();
   const [activeFilter, setActiveFilter] = useState(1);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const {
+    value: query,
+    bind: bindQuery,
+    reset: resetQuery,
+    setError: setQueryError,
+    hasError: queryError,
+  } = useInput("");
 
   const handleWindowScroll = useCallback(e => {
     if(window.scrollY >= ref.current.offsetHeight) {
@@ -118,7 +128,16 @@ function Header(props) {
             </StyledSearch>
           </StyledMenuItem>
           <StyledSearchInput style={spring}>
-            <input ref={searchRef} tabIndex="-1" type="text" name="search" id="search" />
+            <form onSubmit={e => {
+              e.preventDefault();
+              if(props.router.pathname !== '/search') {
+                props.router.push(`/search?search=${query}`);
+              } else {
+                props.searchQuery(query);
+              }
+            }}>
+              <input ref={searchRef} {...bindQuery} tabIndex="-1" type="text" name="search" id="search" />
+            </form>
             <span className="bar" />
           </StyledSearchInput>
           <EnhancedLink href='/publish'>Publish</EnhancedLink>
@@ -187,6 +206,7 @@ const mapDispatchToProps = {
   toggleLoginMenu,
   toggleUserMenu,
   toggleSearch,
+  searchQuery,
   filterTaxonomy,
 };
 

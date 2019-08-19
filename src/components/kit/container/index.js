@@ -6,6 +6,7 @@ import {
 function Container(props) {
     return (
         <StyledContainer
+            isSearching={props.isSearching}
             isFetchingPosts={props.isFetchingPosts}
             userMenuOpen={props.userMenuOpen}
             loginMenuOpen={props.loginMenuOpen}>
@@ -14,10 +15,11 @@ function Container(props) {
     );
 }
 
-const mapStateToProps = ({ root, posts }) => ({
+const mapStateToProps = ({ root, posts, search }) => ({
     loginMenuOpen: root.loginMenuOpen,
     userMenuOpen: root.userMenuOpen,
     isFetchingPosts: posts.isFetchingPosts,
+    isSearching: search.isSearching,
 });
 
 export default connect(mapStateToProps, null)(Container);

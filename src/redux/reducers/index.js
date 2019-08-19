@@ -5,6 +5,7 @@ import usersReducer from "./usersReducer";
 import postsReducer from "./postsReducer";
 import postReducer from "./postReducer";
 import authorReducer from "./authorReducer";
+import searchReducer from "./searchReducer";
 
 const rootReducer = combineReducers({
   root: appReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   users: usersReducer,
   posts: postsReducer,
   post: postReducer,
-  author: authorReducer
+  author: authorReducer,
+  search: searchReducer,
 });
 
 export default rootReducer;
