@@ -1,7 +1,12 @@
 import {
-    StyledDateAuthor, StyledDateAuthorDivider,
-    StyledPost, StyledPostAuthor,
-    StyledPostContent, StyledPostDateStamp, StyledPostExcerpt, StyledPostImage,
+    StyledDateAuthor,
+    StyledDateAuthorDivider,
+    StyledPost,
+    StyledPostAuthor,
+    StyledPostContent,
+    StyledPostDateStamp,
+    StyledPostExcerpt,
+    StyledPostImage,
     StyledPostTaxonomies,
     StyledPostTaxonomyItem,
     StyledPostTitle
@@ -29,7 +34,7 @@ function PostItem(props) {
                         ))}
                     </StyledPostTaxonomies>
                     <StyledPostContent>
-                        <StyledPostTitle>{props.post.title.rendered}</StyledPostTitle>
+                        <StyledPostTitle>{props.post.title.rendered || props.post.title}</StyledPostTitle>
                         <StyledPostExcerpt
                             dangerouslySetInnerHTML={{
                                 __html: props.post.excerpt.rendered

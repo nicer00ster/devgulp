@@ -56,8 +56,7 @@ function EnhancedPosts(props) {
       <StyledPosts>
         {props.posts &&
           transitions.map(post => post.item.isFiltered && (
-              <PostItem post={post.item} opacity={post.props.opacity} transform={post.props.transform} />
-
+              <PostItem key={post.item.id} post={post.item} opacity={post.props.opacity} transform={post.props.transform} />
           ))}
       </StyledPosts>
       {props.posts.length && props.posts && filteredPosts.length === 0 ? (

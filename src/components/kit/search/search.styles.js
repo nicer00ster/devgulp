@@ -1,8 +1,16 @@
 import styled from 'styled-components';
 
 const StyledSearch = styled.div`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: stretch;
+  grid-gap: 12px;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  ${props => props.theme.mediaQuery.phone`
+    grid-template-columns: repeat(1, 1fr);
+  `};
 `;
 
 export {
