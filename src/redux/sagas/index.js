@@ -78,21 +78,18 @@ function apiFetchUser(userId) {
   }).then(user => user);
 }
 
-async function apiFetchPosts(postCount) {
-  const posts = await axios({
+function apiFetchPosts(postCount) {
+  return axios({
     method: "get",
     url: `${API_URL}/posts?_embed&per_page=${postCount}`,
   }).then(posts => posts);
+}
 
-  const totalPosts = await axios({
+function apiFetchTotalPosts() {
+  return axios({
     method: "get",
     url: `${API_URL}/posts`,
   }).then(posts => posts);
-
-  return {
-    posts,
-    totalPosts,
-  }
 }
 
 function apiFetchPost(postId) {
@@ -261,7 +258,7 @@ function* fetchPostsSaga(data) {
   yield delay(500);
   try {
     const response = yield call(apiFetchPosts, data.postCount);
-    yield put({ type: types.FETCH_POSTS_SUCCESS, posts: response.posts.data, postCount: data.postCount, totalPosts: response.totalPosts.data.length });
+    yield put({ type: types.FETCH_POSTS_SUCCESS, posts: response.data, postCount: data.postCount });
   } catch (error) {
     yield put({ type: types.FETCH_POSTS_FAILURE, error });
   }
@@ -273,7 +270,16 @@ function* fetchPostSaga(data) {
     const author = yield call(apiFetchUser, response.data.author);
     yield put({ type: types.FETCH_POST_SUCCESS, post: response.data, author });
   } catch (error) {
-    return yield put({ type: types.FETCH_POST_FAILURE, error });
+    yield put({ type: types.FETCH_POST_FAILURE, error });
+  }
+}
+
+function* fetchTotalPostsSaga() {
+  try {
+    const response = yield call(apiFetchTotalPosts);
+    yield put({ type: types.FETCH_TOTAL_POSTS_SUCCESS, totalPosts: response.data.length });
+  } catch (error) {
+    yield put({ type: types.FETCH_TOTAL_POSTS_FAILURE, error });
   }
 }
 
@@ -324,6 +330,7 @@ function* rootSaga() {
     takeEvery(types.VERIFIED_TOKEN, fetchTokenSaga),
     takeEvery(types.ADD_POST, addPostSaga),
     takeEvery(types.ADD_MEDIA, addMediaSaga),
+    takeEvery(types.FETCH_TOTAL_POSTS, fetchTotalPostsSaga),
     takeEvery(types.FETCH_USER, fetchUserSaga),
     takeEvery(types.FETCH_USERS, fetchUsersSaga),
     takeEvery(types.FETCH_POSTS, fetchPostsSaga),
