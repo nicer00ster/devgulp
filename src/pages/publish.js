@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import EnhancedPublish from "../components/kit/publish";
 import { fetchCategories, openLoginMenu } from "../redux/actions";
 import Container from '../components/kit/container';
+import Hero from '../components/kit/hero';
 
 function Publish(props) {
   const router = useRouter();
@@ -17,9 +18,13 @@ function Publish(props) {
     }
   }, []);
   return (
+      <>
+      <Hero>
+      </Hero>
       <Container>
         <EnhancedPublish />
       </Container>
+      </>
   );
 }
 

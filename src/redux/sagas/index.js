@@ -258,7 +258,7 @@ function* fetchAuthorSaga(data) {
 }
 
 function* fetchPostsSaga(data) {
-  yield delay(1000);
+  yield delay(500);
   try {
     const response = yield call(apiFetchPosts, data.postCount);
     yield put({ type: types.FETCH_POSTS_SUCCESS, posts: response.posts.data, postCount: data.postCount, totalPosts: response.totalPosts.data.length });

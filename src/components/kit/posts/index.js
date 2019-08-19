@@ -32,7 +32,7 @@ function EnhancedPosts(props) {
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
     if(props.postCount >= props.totalPosts) return;
     props.fetchPosts(props.postCount + 2);
-  }, 1000);
+  }, 500);
 
   useEffect(() => {
     window.addEventListener('scroll', fetchPosts);
