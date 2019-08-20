@@ -14,14 +14,16 @@ const StyledLogin = styled(animated.fieldset)`
   position: absolute;
   will-change: opacity, transform;
   opacity: 0;
-  top: 62px;
-  right: 0px;
+  top: 68px;
+  right: 0;
   border-radius: ${props => props.theme.effects.radius};
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: ${props => props.theme.effects.shadow};
   z-index: 1;
   min-width: 260px;
+  padding: 0;
   background-color: ${props => props.theme.colors.white};
+  transition: box-shadow 0.25s ease-in;
   &[disabled] {
     opacity: 0.5;
   }
@@ -29,15 +31,20 @@ const StyledLogin = styled(animated.fieldset)`
     background-size: 50% auto;
     animation: ${loading} 0.5s linear infinite;
   }
+  &:hover {
+    box-shadow: ${props => props.theme.effects.shadowHover};
+  }
 `;
 
 const StyledLoginForm = styled.form`
   opacity: 1;
   background-color: ${props => props.theme.colors.white};
+  padding: 1.2rem;
+  margin: 0;
 `;
 
 const StyledLoginCaret = styled.div`
-  left: 220px;
+  left: 214px;
   clip: rect(0px, 18px, 14px, -4px);
   top: -14px;
   position: absolute;

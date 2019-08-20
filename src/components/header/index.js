@@ -136,9 +136,10 @@ function Header(props) {
                 props.searchQuery(query);
               }
             }}>
-              <input ref={searchRef} {...bindQuery} tabIndex="-1" type="text" name="search" id="search" />
+                <input ref={searchRef} {...bindQuery} tabIndex="-1" type="text" name="search" id="search" />
+              <label htmlFor="search" />
+              <span className="bar" />
             </form>
-            <span className="bar" />
           </StyledSearchInput>
           <EnhancedLink href='/publish'>Publish</EnhancedLink>
           <EnhancedLink href='/users'>Users</EnhancedLink>
@@ -149,21 +150,25 @@ function Header(props) {
                   <a>Sign Up</a>
                 </Link>
               </StyledSignup>
-              <StyledLogin onClick={() => props.toggleLoginMenu()}>
-                Login
-              </StyledLogin>
+              <StyledMenuItem>
+                <StyledLogin onClick={() => props.toggleLoginMenu()}>
+                  Login
+                </StyledLogin>
+              </StyledMenuItem>
             </>
           ) : (
-            <StyledAvatar onClick={() => props.toggleUserMenu()}>
-              <img
-                alt="Avatar"
-                src={
-                  !props.user.avatar
-                    ? "/static/icons/default_avatar.png"
-                    : props.user.avatar
-                }
-              />
-            </StyledAvatar>
+              <StyledMenuItem>
+                <StyledAvatar onClick={() => props.toggleUserMenu()}>
+                  <img
+                      alt="Avatar"
+                      src={
+                        !props.user.avatar
+                            ? "/static/icons/default_avatar.png"
+                            : props.user.avatar
+                      }
+                  />
+                </StyledAvatar>
+              </StyledMenuItem>
           )}
         </StyledMenu>
       </StyledNav>

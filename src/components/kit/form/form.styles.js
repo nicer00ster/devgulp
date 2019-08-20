@@ -126,9 +126,11 @@ const StyledInput = styled.div`
 const StyledFormHeading = styled.h2`
   text-align: left;
   padding: 1.2rem;
+  margin: 0;
   background-color: rgba(31, 34, 46, 0.75);
   color: ${props => props.theme.colors.white};
-  //font-family: 'Trirong', serif;
+  font-family: 'Trirong', serif;
+  letter-spacing: 2px;
 `;
 
 const StyledCheckmark = styled.div`

@@ -14,7 +14,7 @@ export default function searchReducer(state = initialState, action = {}) {
                 ...state,
                 isSearching: true,
                 hasError: false,
-                errorMessage: ""
+                errorMessage: "",
             };
         case types.SEARCH_SUCCESS:
             return {
@@ -22,14 +22,14 @@ export default function searchReducer(state = initialState, action = {}) {
                 isSearching: false,
                 results: action.response,
                 hasError: false,
-                errorMessage: ""
+                errorMessage: "",
             };
         case types.SEARCH_FAILURE:
             return {
                 ...state,
                 isSearching: false,
                 hasError: true,
-                errorMessage: action.error.message
+                errorMessage: action.error.message,
             };
         default:
             return state;

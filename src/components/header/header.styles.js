@@ -41,7 +41,7 @@ const StyledFilterNav = styled.div`
 const StyledLogin = styled.button`
   display: block;
   position: relative;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   white-space: nowrap;
   overflow: visible;
   text-overflow: ellipsis;
@@ -56,7 +56,7 @@ const StyledLogin = styled.button`
 `;
 
 const StyledSignup = styled.li`
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   white-space: nowrap;
   & a {
     padding: 0.5rem;
@@ -134,7 +134,7 @@ const StyledMenu = styled.ul`
 `;
 
 const StyledMenuItem = styled.li`
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   white-space: nowrap;
   & a {
     padding: 0.5rem;
@@ -192,7 +192,7 @@ const StyledSearch = styled.button`
   }
 `;
 
-const StyledSearchInput = styled(animated.div)`
+const StyledSearchInput = styled(animated.li)`
   width: 0;
   padding-right: .8rem;
   opacity: 0;

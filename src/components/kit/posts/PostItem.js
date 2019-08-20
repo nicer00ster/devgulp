@@ -9,7 +9,7 @@ import {
     StyledPostImage,
     StyledPostTaxonomies,
     StyledPostTaxonomyItem,
-    StyledPostTitle
+    StyledPostTitle,
 } from "./posts.styles";
 import Link from "next/link";
 import { getTaxonomyIcon } from "../../../utils";
