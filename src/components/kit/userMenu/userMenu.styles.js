@@ -6,7 +6,7 @@ const StyledUserMenu = styled(animated.fieldset)`
   will-change: opacity, transform;
   opacity: 0;
   top: 68px;
-  right: 0px;
+  right: 0;
   border-radius: ${props => props.theme.effects.radius};
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: ${props => props.theme.effects.shadow};
@@ -53,7 +53,7 @@ const StyledUserMenuListItem = styled.li`
   padding: 1.2rem 2.4rem;
 `;
 
-const StyledUserMenuDivider = styled.div`
+const StyledUserMenuDivider = styled.li`
   border-top: solid 1px rgba(0, 0, 0, 0.05);
   margin-top: 10px;
   margin-bottom: 10px;
@@ -63,7 +63,7 @@ const StyledUserMenuDivider = styled.div`
 `;
 
 const StyledUserMenuCaret = styled.div`
-  left: 220px;
+  left: 214px;
   clip: rect(0px, 18px, 14px, -4px);
   top: -14px;
   position: absolute;

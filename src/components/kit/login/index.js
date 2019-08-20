@@ -28,7 +28,7 @@ function Login(props) {
   const trail = useTrail(1, {
     config,
     opacity: props.loginMenuOpen ? 1 : 0,
-    x: props.loginMenuOpen ? 0 : 20,
+    x: props.loginMenuOpen ? 5 : 20,
     height: props.loginMenuOpen ? 80 : 0,
     pointerEvents: props.loginMenuOpen ? "all" : "none",
     from: {
@@ -49,13 +49,13 @@ function Login(props) {
       disabled={!props.loginMenuOpen || props.user.isLoggingIn}
       aria-busy={props.user.isLoggingIn}
     >
-      <StyledFormHeading>Login</StyledFormHeading>
       {props.loginMenuOpen && (
           <StyledLoginForm
               onSubmit={e => {
                 e.preventDefault();
                 props.login(username, password);
               }}>
+            <StyledFormHeading>Login</StyledFormHeading>
             <StyledInput>
               <input
                   type="text"

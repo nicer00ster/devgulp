@@ -21,7 +21,7 @@ function UserMenu(props) {
   const trail = useTrail(1, {
     config,
     opacity: props.userMenuOpen ? 1 : 0,
-    x: props.userMenuOpen ? 0 : 20,
+    x: props.userMenuOpen ? 5 : 20,
     height: props.userMenuOpen ? 80 : 0,
     pointerEvents: props.userMenuOpen ? "all" : "none",
     from: {

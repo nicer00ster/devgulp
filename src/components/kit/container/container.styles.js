@@ -13,10 +13,10 @@ const StyledContainer = styled.section`
   pointer-events: ${props =>
     props.loginMenuOpen || props.userMenuOpen ? "none" : "all"};
   transition: all 0.25s linear;
-  ${props => props.isFetchingPosts && `
+  ${props => props.isFetchingPosts || props.isSearching ? `
     pointer-events: none;
     opacity: 0.35;
-  `}
+  `: ''}
 `;
 
 export {
