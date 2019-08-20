@@ -135,6 +135,7 @@ function Header(props) {
               } else {
                 props.searchQuery(query);
               }
+              resetQuery();
             }}>
                 <input ref={searchRef} {...bindQuery} tabIndex="-1" type="text" name="search" id="search" />
               <label htmlFor="search" />

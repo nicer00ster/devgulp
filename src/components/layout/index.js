@@ -23,11 +23,17 @@ const theme = {
 };
 
 function Layout(props) {
+
+  function screenResize() {
+      props.screenResize(window.innerWidth);
+  }
+
   useEffect(() => {
     props.fetchUser();
-    window.addEventListener('resize', props.screenResize(window.innerWidth));
-    return () => window.removeEventListener('resize', props.screenResize(window.innerWidth));
+    window.addEventListener('resize', screenResize);
+    return () => window.removeEventListener('resize', screenResize);
   }, []);
+
   if (props.user.checkingCredentials) {
     return <Loading />;
   }
