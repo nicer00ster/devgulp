@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledCheckboxLabel = styled.label`
   display: inline-flex;
@@ -58,7 +58,7 @@ const StyledCheckboxCircle = styled.span`
   transition: all 0.3s ease-out;
   &:before {
     position: absolute;
-    content: "";
+    content: '';
     border-radius: 50%;
     border: 1px solid ${props => props.theme.colors.black};
     transform: scale(0);
@@ -69,5 +69,5 @@ export {
   StyledCheckboxLabel,
   StyledCheckboxInput,
   StyledCheckboxTitle,
-  StyledCheckboxCircle
+  StyledCheckboxCircle,
 };

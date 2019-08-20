@@ -1,9 +1,9 @@
-import App, { Container } from "next/app";
-import { Provider } from "react-redux";
-import { parseCookies } from "nookies";
+import App, { Container } from 'next/app';
+import { Provider } from 'react-redux';
+import { parseCookies } from 'nookies';
 
-import withReduxStore from "../lib/with-redux-store";
-import Layout from "../components/layout";
+import withReduxStore from '../lib/with-redux-store';
+import Layout from '../components/layout';
 
 class CustomApp extends App {
   static async getInitialProps({ Component, ctx }) {

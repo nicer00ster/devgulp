@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 function Portal(props) {
   const [element, setElement] = useState(null);
 
   useEffect(() => {
-    setElement(document.querySelector("#portal"));
+    setElement(document.querySelector('#portal'));
   });
 
   if (element === undefined) {

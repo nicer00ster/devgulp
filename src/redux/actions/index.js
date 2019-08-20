@@ -1,11 +1,11 @@
-import * as types from "../constants";
-import { deleteToken } from "../../utils";
+import * as types from '../constants';
+import { deleteToken } from '../../utils';
 
 // Global Actions
 export function screenResize(width) {
   return {
     type: types.SCREEN_RESIZE,
-    width
+    width,
   };
 }
 
@@ -13,7 +13,7 @@ export function handleInput(input, el) {
   return {
     type: types.INPUT,
     input,
-    el
+    el,
   };
 }
 
@@ -62,7 +62,7 @@ export function closeModal() {
 export function filterTaxonomy(taxonomy) {
   return {
     type: types.FILTER_TAXONOMY,
-    taxonomy
+    taxonomy,
   };
 }
 
@@ -71,7 +71,7 @@ export function login(username, password) {
   return {
     type: types.LOGIN,
     username,
-    password
+    password,
   };
 }
 
@@ -121,14 +121,14 @@ export function logout() {
 export function fetchUser(user) {
   return {
     type: types.FETCH_USER,
-    user
+    user,
   };
 }
 
 export function fetchAuthor(userId) {
   return {
     type: types.FETCH_AUTHOR,
-    userId
+    userId,
   };
 }
 
@@ -154,7 +154,7 @@ export function fetchTotalPosts() {
 export function fetchPost(postId) {
   return {
     type: types.FETCH_POST,
-    postId
+    postId,
   };
 }
 

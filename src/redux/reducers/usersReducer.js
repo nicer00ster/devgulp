@@ -1,10 +1,10 @@
-import * as types from "../constants";
+import * as types from '../constants';
 
 const initialState = {
   users: [],
   isFetchingUsers: false,
   hasError: false,
-  errorMessage: ""
+  errorMessage: '',
 };
 
 export default function usersReducer(state = initialState, action = {}) {
@@ -12,7 +12,7 @@ export default function usersReducer(state = initialState, action = {}) {
     case types.FETCH_USERS:
       return {
         ...state,
-        isFetchingUsers: true
+        isFetchingUsers: true,
       };
     case types.FETCH_USERS_SUCCESS:
       return {
@@ -20,14 +20,14 @@ export default function usersReducer(state = initialState, action = {}) {
         isFetchingUsers: false,
         users: action.users,
         hasError: false,
-        errorMessage: ""
+        errorMessage: '',
       };
     case types.FETCH_USERS_FAILURE:
       return {
         ...state,
         isFetchingUsers: false,
         hasError: true,
-        errorMessage: action.error.message
+        errorMessage: action.error.message,
       };
     default:
       return state;

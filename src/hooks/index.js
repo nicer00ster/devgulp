@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import ResizeObserver from "resize-observer-polyfill";
+import { useEffect, useState, useRef } from 'react';
+import ResizeObserver from 'resize-observer-polyfill';
 
 export const useInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -9,7 +9,7 @@ export const useInput = initialValue => {
     value,
     setValue,
     reset: () => {
-      setValue("");
+      setValue('');
       setError(false);
     },
     setError: err => setError(err),
@@ -17,9 +17,9 @@ export const useInput = initialValue => {
       value,
       onChange: e => {
         setValue(e.target.value);
-      }
+      },
     },
-    hasError: error
+    hasError: error,
   };
 };
 
@@ -35,12 +35,12 @@ export function useOnClickOutside(ref, handler) {
         handler(event);
       };
 
-      document.addEventListener("mousedown", listener);
-      document.addEventListener("touchstart", listener);
+      document.addEventListener('mousedown', listener);
+      document.addEventListener('touchstart', listener);
 
       return () => {
-        document.removeEventListener("mousedown", listener);
-        document.removeEventListener("touchstart", listener);
+        document.removeEventListener('mousedown', listener);
+        document.removeEventListener('touchstart', listener);
       };
     },
     // Add ref and handler to effect dependencies
@@ -49,14 +49,16 @@ export function useOnClickOutside(ref, handler) {
     // ... callback/cleanup to run every render. It's not a big deal ...
     // ... but to optimize you can wrap handler in useCallback before ...
     // ... passing it into this hook.
-    [ref, handler]
+    [ref, handler],
   );
 }
 
 export function useMeasure() {
   const ref = useRef();
   const [bounds, set] = useState({ left: 0, top: 0, width: 0, height: 0 });
-  const [ro] = useState(() => new ResizeObserver(([entry]) => set(entry.contentRect)));
+  const [ro] = useState(
+    () => new ResizeObserver(([entry]) => set(entry.contentRect)),
+  );
   useEffect(() => (ro.observe(ref.current), ro.disconnect), []);
-  return [{ ref }, bounds]
+  return [{ ref }, bounds];
 }

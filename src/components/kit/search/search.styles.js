@@ -13,6 +13,4 @@ const StyledSearch = styled.div`
   `};
 `;
 
-export {
-    StyledSearch,
-};
+export { StyledSearch };

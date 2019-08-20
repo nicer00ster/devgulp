@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { animated } from "react-spring";
+import styled from 'styled-components';
+import { animated } from 'react-spring';
 
 const StyledUserMenu = styled(animated.fieldset)`
   position: absolute;
@@ -71,7 +71,7 @@ const StyledUserMenuCaret = styled.div`
   pointer-events: none;
   &:after {
     background-color: ${props => props.theme.colors.white};
-    content: "";
+    content: '';
     display: block;
     box-shadow: rgba(0, 0, 0, 0.54) -1px -1px 1px -1px;
     transform: rotate(45deg) translate(6px, 6px);
@@ -87,7 +87,8 @@ const StyledLogoutButton = styled.button`
   color: ${props => props.theme.colors.lightBlack};
   padding-left: 0;
   transition: color 0.15s ease-in;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: ${props => props.theme.colors.black};
   }
 `;

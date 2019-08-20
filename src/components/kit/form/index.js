@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
-import { StyledForm, StyledInput, StyledFormHeading } from "./form.styles";
-import { register } from "../../../redux/actions";
-import { useInput } from "../../../hooks";
+import { connect } from 'react-redux';
+import { StyledForm, StyledInput, StyledFormHeading } from './form.styles';
+import { register } from '../../../redux/actions';
+import { useInput } from '../../../hooks';
 import Button from '../button';
 
 function Form(props) {
@@ -10,29 +10,29 @@ function Form(props) {
     bind: bindUsername,
     reset: resetUsername,
     setError: setUsernameError,
-    hasError: usernameError
-  } = useInput("");
+    hasError: usernameError,
+  } = useInput('');
   const {
     value: email,
     bind: bindEmail,
     reset: resetEmail,
     setError: setEmailError,
-    hasError: emailError
-  } = useInput("");
+    hasError: emailError,
+  } = useInput('');
   const {
     value: password,
     bind: bindPassword,
     reset: resetPassword,
     setError: setPasswordError,
-    hasError: passwordError
-  } = useInput("");
+    hasError: passwordError,
+  } = useInput('');
   const {
     value: verifyPassword,
     bind: bindVerifyPassword,
     reset: resetVerifyPassword,
     setError: setVerifyPasswordError,
-    hasError: verifyPasswordError
-  } = useInput("");
+    hasError: verifyPasswordError,
+  } = useInput('');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -67,7 +67,7 @@ function Form(props) {
     }
 
     if (!username || !email || !password || !verifyPassword) {
-      console.log("Make sure to fill out all the fields!");
+      console.log('Make sure to fill out all the fields!');
       return;
     }
 
@@ -78,8 +78,7 @@ function Form(props) {
     <StyledForm onSubmit={e => handleSubmit(e)}>
       <fieldset
         disabled={props.user.isRegistering}
-        aria-busy={props.user.isRegistering}
-      >
+        aria-busy={props.user.isRegistering}>
         <StyledFormHeading>Register</StyledFormHeading>
         <StyledInput>
           <input
@@ -87,14 +86,13 @@ function Form(props) {
             name="username"
             id="username"
             autoFocus
-            style={usernameError ? { borderBottom: "1px solid tomato" } : {}}
+            style={usernameError ? { borderBottom: '1px solid tomato' } : {}}
             {...bindUsername}
           />
           <span className="bar" />
           <label
             htmlFor="username"
-            style={usernameError ? { color: "tomato" } : {}}
-          >
+            style={usernameError ? { color: 'tomato' } : {}}>
             Username
           </label>
         </StyledInput>
@@ -103,11 +101,11 @@ function Form(props) {
             type="email"
             name="email"
             id="email"
-            style={emailError ? { borderBottom: "1px solid tomato" } : {}}
+            style={emailError ? { borderBottom: '1px solid tomato' } : {}}
             {...bindEmail}
           />
           <span className="bar" />
-          <label htmlFor="email" style={emailError ? { color: "tomato" } : {}}>
+          <label htmlFor="email" style={emailError ? { color: 'tomato' } : {}}>
             Email
           </label>
         </StyledInput>
@@ -116,14 +114,13 @@ function Form(props) {
             type="password"
             name="password"
             id="password"
-            style={passwordError ? { borderBottom: "1px solid tomato" } : {}}
+            style={passwordError ? { borderBottom: '1px solid tomato' } : {}}
             {...bindPassword}
           />
           <span className="bar" />
           <label
             htmlFor="password"
-            style={passwordError ? { color: "tomato" } : {}}
-          >
+            style={passwordError ? { color: 'tomato' } : {}}>
             Password
           </label>
         </StyledInput>
@@ -133,15 +130,14 @@ function Form(props) {
             name="password"
             id="verifyPassword"
             style={
-              verifyPasswordError ? { borderBottom: "1px solid tomato" } : {}
+              verifyPasswordError ? { borderBottom: '1px solid tomato' } : {}
             }
             {...bindVerifyPassword}
           />
           <span className="bar" />
           <label
             htmlFor="verifyPassword"
-            style={verifyPasswordError ? { color: "tomato" } : {}}
-          >
+            style={verifyPasswordError ? { color: 'tomato' } : {}}>
             Verify Password
           </label>
         </StyledInput>
@@ -152,14 +148,14 @@ function Form(props) {
 }
 
 const mapStateToProps = ({ user }) => ({
-  user
+  user,
 });
 
 const mapDispatchToProps = {
-  register
+  register,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Form);

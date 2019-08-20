@@ -1,9 +1,9 @@
-import { useState, useRef, useCallback, useEffect } from "react";
-import { connect } from "react-redux";
+import { useState, useRef, useCallback, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { useSpring, config } from 'react-spring';
-import NProgress from "nprogress";
-import Router, { withRouter } from "next/router";
-import Link from "next/link";
+import NProgress from 'nprogress';
+import Router, { withRouter } from 'next/router';
+import Link from 'next/link';
 import {
   StyledHeader,
   StyledNav,
@@ -20,24 +20,20 @@ import {
   StyledAvatar,
   StyledSearch,
   StyledSearchInput,
-} from "./header.styles";
+} from './header.styles';
 import {
   toggleLoginMenu,
   toggleUserMenu,
   toggleSearch,
   searchQuery,
   filterTaxonomy,
-} from "../../redux/actions";
-import {
-  useOnClickOutside,
-  useMeasure,
-  useInput,
-} from "../../hooks";
-import EnhancedLink from "./EnhancedLink";
-import Login from "../kit/login";
+} from '../../redux/actions';
+import { useOnClickOutside, useMeasure, useInput } from '../../hooks';
+import EnhancedLink from './EnhancedLink';
+import Login from '../kit/login';
 import Burger from '../kit/burger';
 import Drawer from './drawer';
-import UserMenu from "../kit/userMenu";
+import UserMenu from '../kit/userMenu';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -60,10 +56,10 @@ function Header(props) {
     reset: resetQuery,
     setError: setQueryError,
     hasError: queryError,
-  } = useInput("");
+  } = useInput('');
 
   const handleWindowScroll = useCallback(e => {
-    if(window.scrollY >= ref.current.offsetHeight) {
+    if (window.scrollY >= ref.current.offsetHeight) {
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
@@ -77,7 +73,7 @@ function Header(props) {
 
   function toggleSearch() {
     props.toggleSearch();
-    if(props.searchExpanded) {
+    if (props.searchExpanded) {
       searchRef.current.blur();
     } else {
       searchRef.current.focus();
@@ -102,7 +98,6 @@ function Header(props) {
     return () => window.removeEventListener('scroll', handleWindowScroll);
   }, [handleWindowScroll]);
 
-
   const spring = useSpring({
     width: props.searchExpanded ? '100%' : '0%',
     opacity: props.searchExpanded ? 1 : 0,
@@ -110,7 +105,9 @@ function Header(props) {
   });
 
   const logoSpring = useSpring({
-    transform: isScrolled ? 'translate3d(0px,0px,0px)' : `translate3d(${width / 2}px, 20px, 0px)`,
+    transform: isScrolled
+      ? 'translate3d(0px,0px,0px)'
+      : `translate3d(${width / 2}px, 20px, 0px)`,
   });
 
   return (
@@ -132,26 +129,34 @@ function Header(props) {
             </StyledSearch>
           </StyledMenuItem>
           <StyledSearchInput style={spring}>
-            <form onSubmit={e => {
-              e.preventDefault();
-              if(props.router.pathname !== '/search') {
-                props.router.push(`/search?search=${query}`);
-              } else {
-                props.searchQuery(query);
-              }
-              resetQuery();
-            }}>
-              <input ref={searchRef} {...bindQuery} tabIndex="-1" type="text" name="search" id="search" />
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                if (props.router.pathname !== '/search') {
+                  props.router.push(`/search?search=${query}`);
+                } else {
+                  props.searchQuery(query);
+                }
+                resetQuery();
+              }}>
+              <input
+                ref={searchRef}
+                {...bindQuery}
+                tabIndex="-1"
+                type="text"
+                name="search"
+                id="search"
+              />
               <label htmlFor="search" />
               <span className="bar" />
             </form>
           </StyledSearchInput>
           {props.screenWidth <= 576 ? (
-              <Burger />
+            <Burger />
           ) : (
-              <>
-              <EnhancedLink href='/publish'>Publish</EnhancedLink>
-              <EnhancedLink href='/users'>Users</EnhancedLink>
+            <>
+              <EnhancedLink href="/publish">Publish</EnhancedLink>
+              <EnhancedLink href="/users">Users</EnhancedLink>
               {!props.user.token ? (
                 <>
                   <StyledSignup>
@@ -161,30 +166,29 @@ function Header(props) {
                   </StyledSignup>
                   <StyledMenuItem>
                     <StyledLogin onClick={() => props.toggleLoginMenu()}>
-                    Login
+                      Login
                     </StyledLogin>
                   </StyledMenuItem>
                 </>
-            ) : (
+              ) : (
                 <StyledMenuItem>
                   <StyledAvatar onClick={() => props.toggleUserMenu()}>
                     <img
                       alt="Avatar"
                       src={
                         !props.user.avatar
-                            ? "/static/icons/default_avatar.png"
-                            : props.user.avatar
-                        }
+                          ? '/static/icons/default_avatar.png'
+                          : props.user.avatar
+                      }
                     />
                   </StyledAvatar>
                 </StyledMenuItem>
-                )}
-                </>
+              )}
+            </>
           )}
-
         </StyledMenu>
       </StyledNav>
-      {props.router.pathname === "/" && (
+      {props.router.pathname === '/' && (
         <StyledFilterNav
           loginMenuOpen={props.loginMenuOpen}
           userMenuOpen={props.userMenuOpen}>
@@ -193,10 +197,9 @@ function Header(props) {
               props.categories.map(category => (
                 <StyledFilterItem
                   key={category.id}
-                  className={activeFilter === category.id && "active-filter"}
-                  onClick={() => handleFilter(category.id)}
-                >
-                  {category.name === "Uncategorized" ? "All" : category.name}
+                  className={activeFilter === category.id && 'active-filter'}
+                  onClick={() => handleFilter(category.id)}>
+                  {category.name === 'Uncategorized' ? 'All' : category.name}
                   {/*<StyledCategoryCount>{category.count}</StyledCategoryCount>*/}
                 </StyledFilterItem>
               ))}
@@ -217,7 +220,7 @@ const mapStateToProps = ({ root, posts, user }) => ({
   screenWidth: root.screenWidth,
   categories: posts.categories,
   drawerOpen: root.drawerOpen,
-  user
+  user,
 });
 
 const mapDispatchToProps = {

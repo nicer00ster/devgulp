@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { connect } from "react-redux";
-import { StyledUsers, StyledUser } from "./users.styles";
-import Loading from "../loading";
+import Link from 'next/link';
+import { connect } from 'react-redux';
+import { StyledUsers, StyledUser } from './users.styles';
+import Loading from '../loading';
 
 function EnhancedUsers(props) {
   return (
@@ -19,10 +19,10 @@ function EnhancedUsers(props) {
 }
 
 const mapStateToProps = ({ users }) => ({
-  ...users
+  ...users,
 });
 
 export default connect(
   mapStateToProps,
-  null
+  null,
 )(EnhancedUsers);

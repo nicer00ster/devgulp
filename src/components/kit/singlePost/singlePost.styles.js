@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { animated } from 'react-spring';
 
 const StyleSinglePost = styled.article`
-  position:relative;
+  position: relative;
   margin: 0 auto;
   max-width: 720px;
   width: 100%;
@@ -11,7 +11,7 @@ const StyleSinglePost = styled.article`
 `;
 
 const StyledSinglePostHeading = styled.h1`
-  font-family: "Trirong", serif;
+  font-family: 'Trirong', serif;
   font-size: 40px;
 `;
 
@@ -44,7 +44,7 @@ const StyledSinglePostImage = styled.img`
 `;
 
 const StyledSinglePostContent = styled.div`
-  font-family: "Trirong", serif;
+  font-family: 'Trirong', serif;
   font-size: 24px;
 `;
 
@@ -57,7 +57,7 @@ const StyledSidebar = styled(animated.div)`
   z-index: 99;
   will-change: opacity;
   & button {
-    margin: .4rem 0;
+    margin: 0.4rem 0;
   }
 `;
 

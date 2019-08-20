@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const loading = keyframes`
     to {
@@ -8,7 +8,7 @@ const loading = keyframes`
 
 const Spinner = styled.span`
   &:before {
-    content: "";
+    content: '';
     box-sizing: border-box;
     position: absolute;
     top: 50%;

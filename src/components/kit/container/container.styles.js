@@ -5,20 +5,29 @@ const StyledContainer = styled.section`
   flex-direction: column;
   position: relative;
   opacity: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "0.4" : "1"};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? '0.4'
+      : '1'};
   transform: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "scale(0.95)" : ""};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? 'scale(0.95)'
+      : ''};
   overflow: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "hidden" : "visible"};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? 'hidden'
+      : 'visible'};
   pointer-events: ${props =>
-    props.loginMenuOpen || props.userMenuOpen  || props.drawerOpen? "none" : "all"};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? 'none'
+      : 'all'};
   transition: all 0.25s linear;
-  ${props => props.isFetchingPosts || props.isSearching ? `
+  ${props =>
+    props.isFetchingPosts || props.isSearching
+      ? `
     pointer-events: none;
     opacity: 0.35;
-  `: ''}
+  `
+      : ''}
 `;
 
-export {
-    StyledContainer,
-};
+export { StyledContainer };

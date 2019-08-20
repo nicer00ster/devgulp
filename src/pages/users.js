@@ -1,15 +1,15 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { connect } from "react-redux";
-import { fetchUsers, openLoginMenu } from "../redux/actions";
-import EnhancedUsers from "../components/kit/users";
+import { connect } from 'react-redux';
+import { fetchUsers, openLoginMenu } from '../redux/actions';
+import EnhancedUsers from '../components/kit/users';
 import Container from '../components/kit/container';
 
 function Users(props) {
   const router = useRouter();
 
   useEffect(() => {
-    if(!props.cookie) {
+    if (!props.cookie) {
       router.push('/');
       props.openLoginMenu();
     } else {
@@ -17,9 +17,9 @@ function Users(props) {
     }
   });
   return (
-      <Container>
-        <EnhancedUsers />
-      </Container>
+    <Container>
+      <EnhancedUsers />
+    </Container>
   );
 }
 
@@ -30,5 +30,5 @@ const mapDispatchToProps = {
 
 export default connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Users);

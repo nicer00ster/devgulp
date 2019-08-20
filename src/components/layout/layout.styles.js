@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle, css } from 'styled-components';
 
 const LayoutStyles = styled.main`
   display: flex;
@@ -9,7 +9,8 @@ const LayoutStyles = styled.main`
   transition: all 0.25s linear;
   padding-left: 1rem;
   padding-right: 1rem;
-  z-index: ${props => props.userMenuOpen || props.loginMenuOpen ? '-1' : 'unset'};
+  z-index: ${props =>
+    props.userMenuOpen || props.loginMenuOpen ? '-1' : 'unset'};
   ${props => props.theme.mediaQuery.tablet`
     max-width: ${props => props.theme.breakpoints.tablet}px;
   `}
@@ -21,25 +22,25 @@ const LayoutStyles = styled.main`
 const breakpoints = {
   desktop: 1080,
   tablet: 768,
-  phone: 576
+  phone: 576,
 };
 
 const colors = {
-  black: "#1f222e",
-  lightBlack: "rgba(31, 34, 46, 0.75)",
-  grey: "#cacacc",
-  white: "#fefefe",
-  yellow: "#ffeaa7",
-  blue: "#92c5f8",
-  red: "#faa1bc",
-  green: "#80dad3"
+  black: '#1f222e',
+  lightBlack: 'rgba(31, 34, 46, 0.75)',
+  grey: '#cacacc',
+  white: '#fefefe',
+  yellow: '#ffeaa7',
+  blue: '#92c5f8',
+  red: '#faa1bc',
+  green: '#80dad3',
 };
 
 const effects = {
-  hover: "rgba(31, 34, 46, 0.25)",
-  shadow: "0px 4px 16px 0px rgba(46, 61, 73, 0.2)",
-  shadowHover: "2px 4px 8px 0px rgba(46, 61, 73, 0.2);",
-  radius: "0.275rem"
+  hover: 'rgba(31, 34, 46, 0.25)',
+  shadow: '0px 4px 16px 0px rgba(46, 61, 73, 0.2)',
+  shadowHover: '2px 4px 8px 0px rgba(46, 61, 73, 0.2);',
+  radius: '0.275rem',
 };
 
 const mediaQuery = Object.keys(breakpoints).reduce((acc, label) => {
@@ -76,7 +77,7 @@ const GlobalStyles = createGlobalStyle`
       font-size: 1rem;
       padding: 0;
       margin: 0;
-      // overflow: ${props => (props.menuOpen ? "hidden" : "auto")};
+      // overflow: ${props => (props.menuOpen ? 'hidden' : 'auto')};
       overflow-x: hidden;
     }
     a {
