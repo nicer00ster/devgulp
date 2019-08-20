@@ -2,8 +2,8 @@ import {
   StyledCheckboxLabel,
   StyledCheckboxInput,
   StyledCheckboxTitle,
-  StyledCheckboxCircle
-} from "./checkbox.styles";
+  StyledCheckboxCircle,
+} from './checkbox.styles';
 
 function Checkbox(props) {
   return (

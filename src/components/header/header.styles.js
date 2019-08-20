@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { animated } from 'react-spring';
 
 const StyledHeader = styled.header`
@@ -11,13 +11,13 @@ const StyledHeader = styled.header`
   z-index: 101;
   transition: all 0.25s ease-in;
   &.is-scrolled {
-   background-color: ${props => props.theme.colors.white};
-   box-shadow: ${props => props.theme.effects.shadow};
-   max-width: 100%;
-   z-index: 99;
-   & .filter-items {
-    padding: 0;
-   }
+    background-color: ${props => props.theme.colors.white};
+    box-shadow: ${props => props.theme.effects.shadow};
+    max-width: 100%;
+    z-index: 99;
+    & .filter-items {
+      padding: 0;
+    }
   }
 `;
 
@@ -28,13 +28,13 @@ const StyledNav = styled.nav`
 
 const StyledFilterNav = styled.div`
   opacity: ${props =>
-    props.loginMenuOpen || props.userMenuOpen ? "0.4" : "1"};
+    props.loginMenuOpen || props.userMenuOpen ? '0.4' : '1'};
   transform: ${props =>
-    props.loginMenuOpen || props.userMenuOpen ? "scale(0.95)" : ""};
+    props.loginMenuOpen || props.userMenuOpen ? 'scale(0.95)' : ''};
   overflow: ${props =>
-    props.loginMenuOpen || props.userMenuOpen ? "hidden" : "visible"};
+    props.loginMenuOpen || props.userMenuOpen ? 'hidden' : 'visible'};
   pointer-events: ${props =>
-    props.loginMenuOpen || props.userMenuOpen ? "none" : "all"};
+    props.loginMenuOpen || props.userMenuOpen ? 'none' : 'all'};
   transition: all 0.25s linear;
 `;
 
@@ -167,7 +167,7 @@ const StyledAvatar = styled.button`
   line-height: normal;
   border: 0;
   outline: 0;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   &:focus > img {
     outline: 1px dotted ${props => props.theme.colors.black};
     outline: -webkit-focus-ring-color auto 5px;
@@ -176,8 +176,8 @@ const StyledAvatar = styled.button`
     cursor: pointer;
   }
   & img {
-    width: ${props => (props.size ? `${props.size}px` : "32px")};
-    height: ${props => (props.size ? `${props.size}px` : "32px")};
+    width: ${props => (props.size ? `${props.size}px` : '32px')};
+    height: ${props => (props.size ? `${props.size}px` : '32px')};
     object-fit: cover;
     display: inline-block;
     vertical-align: middle;
@@ -189,7 +189,7 @@ const StyledSearch = styled.button`
   padding: 0 0.5rem;
   cursor: pointer;
   border: none;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   i {
     font-size: 18px;
   }
@@ -197,7 +197,7 @@ const StyledSearch = styled.button`
 
 const StyledSearchInput = styled(animated.li)`
   width: 0;
-  padding-right: .8rem;
+  padding-right: 0.8rem;
   opacity: 0;
   input {
     display: block;
@@ -218,7 +218,7 @@ const StyledSearchInput = styled(animated.li)`
     display: block;
     width: 100%;
     &:before {
-      content: "";
+      content: '';
       height: 2px;
       width: 0;
       bottom: 0;

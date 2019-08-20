@@ -17,7 +17,7 @@ const ripple = keyframes`
 const StyledButton = styled.button`
   position: relative;
   display: inline-block;
-  padding: .6rem 1.2rem;
+  padding: 0.6rem 1.2rem;
   margin: 0;
   vertical-align: middle;
   overflow: visible;
@@ -51,7 +51,7 @@ const StyledRipple = styled.div`
   background: transparent;
   &.active {
     & span {
-      animation: ${ripple} .4s ease-in;
+      animation: ${ripple} 0.4s ease-in;
     }
   }
 `;
@@ -65,11 +65,7 @@ const StyledRippleCircle = styled.span`
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .25);
+  background: rgba(255, 255, 255, 0.25);
 `;
 
-export {
-  StyledButton,
-  StyledRipple,
-  StyledRippleCircle,
-};
+export { StyledButton, StyledRipple, StyledRippleCircle };

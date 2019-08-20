@@ -1,14 +1,14 @@
-import * as types from "../constants";
+import * as types from '../constants';
 
 const initialState = {
-  screenWidth: typeof window === "object" ? window.innerWidth : null,
+  screenWidth: typeof window === 'object' ? window.innerWidth : null,
   loginMenuOpen: false,
   userMenuOpen: false,
   modalOpen: false,
   drawerOpen: false,
   searchExpanded: false,
   taxonomyFilter: 1,
-  route: "/"
+  route: '/',
 };
 
 export default function appReducer(state = initialState, action = {}) {
@@ -16,13 +16,13 @@ export default function appReducer(state = initialState, action = {}) {
     case types.SCREEN_RESIZE:
       return Object.assign({}, state, {
         ...state,
-        screenWidth: action.width
+        screenWidth: action.width,
       });
     case types.LOGIN_SUCCESS:
     case types.TOGGLE_LOGIN_MENU:
       return {
         ...state,
-        loginMenuOpen: !state.loginMenuOpen
+        loginMenuOpen: !state.loginMenuOpen,
       };
     case types.OPEN_LOGIN_MENU:
       return {
@@ -33,7 +33,7 @@ export default function appReducer(state = initialState, action = {}) {
     case types.TOGGLE_USER_MENU:
       return {
         ...state,
-        userMenuOpen: !state.userMenuOpen
+        userMenuOpen: !state.userMenuOpen,
       };
     case types.TOGGLE_SEARCH:
       return {
@@ -48,7 +48,7 @@ export default function appReducer(state = initialState, action = {}) {
     case types.TOGGLE_MODAL:
       return {
         ...state,
-        modalOpen: !state.modalOpen
+        modalOpen: !state.modalOpen,
       };
     case types.CLOSE_MODAL:
       return {
@@ -58,7 +58,7 @@ export default function appReducer(state = initialState, action = {}) {
     case types.FILTER_TAXONOMY:
       return {
         ...state,
-        taxonomyFilter: action.taxonomy
+        taxonomyFilter: action.taxonomy,
       };
     default:
       return state;

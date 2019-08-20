@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
-import { animated } from "react-spring";
+import styled, { keyframes } from 'styled-components';
+import { animated } from 'react-spring';
 
 const loading = keyframes`
   from {
@@ -27,7 +27,7 @@ const StyledLogin = styled(animated.fieldset)`
   &[disabled] {
     opacity: 0.5;
   }
-  &[aria-busy="true"]::before {
+  &[aria-busy='true']::before {
     background-size: 50% auto;
     animation: ${loading} 0.5s linear infinite;
   }
@@ -51,7 +51,7 @@ const StyledLoginCaret = styled.div`
   pointer-events: none;
   background-color: ${props => props.theme.colors.white};
   &:after {
-    content: "";
+    content: '';
     display: block;
     box-shadow: rgba(0, 0, 0, 0.54) -1px -1px 1px -1px;
     transform: rotate(45deg) translate(6px, 6px);

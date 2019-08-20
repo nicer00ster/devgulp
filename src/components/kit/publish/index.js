@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
-import { useState } from "react";
+import { connect } from 'react-redux';
+import { useState } from 'react';
 import {
   StyledPublish,
   StyledPublishTitle,
@@ -12,13 +12,13 @@ import {
   StyledPublishCategories,
   StyledPublishConfetti,
   StyledPublishIcon,
-} from "./publish.styles";
-import Checkbox from "../checkbox";
-import Loading from "../loading";
-import Modal from "../modal";
-import { useInput } from "../../../hooks";
-import { addPost, addMedia, toggleModal } from "../../../redux/actions";
-import { ALLOWED_MIME_TYPES } from "../../../redux/constants";
+} from './publish.styles';
+import Checkbox from '../checkbox';
+import Loading from '../loading';
+import Modal from '../modal';
+import { useInput } from '../../../hooks';
+import { addPost, addMedia, toggleModal } from '../../../redux/actions';
+import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
 
 function EnhancedPublish(props) {
   const [active, setActive] = useState();
@@ -28,15 +28,15 @@ function EnhancedPublish(props) {
     bind: bindTitle,
     reset: resetTitle,
     setError: setTitleError,
-    hasError: titleError
-  } = useInput("");
+    hasError: titleError,
+  } = useInput('');
   const {
     value: body,
     bind: bindBody,
     reset: resetBody,
     setError: setBodyError,
-    hasError: bodyError
-  } = useInput("");
+    hasError: bodyError,
+  } = useInput('');
 
   function toggleButton() {
     setActive(true);
@@ -63,7 +63,7 @@ function EnhancedPublish(props) {
         title,
         body,
         categories,
-        props.posts.imageId
+        props.posts.imageId,
       );
       resolve();
     })
@@ -93,7 +93,7 @@ function EnhancedPublish(props) {
     if (ALLOWED_MIME_TYPES.indexOf(files[0].type) == -1) {
       return new Error('File type not allowed.');
     } else {
-      data.append("file", files[0]);
+      data.append('file', files[0]);
     }
     return data;
   }
@@ -101,12 +101,12 @@ function EnhancedPublish(props) {
   return (
     <StyledPublish>
       <StyledPublishTitle
-        className={titleError && "error"}
+        className={titleError && 'error'}
         {...bindTitle}
         placeholder="Title"
       />
       <StyledPublishBody
-        className={bodyError && "error"}
+        className={bodyError && 'error'}
         rows={10}
         {...bindBody}
         placeholder="Tell your story."
@@ -121,14 +121,13 @@ function EnhancedPublish(props) {
                 id={taxonomy.id}
                 handleCategories={handleCategories}
               />
-            )
+            ),
         )}
       </StyledPublishCategories>
       {!props.posts.imageUrl ? (
         <StyledPublishImageUploadWrapper
           disabled={props.posts.isUploadingImage}
-          aria-busy={props.posts.isUploadingImage}
-        >
+          aria-busy={props.posts.isUploadingImage}>
           <StyledPublishImageUpload
             onChange={e => props.addMedia(props.user.token, handleImage(e))}
             type="file"
@@ -147,9 +146,8 @@ function EnhancedPublish(props) {
         onClick={() => handleAddPost()}
         disabled={active}
         aria-busy={active}
-        className={active && "active"}
-      >
-        <StyledPublishIcon className={`${!active ? "far" : "fas"} fa-share`} />
+        className={active && 'active'}>
+        <StyledPublishIcon className={`${!active ? 'far' : 'fas'} fa-share`} />
         <StyledPublishConfetti color="palegreen" />
         <StyledPublishConfetti color="tomato" />
         <StyledPublishConfetti color="blue" />
@@ -171,16 +169,16 @@ function EnhancedPublish(props) {
 
 const mapStateToProps = ({ user, posts }) => ({
   user,
-  posts
+  posts,
 });
 
 const mapDispatchToProps = {
   addPost,
   addMedia,
-  toggleModal
+  toggleModal,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(EnhancedPublish);

@@ -1,20 +1,18 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   StyledLikeButton,
   StyledLikeIcon,
-  StyledLikeConfetti
-} from "./likeButton.styles";
+  StyledLikeConfetti,
+} from './likeButton.styles';
 
 function LikeButton() {
   const [active, setActive] = useState(false);
   return (
     <StyledLikeButton
       onClick={() => setActive(!active)}
-      className={active && "active"}
-    >
+      className={active && 'active'}>
       <StyledLikeIcon
-        className={`${!active ? "far" : "fas"} fa-heart`}
-      ></StyledLikeIcon>
+        className={`${!active ? 'far' : 'fas'} fa-heart`}></StyledLikeIcon>
       <StyledLikeConfetti color="palegreen" />
       <StyledLikeConfetti color="tomato" />
       <StyledLikeConfetti color="blue" />

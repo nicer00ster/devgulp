@@ -1,4 +1,4 @@
-import * as types from "../constants";
+import * as types from '../constants';
 
 const initialState = {
   posts: [],
@@ -9,15 +9,15 @@ const initialState = {
   isFetchingCategories: false,
   isAddingPost: false,
   isUploadingImage: false,
-  imageUrl: "",
+  imageUrl: '',
   imageId: null,
   hasError: false,
   addPostError: false,
   addMediaError: false,
-  errorMessage: "",
-  addPostErrorMessage: "",
-  addMediaErrorMessage: "",
-  taxonomyFilter: 1
+  errorMessage: '',
+  addPostErrorMessage: '',
+  addMediaErrorMessage: '',
+  taxonomyFilter: 1,
 };
 
 export default function postsReducer(state = initialState, action = {}) {
@@ -30,15 +30,15 @@ export default function postsReducer(state = initialState, action = {}) {
           if (item.categories.includes(action.taxonomy)) {
             return {
               ...item,
-              isFiltered: true
+              isFiltered: true,
             };
           } else {
             return {
               ...item,
-              isFiltered: false
+              isFiltered: false,
             };
           }
-        })
+        }),
       };
     case types.FETCH_TOTAL_POSTS:
       return {
@@ -57,7 +57,7 @@ export default function postsReducer(state = initialState, action = {}) {
     case types.FETCH_POSTS:
       return {
         ...state,
-        isFetchingPosts: true
+        isFetchingPosts: true,
       };
     case types.FETCH_POSTS_SUCCESS:
       return {
@@ -69,7 +69,7 @@ export default function postsReducer(state = initialState, action = {}) {
             ...post,
             isFiltered: true,
           };
-        })
+        }),
         // posts:
         //   state.posts.length > 1
         //     ? state.posts
@@ -85,32 +85,32 @@ export default function postsReducer(state = initialState, action = {}) {
         ...state,
         isFetchingPosts: false,
         hasError: true,
-        errorMessage: action.error.message
+        errorMessage: action.error.message,
       };
     case types.FETCH_CATEGORIES:
       return {
         ...state,
-        isFetchingCategories: true
+        isFetchingCategories: true,
       };
     case types.FETCH_CATEGORIES_SUCCESS:
       return {
         ...state,
         isFetchingCategories: false,
-        categories: action.categories
+        categories: action.categories,
       };
     case types.FETCH_CATEGORIES_FAILURE:
       return {
         ...state,
         isFetchingCategories: false,
         hasError: true,
-        errorMessage: action.error.message
+        errorMessage: action.error.message,
       };
     case types.ADD_POST:
       return {
         ...state,
         isAddingPost: true,
         addPostError: false,
-        addPostErrorMessage: ""
+        addPostErrorMessage: '',
       };
     case types.ADD_POST_SUCCESS:
       return {
@@ -118,28 +118,28 @@ export default function postsReducer(state = initialState, action = {}) {
         isAddingPost: false,
         addPostError: false,
         imageId: null,
-        imageUrl: "",
+        imageUrl: '',
         posts: [
           ...state.posts,
           {
             ...action.response.data,
             isFiltered: !!action.response.data.categories.includes(
-              state.taxonomyFilter
-            )
-          }
-        ]
+              state.taxonomyFilter,
+            ),
+          },
+        ],
       };
     case types.ADD_POST_FAILURE:
       return {
         ...state,
         isAddingPost: false,
         addPostError: true,
-        addPostErrorMessage: action.error.message
+        addPostErrorMessage: action.error.message,
       };
     case types.ADD_MEDIA:
       return {
         ...state,
-        isUploadingImage: true
+        isUploadingImage: true,
       };
     case types.ADD_MEDIA_SUCCESS:
       return {
@@ -147,7 +147,7 @@ export default function postsReducer(state = initialState, action = {}) {
         isUploadingImage: false,
         hasMediaError: false,
         imageUrl: action.response.data.guid.raw,
-        imageId: action.response.data.id
+        imageId: action.response.data.id,
       };
     case types.ADD_MEDIA_FAILURE:
       return {

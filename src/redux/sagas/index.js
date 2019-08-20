@@ -8,112 +8,112 @@ import {
   take,
   all,
   fork,
-  delay
-} from "redux-saga/effects";
-import axios from "axios";
-import { API_URL, TOKEN_URL } from "../constants";
-import { setToken, verifyToken } from "../../utils";
+  delay,
+} from 'redux-saga/effects';
+import axios from 'axios';
+import { API_URL, TOKEN_URL } from '../constants';
+import { setToken, verifyToken } from '../../utils';
 
-import * as types from "../constants";
+import * as types from '../constants';
 
 function apiFetchToken(data) {
   return axios({
-    method: "post",
+    method: 'post',
     url: TOKEN_URL,
     data: {
       username: data.username,
-      password: data.password
-    }
+      password: data.password,
+    },
   });
 }
 
 function apiLogin(data) {
   return axios({
-    method: "post",
+    method: 'post',
     url: TOKEN_URL,
     data: {
       username: data.username,
-      password: data.password
-    }
+      password: data.password,
+    },
   });
 }
 
 async function apiRegister(data) {
   return axios({
-    method: "post",
+    method: 'post',
     url: `${API_URL}/users/register`,
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json',
     },
     data: {
       username: data.username,
       password: data.password,
-      email: data.email
-    }
+      email: data.email,
+    },
   });
 }
 
 function apiValidateToken() {
-  const token = verifyToken("_app");
+  const token = verifyToken('_app');
   return axios({
-    method: "post",
+    method: 'post',
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    url: `${TOKEN_URL}/validate`
+    url: `${TOKEN_URL}/validate`,
   });
 }
 
 function apiFetchUsers() {
   return axios({
-    method: "get",
-    url: `${API_URL}/users`
+    method: 'get',
+    url: `${API_URL}/users`,
   }).then(users => users);
 }
 
 function apiFetchUser(userId) {
   return axios({
-    method: "get",
-    url: `${API_URL}/users/${userId}`
+    method: 'get',
+    url: `${API_URL}/users/${userId}`,
   }).then(user => user);
 }
 
 function apiFetchPosts(postCount) {
   return axios({
-    method: "get",
+    method: 'get',
     url: `${API_URL}/posts?_embed&per_page=${postCount}`,
   }).then(posts => posts);
 }
 
 function apiFetchTotalPosts() {
   return axios({
-    method: "get",
+    method: 'get',
     url: `${API_URL}/posts`,
   }).then(posts => posts);
 }
 
 function apiFetchPost(postId) {
   return axios({
-    method: "get",
-    url: `${API_URL}/posts/${postId}/?_embed`
+    method: 'get',
+    url: `${API_URL}/posts/${postId}/?_embed`,
   }).then(post => post);
 }
 
 function apiAddPost(token, title, content, categories, featuredMedia) {
   return axios({
-    method: "post",
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     data: {
       title,
       content,
       categories,
       featured_media: featuredMedia,
-      status: "publish"
+      status: 'publish',
     },
-    url: `${API_URL}/posts?_embed`
+    url: `${API_URL}/posts?_embed`,
   });
 }
 
@@ -123,7 +123,7 @@ async function apiAddMedia(token, media) {
   let fileType;
   // Make sure the Form Data being passed from the client is
   // an array and we can loop over the values.
-  if(formData.entries().next().done) {
+  if (formData.entries().next().done) {
     for (let value of formData.values()) {
       fileName = value.name;
       fileType = value.type;
@@ -132,18 +132,18 @@ async function apiAddMedia(token, media) {
     return types.FILE_TYPE_ERROR;
   }
 
-  if(types.ALLOWED_MIME_TYPES.includes(fileType)) {
+  if (types.ALLOWED_MIME_TYPES.includes(fileType)) {
     return axios({
-      method: "post",
+      method: 'post',
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Disposition": `form-data; filename=${fileName}`,
+        'Content-Disposition': `form-data; filename=${fileName}`,
       },
       data: formData,
-      url: `${API_URL}/media`
+      url: `${API_URL}/media`,
     })
-    .then(media => media)
-    .catch(error => ({ error }));
+      .then(media => media)
+      .catch(error => ({ error }));
   } else {
     return types.FILE_TYPE_ERROR;
   }
@@ -151,14 +151,14 @@ async function apiAddMedia(token, media) {
 
 function apiFetchCategories() {
   return axios({
-    method: "get",
-    url: `${API_URL}/categories`
+    method: 'get',
+    url: `${API_URL}/categories`,
   }).then(categories => categories);
 }
 
 function apiSearch(query) {
   return axios({
-    method: "get",
+    method: 'get',
     url: `${API_URL}/search?search=${query}&_embed`,
   }).then(results => results);
 }
@@ -177,7 +177,7 @@ function* loginSaga(data) {
     yield put({
       type: types.LOGIN_SUCCESS,
       result,
-      avatar: userData.data.acf.avatar
+      avatar: userData.data.acf.avatar,
     });
   } catch (error) {
     yield put({ type: types.LOGIN_FAILURE, error });
@@ -231,13 +231,10 @@ function* fetchUsersSaga() {
 
 function* fetchUserSaga() {
   try {
-    const token = verifyToken("_app");
+    const token = verifyToken('_app');
     if (token) {
       const validToken = yield call(apiValidateToken);
-      const response = yield call(
-        apiFetchUser,
-        validToken.data.data.user_id,
-      );
+      const response = yield call(apiFetchUser, validToken.data.data.user_id);
       yield put({
         type: types.FETCH_USER_SUCCESS,
         user: response.data,
@@ -246,7 +243,7 @@ function* fetchUserSaga() {
     } else {
       yield put({
         type: types.FETCH_USER_FAILURE,
-        error: { message: "Not logged in." }
+        error: { message: 'Not logged in.' },
       });
     }
   } catch (error) {
@@ -267,7 +264,11 @@ function* fetchPostsSaga(data) {
   yield delay(500);
   try {
     const response = yield call(apiFetchPosts, data.postCount);
-    yield put({ type: types.FETCH_POSTS_SUCCESS, posts: response.data, postCount: data.postCount });
+    yield put({
+      type: types.FETCH_POSTS_SUCCESS,
+      posts: response.data,
+      postCount: data.postCount,
+    });
   } catch (error) {
     yield put({ type: types.FETCH_POSTS_FAILURE, error });
   }
@@ -286,7 +287,10 @@ function* fetchPostSaga(data) {
 function* fetchTotalPostsSaga() {
   try {
     const response = yield call(apiFetchTotalPosts);
-    yield put({ type: types.FETCH_TOTAL_POSTS_SUCCESS, totalPosts: response.data.length });
+    yield put({
+      type: types.FETCH_TOTAL_POSTS_SUCCESS,
+      totalPosts: response.data.length,
+    });
   } catch (error) {
     yield put({ type: types.FETCH_TOTAL_POSTS_FAILURE, error });
   }
@@ -297,7 +301,7 @@ function* fetchCategoriesSaga() {
     const response = yield call(apiFetchCategories);
     yield put({
       type: types.FETCH_CATEGORIES_SUCCESS,
-      categories: response.data
+      categories: response.data,
     });
   } catch (error) {
     yield put({ type: types.FETCH_CATEGORIES_FAILURE, error });
@@ -313,7 +317,7 @@ function* addPostSaga(data) {
       data.title,
       data.content,
       data.categories,
-      data.featuredMedia
+      data.featuredMedia,
     );
     yield put({ type: types.ADD_POST_SUCCESS, response });
   } catch (error) {
@@ -322,13 +326,13 @@ function* addPostSaga(data) {
 }
 
 function* addMediaSaga(data) {
-    const response = yield call(apiAddMedia, data.token, data.media);
+  const response = yield call(apiAddMedia, data.token, data.media);
 
-    if(response.error) {
-      yield put({ type: types.ADD_MEDIA_FAILURE, error: response.error.message });
-    } else {
-      yield put({ type: types.ADD_MEDIA_SUCCESS, response });
-    }
+  if (response.error) {
+    yield put({ type: types.ADD_MEDIA_FAILURE, error: response.error.message });
+  } else {
+    yield put({ type: types.ADD_MEDIA_SUCCESS, response });
+  }
 }
 
 function* searchSaga(data) {
@@ -356,7 +360,7 @@ function* rootSaga() {
     takeEvery(types.FETCH_POSTS, fetchPostsSaga),
     takeEvery(types.FETCH_POST, fetchPostSaga),
     takeEvery(types.FETCH_CATEGORIES, fetchCategoriesSaga),
-    takeEvery(types.FETCH_AUTHOR, fetchAuthorSaga)
+    takeEvery(types.FETCH_AUTHOR, fetchAuthorSaga),
   ]);
 }
 

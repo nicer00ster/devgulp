@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const fadeOut = keyframes`
     0% {
@@ -47,9 +47,9 @@ const StyledPublishTitle = styled.input`
   outline: 0;
   border: 0;
   color: ${props => props.theme.colors.black};
-  font-family: "Trirong", serif;
+  font-family: 'Trirong', serif;
   letter-spacing: 1px;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   &.error {
     animation: ${shake} 0.5s linear;
   }
@@ -63,11 +63,11 @@ const StyledPublishBody = styled.textarea`
   outline: 0;
   border: 0;
   color: ${props => props.theme.colors.black};
-  font-family: "Trirong", serif;
+  font-family: 'Trirong', serif;
   letter-spacing: 1px;
   resize: none;
   overflow: auto;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   &.error {
     animation: ${shake} 0.5s linear;
   }
@@ -103,7 +103,7 @@ const StyledPublishButton = styled.button`
     }
   }
   &:disabled,
-  &[aria-busy="true"] {
+  &[aria-busy='true'] {
     opacity: 0.5;
     pointer-events: none;
   }
@@ -163,7 +163,7 @@ const StyledPublishConfetti = styled.div`
 const StyledPublishImageUploadWrapper = styled.div`
   margin: 2rem 0;
   &:disabled,
-  &[aria-busy="true"] {
+  &[aria-busy='true'] {
     opacity: 0.5;
     pointer-events: none;
   }
@@ -232,5 +232,5 @@ export {
   StyledPublishImageUploadWrapper,
   StyledPublishImageUpload,
   StyledPreviewImageButton,
-  StyledPreviewImage
+  StyledPreviewImage,
 };

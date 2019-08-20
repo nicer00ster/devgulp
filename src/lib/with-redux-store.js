@@ -1,8 +1,8 @@
-import React from "react";
-import { initializeStore } from "../redux/";
+import React from 'react';
+import { initializeStore } from '../redux/';
 
-const isServer = typeof window === "undefined";
-const __NEXT_REDUX_STORE__ = "__NEXT_REDUX_STORE__";
+const isServer = typeof window === 'undefined';
+const __NEXT_REDUX_STORE__ = '__NEXT_REDUX_STORE__';
 
 function getOrCreateStore(initialState) {
   // Always make a new store if server, otherwise state is shared between requests
@@ -28,13 +28,13 @@ export default App => {
       appContext.ctx.reduxStore = reduxStore;
 
       let appProps = {};
-      if (typeof App.getInitialProps === "function") {
+      if (typeof App.getInitialProps === 'function') {
         appProps = await App.getInitialProps(appContext);
       }
 
       return {
         ...appProps,
-        initialReduxState: reduxStore.getState()
+        initialReduxState: reduxStore.getState(),
       };
     }
 

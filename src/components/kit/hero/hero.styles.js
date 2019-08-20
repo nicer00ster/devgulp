@@ -10,17 +10,25 @@ const particleAnimation = keyframes`
 `;
 
 const StyledHero = styled.div`
-    position: relative;
-    padding: 8rem 0;
-    opacity: ${props =>
-      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "0.4" : "1"};
-    transform: ${props =>
-      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "scale(0.95)" : ""};
-    overflow: ${props =>
-      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "hidden" : "visible"};
-    pointer-events: ${props =>
-      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "none" : "all"};
-    transition: all 0.25s linear;
+  position: relative;
+  padding: 8rem 0;
+  opacity: ${props =>
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? '0.4'
+      : '1'};
+  transform: ${props =>
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? 'scale(0.95)'
+      : ''};
+  overflow: ${props =>
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? 'hidden'
+      : 'visible'};
+  pointer-events: ${props =>
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? 'none'
+      : 'all'};
+  transition: all 0.25s linear;
 `;
 
 const StyledHeroSwift = styled.div`
@@ -34,18 +42,19 @@ const StyledHeroSwift = styled.div`
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   &:before {
-    position:absolute;
-    display:block;
-    content: "";
-    width:100%;
-    right:1px;
-    top:0px;
-    height:1px;
-    background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(255,255,255,0.4) 100%);
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    right: 1px;
+    top: 0px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(255, 255, 255, 0.4) 100%
+    );
   }
 `;
 
-export {
-    StyledHero,
-    StyledHeroSwift,
-};
+export { StyledHero, StyledHeroSwift };

@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const loading = keyframes`
   from {
@@ -28,11 +28,11 @@ const StyledForm = styled.form`
   line-height: 1.5;
   box-shadow: ${props => props.theme.effects.shadow};
   transition: all 0.25s ease !important;
-  overflow: ${props => (props.formStatus !== "" ? "unset" : "hidden")};
+  overflow: ${props => (props.formStatus !== '' ? 'unset' : 'hidden')};
   opacity: 1;
   position: relative;
   &:before {
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     padding: 4rem;
@@ -46,18 +46,18 @@ const StyledForm = styled.form`
     border: 0;
     padding: 1.6rem;
     transform: ${props =>
-      props.formStatus === "success" ? "translateY(500px)" : "translateY(0px)"};
-    opacity: ${props => (props.formStatus === "success" ? "0" : "1")};
+      props.formStatus === 'success' ? 'translateY(500px)' : 'translateY(0px)'};
+    opacity: ${props => (props.formStatus === 'success' ? '0' : '1')};
     transition: all 0.5s 0.35s cubic-bezier(0.55, 0, 0.1, 1) !important;
     &[disabled] {
       opacity: 0.5;
     }
-    &[aria-busy="true"]::before {
+    &[aria-busy='true']::before {
       background-size: 50% auto;
       animation: ${loading} 0.5s linear infinite;
     }
     &::before {
-      content: "";
+      content: '';
       display: block;
       height: 2px;
       background-image: linear-gradient(
@@ -87,7 +87,7 @@ const StyledInput = styled.div`
     outline: none;
     border-radius: 0;
     border-bottom: 1px solid ${props => props.theme.colors.lightBlack};
-    &[value]:not([value=""]) ~ label,
+    &[value]:not([value='']) ~ label,
     &:focus ~ label {
       top: -16px;
       left: 3px;
@@ -111,7 +111,7 @@ const StyledInput = styled.div`
     display: block;
     width: 100%;
     &:before {
-      content: "";
+      content: '';
       height: 2px;
       width: 0;
       bottom: 0;

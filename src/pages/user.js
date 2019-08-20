@@ -1,8 +1,8 @@
-import { connect } from "react-redux";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { fetchAuthor } from "../redux/actions";
-import SingleUser from "../components/kit/singleUser";
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { fetchAuthor } from '../redux/actions';
+import SingleUser from '../components/kit/singleUser';
 import Container from '../components/kit/container';
 
 function User(props) {
@@ -14,21 +14,21 @@ function User(props) {
   }, []);
 
   return (
-      <Container>
-        <SingleUser author={props.author} />
-      </Container>
+    <Container>
+      <SingleUser author={props.author} />
+    </Container>
   );
 }
 
 const mapStateToProps = ({ author }) => ({
-  author
+  author,
 });
 
 const mapDispatchToProps = {
-  fetchAuthor
+  fetchAuthor,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(User);

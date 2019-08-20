@@ -1,10 +1,10 @@
-import * as types from "../constants";
+import * as types from '../constants';
 
 const initialState = {
   author: {},
   isFetchingAuthor: true,
   hasError: false,
-  errorMessage: ""
+  errorMessage: '',
 };
 
 export default function authorReducer(state = initialState, action = {}) {
@@ -15,7 +15,7 @@ export default function authorReducer(state = initialState, action = {}) {
         isFetchingAuthor: true,
         author: {},
         hasError: false,
-        errorMessage: ""
+        errorMessage: '',
       };
     case types.FETCH_AUTHOR_SUCCESS:
       return {
@@ -23,14 +23,14 @@ export default function authorReducer(state = initialState, action = {}) {
         isFetchingAuthor: false,
         author: { ...action.user },
         hasError: false,
-        errorMessage: ""
+        errorMessage: '',
       };
     case types.FETCH_AUTHOR_FAILURE:
       return {
         ...state,
         isFetchingAuthor: false,
         hasError: true,
-        errorMessage: action.error.message
+        errorMessage: action.error.message,
       };
     default:
       return state;

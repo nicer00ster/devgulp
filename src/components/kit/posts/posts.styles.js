@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { animated } from 'react-spring';
 
 const StyledPosts = styled.ul`
@@ -118,7 +118,7 @@ const StyledPostImage = styled.div`
   transition: all 0.35s ease;
   &:before {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     height: 100%;
     width: 100%;
@@ -160,7 +160,7 @@ const StyledDateAuthorDivider = styled.span`
   margin-right: 0.4rem;
   &:after {
     font-weight: bold;
-    content: "\\00B7";
+    content: '\\00B7';
   }
 `;
 
@@ -183,5 +183,5 @@ export {
   StyledDateAuthorDivider,
   StyledPostExcerpt,
   StyledPostImage,
-  StyledNoResults
+  StyledNoResults,
 };

@@ -1,28 +1,28 @@
-const withOffline = moduleExists("next-offline") ? require("next-offline") : {};
+const withOffline = moduleExists('next-offline') ? require('next-offline') : {};
 
 const nextConfig = {
   workboxOpts: {
-    swDest: "static/service-worker.js",
+    swDest: 'static/service-worker.js',
     runtimeCaching: [
       {
         urlPattern: /^https?.*/,
-        handler: "NetworkFirst",
+        handler: 'NetworkFirst',
         options: {
-          cacheName: "https-calls",
+          cacheName: 'https-calls',
           networkTimeoutSeconds: 15,
           expiration: {
             maxEntries: 150,
-            maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
+            maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
           },
           cacheableResponse: {
-            statuses: [0, 200]
-          }
-        }
-      }
-    ]
+            statuses: [0, 200],
+          },
+        },
+      },
+    ],
   },
-  crossOrigin: "anonymous",
-  target: "serverless"
+  crossOrigin: 'anonymous',
+  target: 'serverless',
 };
 
 function moduleExists(name) {
@@ -33,6 +33,6 @@ function moduleExists(name) {
   }
 }
 
-module.exports = moduleExists("next-offline")
+module.exports = moduleExists('next-offline')
   ? withOffline(nextConfig)
   : nextConfig;

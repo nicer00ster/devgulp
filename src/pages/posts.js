@@ -1,4 +1,4 @@
-import EnhancedPosts from "../components/kit/posts";
+import EnhancedPosts from '../components/kit/posts';
 
 function Posts() {
   return <EnhancedPosts />;

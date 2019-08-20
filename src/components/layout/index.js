@@ -1,31 +1,30 @@
-import { useEffect } from "react";
-import { connect } from "react-redux";
-import { ThemeProvider } from "styled-components";
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
 
-import { fetchUser, screenResize } from "../../redux/actions";
-import Header from "../header";
-import Footer from "../footer";
-import Loading from "../../components/kit/loading";
+import { fetchUser, screenResize } from '../../redux/actions';
+import Header from '../header';
+import Footer from '../footer';
+import Loading from '../../components/kit/loading';
 import {
   LayoutStyles,
   GlobalStyles,
   breakpoints,
   colors,
   effects,
-  mediaQuery
-} from "./layout.styles";
+  mediaQuery,
+} from './layout.styles';
 
 const theme = {
   breakpoints,
   mediaQuery,
   colors,
-  effects
+  effects,
 };
 
 function Layout(props) {
-
   function screenResize() {
-      props.screenResize(window.innerWidth);
+    props.screenResize(window.innerWidth);
   }
 
   useEffect(() => {
@@ -40,15 +39,14 @@ function Layout(props) {
   return (
     <ThemeProvider theme={theme}>
       <>
-      <Header />
-      <LayoutStyles
-        userMenuOpen={props.root.userMenuOpen}
-        loginMenuOpen={props.root.loginMenuOpen}
-      >
-        <GlobalStyles />
-        {props.children}
-      </LayoutStyles>
-      <Footer />
+        <Header />
+        <LayoutStyles
+          userMenuOpen={props.root.userMenuOpen}
+          loginMenuOpen={props.root.loginMenuOpen}>
+          <GlobalStyles />
+          {props.children}
+        </LayoutStyles>
+        <Footer />
       </>
     </ThemeProvider>
   );
@@ -56,7 +54,7 @@ function Layout(props) {
 
 const mapStateToProps = ({ root, user }) => ({
   root,
-  user
+  user,
 });
 
 const mapDispatchToProps = {
@@ -66,5 +64,5 @@ const mapDispatchToProps = {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Layout);

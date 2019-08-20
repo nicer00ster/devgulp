@@ -1,25 +1,25 @@
-import { useRef } from "react";
-import { useTransition } from "react-spring";
-import { connect } from "react-redux";
+import { useRef } from 'react';
+import { useTransition } from 'react-spring';
+import { connect } from 'react-redux';
 import {
   StyledModal,
   StyledModalContainer,
   StyledModalItem,
-  StyledCloseModal
-} from "./modal.styles";
-import Portal from "./Portal";
-import { toggleModal, closeModal } from "../../../redux/actions";
-import { useOnClickOutside } from "../../../hooks";
+  StyledCloseModal,
+} from './modal.styles';
+import Portal from './Portal';
+import { toggleModal, closeModal } from '../../../redux/actions';
+import { useOnClickOutside } from '../../../hooks';
 
 function Modal(props) {
   const ref = useRef();
   const { closeModal, toggleModal } = props;
 
   const modalTransition = useTransition(props.modalOpen, null, {
-    delay: .5,
+    delay: 0.5,
     from: { opacity: 0 },
     enter: { opacity: 1 },
-    leave: { opacity: 0 }
+    leave: { opacity: 0 },
   });
 
   useOnClickOutside(ref, () => closeModal());
@@ -54,7 +54,7 @@ function Modal(props) {
 }
 
 const mapStateToProps = ({ root }) => ({
-  modalOpen: root.modalOpen
+  modalOpen: root.modalOpen,
 });
 
 const mapDispatchToProps = {
@@ -64,5 +64,5 @@ const mapDispatchToProps = {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Modal);
