@@ -879,8 +879,8 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			$data['username'] = $user->user_login;
 		}
 
-        if ( in_array( 'username', $fields, true ) ) {
-            $data['user_registered'] = $user->user_registered;
+        if ( in_array( 'registered_date', $fields, true ) ) {
+            $data['user_registered'] = date( 'c', strtotime( $user->user_registered ) );
         }
 
 		if ( in_array( 'name', $fields, true ) ) {
@@ -896,7 +896,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 		}
 
 		if ( in_array( 'email', $fields, true ) ) {
-			$data['email'] = $user->user_email;
+			$data['user_email'] = $user->user_email;
 		}
 
 		if ( in_array( 'url', $fields, true ) ) {
@@ -926,10 +926,6 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 		if ( in_array( 'roles', $fields, true ) ) {
 			// Defensively call array_values() to ensure an array is returned.
 			$data['roles'] = array_values( $user->roles );
-		}
-
-		if ( in_array( 'registered_date', $fields, true ) ) {
-			$data['registered_date'] = date( 'c', strtotime( $user->user_registered ) );
 		}
 
 		if ( in_array( 'capabilities', $fields, true ) ) {

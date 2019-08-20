@@ -18,6 +18,7 @@ export const TOGGLE_USER_MENU = "TOGGLE_USER_MENU";
 export const OPEN_USER_MENU = "OPEN_USER_MENU";
 export const TOGGLE_MODAL = "TOGGLE_MODAL";
 export const TOGGLE_SEARCH = "TOGGLE_SEARCH";
+export const TOGGLE_DRAWER = "TOGGLE_DRAWER";
 export const CLOSE_MODAL = "CLOSE_MODAL";
 export const FILTER_TAXONOMY = "FILTER_TAXONOMY";
 

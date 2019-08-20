@@ -42,6 +42,7 @@ const StyledUserInfo = styled.div`
   justify-content: center;
   padding-left: 0.6rem;
   pointer-events: none;
+  z-index: 1;
   & span {
     color: ${props => props.theme.colors.lightBlack};
     padding: 4px 0;

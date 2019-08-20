@@ -9,6 +9,7 @@ function Container(props) {
             isSearching={props.isSearching}
             isFetchingPosts={props.isFetchingPosts}
             userMenuOpen={props.userMenuOpen}
+            drawerOpen={props.drawerOpen}
             loginMenuOpen={props.loginMenuOpen}>
             {props.children}
         </StyledContainer>
@@ -18,6 +19,7 @@ function Container(props) {
 const mapStateToProps = ({ root, posts, search }) => ({
     loginMenuOpen: root.loginMenuOpen,
     userMenuOpen: root.userMenuOpen,
+    drawerOpen: root.drawerOpen,
     isFetchingPosts: posts.isFetchingPosts,
     isSearching: search.isSearching,
 });

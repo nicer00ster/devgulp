@@ -131,6 +131,9 @@ const StyledMenu = styled.ul`
   justify-content: flex-end;
   flex: 0 0 auto;
   list-style: none;
+  ${props => props.theme.mediaQuery.phone`
+    flex: 1;  
+  `};
 `;
 
 const StyledMenuItem = styled.li`
@@ -242,5 +245,5 @@ export {
   StyledMenuItem,
   StyledAvatar,
   StyledSearch,
-  StyledSearchInput
+  StyledSearchInput,
 };

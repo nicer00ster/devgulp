@@ -44,7 +44,13 @@ export function openLoginMenu() {
 export function toggleSearch() {
   return {
     type: types.TOGGLE_SEARCH,
-  }
+  };
+}
+
+export function toggleDrawer() {
+  return {
+    type: types.TOGGLE_DRAWER,
+  };
 }
 
 export function closeModal() {

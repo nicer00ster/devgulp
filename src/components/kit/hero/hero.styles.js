@@ -13,13 +13,13 @@ const StyledHero = styled.div`
     position: relative;
     padding: 8rem 0;
     opacity: ${props =>
-      props.loginMenuOpen || props.userMenuOpen ? "0.4" : "1"};
+      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "0.4" : "1"};
     transform: ${props =>
-      props.loginMenuOpen || props.userMenuOpen ? "scale(0.95)" : ""};
+      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "scale(0.95)" : ""};
     overflow: ${props =>
-      props.loginMenuOpen || props.userMenuOpen ? "hidden" : "visible"};
+      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "hidden" : "visible"};
     pointer-events: ${props =>
-      props.loginMenuOpen || props.userMenuOpen ? "none" : "all"};
+      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? "none" : "all"};
     transition: all 0.25s linear;
 `;
 

@@ -5,6 +5,7 @@ const initialState = {
   loginMenuOpen: false,
   userMenuOpen: false,
   modalOpen: false,
+  drawerOpen: false,
   searchExpanded: false,
   taxonomyFilter: 1,
   route: "/"
@@ -38,6 +39,11 @@ export default function appReducer(state = initialState, action = {}) {
       return {
         ...state,
         searchExpanded: !state.searchExpanded,
+      };
+    case types.TOGGLE_DRAWER:
+      return {
+        ...state,
+        drawerOpen: !state.drawerOpen,
       };
     case types.TOGGLE_MODAL:
       return {

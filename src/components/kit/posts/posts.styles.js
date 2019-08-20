@@ -66,6 +66,7 @@ const StyledPostTaxonomyItem = styled.li`
   white-space: nowrap;
   & span {
     color: ${props => props.theme.colors.lightBlack};
+    font-size: 24px;
     padding-right: 0.6rem;
   }
 `;

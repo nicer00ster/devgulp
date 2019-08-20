@@ -35,6 +35,8 @@ import {
 } from "../../hooks";
 import EnhancedLink from "./EnhancedLink";
 import Login from "../kit/login";
+import Burger from '../kit/burger';
+import Drawer from './drawer';
 import UserMenu from "../kit/userMenu";
 
 Router.onRouteChangeStart = () => {
@@ -104,6 +106,7 @@ function Header(props) {
   const spring = useSpring({
     width: props.searchExpanded ? '100%' : '0%',
     opacity: props.searchExpanded ? 1 : 0,
+    flex: props.searchExpanded ? 1 : 0,
   });
 
   const logoSpring = useSpring({
@@ -116,6 +119,7 @@ function Header(props) {
         {...bind}
         loginMenuOpen={props.loginMenuOpen}
         userMenuOpen={props.userMenuOpen}>
+        {props.screenWidth <= 576 && <Drawer />}
         <StyledLogoContainer screenWidth={props.screenWidth}>
           <Link href="/" prefetch scroll={false}>
             <StyledLogo style={logoSpring}>DevGulp</StyledLogo>
@@ -137,40 +141,47 @@ function Header(props) {
               }
               resetQuery();
             }}>
-                <input ref={searchRef} {...bindQuery} tabIndex="-1" type="text" name="search" id="search" />
+              <input ref={searchRef} {...bindQuery} tabIndex="-1" type="text" name="search" id="search" />
               <label htmlFor="search" />
               <span className="bar" />
             </form>
           </StyledSearchInput>
-          <EnhancedLink href='/publish'>Publish</EnhancedLink>
-          <EnhancedLink href='/users'>Users</EnhancedLink>
-          {!props.user.token ? (
-            <>
-              <StyledSignup>
-                <Link scroll={false} prefetch href="/register">
-                  <a>Sign Up</a>
-                </Link>
-              </StyledSignup>
-              <StyledMenuItem>
-                <StyledLogin onClick={() => props.toggleLoginMenu()}>
-                  Login
-                </StyledLogin>
-              </StyledMenuItem>
-            </>
+          {props.screenWidth <= 576 ? (
+              <Burger />
           ) : (
-              <StyledMenuItem>
-                <StyledAvatar onClick={() => props.toggleUserMenu()}>
-                  <img
+              <>
+              <EnhancedLink href='/publish'>Publish</EnhancedLink>
+              <EnhancedLink href='/users'>Users</EnhancedLink>
+              {!props.user.token ? (
+                <>
+                  <StyledSignup>
+                    <Link scroll={false} prefetch href="/register">
+                      <a>Sign Up</a>
+                    </Link>
+                  </StyledSignup>
+                  <StyledMenuItem>
+                    <StyledLogin onClick={() => props.toggleLoginMenu()}>
+                    Login
+                    </StyledLogin>
+                  </StyledMenuItem>
+                </>
+            ) : (
+                <StyledMenuItem>
+                  <StyledAvatar onClick={() => props.toggleUserMenu()}>
+                    <img
                       alt="Avatar"
                       src={
                         !props.user.avatar
                             ? "/static/icons/default_avatar.png"
                             : props.user.avatar
-                      }
-                  />
-                </StyledAvatar>
-              </StyledMenuItem>
+                        }
+                    />
+                  </StyledAvatar>
+                </StyledMenuItem>
+                )}
+                </>
           )}
+
         </StyledMenu>
       </StyledNav>
       {props.router.pathname === "/" && (
@@ -205,6 +216,7 @@ const mapStateToProps = ({ root, posts, user }) => ({
   searchExpanded: root.searchExpanded,
   screenWidth: root.screenWidth,
   categories: posts.categories,
+  drawerOpen: root.drawerOpen,
   user
 });
 

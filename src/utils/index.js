@@ -19,15 +19,15 @@ export function deleteToken() {
 export function getTaxonomyIcon(taxonomy) {
   switch (taxonomy) {
     case "JavaScript":
-      return "fab fa-js-square fa-2x";
+      return "fab fa-js-square";
     case "Python":
-      return "fab fa-python fa-2x";
+      return "fab fa-python";
     case "React":
-      return "fab fa-react fa-2x";
+      return "fab fa-react";
     case "PHP":
-      return "fab fa-php fa-2x";
+      return "fab fa-php";
     case "Java":
-      return "fab fa-java fa-2x";
+      return "fab fa-java";
     default:
       return;
   }
