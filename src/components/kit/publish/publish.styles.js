@@ -36,10 +36,25 @@ const shake = keyframes`
 `;
 
 const StyledPublish = styled.div`
+  position: relative;
+  margin: 0 auto; 
+  ${props => props.theme.mediaQuery.phone`
+    margin: unset;
+  `};
+`;
+
+const StyledPublishContainer = styled.fieldset`
+  border: none;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  position: relative;
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &[aria-busy='true']::before {
+    //background-size: 50% auto;
+    //animation: ${loading} 0.5s linear infinite;
+  }
 `;
 
 const StyledPublishTitle = styled.input`
@@ -59,6 +74,7 @@ const StyledPublishTitle = styled.input`
 `;
 
 const StyledPublishBody = styled.textarea`
+  width: 100%;
   font-size: 24px;
   outline: 0;
   border: 0;
@@ -223,6 +239,7 @@ const StyledPreviewImage = styled.img`
 
 export {
   StyledPublish,
+  StyledPublishContainer,
   StyledPublishTitle,
   StyledPublishBody,
   StyledPublishButton,

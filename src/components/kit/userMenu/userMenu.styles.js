@@ -85,7 +85,8 @@ const StyledLogoutButton = styled.button`
   margin: 0;
   cursor: pointer;
   color: ${props => props.theme.colors.lightBlack};
-  padding-left: 0;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0);
   transition: color 0.15s ease-in;
   &:hover,
   &:focus {

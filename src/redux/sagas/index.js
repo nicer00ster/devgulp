@@ -123,14 +123,14 @@ async function apiAddMedia(token, media) {
   let fileType;
   // Make sure the Form Data being passed from the client is
   // an array and we can loop over the values.
-  if (formData.entries().next().done) {
+  // if (formData.entries().next().done) {
     for (let value of formData.values()) {
       fileName = value.name;
       fileType = value.type;
     }
-  } else {
-    return types.FILE_TYPE_ERROR;
-  }
+  // } else {
+  //   return types.FILE_TYPE_ERROR;
+  // }
 
   if (types.ALLOWED_MIME_TYPES.includes(fileType)) {
     return axios({
@@ -261,7 +261,7 @@ function* fetchAuthorSaga(data) {
 }
 
 function* fetchPostsSaga(data) {
-  yield delay(500);
+  yield delay(250);
   try {
     const response = yield call(apiFetchPosts, data.postCount);
     yield put({

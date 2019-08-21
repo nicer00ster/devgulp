@@ -49,6 +49,7 @@ const StyledLogin = styled.button`
   border: 0;
   cursor: pointer;
   transition: color 0.25s ease-in;
+  background-color: rgba(0, 0, 0, 0);
   color: ${props => props.theme.colors.lightBlack};
   &:hover {
     color: ${props => props.theme.colors.black};

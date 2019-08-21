@@ -5,6 +5,7 @@ const initialState = {
   categories: [],
   postCount: 0,
   totalPosts: 0,
+  addPostId: null,
   isFetchingPosts: false,
   isFetchingCategories: false,
   isAddingPost: false,
@@ -116,8 +117,9 @@ export default function postsReducer(state = initialState, action = {}) {
       return {
         ...state,
         isAddingPost: false,
-        addPostError: false,
         imageId: null,
+        addPostId: action.response.data.id,
+        addPostError: false,
         imageUrl: '',
         posts: [
           ...state.posts,
@@ -133,6 +135,7 @@ export default function postsReducer(state = initialState, action = {}) {
       return {
         ...state,
         isAddingPost: false,
+        addPostId: null,
         addPostError: true,
         addPostErrorMessage: action.error.message,
       };

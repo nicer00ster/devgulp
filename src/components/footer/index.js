@@ -11,6 +11,7 @@ import {
 function Footer(props) {
   return (
     <StyledFooterOuter
+      drawerOpen={props.drawerOpen}
       loginMenuOpen={props.loginMenuOpen}
       userMenuOpen={props.userMenuOpen}>
       <StyledFooterInner>
@@ -44,6 +45,7 @@ function Footer(props) {
 }
 
 const mapStateToProps = ({ root }) => ({
+  drawerOpen: root.drawerOpen,
   loginMenuOpen: root.loginMenuOpen,
   userMenuOpen: root.userMenuOpen,
 });

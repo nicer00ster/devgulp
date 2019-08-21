@@ -22,7 +22,6 @@ export default function userReducer(state = initialState, action = {}) {
         ...state,
       };
     case types.FETCH_USER_SUCCESS:
-      console.log('FETCH_USER_SUCCESS', action);
       return {
         ...state,
         checkingCredentials: false,

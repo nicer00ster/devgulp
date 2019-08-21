@@ -11,7 +11,7 @@ function Users(props) {
   useEffect(() => {
     if (!props.cookie) {
       router.push('/');
-      props.openLoginMenu();
+      //  TODO: Warn user to login in order to view this page.
     } else {
       props.fetchUsers();
     }

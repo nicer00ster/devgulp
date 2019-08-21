@@ -19,6 +19,12 @@ export default function appReducer(state = initialState, action = {}) {
         screenWidth: action.width,
       });
     case types.LOGIN_SUCCESS:
+    case types.LOGOUT_SUCCESS:
+      return {
+        ...state,
+        loginMenuOpen: false,
+        userMenuOpen: false,
+      };
     case types.TOGGLE_LOGIN_MENU:
       return {
         ...state,
@@ -29,7 +35,6 @@ export default function appReducer(state = initialState, action = {}) {
         ...state,
         loginMenuOpen: true,
       };
-    case types.LOGOUT_SUCCESS:
     case types.TOGGLE_USER_MENU:
       return {
         ...state,
@@ -44,6 +49,13 @@ export default function appReducer(state = initialState, action = {}) {
       return {
         ...state,
         drawerOpen: !state.drawerOpen,
+        loginMenuOpen: false,
+        userMenuOpen: false,
+      };
+    case types.CLOSE_DRAWER:
+      return {
+        ...state,
+        drawerOpen: false,
       };
     case types.TOGGLE_MODAL:
       return {

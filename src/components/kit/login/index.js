@@ -38,6 +38,22 @@ function Login(props) {
     },
   });
 
+  function handleLogin() {
+    setUsernameError(false);
+    setPasswordError(false);
+
+    if(!username) {
+      setUsernameError(true);
+    }
+    if(!password) {
+      setPasswordError(true);
+    }
+    if(!username || !password) {
+      return;
+    }
+    props.login(username, password);
+  }
+
   return trail.map(({ x, height, opacity, ...rest }, index) => (
     <StyledLogin
       key={index}
@@ -52,7 +68,7 @@ function Login(props) {
         <StyledLoginForm
           onSubmit={e => {
             e.preventDefault();
-            props.login(username, password);
+            handleLogin();
           }}>
           <StyledFormHeading>Login</StyledFormHeading>
           <StyledInput>

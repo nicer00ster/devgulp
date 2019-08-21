@@ -104,12 +104,11 @@ const StyledPostDateStamp = styled.time`
 `;
 
 const StyledPostImage = styled.div`
-  border-top-right-radius: ${props => props.theme.effects.radius};
-  border-bottom-right-radius: ${props => props.theme.effects.radius};
   background-image: ${props => `url(${props.src})`};
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+  border-radius: ${props => props.theme.effects.radius};
   width: 100%;
   height: 100%;
   position: absolute;
@@ -124,8 +123,9 @@ const StyledPostImage = styled.div`
     width: 100%;
     top: 0;
     right: 0;
+    border-radius: ${props => props.theme.effects.radius};
     background: linear-gradient(
-        45deg,
+        45deg,  
         hsla(214, 11%, 37%, 1) 0%,
         hsla(214, 11%, 37%, 0) 70%
       ),

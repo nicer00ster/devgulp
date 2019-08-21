@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledSearch = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: ${props => props.hasResults ? 'repeat(2, 1fr)' : '1fr'};
   justify-items: stretch;
   grid-gap: 12px;
   width: 100%;
@@ -13,4 +13,9 @@ const StyledSearch = styled.div`
   `};
 `;
 
-export { StyledSearch };
+const StyledSearchNoResults = styled.p`
+  color: tomato;
+  text-align: center;
+`;
+
+export { StyledSearch, StyledSearchNoResults };

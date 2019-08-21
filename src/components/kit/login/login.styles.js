@@ -41,6 +41,12 @@ const StyledLoginForm = styled.form`
   background-color: ${props => props.theme.colors.white};
   padding: 1.2rem;
   margin: 0;
+  ${props => props.theme.mediaQuery.phone`
+    margin: 0 auto;
+    margin-top: auto;
+    width: 100%;
+    padding: 2.4rem;
+  `};
 `;
 
 const StyledLoginCaret = styled.div`
@@ -49,15 +55,19 @@ const StyledLoginCaret = styled.div`
   top: -14px;
   position: absolute;
   pointer-events: none;
-  background-color: ${props => props.theme.colors.white};
+  background-color: rgba(0, 0, 0, 0);
   &:after {
     content: '';
     display: block;
-    box-shadow: rgba(0, 0, 0, 0.54) -1px -1px 1px -1px;
-    transform: rotate(45deg) translate(6px, 6px);
     height: 14px;
     width: 14px;
+    box-shadow: rgba(0, 0, 0, 0.54) -1px -1px 1px -1px;
+    background-color: ${props => props.theme.colors.white};
+    transform: rotate(45deg) translate(6px, 6px);
   }
+  ${props => props.theme.mediaQuery.phone`
+    
+  `};
 `;
 
 export { StyledLogin, StyledLoginForm, StyledLoginCaret };

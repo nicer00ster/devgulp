@@ -29,6 +29,7 @@ function Layout(props) {
 
   useEffect(() => {
     props.fetchUser();
+    screenResize();
     window.addEventListener('resize', screenResize);
     return () => window.removeEventListener('resize', screenResize);
   }, []);

@@ -107,7 +107,7 @@ function Header(props) {
   const logoSpring = useSpring({
     transform: isScrolled
       ? 'translate3d(0px,0px,0px)'
-      : `translate3d(${width / 2}px, 20px, 0px)`,
+      : `translate3d(${width / 2 - 24}px, 20px, 0px)`,
   });
 
   return (
@@ -133,7 +133,8 @@ function Header(props) {
               onSubmit={e => {
                 e.preventDefault();
                 if (props.router.pathname !== '/search') {
-                  props.router.push(`/search?search=${query}`);
+                  props.searchQuery(query);
+                  props.router.push(`/search`);
                 } else {
                   props.searchQuery(query);
                 }
@@ -200,14 +201,17 @@ function Header(props) {
                   className={activeFilter === category.id && 'active-filter'}
                   onClick={() => handleFilter(category.id)}>
                   {category.name === 'Uncategorized' ? 'All' : category.name}
-                  {/*<StyledCategoryCount>{category.count}</StyledCategoryCount>*/}
                 </StyledFilterItem>
               ))}
           </StyledFilterItems>
         </StyledFilterNav>
       )}
-      <Login />
-      <UserMenu />
+      {props.screenWidth >= 578 && (
+          <>
+            <Login />
+            <UserMenu />
+          </>
+      )}
     </StyledHeader>
   );
 }

@@ -48,7 +48,7 @@ const StyledSinglePostContent = styled.div`
   font-size: 24px;
 `;
 
-const StyledSidebar = styled(animated.div)`
+const StyledSidebar = styled(animated.aside)`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -61,6 +61,19 @@ const StyledSidebar = styled(animated.div)`
   }
 `;
 
+const StyledComment = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledCommentAuthor = styled.p`
+  color: ${props => props.theme.colors.black};
+`;
+
+const StyledCommentDate = styled.time`
+  color: ${props => props.theme.colors.lightBlack};
+`;
+
 export {
   StyleSinglePost,
   StyledSinglePostHeading,
@@ -71,4 +84,7 @@ export {
   StyledSinglePostImage,
   StyledSinglePostContent,
   StyledSidebar,
+  StyledComment,
+  StyledCommentAuthor,
+  StyledCommentDate,
 };

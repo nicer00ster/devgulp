@@ -53,6 +53,12 @@ export function toggleDrawer() {
   };
 }
 
+export function closeDrawer() {
+  return {
+    type: types.CLOSE_DRAWER,
+  };
+}
+
 export function closeModal() {
   return {
     type: types.CLOSE_MODAL,

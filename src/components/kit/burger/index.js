@@ -1,15 +1,18 @@
 import { connect } from 'react-redux';
-import { toggleDrawer } from '../../../redux/actions';
+import { toggleDrawer, closeDrawer } from '../../../redux/actions';
 import { StyledBurger } from './burger.styles';
 
 function Burger(props) {
   return (
     <StyledBurger
-      onClick={props.toggleDrawer}
+      onClick={e => {
+        e.preventDefault();
+      }}
+      onMouseDown={props.toggleDrawer}
       drawerOpen={props.drawerOpen}
       href="#"
       aria-label="Menu"
-      className={`menu${props.drawerOpen ? '-toggle' : ''}`}>
+      className={`menu ${props.drawerOpen ? '-toggle' : ''}`}>
       <div />
       <div />
       <div />
@@ -23,6 +26,7 @@ const mapStateToProps = ({ root }) => ({
 
 const mapDispatchToProps = {
   toggleDrawer,
+  closeDrawer,
 };
 
 export default connect(
