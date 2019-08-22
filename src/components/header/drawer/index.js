@@ -78,7 +78,7 @@ function Drawer(props) {
         <EnhancedLink href="/users">Users</EnhancedLink>
       </StyledDrawerList>
       {props.isLoggingIn || props.isLoggingOut ? <Loading /> : null}
-      {!props.user.token && <DrawerLogin /> }
+      {!props.user.token && <DrawerLogin />}
     </StyledDrawer>
   );
 }

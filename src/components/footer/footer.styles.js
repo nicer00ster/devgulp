@@ -6,13 +6,21 @@ const StyledFooterOuter = styled.div`
   margin: 0 auto;
   color: ${props => props.theme.colors.lightBlack};
   opacity: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? '0.4' : '1'};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? '0.4'
+      : '1'};
   transform: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? 'scale(0.95)' : ''};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? 'scale(0.95)'
+      : ''};
   overflow: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? 'hidden' : 'visible'};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? 'hidden'
+      : 'visible'};
   pointer-events: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? 'none' : 'all'};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+      ? 'none'
+      : 'all'};
   transition: all 0.25s linear;
 `;
 

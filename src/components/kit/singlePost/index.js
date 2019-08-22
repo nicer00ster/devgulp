@@ -17,7 +17,12 @@ import {
   StyledCommentsHeading,
   StyledCommentReply,
   StyledCommentReplyInput,
+  StyledCommentReplyTo,
+  StyledCommentReplyToInput,
   StyledComment,
+  StyledCommentContainer,
+  StyledCommentAuthorDate,
+  StyledCommentUserData,
   StyledCommentAuthor,
   StyledCommentDate,
   StyledCommentDateDivider,
@@ -25,7 +30,7 @@ import {
 } from './singlePost.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledDivider } from '../globals/globals.styles';
-import { addComment } from "../../../redux/actions";
+import { addComment, addCommentReply } from '../../../redux/actions';
 import Loading from '../loading';
 import LikeButton from '../likeButton';
 
@@ -42,6 +47,7 @@ function SinglePost(props) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
   const [leftOffset, setLeftOffset] = useState(0);
+  const [isReplyingTo, setIsReplyingTo] = useState(null);
 
   const {
     value: reply,
@@ -49,6 +55,14 @@ function SinglePost(props) {
     reset: resetReply,
     setError: setReplyError,
     hasError: replyError,
+  } = useInput('');
+
+  const {
+    value: replyTo,
+    bind: bindReplyTo,
+    reset: resetReplyTo,
+    setError: setReplyToError,
+    hasError: replyToError,
   } = useInput('');
 
   const handleWindowScroll = useCallback(() => {
@@ -64,6 +78,12 @@ function SinglePost(props) {
     e.preventDefault();
     props.addComment(props.user.token, post.id, reply);
     resetReply();
+  }
+
+  function handleCommentReply(e) {
+    e.preventDefault();
+    props.addCommentReply(props.user.token, post.id, replyTo, isReplyingTo);
+    resetReplyTo();
   }
 
   useEffect(() => {
@@ -148,46 +168,79 @@ function SinglePost(props) {
             <StyledCommentReply onSubmit={handleReply}>
               <StyledAvatar className="no-touch" tabIndex="-1" size={36}>
                 <img
-                    src={
-                      !props.user.avatar
-                          ? '/static/icons/default_avatar.png'
-                          : props.user.avatar
-                    }
-                    alt={props.user.username}
+                  src={
+                    !props.user.avatar
+                      ? '/static/icons/default_avatar.png'
+                      : props.user.avatar
+                  }
+                  alt={props.user.username}
                 />
               </StyledAvatar>
-              <StyledCommentReplyInput {...bindReply} placeholder="Have something to say?"/>
+              <StyledCommentReplyInput
+                {...bindReply}
+                placeholder="Have something to say?"
+              />
             </StyledCommentReply>
             {!isEmpty(post) &&
-            post.comments.map(comment => {
-              return (
-                  <StyledComment key={comment.id}>
-                    {/*<StyledAvatar className="no-touch" tabIndex="-1" size={24}>*/}
-                    {/*  <img*/}
-                    {/*      src={*/}
-                    {/*        !comment.user.avatar*/}
-                    {/*            ? '/static/icons/default_avatar.png'*/}
-                    {/*            : props.user.avatar*/}
-                    {/*      }*/}
-                    {/*      alt={props.user.username}*/}
-                    {/*  />*/}
-                    {/*</StyledAvatar>*/}
-                    <StyledCommentAuthor>
-                      {comment.author_name}
-                    </StyledCommentAuthor>
-                    <StyledCommentDate>
-                      {moment(comment.date).format('MMM Do')}
-                      <StyledCommentDateDivider />
-                      {moment(comment.date).format('h:mm a')}
-                    </StyledCommentDate>
+              post.comments.map(comment => (
+                <StyledComment key={comment.id}>
+                  {comment._links['in-reply-to'] &&
+                    comment._links['in-reply-to'].map(reply => (
+                      <div key={reply.href}>{reply.href}</div>
+                    ))}
+                  <StyledCommentContainer
+                    className={
+                      comment._links['in-reply-to'] &&
+                      comment._links['in-reply-to'] &&
+                      'comment-reply'
+                    }>
+                    <StyledCommentUserData>
+                      <StyledAvatar
+                        className="no-touch"
+                        tabIndex="-1"
+                        size={32}>
+                        <img
+                          src={
+                            !comment.user_avatar
+                              ? '/static/icons/default_avatar.png'
+                              : comment.user_avatar
+                          }
+                          alt={props.user.username}
+                        />
+                      </StyledAvatar>
+                      <StyledCommentAuthorDate>
+                        <StyledCommentAuthor>
+                          {comment.author_name}
+                        </StyledCommentAuthor>
+                        <StyledCommentDate>
+                          {moment(comment.date).format('MMM Do')}
+                          <StyledCommentDateDivider />
+                          {moment(comment.date).format('h:mm a')}
+                        </StyledCommentDate>
+                      </StyledCommentAuthorDate>
+                    </StyledCommentUserData>
                     <div
-                        dangerouslySetInnerHTML={{
-                          __html: comment.content.rendered,
-                        }}
+                      dangerouslySetInnerHTML={{
+                        __html: comment.content.rendered,
+                      }}
                     />
-                  </StyledComment>
-              );
-            })}
+                  </StyledCommentContainer>
+                  <StyledCommentReplyTo onClick={e => {
+                    e.preventDefault();
+                    setIsReplyingTo(comment.id);
+                    if(isReplyingTo === comment.id) {
+                      setIsReplyingTo(null);
+                    };
+                  }}>
+                    Reply
+                  </StyledCommentReplyTo>
+                  {isReplyingTo === comment.id && (
+                      <form onSubmit={handleCommentReply}>
+                        <StyledCommentReplyToInput {...bindReplyTo} autoFocus />
+                      </form>
+                  )}
+                </StyledComment>
+              ))}
           </StyledComments>
         </>
       )}
@@ -201,6 +254,10 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = {
   addComment,
+  addCommentReply,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SinglePost);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SinglePost);

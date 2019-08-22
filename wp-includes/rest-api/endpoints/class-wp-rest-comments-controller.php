@@ -952,6 +952,8 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 			$data['author_avatar_urls'] = rest_get_avatar_urls( $comment->comment_author_email );
 		}
 
+		$data['user_avatar'] = get_field('avatar', 'user_' . $comment->user_id);
+
 		if ( in_array( 'meta', $fields, true ) ) {
 			$data['meta'] = $this->meta->get_value( $comment->comment_ID, $request );
 		}

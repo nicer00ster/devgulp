@@ -23,9 +23,10 @@ const StyledDrawer = styled.div`
     z-index: -1;
     clip-path: polygon(0 0, 100% 0, 100% calc(25% - 16vw), 0% 25%);
   }
-  ul, div {
+  ul,
+  div {
     opacity: ${props =>
-        props.isLoggingOut || props.isLoggingIn ? '0.4' : '1'};
+      props.isLoggingOut || props.isLoggingIn ? '0.4' : '1'};
   }
 `;
 
@@ -48,7 +49,8 @@ const StyledDrawerItem = styled.li`
     color: ${props => props.theme.colors.lightBlack};
     background-color: unset !important;
     outline: 0;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: ${props => props.theme.colors.black};
     }
     &:after {
@@ -63,7 +65,8 @@ const StyledDrawerItem = styled.li`
       opacity: 0.1;
       transition: height 0.25s ease, opacity 0.25s ease;
     }
-    &:hover:after, &:focus:after {
+    &:hover:after,
+    &:focus:after {
       height: 35%;
       opacity: 0.15;
     }

@@ -173,10 +173,10 @@ const StyledAvatar = styled.button`
     pointer-events: none;
   }
   &.bordered {
-   img {
-     border: 1px solid ${props => props.theme.colors.black};
-     padding: 4px;
-   }
+    img {
+      border: 1px solid ${props => props.theme.colors.black};
+      padding: 4px;
+    }
   }
   &:focus > img {
     outline: 1px dotted ${props => props.theme.colors.black};

@@ -84,6 +84,7 @@ const GlobalStyles = createGlobalStyle`
       text-decoration: none;
       color: ${colors.lightBlack};
       transition: color 0.15s ease-in;
+      cursor: pointer;
       &:hover, &:focus {
         color: ${colors.black};
       }

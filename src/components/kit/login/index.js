@@ -42,13 +42,13 @@ function Login(props) {
     setUsernameError(false);
     setPasswordError(false);
 
-    if(!username) {
+    if (!username) {
       setUsernameError(true);
     }
-    if(!password) {
+    if (!password) {
       setPasswordError(true);
     }
-    if(!username || !password) {
+    if (!username || !password) {
       return;
     }
     props.login(username, password);

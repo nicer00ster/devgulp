@@ -26,7 +26,7 @@ export default function postReducer(state = initialState, action = {}) {
         isFetchingPost: false,
         post: {
           comments: action.post._embedded['replies']['0'].map(post => post),
-          ...action.post
+          ...action.post,
         },
         author: { ...action.author.data },
         hasError: false,
@@ -40,28 +40,26 @@ export default function postReducer(state = initialState, action = {}) {
         errorMessage: action.error.message,
       };
     case types.ADD_COMMENT:
+    case types.ADD_COMMENT_REPLY:
       return {
         ...state,
         isAddingComment: true,
-
       };
     case types.ADD_COMMENT_SUCCESS:
+    case types.ADD_COMMENT_REPLY_SUCCESS:
       return {
         ...state,
         isAddingComment: false,
         post: {
           ...state.post,
-          comments: [
-              action.response.data,
-              ...state.post.comments,
-          ],
+          comments: [action.response.data, ...state.post.comments],
         },
       };
     case types.ADD_COMMENT_FAILURE:
+    case types.ADD_COMMENT_REPLY_FAILURE:
       return {
         ...state,
         isAddingComment: false,
-
       };
     default:
       return state;

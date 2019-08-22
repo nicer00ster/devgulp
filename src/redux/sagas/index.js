@@ -124,10 +124,10 @@ async function apiAddMedia(token, media) {
   // Make sure the Form Data being passed from the client is
   // an array and we can loop over the values.
   // if (formData.entries().next().done) {
-    for (let value of formData.values()) {
-      fileName = value.name;
-      fileType = value.type;
-    }
+  for (let value of formData.values()) {
+    fileName = value.name;
+    fileType = value.type;
+  }
   // } else {
   //   return types.FILE_TYPE_ERROR;
   // }
@@ -165,6 +165,21 @@ function apiAddComment(data) {
     data: {
       post: data.postId,
       content: data.reply,
+    },
+    url: `${API_URL}/comments`,
+  }).then(reply => reply);
+}
+
+function apiAddCommentReply(data) {
+  return axios({
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${data.token}`,
+    },
+    data: {
+      post: data.postId,
+      content: data.reply,
+      parent: data.parent,
     },
     url: `${API_URL}/comments`,
   }).then(reply => reply);
@@ -358,6 +373,16 @@ function* addCommentSaga(data) {
   }
 }
 
+function* addCommentReplySaga(data) {
+  console.log('addCommentReplySaga', data);
+  try {
+    const response = yield call(apiAddCommentReply, data);
+    yield put({ type: types.ADD_COMMENT_REPLY_SUCCESS, response });
+  } catch (error) {
+    yield put({ type: types.ADD_COMMENT_REPLY_FAILURE, error });
+  }
+}
+
 function* searchSaga(data) {
   yield delay(500);
   try {
@@ -378,6 +403,7 @@ function* rootSaga() {
     takeEvery(types.ADD_POST, addPostSaga),
     takeEvery(types.ADD_MEDIA, addMediaSaga),
     takeEvery(types.ADD_COMMENT, addCommentSaga),
+    takeEvery(types.ADD_COMMENT_REPLY, addCommentReplySaga),
     takeEvery(types.FETCH_TOTAL_POSTS, fetchTotalPostsSaga),
     takeEvery(types.FETCH_USER, fetchUserSaga),
     takeEvery(types.FETCH_USERS, fetchUsersSaga),

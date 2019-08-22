@@ -37,7 +37,10 @@ function SingleUser(props) {
               {author.description}
             </StyledSingleUserDescription>
           </StyledSingleUserInfo>
-          <StyledAvatar size={100} className="bordered" onClick={props.toggleModal}>
+          <StyledAvatar
+            size={100}
+            className="bordered"
+            onClick={props.toggleModal}>
             <img
               alt="Avatar"
               src={

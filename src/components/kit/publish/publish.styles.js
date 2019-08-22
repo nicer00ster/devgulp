@@ -37,7 +37,7 @@ const shake = keyframes`
 
 const StyledPublish = styled.div`
   position: relative;
-  margin: 0 auto; 
+  margin: 0 auto;
   ${props => props.theme.mediaQuery.phone`
     margin: unset;
   `};

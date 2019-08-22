@@ -6,7 +6,9 @@ function EnhancedSearch(props) {
   return (
     <StyledSearch hasResults={props.results.length > 0}>
       {props.results && props.hasSearched && !props.results.length ? (
-        <StyledSearchNoResults>Nothing found for your search.</StyledSearchNoResults>
+        <StyledSearchNoResults>
+          Nothing found for your search.
+        </StyledSearchNoResults>
       ) : (
         props.results.map(post => <PostItem key={post.id} post={post} />)
       )}

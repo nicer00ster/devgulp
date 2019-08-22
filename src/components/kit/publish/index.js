@@ -30,7 +30,11 @@ function EnhancedPublish(props) {
   const prevPostId = usePrevious(props.addPostId);
 
   useEffect(() => {
-    if(props.addPostId !== prevPostId && props.addPostId !== null && prevPostId !== undefined) {
+    if (
+      props.addPostId !== prevPostId &&
+      props.addPostId !== null &&
+      prevPostId !== undefined
+    ) {
       router.push(`/post?id=${props.posts.addPostId}`);
     }
   }, [props.addPostId]);
@@ -113,55 +117,55 @@ function EnhancedPublish(props) {
   return (
     <StyledPublish>
       <StyledPublishContainer
-          disabled={props.posts.isAddingPost}
-          aria-busy={props.posts.isAddingPost}>
+        disabled={props.posts.isAddingPost}
+        aria-busy={props.posts.isAddingPost}>
         <StyledPublishTitle
-            className={titleError && 'error'}
-            {...bindTitle}
-            placeholder="Title"
+          className={titleError && 'error'}
+          {...bindTitle}
+          placeholder="Title"
         />
         <StyledPublishBody
-            className={bodyError && 'error'}
-            rows={10}
-            {...bindBody}
-            placeholder="Tell your story."
+          className={bodyError && 'error'}
+          rows={10}
+          {...bindBody}
+          placeholder="Tell your story."
         />
         <StyledPublishCategories>
           {props.posts.categories.map(
-              taxonomy =>
-                  taxonomy.id !== 1 && (
-                      <Checkbox
-                          key={taxonomy.id}
-                          label={taxonomy.name}
-                          id={taxonomy.id}
-                          handleCategories={handleCategories}
-                      />
-                  ),
+            taxonomy =>
+              taxonomy.id !== 1 && (
+                <Checkbox
+                  key={taxonomy.id}
+                  label={taxonomy.name}
+                  id={taxonomy.id}
+                  handleCategories={handleCategories}
+                />
+              ),
           )}
         </StyledPublishCategories>
         {!props.posts.imageUrl ? (
-            <StyledPublishImageUploadWrapper
-                disabled={props.posts.isUploadingImage}
-                aria-busy={props.posts.isUploadingImage}>
-              <StyledPublishImageUpload
-                  onChange={e => props.addMedia(props.user.token, handleImage(e))}
-                  type="file"
-                  name="file"
-                  id="image-file"
-                  accept="image/*"
-              />
-              <label htmlFor="image-file">Choose an Image</label>
-            </StyledPublishImageUploadWrapper>
+          <StyledPublishImageUploadWrapper
+            disabled={props.posts.isUploadingImage}
+            aria-busy={props.posts.isUploadingImage}>
+            <StyledPublishImageUpload
+              onChange={e => props.addMedia(props.user.token, handleImage(e))}
+              type="file"
+              name="file"
+              id="image-file"
+              accept="image/*"
+            />
+            <label htmlFor="image-file">Choose an Image</label>
+          </StyledPublishImageUploadWrapper>
         ) : (
-            <StyledPreviewImageButton onClick={() => props.toggleModal()}>
-              Preview Image
-            </StyledPreviewImageButton>
+          <StyledPreviewImageButton onClick={() => props.toggleModal()}>
+            Preview Image
+          </StyledPreviewImageButton>
         )}
         <StyledPublishButton
-            onClick={() => handleAddPost()}
-            disabled={active || props.posts.isAddingPost}
-            aria-busy={active || props.posts.isAddingPost}
-            className={active && 'active'}>
+          onClick={() => handleAddPost()}
+          disabled={active || props.posts.isAddingPost}
+          aria-busy={active || props.posts.isAddingPost}
+          className={active && 'active'}>
           <StyledPublishIcon className={`fal fa-envelope-open-text`} />
           <StyledPublishConfetti color="palegreen" />
           <StyledPublishConfetti color="tomato" />

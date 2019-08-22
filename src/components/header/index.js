@@ -207,10 +207,10 @@ function Header(props) {
         </StyledFilterNav>
       )}
       {props.screenWidth >= 578 && (
-          <>
-            <Login />
-            <UserMenu />
-          </>
+        <>
+          <Login />
+          <UserMenu />
+        </>
       )}
     </StyledHeader>
   );

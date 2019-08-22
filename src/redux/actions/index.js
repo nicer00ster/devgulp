@@ -111,6 +111,16 @@ export function addComment(token, postId, reply) {
   };
 }
 
+export function addCommentReply(token, postId, reply, parent) {
+  return {
+    type: types.ADD_COMMENT_REPLY,
+    token,
+    postId,
+    reply,
+    parent,
+  };
+}
+
 export function addMedia(token, media) {
   return {
     type: types.ADD_MEDIA,

@@ -125,7 +125,7 @@ const StyledPostImage = styled.div`
     right: 0;
     border-radius: ${props => props.theme.effects.radius};
     background: linear-gradient(
-        45deg,  
+        45deg,
         hsla(214, 11%, 37%, 1) 0%,
         hsla(214, 11%, 37%, 0) 70%
       ),
