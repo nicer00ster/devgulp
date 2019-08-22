@@ -37,10 +37,9 @@ function SingleUser(props) {
               {author.description}
             </StyledSingleUserDescription>
           </StyledSingleUserInfo>
-          <StyledAvatar size={100} onClick={props.toggleModal}>
+          <StyledAvatar size={100} className="bordered" onClick={props.toggleModal}>
             <img
               alt="Avatar"
-              style={{ border: '1px solid #1f222e', padding: '4px' }}
               src={
                 !author.acf.avatar
                   ? '/static/icons/default_avatar.png'

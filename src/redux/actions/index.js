@@ -102,6 +102,15 @@ export function addPost(token, title, content, categories, featuredMedia) {
   };
 }
 
+export function addComment(token, postId, reply) {
+  return {
+    type: types.ADD_COMMENT,
+    token,
+    postId,
+    reply,
+  };
+}
+
 export function addMedia(token, media) {
   return {
     type: types.ADD_MEDIA,

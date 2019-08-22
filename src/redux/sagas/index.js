@@ -156,6 +156,20 @@ function apiFetchCategories() {
   }).then(categories => categories);
 }
 
+function apiAddComment(data) {
+  return axios({
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${data.token}`,
+    },
+    data: {
+      post: data.postId,
+      content: data.reply,
+    },
+    url: `${API_URL}/comments`,
+  }).then(reply => reply);
+}
+
 function apiSearch(query) {
   return axios({
     method: 'get',
@@ -335,6 +349,15 @@ function* addMediaSaga(data) {
   }
 }
 
+function* addCommentSaga(data) {
+  try {
+    const response = yield call(apiAddComment, data);
+    yield put({ type: types.ADD_COMMENT_SUCCESS, response });
+  } catch (error) {
+    yield put({ type: types.ADD_COMMENT_FAILURE, error });
+  }
+}
+
 function* searchSaga(data) {
   yield delay(500);
   try {
@@ -354,6 +377,7 @@ function* rootSaga() {
     takeEvery(types.VERIFIED_TOKEN, fetchTokenSaga),
     takeEvery(types.ADD_POST, addPostSaga),
     takeEvery(types.ADD_MEDIA, addMediaSaga),
+    takeEvery(types.ADD_COMMENT, addCommentSaga),
     takeEvery(types.FETCH_TOTAL_POSTS, fetchTotalPostsSaga),
     takeEvery(types.FETCH_USER, fetchUserSaga),
     takeEvery(types.FETCH_USERS, fetchUsersSaga),

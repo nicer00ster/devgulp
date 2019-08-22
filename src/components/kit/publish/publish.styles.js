@@ -51,10 +51,6 @@ const StyledPublishContainer = styled.fieldset`
     opacity: 0.5;
     pointer-events: none;
   }
-  &[aria-busy='true']::before {
-    //background-size: 50% auto;
-    //animation: ${loading} 0.5s linear infinite;
-  }
 `;
 
 const StyledPublishTitle = styled.input`

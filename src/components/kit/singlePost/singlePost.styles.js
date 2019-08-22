@@ -61,17 +61,62 @@ const StyledSidebar = styled(animated.aside)`
   }
 `;
 
+const StyledComments = styled.section`
+  
+`;
+
+const StyledCommentsHeading = styled.h2`
+  font-size: 18px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  color: ${props => props.theme.colors.lightBlack};
+`;
+
+const StyledCommentReply = styled.form`
+  display: flex;
+  padding: 1.2rem;
+  margin: 1.2rem 0;
+`;
+
+const StyledCommentReplyInput = styled.input`
+  width: 100%;
+  font-size: 16px;
+  padding-left: 1.2rem;
+  outline: 0;
+  border: 0;
+  color: ${props => props.theme.colors.black};
+  font-family: 'Trirong', serif;
+  letter-spacing: 1px;
+  resize: none;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0);
+`;
+
 const StyledComment = styled.div`
   display: flex;
   flex-direction: column;
+  border-radius: ${props => props.theme.effects.radius};
+  box-shadow: ${props => props.theme.effects.shadow};
+  padding: 1.2rem;
+  margin: 1.2rem;
 `;
 
 const StyledCommentAuthor = styled.p`
   color: ${props => props.theme.colors.black};
+  margin-bottom: 0;
 `;
 
 const StyledCommentDate = styled.time`
   color: ${props => props.theme.colors.lightBlack};
+`;
+
+const StyledCommentDateDivider = styled.span`
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+  &:before {
+    font-weight: bold;
+    content: '\\00B7';
+  }
 `;
 
 export {
@@ -84,7 +129,12 @@ export {
   StyledSinglePostImage,
   StyledSinglePostContent,
   StyledSidebar,
+  StyledComments,
+  StyledCommentsHeading,
+  StyledCommentReply,
+  StyledCommentReplyInput,
   StyledComment,
   StyledCommentAuthor,
   StyledCommentDate,
+  StyledCommentDateDivider,
 };

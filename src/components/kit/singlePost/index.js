@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import { useEffect, useState, useCallback } from 'react';
 import { useSpring } from 'react-spring';
-import { useMeasure } from '../../../hooks';
+import { useMeasure, useInput } from '../../../hooks';
 import {
   StyleSinglePost,
   StyledSinglePostHeading,
@@ -12,13 +13,19 @@ import {
   StyledSinglePostAuthor,
   StyledSinglePostImage,
   StyledSinglePostContent,
+  StyledComments,
+  StyledCommentsHeading,
+  StyledCommentReply,
+  StyledCommentReplyInput,
   StyledComment,
   StyledCommentAuthor,
   StyledCommentDate,
+  StyledCommentDateDivider,
   StyledSidebar,
 } from './singlePost.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledDivider } from '../globals/globals.styles';
+import { addComment } from "../../../redux/actions";
 import Loading from '../loading';
 import LikeButton from '../likeButton';
 
@@ -36,6 +43,14 @@ function SinglePost(props) {
   const [isBottom, setIsBottom] = useState(false);
   const [leftOffset, setLeftOffset] = useState(0);
 
+  const {
+    value: reply,
+    bind: bindReply,
+    reset: resetReply,
+    setError: setReplyError,
+    hasError: replyError,
+  } = useInput('');
+
   const handleWindowScroll = useCallback(() => {
     window.scrollY > 50 ? setIsScrolled(true) : setIsScrolled(false);
     window.scrollY > bind.ref.current.scrollHeight - 50
@@ -44,6 +59,12 @@ function SinglePost(props) {
 
     setLeftOffset(bind.ref.current.offsetLeft);
   }, []);
+
+  function handleReply(e) {
+    e.preventDefault();
+    props.addComment(props.user.token, post.id, reply);
+    resetReply();
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
@@ -122,29 +143,64 @@ function SinglePost(props) {
             }}
           />
           <StyledDivider />
-          {!isEmpty(post) &&
-            post._embedded['replies'] &&
-            post._embedded['replies']['0'].map(comment => {
+          <StyledComments>
+            <StyledCommentsHeading>Replies</StyledCommentsHeading>
+            <StyledCommentReply onSubmit={handleReply}>
+              <StyledAvatar className="no-touch" tabIndex="-1" size={36}>
+                <img
+                    src={
+                      !props.user.avatar
+                          ? '/static/icons/default_avatar.png'
+                          : props.user.avatar
+                    }
+                    alt={props.user.username}
+                />
+              </StyledAvatar>
+              <StyledCommentReplyInput {...bindReply} placeholder="Have something to say?"/>
+            </StyledCommentReply>
+            {!isEmpty(post) &&
+            post.comments.map(comment => {
               return (
-                <StyledComment key={comment.id}>
-                  <StyledCommentAuthor>
-                    {comment.author_name}
-                  </StyledCommentAuthor>
-                  <StyledCommentDate>
-                    {moment(comment.date).format('MMM Do')}
-                  </StyledCommentDate>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: comment.content.rendered,
-                    }}
-                  />
-                </StyledComment>
+                  <StyledComment key={comment.id}>
+                    {/*<StyledAvatar className="no-touch" tabIndex="-1" size={24}>*/}
+                    {/*  <img*/}
+                    {/*      src={*/}
+                    {/*        !comment.user.avatar*/}
+                    {/*            ? '/static/icons/default_avatar.png'*/}
+                    {/*            : props.user.avatar*/}
+                    {/*      }*/}
+                    {/*      alt={props.user.username}*/}
+                    {/*  />*/}
+                    {/*</StyledAvatar>*/}
+                    <StyledCommentAuthor>
+                      {comment.author_name}
+                    </StyledCommentAuthor>
+                    <StyledCommentDate>
+                      {moment(comment.date).format('MMM Do')}
+                      <StyledCommentDateDivider />
+                      {moment(comment.date).format('h:mm a')}
+                    </StyledCommentDate>
+                    <div
+                        dangerouslySetInnerHTML={{
+                          __html: comment.content.rendered,
+                        }}
+                    />
+                  </StyledComment>
               );
             })}
+          </StyledComments>
         </>
       )}
     </StyleSinglePost>
   );
 }
 
-export default SinglePost;
+const mapStateToProps = ({ user }) => ({
+  user,
+});
+
+const mapDispatchToProps = {
+  addComment,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SinglePost);
