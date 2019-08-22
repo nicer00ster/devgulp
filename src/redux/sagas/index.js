@@ -12,7 +12,7 @@ import {
 } from 'redux-saga/effects';
 import axios from 'axios';
 import { API_URL, TOKEN_URL } from '../constants';
-import { setToken, verifyToken } from '../../utils';
+import { setToken, verifyToken, arrangeComments } from '../../utils';
 
 import * as types from '../constants';
 
@@ -96,7 +96,15 @@ function apiFetchPost(postId) {
   return axios({
     method: 'get',
     url: `${API_URL}/posts/${postId}/?_embed`,
-  }).then(post => post);
+  }).then(post => {
+    return {
+      data: {
+        comments: arrangeComments(post.data.comments),
+        ...post.data,
+      },
+      ...post,
+    };
+  });
 }
 
 function apiAddPost(token, title, content, categories, featuredMedia) {
@@ -305,8 +313,12 @@ function* fetchPostsSaga(data) {
 
 function* fetchPostSaga(data) {
   try {
-    const response = yield call(apiFetchPost, data.postId);
+    let response = yield call(apiFetchPost, data.postId);
     const author = yield call(apiFetchUser, response.data.author);
+    // const comments = arrangeComments(response.data.comments);
+    //
+    console.log(response);
+
     yield put({ type: types.FETCH_POST_SUCCESS, post: response.data, author });
   } catch (error) {
     yield put({ type: types.FETCH_POST_FAILURE, error });

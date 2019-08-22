@@ -33,6 +33,7 @@ import { StyledDivider } from '../globals/globals.styles';
 import { addComment, addCommentReply } from '../../../redux/actions';
 import Loading from '../loading';
 import LikeButton from '../likeButton';
+import Comment from './comment';
 
 function isEmpty(obj) {
   for (const key in obj) {
@@ -47,7 +48,7 @@ function SinglePost(props) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
   const [leftOffset, setLeftOffset] = useState(0);
-  const [isReplyingTo, setIsReplyingTo] = useState(null);
+  // const [isReplyingTo, setIsReplyingTo] = useState(null);
 
   const {
     value: reply,
@@ -57,13 +58,13 @@ function SinglePost(props) {
     hasError: replyError,
   } = useInput('');
 
-  const {
-    value: replyTo,
-    bind: bindReplyTo,
-    reset: resetReplyTo,
-    setError: setReplyToError,
-    hasError: replyToError,
-  } = useInput('');
+  // const {
+  //   value: replyTo,
+  //   bind: bindReplyTo,
+  //   reset: resetReplyTo,
+  //   setError: setReplyToError,
+  //   hasError: replyToError,
+  // } = useInput('');
 
   const handleWindowScroll = useCallback(() => {
     window.scrollY > 50 ? setIsScrolled(true) : setIsScrolled(false);
@@ -80,11 +81,11 @@ function SinglePost(props) {
     resetReply();
   }
 
-  function handleCommentReply(e) {
-    e.preventDefault();
-    props.addCommentReply(props.user.token, post.id, replyTo, isReplyingTo);
-    resetReplyTo();
-  }
+  // function handleCommentReply(e) {
+  //   e.preventDefault();
+  //   props.addCommentReply(props.user.token, post.id, replyTo, isReplyingTo);
+  //   resetReplyTo();
+  // }
 
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
@@ -164,7 +165,7 @@ function SinglePost(props) {
           />
           <StyledDivider />
           <StyledComments>
-            <StyledCommentsHeading>Replies</StyledCommentsHeading>
+            <StyledCommentsHeading>Conversation</StyledCommentsHeading>
             <StyledCommentReply onSubmit={handleReply}>
               <StyledAvatar className="no-touch" tabIndex="-1" size={36}>
                 <img
@@ -183,63 +184,7 @@ function SinglePost(props) {
             </StyledCommentReply>
             {!isEmpty(post) &&
               post.comments.map(comment => (
-                <StyledComment key={comment.id}>
-                  {comment._links['in-reply-to'] &&
-                    comment._links['in-reply-to'].map(reply => (
-                      <div key={reply.href}>{reply.href}</div>
-                    ))}
-                  <StyledCommentContainer
-                    className={
-                      comment._links['in-reply-to'] &&
-                      comment._links['in-reply-to'] &&
-                      'comment-reply'
-                    }>
-                    <StyledCommentUserData>
-                      <StyledAvatar
-                        className="no-touch"
-                        tabIndex="-1"
-                        size={32}>
-                        <img
-                          src={
-                            !comment.user_avatar
-                              ? '/static/icons/default_avatar.png'
-                              : comment.user_avatar
-                          }
-                          alt={props.user.username}
-                        />
-                      </StyledAvatar>
-                      <StyledCommentAuthorDate>
-                        <StyledCommentAuthor>
-                          {comment.author_name}
-                        </StyledCommentAuthor>
-                        <StyledCommentDate>
-                          {moment(comment.date).format('MMM Do')}
-                          <StyledCommentDateDivider />
-                          {moment(comment.date).format('h:mm a')}
-                        </StyledCommentDate>
-                      </StyledCommentAuthorDate>
-                    </StyledCommentUserData>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: comment.content.rendered,
-                      }}
-                    />
-                  </StyledCommentContainer>
-                  <StyledCommentReplyTo onClick={e => {
-                    e.preventDefault();
-                    setIsReplyingTo(comment.id);
-                    if(isReplyingTo === comment.id) {
-                      setIsReplyingTo(null);
-                    };
-                  }}>
-                    Reply
-                  </StyledCommentReplyTo>
-                  {isReplyingTo === comment.id && (
-                      <form onSubmit={handleCommentReply}>
-                        <StyledCommentReplyToInput {...bindReplyTo} autoFocus />
-                      </form>
-                  )}
-                </StyledComment>
+                  <Comment comment={comment} key={comment.comment_id}/>
               ))}
           </StyledComments>
         </>

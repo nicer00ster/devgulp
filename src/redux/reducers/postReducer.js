@@ -21,13 +21,20 @@ export default function postReducer(state = initialState, action = {}) {
         errorMessage: '',
       };
     case types.FETCH_POST_SUCCESS:
+      // console.log(arrangeComments(action.post.comments));
       return {
         ...state,
         isFetchingPost: false,
-        post: {
-          comments: action.post._embedded['replies']['0'].map(post => post),
-          ...action.post,
-        },
+        post: action.post,
+        // post: {
+        //   comments: arrangeComments(action.post.comments),
+        //   ...action.post,
+        // },
+        // post: {
+          // comments: arrangeComments(action.post.comments),
+          // comments: action.post._embedded['replies']['0'].map(post => post),
+        //   ...action.post,
+        // },
         author: { ...action.author.data },
         hasError: false,
         errorMessage: '',

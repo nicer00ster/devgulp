@@ -90,7 +90,7 @@ const StyledCommentReply = styled.form`
 `;
 
 const StyledCommentReplyTo = styled.a`
-  padding: .4rem;
+  padding: 0.4rem;
 `;
 
 const StyledCommentReplyInput = styled.input`
@@ -110,7 +110,7 @@ const StyledCommentReplyInput = styled.input`
 const StyledCommentReplyToInput = styled(StyledCommentReplyInput)`
   font-size: 14px;
   border-radius: ${props => props.theme.effects.radius};
-  background-color: rgba(0,0,0,.05);
+  background-color: rgba(0, 0, 0, 0.05);
 `;
 
 const StyledComment = styled.div`
