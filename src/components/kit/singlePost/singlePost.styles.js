@@ -63,19 +63,6 @@ const StyledSidebar = styled(animated.aside)`
 
 const StyledComments = styled.section``;
 
-const StyledCommentContainer = styled.div`
-  &.comment-reply {
-    border-left: 6px solid ${props => props.theme.colors.grey};
-    padding-left: 1.2rem;
-    margin: 0.4rem;
-  }
-`;
-
-const StyledCommentUserData = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
 const StyledCommentsHeading = styled.h2`
   font-size: 18px;
   font-weight: 100;
@@ -107,43 +94,6 @@ const StyledCommentReplyInput = styled.input`
   background-color: rgba(0, 0, 0, 0);
 `;
 
-const StyledCommentReplyToInput = styled(StyledCommentReplyInput)`
-  font-size: 14px;
-  border-radius: ${props => props.theme.effects.radius};
-  background-color: rgba(0, 0, 0, 0.05);
-`;
-
-const StyledComment = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-radius: ${props => props.theme.effects.radius};
-  box-shadow: ${props => props.theme.effects.shadowHover};
-  padding: 1.2rem;
-  margin: 1.2rem;
-`;
-
-const StyledCommentAuthor = styled.p`
-  color: ${props => props.theme.colors.black};
-  margin: 0;
-`;
-
-const StyledCommentDate = styled.time`
-  color: ${props => props.theme.colors.lightBlack};
-`;
-
-const StyledCommentAuthorDate = styled.div`
-  padding-left: 0.6rem;
-`;
-
-const StyledCommentDateDivider = styled.span`
-  margin-left: 0.4rem;
-  margin-right: 0.4rem;
-  &:before {
-    font-weight: bold;
-    content: '\\00B7';
-  }
-`;
-
 export {
   StyleSinglePost,
   StyledSinglePostHeading,
@@ -155,16 +105,8 @@ export {
   StyledSinglePostContent,
   StyledSidebar,
   StyledComments,
-  StyledCommentContainer,
-  StyledCommentUserData,
   StyledCommentsHeading,
   StyledCommentReply,
   StyledCommentReplyInput,
   StyledCommentReplyTo,
-  StyledCommentReplyToInput,
-  StyledComment,
-  StyledCommentAuthor,
-  StyledCommentDate,
-  StyledCommentDateDivider,
-  StyledCommentAuthorDate,
 };

@@ -190,7 +190,10 @@ function apiAddCommentReply(data) {
       parent: data.parent,
     },
     url: `${API_URL}/comments`,
-  }).then(reply => reply);
+  })
+    .then(reply => reply)
+    .then(() => apiFetchPost(data.postId))
+    .then(res => res);
 }
 
 function apiSearch(query) {
@@ -315,9 +318,6 @@ function* fetchPostSaga(data) {
   try {
     let response = yield call(apiFetchPost, data.postId);
     const author = yield call(apiFetchUser, response.data.author);
-    // const comments = arrangeComments(response.data.comments);
-    //
-    console.log(response);
 
     yield put({ type: types.FETCH_POST_SUCCESS, post: response.data, author });
   } catch (error) {
@@ -386,9 +386,9 @@ function* addCommentSaga(data) {
 }
 
 function* addCommentReplySaga(data) {
-  console.log('addCommentReplySaga', data);
   try {
     const response = yield call(apiAddCommentReply, data);
+    console.log('addCommentReplySaga', response);
     yield put({ type: types.ADD_COMMENT_REPLY_SUCCESS, response });
   } catch (error) {
     yield put({ type: types.ADD_COMMENT_REPLY_FAILURE, error });

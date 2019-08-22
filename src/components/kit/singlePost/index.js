@@ -17,23 +17,14 @@ import {
   StyledCommentsHeading,
   StyledCommentReply,
   StyledCommentReplyInput,
-  StyledCommentReplyTo,
-  StyledCommentReplyToInput,
-  StyledComment,
-  StyledCommentContainer,
-  StyledCommentAuthorDate,
-  StyledCommentUserData,
-  StyledCommentAuthor,
-  StyledCommentDate,
-  StyledCommentDateDivider,
   StyledSidebar,
 } from './singlePost.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledDivider } from '../globals/globals.styles';
-import { addComment, addCommentReply } from '../../../redux/actions';
+import { addComment } from '../../../redux/actions';
 import Loading from '../loading';
 import LikeButton from '../likeButton';
-import Comment from './comment';
+import Comments from './comments';
 
 function isEmpty(obj) {
   for (const key in obj) {
@@ -48,7 +39,6 @@ function SinglePost(props) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
   const [leftOffset, setLeftOffset] = useState(0);
-  // const [isReplyingTo, setIsReplyingTo] = useState(null);
 
   const {
     value: reply,
@@ -57,14 +47,6 @@ function SinglePost(props) {
     setError: setReplyError,
     hasError: replyError,
   } = useInput('');
-
-  // const {
-  //   value: replyTo,
-  //   bind: bindReplyTo,
-  //   reset: resetReplyTo,
-  //   setError: setReplyToError,
-  //   hasError: replyToError,
-  // } = useInput('');
 
   const handleWindowScroll = useCallback(() => {
     window.scrollY > 50 ? setIsScrolled(true) : setIsScrolled(false);
@@ -80,12 +62,6 @@ function SinglePost(props) {
     props.addComment(props.user.token, post.id, reply);
     resetReply();
   }
-
-  // function handleCommentReply(e) {
-  //   e.preventDefault();
-  //   props.addCommentReply(props.user.token, post.id, replyTo, isReplyingTo);
-  //   resetReplyTo();
-  // }
 
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
@@ -182,10 +158,9 @@ function SinglePost(props) {
                 placeholder="Have something to say?"
               />
             </StyledCommentReply>
-            {!isEmpty(post) &&
-              post.comments.map(comment => (
-                  <Comment comment={comment} key={comment.comment_id}/>
-              ))}
+            {!isEmpty(post) && (
+              <Comments postId={post.id} comments={post.comments} />
+            )}
           </StyledComments>
         </>
       )}
@@ -199,7 +174,6 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = {
   addComment,
-  addCommentReply,
 };
 
 export default connect(

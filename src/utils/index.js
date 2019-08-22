@@ -60,13 +60,13 @@ export function arrangeComments(commentsList) {
   for (let i = 0; i < commentsList.length; i += 1) {
     commentsList[i].comment_children = [];
     let date = commentsList[i].comment_date
-        .split(' ')
-        .join('T')
-        .concat('Z');
+      .split(' ')
+      .join('T')
+      .concat('Z');
     commentsList[i].comment_date = new Date(date);
     commentsList[i].comment_depth = getCommentDepth(
-        commentsList[i],
-        commentsList,
+      commentsList[i],
+      commentsList,
     );
     if (getCommentDepth(commentsList[i], commentsList) > maxDepth) {
       maxDepth = getCommentDepth(commentsList[i], commentsList);
