@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { animated } from 'react-spring';
 
 const StyleSinglePost = styled.article`
+
+`;
+
+const StyledSinglePostContainer = styled.div`
   position: relative;
   margin: 0 auto;
   max-width: 720px;
@@ -15,9 +19,14 @@ const StyledSinglePostHeading = styled.h1`
   font-size: 40px;
 `;
 
-const StyledSinglePostUser = styled.div`
+const StyledSinglePostMeta = styled.div`
   display: flex;
   align-items: center;
+  padding: .4rem 0;
+`;
+
+const StyledSinglePostMetaMore = styled(StyledSinglePostMeta)`
+  justify-content: space-between;
 `;
 
 const StyledSinglePostAuthorDate = styled.div`
@@ -94,10 +103,49 @@ const StyledCommentReplyInput = styled.input`
   background-color: rgba(0, 0, 0, 0);
 `;
 
+const StyledLikeContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledLikeCount = styled(animated.p)`
+  margin: 1.2rem;
+  padding-left: 1rem;
+  letter-spacing: 2px;
+  font-family: 'Trirong', sans-serif;
+  position: relative;
+  & span {
+    left: 0;
+  }
+`;
+
+const StyledMoreItems = styled.div`
+
+`;
+
+const StyledMoreItem = styled.button`
+  position: relative;
+  border: 0;
+  outline: 0;
+  background-color: rgba(0,0,0,0);
+  cursor: pointer;
+  padding: 1.2rem;
+  color: ${props => props.theme.colors.lightBlack};
+  font-size: 20px;
+  bottom: 0;
+  transition: all 0.15s ease-in; 
+  &:hover, &:focus {
+    color: ${props => props.theme.colors.black};
+    bottom: 3px
+  }
+`;
+
 export {
   StyleSinglePost,
+  StyledSinglePostContainer,
   StyledSinglePostHeading,
-  StyledSinglePostUser,
+  StyledSinglePostMeta,
+  StyledSinglePostMetaMore,
   StyledSinglePostAuthor,
   StyledSinglePostAuthorDate,
   StyledSinglePostDate,
@@ -109,4 +157,8 @@ export {
   StyledCommentReply,
   StyledCommentReplyInput,
   StyledCommentReplyTo,
+  StyledLikeContainer,
+  StyledLikeCount,
+  StyledMoreItems,
+  StyledMoreItem,
 };

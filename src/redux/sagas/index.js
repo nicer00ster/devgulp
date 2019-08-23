@@ -11,7 +11,7 @@ import {
   delay,
 } from 'redux-saga/effects';
 import axios from 'axios';
-import { API_URL, TOKEN_URL } from '../constants';
+import { API_URL, TOKEN_URL, ACF_URL } from '../constants';
 import { setToken, verifyToken, arrangeComments } from '../../utils';
 
 import * as types from '../constants';
@@ -201,6 +201,24 @@ function apiSearch(query) {
     method: 'get',
     url: `${API_URL}/search?search=${query}&_embed`,
   }).then(results => results);
+}
+
+function apiUpdatePostLikes(data, userLikes) {
+  console.log('apiUpdatePostLikes', data, userLikes);
+
+  return axios({
+    method: 'post',
+    url: `${ACF_URL}/posts/${data.postId}`,
+    headers: {
+      Authorization: `Bearer ${data.token}`,
+      'Content-Type': 'application/json',
+    },
+    data: {
+      fields: {
+        post_likes: userLikes,
+      },
+    },
+  }).then(post => post);
 }
 
 // Start sagas.
@@ -405,17 +423,38 @@ function* searchSaga(data) {
   }
 }
 
+function* updatePostLikesSaga(data) {
+  let userLikes = data.postLikes;
+
+  if (userLikes.includes(data.userId)) {
+    userLikes = userLikes.filter(id => id !== data.userId);
+  } else {
+    userLikes.push(data.userId);
+  }
+
+  try {
+    const response = yield call(apiUpdatePostLikes, data, userLikes);
+    yield put({
+      type: types.UPDATE_POST_LIKES_SUCCESS,
+      response: response.data,
+    });
+  } catch (error) {
+    yield put({ type: types.UPDATE_POST_LIKES_FAILURE, error });
+  }
+}
+
 function* rootSaga() {
   yield all([
+    takeEvery(types.VERIFIED_TOKEN, fetchTokenSaga),
     takeEvery(types.REGISTER, registerSaga),
     takeEvery(types.LOGIN, loginSaga),
     takeEvery(types.LOGOUT, logoutSaga),
     takeEvery(types.SEARCH, searchSaga),
-    takeEvery(types.VERIFIED_TOKEN, fetchTokenSaga),
     takeEvery(types.ADD_POST, addPostSaga),
     takeEvery(types.ADD_MEDIA, addMediaSaga),
     takeEvery(types.ADD_COMMENT, addCommentSaga),
     takeEvery(types.ADD_COMMENT_REPLY, addCommentReplySaga),
+    takeEvery(types.UPDATE_POST_LIKES, updatePostLikesSaga),
     takeEvery(types.FETCH_TOTAL_POSTS, fetchTotalPostsSaga),
     takeEvery(types.FETCH_USER, fetchUserSaga),
     takeEvery(types.FETCH_USERS, fetchUsersSaga),

@@ -72,7 +72,16 @@ export function filterTaxonomy(taxonomy) {
   };
 }
 
-// Auth Actions
+export function updatePostLikes(token, postLikes, postId, userId) {
+  return {
+    type: types.UPDATE_POST_LIKES,
+    token,
+    postLikes,
+    postId,
+    userId,
+  };
+}
+
 export function login(username, password) {
   return {
     type: types.LOGIN,

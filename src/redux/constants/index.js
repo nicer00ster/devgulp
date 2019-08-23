@@ -1,6 +1,7 @@
 // API URL
 export const API_URL = 'http://localhost:8000/wp-json/wp/v2';
 export const TOKEN_URL = 'http://localhost:8000/wp-json/jwt-auth/v1/token';
+export const ACF_URL = 'http://localhost:8000/wp-json/acf/v3';
 
 export const ALLOWED_MIME_TYPES = [
   'image/jpeg',
@@ -92,3 +93,7 @@ export const ADD_COMMENT_FAILURE = 'ADD_COMMENT_FAILURE';
 export const ADD_COMMENT_REPLY = 'ADD_COMMENT_REPLY';
 export const ADD_COMMENT_REPLY_SUCCESS = 'ADD_COMMENT_REPLY_SUCCESS';
 export const ADD_COMMENT_REPLY_FAILURE = 'ADD_COMMENT_REPLY_FAILURE';
+
+export const UPDATE_POST_LIKES = 'UPDATE_POST_LIKES';
+export const UPDATE_POST_LIKES_SUCCESS = 'UPDATE_POST_LIKES_SUCCESS';
+export const UPDATE_POST_LIKES_FAILURE = 'UPDATE_POST_LIKES_FAILURE';

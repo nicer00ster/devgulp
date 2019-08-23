@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { fetchPost } from '../redux/actions';
 import SinglePost from '../components/kit/singlePost';
 import Container from '../components/kit/container';
+import Loading from '../components/kit/loading';
 
 function Post(props) {
   const router = useRouter();
@@ -14,6 +15,9 @@ function Post(props) {
     props.fetchPost(id);
   }, []);
 
+  if (props.post.isFetchingPost) {
+    return <Loading />;
+  }
   return (
     <Container>
       <SinglePost post={props.post} />
