@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import Link from 'next/link';
 import moment from 'moment';
 import {
   StyledComment,
@@ -45,29 +46,35 @@ function EnhancedComment(props) {
       key={comment.comment_ID}
       className={props.isChild ? 'comment-reply' : ''}>
       <StyledCommentContainer>
-        <StyledCommentUserData>
-          <StyledAvatar className="no-touch" tabIndex="-1" size={32}>
-            <img
-              src={
-                !comment.comment_author_avatar
-                  ? '/static/icons/default_avatar.png'
-                  : comment.comment_author_avatar
-              }
-              alt={props.user.username}
-            />
-          </StyledAvatar>
-          <StyledCommentAuthorDate>
-            <StyledCommentAuthor>{comment.comment_author}</StyledCommentAuthor>
-            <StyledCommentDate>
-              {moment(comment.comment_date).format('MMM Do')}
-              <StyledCommentDateDivider />
-              {moment(comment.comment_date).format('h:mm a')}
-            </StyledCommentDate>
-          </StyledCommentAuthorDate>
-        </StyledCommentUserData>
+        <Link href={`/user?userId=${comment.user_id}`}>
+          <StyledCommentUserData
+              aria-label={`Click to view ${comment.comment_author}'s profile.`}
+              href="#">
+            <StyledAvatar className="no-touch" tabIndex="-1" size={32}>
+              <img
+                  src={
+                    !comment.comment_author_avatar
+                        ? '/static/icons/default_avatar.png'
+                        : comment.comment_author_avatar
+                  }
+                  alt={props.user.username}
+              />
+            </StyledAvatar>
+            <StyledCommentAuthorDate>
+              <StyledCommentAuthor>{comment.comment_author}</StyledCommentAuthor>
+              <StyledCommentDate>
+                {moment(comment.comment_date).format('MMM Do')}
+                <StyledCommentDateDivider />
+                {moment(comment.comment_date).format('h:mm a')}
+              </StyledCommentDate>
+            </StyledCommentAuthorDate>
+          </StyledCommentUserData>
+        </Link>
         <p>{comment.comment_content}</p>
       </StyledCommentContainer>
       <StyledCommentReplyTo
+        href="#"
+        aria-label={`Reply to ${comment.comment_author}.`}
         onClick={e => {
           e.preventDefault();
           setIsReplyingTo(comment.comment_ID);

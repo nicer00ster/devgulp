@@ -42,10 +42,12 @@ const StyledCommentDateDivider = styled.span`
   }
 `;
 
-const StyledCommentContainer = styled.div``;
+const StyledCommentContainer = styled.div`
 
-const StyledCommentUserData = styled.div`
-  display: flex;
+`;
+
+const StyledCommentUserData = styled.a`
+  display: inline-flex;
   align-items: center;
 `;
 const StyledCommentReplyTo = styled.a`
