@@ -15,4 +15,4 @@ const StyledBackground = styled.div`
   border-bottom: 1px solid ${props => props.theme.colors.grey};
 `;
 
-export { StyledBackground };
+export {StyledBackground};

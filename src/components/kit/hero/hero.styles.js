@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 const particleAnimation = keyframes`
     from {
@@ -14,20 +14,20 @@ const StyledHero = styled.div`
   padding: 8rem 0;
   opacity: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? '0.4'
-      : '1'};
+        ? '0.4'
+        : '1'};
   transform: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? 'scale(0.95)'
-      : ''};
+        ? 'scale(0.95)'
+        : ''};
   overflow: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? 'hidden'
-      : 'visible'};
+        ? 'hidden'
+        : 'visible'};
   pointer-events: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? 'none'
-      : 'all'};
+        ? 'none'
+        : 'all'};
   transition: all 0.25s linear;
 `;
 
@@ -57,4 +57,4 @@ const StyledHeroSwift = styled.div`
   }
 `;
 
-export { StyledHero, StyledHeroSwift };
+export {StyledHero, StyledHeroSwift};

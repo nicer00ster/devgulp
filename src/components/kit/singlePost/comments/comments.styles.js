@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledCommentReplyInput } from '../singlePost.styles';
+import {StyledCommentReplyInput} from '../singlePost.styles';
 
 const StyledCommentReplyToInput = styled(StyledCommentReplyInput)`
   font-size: 14px;
@@ -53,13 +53,13 @@ const StyledCommentReplyTo = styled.a`
 `;
 
 export {
-  StyledCommentReplyToInput,
-  StyledCommentUserData,
-  StyledComment,
-  StyledCommentReplyTo,
-  StyledCommentContainer,
-  StyledCommentAuthor,
-  StyledCommentDate,
-  StyledCommentDateDivider,
-  StyledCommentAuthorDate,
+    StyledCommentReplyToInput,
+    StyledCommentUserData,
+    StyledComment,
+    StyledCommentReplyTo,
+    StyledCommentContainer,
+    StyledCommentAuthor,
+    StyledCommentDate,
+    StyledCommentDateDivider,
+    StyledCommentAuthorDate,
 };

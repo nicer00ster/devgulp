@@ -7,20 +7,20 @@ const StyledFooterOuter = styled.div`
   color: ${props => props.theme.colors.lightBlack};
   opacity: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? '0.4'
-      : '1'};
+        ? '0.4'
+        : '1'};
   transform: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? 'scale(0.95)'
-      : ''};
+        ? 'scale(0.95)'
+        : ''};
   overflow: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? 'hidden'
-      : 'visible'};
+        ? 'hidden'
+        : 'visible'};
   pointer-events: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? 'none'
-      : 'all'};
+        ? 'none'
+        : 'all'};
   transition: all 0.25s linear;
 `;
 
@@ -47,9 +47,9 @@ const StyledFooterListItem = styled.li`
 `;
 
 export {
-  StyledFooterOuter,
-  StyledFooterInner,
-  StyledFooter,
-  StyledFooterList,
-  StyledFooterListItem,
+    StyledFooterOuter,
+    StyledFooterInner,
+    StyledFooter,
+    StyledFooterList,
+    StyledFooterListItem,
 };

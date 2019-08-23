@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 const ripple = keyframes`
   0% {
@@ -68,4 +68,4 @@ const StyledRippleCircle = styled.span`
   background: rgba(255, 255, 255, 0.25);
 `;
 
-export { StyledButton, StyledRipple, StyledRippleCircle };
+export {StyledButton, StyledRipple, StyledRippleCircle};

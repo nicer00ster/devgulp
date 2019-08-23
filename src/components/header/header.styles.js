@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { animated } from 'react-spring';
+import {animated} from 'react-spring';
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -241,19 +241,19 @@ const StyledSearchInput = styled(animated.li)`
 `;
 
 export {
-  StyledHeader,
-  StyledNav,
-  StyledFilterNav,
-  StyledFilterItems,
-  StyledFilterItem,
-  StyledCategoryCount,
-  StyledLogin,
-  StyledSignup,
-  StyledLogoContainer,
-  StyledLogo,
-  StyledMenu,
-  StyledMenuItem,
-  StyledAvatar,
-  StyledSearch,
-  StyledSearchInput,
+    StyledHeader,
+    StyledNav,
+    StyledFilterNav,
+    StyledFilterItems,
+    StyledFilterItem,
+    StyledCategoryCount,
+    StyledLogin,
+    StyledSignup,
+    StyledLogoContainer,
+    StyledLogo,
+    StyledMenu,
+    StyledMenuItem,
+    StyledAvatar,
+    StyledSearch,
+    StyledSearchInput,
 };

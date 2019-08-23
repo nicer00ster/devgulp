@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { animated } from 'react-spring';
+import {animated} from 'react-spring';
 
 const StyledPosts = styled.ul`
   display: grid;
@@ -171,17 +171,17 @@ const StyledNoResults = styled.p`
 `;
 
 export {
-  StyledPosts,
-  StyledPost,
-  StyledPostContent,
-  StyledPostTaxonomies,
-  StyledPostTaxonomyItem,
-  StyledPostTitle,
-  StyledPostAuthor,
-  StyledPostDateStamp,
-  StyledDateAuthor,
-  StyledDateAuthorDivider,
-  StyledPostExcerpt,
-  StyledPostImage,
-  StyledNoResults,
+    StyledPosts,
+    StyledPost,
+    StyledPostContent,
+    StyledPostTaxonomies,
+    StyledPostTaxonomyItem,
+    StyledPostTitle,
+    StyledPostAuthor,
+    StyledPostDateStamp,
+    StyledDateAuthor,
+    StyledDateAuthorDivider,
+    StyledPostExcerpt,
+    StyledPostImage,
+    StyledNoResults,
 };

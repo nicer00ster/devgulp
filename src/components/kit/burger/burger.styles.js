@@ -30,7 +30,7 @@ const StyledBurger = styled.a`
     width: 8px;
     height: 2px;
     background: ${props =>
-      props.drawerOpen
+    props.drawerOpen
         ? props.theme.colors.lightBlack
         : props.theme.colors.black};
     transition: width 0.125s ease-in-out, background 0.25s linear,
@@ -44,4 +44,4 @@ const StyledBurger = styled.a`
   }
 `;
 
-export { StyledBurger };
+export {StyledBurger};

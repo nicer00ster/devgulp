@@ -46,11 +46,11 @@ const StyledSingleUserDescription = styled.p`
 `;
 
 export {
-  StyledSingleUser,
-  StyledSingleUserContainer,
-  StyledSingleUserInfo,
-  StyledSingleUserContent,
-  StyledSingleUserName,
-  StyledSingleUserDate,
-  StyledSingleUserDescription,
+    StyledSingleUser,
+    StyledSingleUserContainer,
+    StyledSingleUserInfo,
+    StyledSingleUserContent,
+    StyledSingleUserName,
+    StyledSingleUserDate,
+    StyledSingleUserDescription,
 };

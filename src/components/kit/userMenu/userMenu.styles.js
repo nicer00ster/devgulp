@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { animated } from 'react-spring';
+import {animated} from 'react-spring';
 
 const StyledUserMenu = styled(animated.fieldset)`
   position: absolute;
@@ -95,12 +95,12 @@ const StyledLogoutButton = styled.button`
 `;
 
 export {
-  StyledUserMenu,
-  StyledUserMenuList,
-  StyledUserMenuListItem,
-  StyledUserDataListItem,
-  StyledUserInfo,
-  StyledUserMenuDivider,
-  StyledUserMenuCaret,
-  StyledLogoutButton,
+    StyledUserMenu,
+    StyledUserMenuList,
+    StyledUserMenuListItem,
+    StyledUserDataListItem,
+    StyledUserInfo,
+    StyledUserMenuDivider,
+    StyledUserMenuCaret,
+    StyledLogoutButton,
 };

@@ -66,8 +66,8 @@ const StyledCheckboxCircle = styled.span`
 `;
 
 export {
-  StyledCheckboxLabel,
-  StyledCheckboxInput,
-  StyledCheckboxTitle,
-  StyledCheckboxCircle,
+    StyledCheckboxLabel,
+    StyledCheckboxInput,
+    StyledCheckboxTitle,
+    StyledCheckboxCircle,
 };

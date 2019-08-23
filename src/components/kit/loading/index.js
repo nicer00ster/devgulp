@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 const loading = keyframes`
     to {
@@ -24,6 +24,6 @@ const Spinner = styled.span`
   }
 `;
 
-const Loading = () => <Spinner />;
+const Loading = () => <Spinner/>;
 
 export default Loading;

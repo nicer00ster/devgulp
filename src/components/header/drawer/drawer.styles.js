@@ -26,7 +26,7 @@ const StyledDrawer = styled.div`
   ul,
   div {
     opacity: ${props =>
-      props.isLoggingOut || props.isLoggingIn ? '0.4' : '1'};
+    props.isLoggingOut || props.isLoggingIn ? '0.4' : '1'};
   }
 `;
 
@@ -85,4 +85,4 @@ const StyledDrawerUser = styled.div`
   padding: 1.2rem;
 `;
 
-export { StyledDrawer, StyledDrawerList, StyledDrawerItem, StyledDrawerUser };
+export {StyledDrawer, StyledDrawerList, StyledDrawerItem, StyledDrawerUser};

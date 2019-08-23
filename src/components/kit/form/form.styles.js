@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 const loading = keyframes`
   from {
@@ -46,7 +46,7 @@ const StyledForm = styled.form`
     border: 0;
     padding: 1.6rem;
     transform: ${props =>
-      props.formStatus === 'success' ? 'translateY(500px)' : 'translateY(0px)'};
+    props.formStatus === 'success' ? 'translateY(500px)' : 'translateY(0px)'};
     opacity: ${props => (props.formStatus === 'success' ? '0' : '1')};
     transition: all 0.5s 0.35s cubic-bezier(0.55, 0, 0.1, 1) !important;
     &[disabled] {
@@ -162,4 +162,4 @@ const StyledCheckmark = styled.div`
   }
 `;
 
-export { StyledForm, StyledInput, StyledFormHeading, StyledCheckmark };
+export {StyledForm, StyledInput, StyledFormHeading, StyledCheckmark};

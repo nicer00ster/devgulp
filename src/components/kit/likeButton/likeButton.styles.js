@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 const fadeOut = keyframes`
     0% {
@@ -91,4 +91,4 @@ const StyledLikeConfetti = styled.div`
   background: ${props => props.color};
 `;
 
-export { StyledLikeButton, StyledLikeIcon, StyledLikeConfetti };
+export {StyledLikeButton, StyledLikeIcon, StyledLikeConfetti};

@@ -6,4 +6,4 @@ const StyledUsers = styled.ul`
 
 const StyledUser = styled.li``;
 
-export { StyledUsers, StyledUser };
+export {StyledUsers, StyledUser};

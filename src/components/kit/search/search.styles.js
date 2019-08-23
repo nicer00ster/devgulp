@@ -19,4 +19,4 @@ const StyledSearchNoResults = styled.p`
   text-align: center;
 `;
 
-export { StyledSearch, StyledSearchNoResults };
+export {StyledSearch, StyledSearchNoResults};

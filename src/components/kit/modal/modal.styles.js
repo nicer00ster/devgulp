@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { animated } from 'react-spring';
+import {animated} from 'react-spring';
 
 const StyledModal = styled(animated.div)``;
 
@@ -40,4 +40,4 @@ const StyledCloseModal = styled.i`
   padding: 0.4rem;
 `;
 
-export { StyledModal, StyledModalContainer, StyledModalItem, StyledCloseModal };
+export {StyledModal, StyledModalContainer, StyledModalItem, StyledCloseModal};

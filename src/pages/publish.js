@@ -1,38 +1,38 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { connect } from 'react-redux';
+import {useEffect} from 'react';
+import {useRouter} from 'next/router';
+import {connect} from 'react-redux';
 import EnhancedPublish from '../components/kit/publish';
-import { fetchCategories, openLoginMenu } from '../redux/actions';
+import {fetchCategories, openLoginMenu} from '../redux/actions';
 import Container from '../components/kit/container';
 import Hero from '../components/kit/hero';
 
 function Publish(props) {
-  const router = useRouter();
+    const router = useRouter();
 
-  useEffect(() => {
-    if (!props.cookie) {
-      router.push('/');
-      //  TODO: Warn user to login in order to view this page.
-    } else {
-      props.fetchCategories();
-    }
-  }, []);
-  return (
-    <>
-      <Hero></Hero>
-      <Container>
-        <EnhancedPublish />
-      </Container>
-    </>
-  );
+    useEffect(() => {
+        if (!props.cookie) {
+            router.push('/');
+            //  TODO: Warn user to login in order to view this page.
+        } else {
+            props.fetchCategories();
+        }
+    }, []);
+    return (
+        <>
+            <Hero></Hero>
+            <Container>
+                <EnhancedPublish/>
+            </Container>
+        </>
+    );
 }
 
 const mapDispatchToProps = {
-  fetchCategories,
-  openLoginMenu,
+    fetchCategories,
+    openLoginMenu,
 };
 
 export default connect(
-  null,
-  mapDispatchToProps,
+    null,
+    mapDispatchToProps,
 )(Publish);

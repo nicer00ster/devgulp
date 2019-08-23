@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 const fadeOut = keyframes`
     0% {
@@ -234,16 +234,16 @@ const StyledPreviewImage = styled.img`
 `;
 
 export {
-  StyledPublish,
-  StyledPublishContainer,
-  StyledPublishTitle,
-  StyledPublishBody,
-  StyledPublishButton,
-  StyledPublishIcon,
-  StyledPublishConfetti,
-  StyledPublishCategories,
-  StyledPublishImageUploadWrapper,
-  StyledPublishImageUpload,
-  StyledPreviewImageButton,
-  StyledPreviewImage,
+    StyledPublish,
+    StyledPublishContainer,
+    StyledPublishTitle,
+    StyledPublishBody,
+    StyledPublishButton,
+    StyledPublishIcon,
+    StyledPublishConfetti,
+    StyledPublishCategories,
+    StyledPublishImageUploadWrapper,
+    StyledPublishImageUpload,
+    StyledPreviewImageButton,
+    StyledPreviewImage,
 };

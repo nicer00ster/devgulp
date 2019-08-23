@@ -3,15 +3,15 @@ export const API_URL = 'http://localhost:8000/wp-json/wp/v2';
 export const TOKEN_URL = 'http://localhost:8000/wp-json/jwt-auth/v1/token';
 
 export const ALLOWED_MIME_TYPES = [
-  'image/jpeg',
-  'image/gif',
-  'image/png',
-  'image/bmp',
+    'image/jpeg',
+    'image/gif',
+    'image/png',
+    'image/bmp',
 ];
 export const FILE_TYPE_ERROR = {
-  error: {
-    message: 'File type not allowed.',
-  },
+    error: {
+        message: 'File type not allowed.',
+    },
 };
 
 // Global types

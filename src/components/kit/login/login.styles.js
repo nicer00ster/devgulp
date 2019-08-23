@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-import { animated } from 'react-spring';
+import styled, {keyframes} from 'styled-components';
+import {animated} from 'react-spring';
 
 const loading = keyframes`
   from {
@@ -70,4 +70,4 @@ const StyledLoginCaret = styled.div`
   `};
 `;
 
-export { StyledLogin, StyledLoginForm, StyledLoginCaret };
+export {StyledLogin, StyledLoginForm, StyledLoginCaret};

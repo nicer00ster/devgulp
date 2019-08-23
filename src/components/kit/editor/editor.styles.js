@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { animated } from 'react-spring';
+import {animated} from 'react-spring';
 
 const StyledEditor = styled.div`
   position: relative;
@@ -121,13 +121,13 @@ const StyledEditorButton = styled.span`
 `;
 
 export {
-  StyledEditor,
-  StyledEditorContent,
-  StyledEditorCode,
-  StyledEditorMenu,
-  StyledEditorMenuItem,
-  StyledEditorLine,
-  StyledEditorHeader,
-  StyledEditorButtons,
-  StyledEditorButton,
+    StyledEditor,
+    StyledEditorContent,
+    StyledEditorCode,
+    StyledEditorMenu,
+    StyledEditorMenuItem,
+    StyledEditorLine,
+    StyledEditorHeader,
+    StyledEditorButtons,
+    StyledEditorButton,
 };

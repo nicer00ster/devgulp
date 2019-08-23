@@ -9,4 +9,4 @@ const StyledDivider = styled.div`
   width: 100%;
 `;
 
-export { StyledDivider };
+export {StyledDivider};

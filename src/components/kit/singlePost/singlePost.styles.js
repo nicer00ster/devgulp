@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { animated } from 'react-spring';
+import {animated} from 'react-spring';
 
 const StyleSinglePost = styled.article`
   position: relative;
@@ -95,18 +95,18 @@ const StyledCommentReplyInput = styled.input`
 `;
 
 export {
-  StyleSinglePost,
-  StyledSinglePostHeading,
-  StyledSinglePostUser,
-  StyledSinglePostAuthor,
-  StyledSinglePostAuthorDate,
-  StyledSinglePostDate,
-  StyledSinglePostImage,
-  StyledSinglePostContent,
-  StyledSidebar,
-  StyledComments,
-  StyledCommentsHeading,
-  StyledCommentReply,
-  StyledCommentReplyInput,
-  StyledCommentReplyTo,
+    StyleSinglePost,
+    StyledSinglePostHeading,
+    StyledSinglePostUser,
+    StyledSinglePostAuthor,
+    StyledSinglePostAuthorDate,
+    StyledSinglePostDate,
+    StyledSinglePostImage,
+    StyledSinglePostContent,
+    StyledSidebar,
+    StyledComments,
+    StyledCommentsHeading,
+    StyledCommentReply,
+    StyledCommentReplyInput,
+    StyledCommentReplyTo,
 };

@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import appReducer from './appReducer';
 import userReducer from './userReducer';
 import usersReducer from './usersReducer';
@@ -8,13 +8,13 @@ import authorReducer from './authorReducer';
 import searchReducer from './searchReducer';
 
 const rootReducer = combineReducers({
-  root: appReducer,
-  user: userReducer,
-  users: usersReducer,
-  posts: postsReducer,
-  post: postReducer,
-  author: authorReducer,
-  search: searchReducer,
+    root: appReducer,
+    user: userReducer,
+    users: usersReducer,
+    posts: postsReducer,
+    post: postReducer,
+    author: authorReducer,
+    search: searchReducer,
 });
 
 export default rootReducer;
