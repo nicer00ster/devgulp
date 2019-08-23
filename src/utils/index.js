@@ -33,6 +33,13 @@ export function getTaxonomyIcon(taxonomy) {
   }
 }
 
+export function isObjectEmpty(obj) {
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) return false;
+  }
+  return true;
+}
+
 function getCommentById(commentID, comments_list) {
   for (let j = 0; j < comments_list.length; j++) {
     if (comments_list[j].comment_ID == commentID) {

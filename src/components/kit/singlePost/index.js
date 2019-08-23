@@ -6,8 +6,12 @@ import { useSpring } from 'react-spring';
 import { useMeasure, useInput } from '../../../hooks';
 import {
   StyleSinglePost,
+  StyledSinglePostContainer,
   StyledSinglePostHeading,
-  StyledSinglePostUser,
+  StyledSinglePostMeta,
+  StyledSinglePostMetaMore,
+  StyledMoreItems,
+  StyledMoreItem,
   StyledSinglePostAuthorDate,
   StyledSinglePostDate,
   StyledSinglePostAuthor,
@@ -17,21 +21,15 @@ import {
   StyledCommentsHeading,
   StyledCommentReply,
   StyledCommentReplyInput,
+  StyledLikeContainer,
+  StyledLikeCount,
   StyledSidebar,
 } from './singlePost.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledDivider } from '../globals/globals.styles';
-import { addComment } from '../../../redux/actions';
-import Loading from '../loading';
+import { addComment, updatePostLikes } from '../../../redux/actions';
 import LikeButton from '../likeButton';
 import Comments from './comments';
-
-function isEmpty(obj) {
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) return false;
-  }
-  return true;
-}
 
 function SinglePost(props) {
   const { post } = props.post;
@@ -50,7 +48,7 @@ function SinglePost(props) {
 
   const handleWindowScroll = useCallback(() => {
     window.scrollY > 50 ? setIsScrolled(true) : setIsScrolled(false);
-    window.scrollY > bind.ref.current.scrollHeight - 50
+    window.scrollY > bind.ref.current.scrollHeight - 150
       ? setIsBottom(true)
       : setIsBottom(false);
 
@@ -71,100 +69,125 @@ function SinglePost(props) {
   }, [handleWindowScroll]);
 
   const spring = useSpring({
-    transform: `translateX(-${width / 2 + leftOffset / 2}px)`,
+    transform: `translateX(-${(width / 2) + (leftOffset / 2)}px)`,
     opacity: isScrolled && !isBottom ? 1 : 0,
   });
 
   return (
-    <StyleSinglePost {...bind}>
-      <StyledSidebar style={spring}>
-        <LikeButton />
-        <LikeButton />
-      </StyledSidebar>
-      {props.post.isFetchingPost ? (
-        <Loading />
-      ) : (
-        <>
-          <StyledSinglePostHeading>
-            {!isEmpty(post) && post.title.rendered}
-          </StyledSinglePostHeading>
-          <StyledSinglePostUser>
+      <StyledSinglePostContainer>
+        <StyleSinglePost {...bind}>
+          <StyledSidebar style={spring}>
+            <LikeButton
+                isLiked={post.acf.post_likes.includes(props.user.id)}
+                onClick={() =>
+                    props.updatePostLikes(
+                        props.user.token,
+                        post.acf.post_likes,
+                        post.id,
+                        props.user.id,
+                    )
+                }
+            />
+          </StyledSidebar>
+          <StyledSinglePostHeading>{post.title.rendered}</StyledSinglePostHeading>
+          <StyledSinglePostMeta>
             <StyledAvatar tabIndex="-1" size={52}>
-              <Link
-                href={`/user?userId=${!isEmpty(post) &&
-                  post._embedded['author']['0'].id}`}>
+              <Link href={`/user?userId=${post._embedded['author']['0'].id}`}>
                 <a>
                   <img
-                    src={
-                      !isEmpty(post) &&
-                      !post._embedded['author']['0'].acf.avatar
-                        ? '/static/icons/default_avatar.png'
-                        : !isEmpty(post)
-                        ? post._embedded['author']['0'].acf.avatar
-                        : '/static/icons/default_avatar.png'
-                    }
-                    alt={
-                      !isEmpty(post)
-                        ? post._embedded['author']['0'].name
-                        : 'Alt Image'
-                    }
+                      src={
+                        !post._embedded['author']['0'].acf.avatar
+                            ? '/static/icons/default_avatar.png'
+                            : post._embedded['author']['0'].acf.avatar
+                      }
+                      alt={
+                        post._embedded['author']['0'].name
+                            ? post._embedded['author']['0'].name
+                            : 'Alt Image'
+                      }
                   />
                 </a>
               </Link>
             </StyledAvatar>
             <StyledSinglePostAuthorDate>
               <StyledSinglePostAuthor>
-                {!isEmpty(post) && post._embedded['author']['0'].name}
+                {post._embedded['author']['0'].name}
               </StyledSinglePostAuthor>
               <StyledSinglePostDate>
-                {!isEmpty(post) && moment(post.date).format('MMM Do')}
+                {moment(post.date).format('MMM Do')}
               </StyledSinglePostDate>
             </StyledSinglePostAuthorDate>
-          </StyledSinglePostUser>
+          </StyledSinglePostMeta>
           <StyledSinglePostImage
-            src={
-              !isEmpty(post) && post._embedded['wp:featuredmedia']
-                ? post._embedded['wp:featuredmedia']['0'].source_url
-                : '/static/images/default_post.jpeg'
-            }
-            alt={
-              !isEmpty(post) && post._embedded['wp:featuredmedia']
-                ? !isEmpty(post) &&
-                  post._embedded['wp:featuredmedia']['0'].title.rendered
-                : 'Default Post Image'
-            }
+              src={
+                post._embedded['wp:featuredmedia']
+                    ? post._embedded['wp:featuredmedia']['0'].source_url
+                    : '/static/images/default_post.jpeg'
+              }
+              alt={
+                post._embedded['wp:featuredmedia']
+                    ? post._embedded['wp:featuredmedia']['0'].title.rendered
+                    : 'Default Post Image'
+              }
           />
           <StyledSinglePostContent
-            dangerouslySetInnerHTML={{
-              __html: !isEmpty(post) && post.content.rendered,
-            }}
+              dangerouslySetInnerHTML={{
+                __html: post.content.rendered,
+              }}
           />
+        </StyleSinglePost>
+          <StyledSinglePostMetaMore>
+            <StyledLikeContainer>
+              <LikeButton
+                  isLiked={post.acf.post_likes.includes(props.user.id)}
+                  onClick={() =>
+                      props.updatePostLikes(
+                          props.user.token,
+                          post.acf.post_likes,
+                          post.id,
+                          props.user.id,
+                      )
+                  }
+              />
+              <StyledLikeCount>
+                {post.acf.post_likes.length} likes
+              </StyledLikeCount>
+            </StyledLikeContainer>
+            <StyledMoreItems>
+              <StyledMoreItem>
+                <i className="fal fa-share-alt"></i>
+              </StyledMoreItem>
+              <StyledMoreItem>
+                <i className="fal fa-bookmark"></i>
+              </StyledMoreItem>
+              <StyledMoreItem>
+                <i className="fal fa-ellipsis-h-alt"></i>
+              </StyledMoreItem>
+            </StyledMoreItems>
+          </StyledSinglePostMetaMore>
           <StyledDivider />
           <StyledComments>
             <StyledCommentsHeading>Conversation</StyledCommentsHeading>
             <StyledCommentReply onSubmit={handleReply}>
               <StyledAvatar className="no-touch" tabIndex="-1" size={36}>
                 <img
-                  src={
-                    !props.user.avatar
-                      ? '/static/icons/default_avatar.png'
-                      : props.user.avatar
-                  }
-                  alt={props.user.username}
+                    src={
+                      !props.user.avatar
+                          ? '/static/icons/default_avatar.png'
+                          : props.user.avatar
+                    }
+                    alt={props.user.username}
                 />
               </StyledAvatar>
               <StyledCommentReplyInput
-                {...bindReply}
-                placeholder="Have something to say?"
+                  {...bindReply}
+                  placeholder="Have something to say?"
               />
             </StyledCommentReply>
-            {!isEmpty(post) && (
-              <Comments postId={post.id} comments={post.comments} />
-            )}
+            <Comments postId={post.id} comments={post.comments} />
           </StyledComments>
-        </>
-      )}
-    </StyleSinglePost>
+      </StyledSinglePostContainer>
+
   );
 }
 
@@ -174,6 +197,7 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = {
   addComment,
+  updatePostLikes,
 };
 
 export default connect(

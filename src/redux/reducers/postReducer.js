@@ -3,7 +3,7 @@ import * as types from '../constants';
 const initialState = {
   post: {},
   author: {},
-  isFetchingPost: false,
+  isFetchingPost: true,
   isAddingComment: false,
   hasError: false,
   errorMessage: '',
@@ -21,7 +21,6 @@ export default function postReducer(state = initialState, action = {}) {
         errorMessage: '',
       };
     case types.FETCH_POST_SUCCESS:
-      // console.log(arrangeComments(action.post.comments));
       return {
         ...state,
         isFetchingPost: false,
@@ -97,6 +96,24 @@ export default function postReducer(state = initialState, action = {}) {
       return {
         ...state,
         isAddingComment: false,
+      };
+    case types.UPDATE_POST_LIKES:
+      return {
+        ...state,
+      };
+    case types.UPDATE_POST_LIKES_SUCCESS:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          acf: {
+            post_likes: action.response.acf.post_likes,
+          },
+        },
+      };
+    case types.UPDATE_POST_LIKES_FAILURE:
+      return {
+        ...state,
       };
     default:
       return state;
