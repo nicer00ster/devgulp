@@ -79,7 +79,6 @@ function SinglePost(props) {
     <StyleSinglePost {...bind}>
       <StyledSidebar style={spring}>
         <LikeButton />
-        <LikeButton />
       </StyledSidebar>
       {props.post.isFetchingPost ? (
         <Loading />
