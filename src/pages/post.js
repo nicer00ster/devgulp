@@ -17,8 +17,6 @@ function Post(props) {
 
   if (props.post.isFetchingPost) {
     return <Loading />;
-  } else {
-    console.log(props.post);
   }
   return (
     <Container>

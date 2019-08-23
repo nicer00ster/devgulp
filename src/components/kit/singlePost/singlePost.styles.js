@@ -108,10 +108,15 @@ const StyledLikeContainer = styled.div`
   align-items: center;
 `;
 
-const StyledLikeCount = styled.p`
-  padding-left: 1.2rem;
-  letter-spacing: 1px;
+const StyledLikeCount = styled(animated.p)`
+  margin: 1.2rem;
+  padding-left: 1rem;
+  letter-spacing: 2px;
   font-family: 'Trirong', sans-serif;
+  position: relative;
+  & span {
+    left: 0;
+  }
 `;
 
 const StyledMoreItems = styled.div`

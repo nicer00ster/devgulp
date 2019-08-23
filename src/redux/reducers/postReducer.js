@@ -5,6 +5,7 @@ const initialState = {
   author: {},
   isFetchingPost: true,
   isAddingComment: false,
+  isUpdatingLikes: false,
   hasError: false,
   errorMessage: '',
 };
@@ -100,10 +101,12 @@ export default function postReducer(state = initialState, action = {}) {
     case types.UPDATE_POST_LIKES:
       return {
         ...state,
+        isUpdatingLikes: true,
       };
     case types.UPDATE_POST_LIKES_SUCCESS:
       return {
         ...state,
+        isUpdatingLikes: false,
         post: {
           ...state.post,
           acf: {
@@ -114,6 +117,7 @@ export default function postReducer(state = initialState, action = {}) {
     case types.UPDATE_POST_LIKES_FAILURE:
       return {
         ...state,
+        isUpdatingLikes: false,
       };
     default:
       return state;

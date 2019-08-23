@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { useEffect, useState, useCallback } from 'react';
-import { useSpring } from 'react-spring';
+import { useSpring, useTransition, animated } from 'react-spring';
 import { useMeasure, useInput } from '../../../hooks';
 import {
   StyleSinglePost,
@@ -71,6 +71,22 @@ function SinglePost(props) {
   const spring = useSpring({
     transform: `translateX(-${(width / 2) + (leftOffset / 2)}px)`,
     opacity: isScrolled && !isBottom ? 1 : 0,
+  });
+
+  const likesTransition = useTransition(props.isUpdatingLikes, null, {
+    from: {
+      transform: props.isUpdatingLikes ? `translateY(25px)` : `translateY(0px)`,
+      opacity: props.isUpdatingLikes ? 0 : 1,
+      position: 'absolute',
+    },
+    enter: {
+      transform: `translateY(0px)`,
+      opacity: 1,
+    },
+    leave: {
+      transform: props.isUpdatingLikes ? `translateY(-25px)` : `translateY(0px)`,
+      opacity: 0,
+    },
   });
 
   return (
@@ -149,19 +165,22 @@ function SinglePost(props) {
                       )
                   }
               />
-              <StyledLikeCount>
-                {post.acf.post_likes.length} likes
-              </StyledLikeCount>
+            <StyledLikeCount>
+              {likesTransition.map(({ item, props, key }) => (
+                  <animated.span key={key} style={props}>{post.acf.post_likes.length}</animated.span>
+              ))}
+              like{post.acf.post_likes.length > 1 ? 's' : ''}
+            </StyledLikeCount>
             </StyledLikeContainer>
             <StyledMoreItems>
               <StyledMoreItem>
-                <i className="fal fa-share-alt"></i>
+                <i className="fal fa-share-alt" />
               </StyledMoreItem>
               <StyledMoreItem>
-                <i className="fal fa-bookmark"></i>
+                <i className="fal fa-bookmark" />
               </StyledMoreItem>
               <StyledMoreItem>
-                <i className="fal fa-ellipsis-h-alt"></i>
+                <i className="fal fa-ellipsis-h-alt" />
               </StyledMoreItem>
             </StyledMoreItems>
           </StyledSinglePostMetaMore>
@@ -191,7 +210,8 @@ function SinglePost(props) {
   );
 }
 
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, post }) => ({
+  isUpdatingLikes: post.isUpdatingLikes,
   user,
 });
 
