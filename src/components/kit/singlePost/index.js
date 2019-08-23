@@ -169,7 +169,7 @@ function SinglePost(props) {
               {likesTransition.map(({ item, props, key }) => (
                   <animated.span key={key} style={props}>{post.acf.post_likes.length}</animated.span>
               ))}
-              like{post.acf.post_likes.length > 1 ? 's' : ''}
+              like{post.acf.post_likes.length !== 1 ? 's' : ''}
             </StyledLikeCount>
             </StyledLikeContainer>
             <StyledMoreItems>
