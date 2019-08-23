@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 
-const StyleSinglePost = styled.article`
-
-`;
+const StyleSinglePost = styled.article``;
 
 const StyledSinglePostContainer = styled.div`
   position: relative;
@@ -22,7 +20,7 @@ const StyledSinglePostHeading = styled.h1`
 const StyledSinglePostMeta = styled.div`
   display: flex;
   align-items: center;
-  padding: .4rem 0;
+  padding: 0.4rem 0;
 `;
 
 const StyledSinglePostMetaMore = styled(StyledSinglePostMeta)`
@@ -119,24 +117,23 @@ const StyledLikeCount = styled(animated.p)`
   }
 `;
 
-const StyledMoreItems = styled.div`
-
-`;
+const StyledMoreItems = styled.div``;
 
 const StyledMoreItem = styled.button`
   position: relative;
   border: 0;
   outline: 0;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
   padding: 1.2rem;
   color: ${props => props.theme.colors.lightBlack};
   font-size: 20px;
   bottom: 0;
-  transition: all 0.15s ease-in; 
-  &:hover, &:focus {
+  transition: all 0.15s ease-in;
+  &:hover,
+  &:focus {
     color: ${props => props.theme.colors.black};
-    bottom: 3px
+    bottom: 3px;
   }
 `;
 

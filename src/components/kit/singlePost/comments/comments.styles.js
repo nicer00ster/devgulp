@@ -42,9 +42,7 @@ const StyledCommentDateDivider = styled.span`
   }
 `;
 
-const StyledCommentContainer = styled.div`
-
-`;
+const StyledCommentContainer = styled.div``;
 
 const StyledCommentUserData = styled.a`
   display: inline-flex;

@@ -69,7 +69,7 @@ function SinglePost(props) {
   }, [handleWindowScroll]);
 
   const spring = useSpring({
-    transform: `translateX(-${(width / 2) + (leftOffset / 2)}px)`,
+    transform: `translateX(-${width / 2 + leftOffset / 2}px)`,
     opacity: isScrolled && !isBottom ? 1 : 0,
   });
 
@@ -84,129 +84,132 @@ function SinglePost(props) {
       opacity: 1,
     },
     leave: {
-      transform: props.isUpdatingLikes ? `translateY(-25px)` : `translateY(0px)`,
+      transform: props.isUpdatingLikes
+        ? `translateY(-25px)`
+        : `translateY(0px)`,
       opacity: 0,
     },
   });
 
   return (
-      <StyledSinglePostContainer>
-        <StyleSinglePost {...bind}>
-          <StyledSidebar style={spring}>
-            <LikeButton
-                isLiked={post.acf.post_likes.includes(props.user.id)}
-                onClick={() =>
-                    props.updatePostLikes(
-                        props.user.token,
-                        post.acf.post_likes,
-                        post.id,
-                        props.user.id,
-                    )
-                }
-            />
-          </StyledSidebar>
-          <StyledSinglePostHeading>{post.title.rendered}</StyledSinglePostHeading>
-          <StyledSinglePostMeta>
-            <StyledAvatar tabIndex="-1" size={52}>
-              <Link href={`/user?userId=${post._embedded['author']['0'].id}`}>
-                <a>
-                  <img
-                      src={
-                        !post._embedded['author']['0'].acf.avatar
-                            ? '/static/icons/default_avatar.png'
-                            : post._embedded['author']['0'].acf.avatar
-                      }
-                      alt={
-                        post._embedded['author']['0'].name
-                            ? post._embedded['author']['0'].name
-                            : 'Alt Image'
-                      }
-                  />
-                </a>
-              </Link>
-            </StyledAvatar>
-            <StyledSinglePostAuthorDate>
-              <StyledSinglePostAuthor>
-                {post._embedded['author']['0'].name}
-              </StyledSinglePostAuthor>
-              <StyledSinglePostDate>
-                {moment(post.date).format('MMM Do')}
-              </StyledSinglePostDate>
-            </StyledSinglePostAuthorDate>
-          </StyledSinglePostMeta>
-          <StyledSinglePostImage
-              src={
-                post._embedded['wp:featuredmedia']
-                    ? post._embedded['wp:featuredmedia']['0'].source_url
-                    : '/static/images/default_post.jpeg'
-              }
-              alt={
-                post._embedded['wp:featuredmedia']
-                    ? post._embedded['wp:featuredmedia']['0'].title.rendered
-                    : 'Default Post Image'
-              }
+    <StyledSinglePostContainer>
+      <StyleSinglePost {...bind}>
+        <StyledSidebar style={spring}>
+          <LikeButton
+            isLiked={post.acf.post_likes.includes(props.user.id)}
+            onClick={() =>
+              props.updatePostLikes(
+                props.user.token,
+                post.acf.post_likes,
+                post.id,
+                props.user.id,
+              )
+            }
           />
-          <StyledSinglePostContent
-              dangerouslySetInnerHTML={{
-                __html: post.content.rendered,
-              }}
-          />
-        </StyleSinglePost>
-          <StyledSinglePostMetaMore>
-            <StyledLikeContainer>
-              <LikeButton
-                  isLiked={post.acf.post_likes.includes(props.user.id)}
-                  onClick={() =>
-                      props.updatePostLikes(
-                          props.user.token,
-                          post.acf.post_likes,
-                          post.id,
-                          props.user.id,
-                      )
-                  }
-              />
-            <StyledLikeCount>
-              {likesTransition.map(({ item, props, key }) => (
-                  <animated.span key={key} style={props}>{post.acf.post_likes.length}</animated.span>
-              ))}
-              like{post.acf.post_likes.length !== 1 ? 's' : ''}
-            </StyledLikeCount>
-            </StyledLikeContainer>
-            <StyledMoreItems>
-              <StyledMoreItem>
-                <i className="fal fa-share-alt" />
-              </StyledMoreItem>
-              <StyledMoreItem>
-                <i className="fal fa-bookmark" />
-              </StyledMoreItem>
-              <StyledMoreItem>
-                <i className="fal fa-ellipsis-h-alt" />
-              </StyledMoreItem>
-            </StyledMoreItems>
-          </StyledSinglePostMetaMore>
-          <StyledDivider />
-          <StyledComments>
-            <StyledCommentsHeading>Conversation</StyledCommentsHeading>
-            <StyledCommentReply onSubmit={handleReply}>
-              <StyledAvatar className="no-touch" tabIndex="-1" size={36}>
+        </StyledSidebar>
+        <StyledSinglePostHeading>{post.title.rendered}</StyledSinglePostHeading>
+        <StyledSinglePostMeta>
+          <StyledAvatar tabIndex="-1" size={52}>
+            <Link href={`/user?userId=${post._embedded['author']['0'].id}`}>
+              <a>
                 <img
-                    src={
-                      !props.user.avatar
-                          ? '/static/icons/default_avatar.png'
-                          : props.user.avatar
-                    }
-                    alt={props.user.username}
+                  src={
+                    !post._embedded['author']['0'].acf.avatar
+                      ? '/static/icons/default_avatar.png'
+                      : post._embedded['author']['0'].acf.avatar
+                  }
+                  alt={
+                    post._embedded['author']['0'].name
+                      ? post._embedded['author']['0'].name
+                      : 'Alt Image'
+                  }
                 />
-              </StyledAvatar>
-              <StyledCommentReplyInput
-                  {...bindReply}
-                  placeholder="Have something to say?"
-              />
-            </StyledCommentReply>
-            <Comments postId={post.id} comments={post.comments} />
-          </StyledComments>
-      </StyledSinglePostContainer>
-
+              </a>
+            </Link>
+          </StyledAvatar>
+          <StyledSinglePostAuthorDate>
+            <StyledSinglePostAuthor>
+              {post._embedded['author']['0'].name}
+            </StyledSinglePostAuthor>
+            <StyledSinglePostDate>
+              {moment(post.date).format('MMM Do')}
+            </StyledSinglePostDate>
+          </StyledSinglePostAuthorDate>
+        </StyledSinglePostMeta>
+        <StyledSinglePostImage
+          src={
+            post._embedded['wp:featuredmedia']
+              ? post._embedded['wp:featuredmedia']['0'].source_url
+              : '/static/images/default_post.jpeg'
+          }
+          alt={
+            post._embedded['wp:featuredmedia']
+              ? post._embedded['wp:featuredmedia']['0'].title.rendered
+              : 'Default Post Image'
+          }
+        />
+        <StyledSinglePostContent
+          dangerouslySetInnerHTML={{
+            __html: post.content.rendered,
+          }}
+        />
+      </StyleSinglePost>
+      <StyledSinglePostMetaMore>
+        <StyledLikeContainer>
+          <LikeButton
+            isLiked={post.acf.post_likes.includes(props.user.id)}
+            onClick={() =>
+              props.updatePostLikes(
+                props.user.token,
+                post.acf.post_likes,
+                post.id,
+                props.user.id,
+              )
+            }
+          />
+          <StyledLikeCount>
+            {likesTransition.map(({ item, props, key }) => (
+              <animated.span key={key} style={props}>
+                {post.acf.post_likes.length}
+              </animated.span>
+            ))}
+            like{post.acf.post_likes.length !== 1 ? 's' : ''}
+          </StyledLikeCount>
+        </StyledLikeContainer>
+        <StyledMoreItems>
+          <StyledMoreItem>
+            <i className="fal fa-share-alt" />
+          </StyledMoreItem>
+          <StyledMoreItem>
+            <i className="fal fa-bookmark" />
+          </StyledMoreItem>
+          <StyledMoreItem>
+            <i className="fal fa-ellipsis-h-alt" />
+          </StyledMoreItem>
+        </StyledMoreItems>
+      </StyledSinglePostMetaMore>
+      <StyledDivider />
+      <StyledComments>
+        <StyledCommentsHeading>Conversation</StyledCommentsHeading>
+        <StyledCommentReply onSubmit={handleReply}>
+          <StyledAvatar className="no-touch" tabIndex="-1" size={36}>
+            <img
+              src={
+                !props.user.avatar
+                  ? '/static/icons/default_avatar.png'
+                  : props.user.avatar
+              }
+              alt={props.user.username}
+            />
+          </StyledAvatar>
+          <StyledCommentReplyInput
+            {...bindReply}
+            placeholder="Have something to say?"
+          />
+        </StyledCommentReply>
+        <Comments postId={post.id} comments={post.comments} />
+      </StyledComments>
+    </StyledSinglePostContainer>
   );
 }
 

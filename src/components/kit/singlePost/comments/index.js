@@ -48,20 +48,22 @@ function EnhancedComment(props) {
       <StyledCommentContainer>
         <Link href={`/user?userId=${comment.user_id}`}>
           <StyledCommentUserData
-              aria-label={`Click to view ${comment.comment_author}'s profile.`}
-              href="#">
+            aria-label={`Click to view ${comment.comment_author}'s profile.`}
+            href="#">
             <StyledAvatar className="no-touch" tabIndex="-1" size={32}>
               <img
-                  src={
-                    !comment.comment_author_avatar
-                        ? '/static/icons/default_avatar.png'
-                        : comment.comment_author_avatar
-                  }
-                  alt={props.user.username}
+                src={
+                  !comment.comment_author_avatar
+                    ? '/static/icons/default_avatar.png'
+                    : comment.comment_author_avatar
+                }
+                alt={props.user.username}
               />
             </StyledAvatar>
             <StyledCommentAuthorDate>
-              <StyledCommentAuthor>{comment.comment_author}</StyledCommentAuthor>
+              <StyledCommentAuthor>
+                {comment.comment_author}
+              </StyledCommentAuthor>
               <StyledCommentDate>
                 {moment(comment.comment_date).format('MMM Do')}
                 <StyledCommentDateDivider />
