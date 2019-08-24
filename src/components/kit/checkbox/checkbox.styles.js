@@ -4,9 +4,10 @@ const StyledCheckboxLabel = styled.label`
   display: inline-flex;
   position: relative;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 10px;
   padding: 0.4rem 0;
   width: 25%;
+  font-family: 'Trirong', serif;
 `;
 
 const StyledCheckboxInput = styled.input`
@@ -34,6 +35,9 @@ const StyledCheckboxInput = styled.input`
     z-index: 999;
     transition: all 0.25s ease-out;
   }
+  &:focus ~ div {
+    font-weight: 900;
+  }
   &:focus ~ span {
     outline: none;
   }
@@ -46,7 +50,7 @@ const StyledCheckboxTitle = styled.div`
   font-size: 12px;
   color: ${props => props.theme.colors.black};
   font-weight: 300;
-  text-transform: uppercase;
+  transition: all 0.15s ease-in;
 `;
 
 const StyledCheckboxCircle = styled.span`

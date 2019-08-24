@@ -64,15 +64,8 @@ const StyledCommentContentContainer = styled.div`
 
 const StyledCommentContentUserRef = styled.a`
   border-radius: ${props => props.theme.effects.radius};
-  border: 1px solid ${props => props.theme.colors.lightBlue};
-  background-color: ${props => props.theme.colors.blue};
+  background-color: ${props => props.theme.colors.lightGreen};
   padding: 0.2rem 0.4rem;
-  transition: all 0.15s ease-in;
-  &:hover,
-  &:focus {
-    background-color: ${props => props.theme.colors.lightBlue};
-    border: 1px solid ${props => props.theme.colors.blue};
-  }
 `;
 
 const StyledCommentContent = styled.div`
