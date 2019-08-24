@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import moment from 'moment';
+import { useTrail } from 'react-spring';
 import {
   StyledComment,
   StyledCommentAuthor,
@@ -10,18 +11,18 @@ import {
   StyledCommentDate,
   StyledCommentDateDivider,
   StyledCommentReplyTo,
-  StyledCommentReplyToInput,
+  StyledCommentReplyToArea,
   StyledCommentUserData,
+  StyledReplyContainer,
 } from './comments.styles';
 import { StyledComments } from '../singlePost.styles';
 import { StyledAvatar } from '../../../header/header.styles';
 import { addCommentReply } from '../../../../redux/actions';
-import { useInput } from '../../../../hooks';
+import { useInput, useOnClickOutside } from '../../../../hooks';
 
 function EnhancedComment(props) {
   const { comment } = props;
-  const [isReplyingTo, setIsReplyingTo] = useState(null);
-
+  const replyRef = useRef();
   const {
     value: replyTo,
     bind: bindReplyTo,
@@ -30,16 +31,38 @@ function EnhancedComment(props) {
     hasError: replyToError,
   } = useInput('');
 
+  useOnClickOutside(replyRef, () => {
+    props.setIsReplyingTo(null);
+  });
+
+  useEffect(() => {
+    if(props.isAddingComment) {
+      props.setIsReplyingTo(null);
+    }
+  }, [props.isAddingComment]);
+
   function handleCommentReply(e) {
     e.preventDefault();
     props.addCommentReply(
       props.user.token,
       props.postId,
       replyTo,
-      isReplyingTo,
+      props.isReplyingTo,
     );
     resetReplyTo();
   }
+
+  const inputTrail = useTrail(1, {
+    opacity: props.isReplyingTo !== null ? 1 : 0,
+    x: props.isReplyingTo !== null ? 5 : 20,
+    height: props.isReplyingTo !== null ? 'auto' : 0,
+    pointerEvents: props.isReplyingTo !== null ? 'all' : 'none',
+    from: {
+      opacity: 0,
+      x: 20,
+      height: 0,
+    },
+  });
 
   return (
     <StyledComment
@@ -72,25 +95,45 @@ function EnhancedComment(props) {
             </StyledCommentAuthorDate>
           </StyledCommentUserData>
         </Link>
-        <p>{comment.comment_content}</p>
+        <div dangerouslySetInnerHTML={{ __html: comment.comment_content }} />
       </StyledCommentContainer>
       <StyledCommentReplyTo
         href="#"
         aria-label={`Reply to ${comment.comment_author}.`}
+        className={props.isReplyingTo === comment.comment_ID && 'active-reply'}
         onClick={e => {
           e.preventDefault();
-          setIsReplyingTo(comment.comment_ID);
-          if (isReplyingTo === comment.comment_ID) {
-            setIsReplyingTo(null);
-          }
+          props.setIsReplyingTo(comment.comment_ID);
         }}>
         Reply
       </StyledCommentReplyTo>
-      {isReplyingTo === comment.comment_ID && (
-        <form onSubmit={handleCommentReply}>
-          <StyledCommentReplyToInput {...bindReplyTo} autoFocus />
-        </form>
-      )}
+      {props.isReplyingTo === comment.comment_ID &&
+        inputTrail.map(({ x, height, opacity, ...rest }, index) => (
+          <StyledReplyContainer
+            key={index}
+            ref={replyRef}
+            name={comment.comment_author}
+            style={{
+              transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+              opacity: props.isReplyingTo === comment.comment_ID && opacity,
+              height: props.isReplyingTo === comment.comment_ID && height,
+              ...rest,
+            }}>
+            <StyledCommentReplyToArea
+              {...bindReplyTo}
+              autoFocus
+              onKeyDown={e => {
+                if (e.keyCode === 13 && e.shiftKey === false) {
+                  e.preventDefault();
+                  handleCommentReply(e);
+                }
+              }}
+            />
+            <label>
+              Replying to {comment.comment_author}
+            </label>
+          </StyledReplyContainer>
+        ))}
       {props.comment.comment_children &&
         props.comment.comment_children.map(reply => (
           <EnhancedComment
@@ -134,8 +177,9 @@ function Comments(props) {
   );
 }
 
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, post }) => ({
   user,
+  isAddingComment: post.isAddingComment,
 });
 
 const mapDispatchToProps = {

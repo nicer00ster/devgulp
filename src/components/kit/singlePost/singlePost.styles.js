@@ -99,6 +99,9 @@ const StyledCommentReplyInput = styled.input`
   resize: none;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0);
+  ::placeholder {
+    padding-left: 0.4rem;
+  }
 `;
 
 const StyledLikeContainer = styled.div`

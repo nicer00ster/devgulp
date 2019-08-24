@@ -30,6 +30,7 @@ const colors = {
   lightBlack: 'rgba(31, 34, 46, 0.75)',
   grey: '#cacacc',
   white: '#fefefe',
+  offWhite: '#fffaf1',
   yellow: '#ffeaa7',
   blue: '#92c5f8',
   red: '#faa1bc',

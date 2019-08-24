@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRef } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { useEffect, useState, useCallback } from 'react';
@@ -34,9 +35,11 @@ import Comments from './comments';
 function SinglePost(props) {
   const { post } = props.post;
   const [bind, { width }] = useMeasure();
+  const offsetRef = useRef();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
   const [leftOffset, setLeftOffset] = useState(0);
+  const [isReplyingTo, setIsReplyingTo] = useState(null);
 
   const {
     value: reply,
@@ -52,7 +55,7 @@ function SinglePost(props) {
       ? setIsBottom(true)
       : setIsBottom(false);
 
-    setLeftOffset(bind.ref.current.offsetLeft);
+    setLeftOffset(offsetRef.current.offsetLeft);
   }, []);
 
   function handleReply(e) {
@@ -76,7 +79,7 @@ function SinglePost(props) {
   const likesTransition = useTransition(props.isUpdatingLikes, null, {
     from: {
       transform: props.isUpdatingLikes ? `translateY(25px)` : `translateY(0px)`,
-      opacity: props.isUpdatingLikes ? 0 : 1,
+      opacity:  props.isUpdatingLikes ? 1 : 0,
       position: 'absolute',
     },
     enter: {
@@ -87,15 +90,16 @@ function SinglePost(props) {
       transform: props.isUpdatingLikes
         ? `translateY(-25px)`
         : `translateY(0px)`,
-      opacity: 0,
+      opacity: props.isUpdatingLikes ? 0 : 1,
     },
   });
 
   return (
-    <StyledSinglePostContainer>
+    <StyledSinglePostContainer ref={offsetRef}>
       <StyleSinglePost {...bind}>
         <StyledSidebar style={spring}>
           <LikeButton
+            token={props.user.token}
             isLiked={post.acf.post_likes.includes(props.user.id)}
             onClick={() =>
               props.updatePostLikes(
@@ -157,6 +161,7 @@ function SinglePost(props) {
       <StyledSinglePostMetaMore>
         <StyledLikeContainer>
           <LikeButton
+            token={props.user.token}
             isLiked={post.acf.post_likes.includes(props.user.id)}
             onClick={() =>
               props.updatePostLikes(
@@ -207,7 +212,12 @@ function SinglePost(props) {
             placeholder="Have something to say?"
           />
         </StyledCommentReply>
-        <Comments postId={post.id} comments={post.comments} />
+        <Comments
+          isReplyingTo={isReplyingTo}
+          setIsReplyingTo={setIsReplyingTo}
+          postId={post.id}
+          comments={post.comments}
+        />
       </StyledComments>
     </StyledSinglePostContainer>
   );

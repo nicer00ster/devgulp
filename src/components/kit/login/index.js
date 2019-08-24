@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { useTrail } from 'react-spring';
 import { StyledLogin, StyledLoginForm, StyledLoginCaret } from './login.styles';
-import { StyledInput, StyledFormHeading } from '../form/form.styles';
+import { StyledFormHeading } from '../form/form.styles';
 import { useInput } from '../../../hooks';
 import { login, toggleLoginMenu } from '../../../redux/actions';
 import Loading from '../loading';
 import Button from '../button';
+import Input from '../input';
 
 const config = { mass: 5, tension: 2000, friction: 100 };
 
@@ -71,37 +72,23 @@ function Login(props) {
             handleLogin();
           }}>
           <StyledFormHeading>Login</StyledFormHeading>
-          <StyledInput>
-            <input
-              type="text"
-              name="loginUsername"
-              id="loginUsername"
-              autoFocus
-              style={usernameError ? { borderBottom: '1px solid tomato' } : {}}
-              {...bindUsername}
-            />
-            <span className="bar" />
-            <label
-              htmlFor="loginUsername"
-              style={usernameError ? { color: 'tomato' } : {}}>
-              Username
-            </label>
-          </StyledInput>
-          <StyledInput>
-            <input
-              type="password"
-              name="loginPassword"
-              id="loginPassword"
-              style={passwordError ? { borderBottom: '1px solid tomato' } : {}}
-              {...bindPassword}
-            />
-            <span className="bar" />
-            <label
-              htmlFor="loginPassword"
-              style={passwordError ? { color: 'tomato' } : {}}>
-              Password
-            </label>
-          </StyledInput>
+          <Input
+            type="text"
+            name="loginUsername"
+            label="Username"
+            autoFocus={true}
+            styles={{ margin: '5rem 0' }}
+            error={usernameError}
+            bind={bindUsername}
+          />
+          <Input
+            type="password"
+            name="loginPassword"
+            label="Password"
+            styles={{ margin: '5rem 0' }}
+            error={passwordError}
+            bind={bindPassword}
+          />
           <Button type="submit">Login</Button>
         </StyledLoginForm>
       )}

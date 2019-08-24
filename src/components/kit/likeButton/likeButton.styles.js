@@ -28,6 +28,10 @@ const StyledLikeButton = styled.button`
   box-shadow: ${props => props.theme.effects.shadow};
   top: 0;
   transition: all 0.075s ease-in;
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
   &:active {
     top: 3px;
     box-shadow: ${props => props.theme.effects.shadowHover};

@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useSpring, config } from 'react-spring';
+import { useSpring } from 'react-spring';
 import NProgress from 'nprogress';
 import Router, { withRouter } from 'next/router';
 import Link from 'next/link';
@@ -119,7 +119,7 @@ function Header(props) {
         {props.screenWidth <= 576 && <Drawer />}
         <StyledLogoContainer screenWidth={props.screenWidth}>
           <Link href="/" prefetch scroll={false}>
-            <StyledLogo style={logoSpring}>DevGulp</StyledLogo>
+            <StyledLogo href="#" style={logoSpring}>DevGulp</StyledLogo>
           </Link>
         </StyledLogoContainer>
         <StyledMenu>

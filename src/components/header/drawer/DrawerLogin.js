@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { StyledLoginForm } from '../../kit/login/login.styles';
-import { StyledFormHeading, StyledInput } from '../../kit/form/form.styles';
 import { login } from '../../../redux/actions';
-import Button from '../../kit/button';
 import { useInput } from '../../../hooks';
+import Button from '../../kit/button';
+import Input from '../../kit/input';
 
 function DrawerLogin(props) {
   const {
@@ -43,37 +43,20 @@ function DrawerLogin(props) {
         e.preventDefault();
         handleLogin();
       }}>
-      <StyledInput>
-        <input
-          type="text"
-          name="loginUsername"
-          id="loginUsername"
-          autoFocus
-          style={usernameError ? { borderBottom: '1px solid tomato' } : {}}
-          {...bindUsername}
-        />
-        <span className="bar" />
-        <label
-          htmlFor="loginUsername"
-          style={usernameError ? { color: 'tomato' } : {}}>
-          Username
-        </label>
-      </StyledInput>
-      <StyledInput>
-        <input
-          type="password"
-          name="loginPassword"
-          id="loginPassword"
-          style={passwordError ? { borderBottom: '1px solid tomato' } : {}}
-          {...bindPassword}
-        />
-        <span className="bar" />
-        <label
-          htmlFor="loginPassword"
-          style={passwordError ? { color: 'tomato' } : {}}>
-          Password
-        </label>
-      </StyledInput>
+      <Input
+        type="text"
+        name="drawerUsername"
+        label="Username"
+        error={usernameError}
+        bind={bindUsername}
+      />
+      <Input
+        type="password"
+        name="drawerPassword"
+        label="Password"
+        error={passwordError}
+        bind={bindPassword}
+      />
       <Button type="submit">Login</Button>
     </StyledLoginForm>
   );
