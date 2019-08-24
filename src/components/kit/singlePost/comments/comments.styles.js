@@ -1,22 +1,36 @@
 import styled from 'styled-components';
-import { StyledCommentReplyInput } from '../singlePost.styles';
+import { animated } from 'react-spring';
 
-const StyledCommentReplyToInput = styled(StyledCommentReplyInput)`
+const StyledCommentReplyToArea = styled.textarea`
   font-size: 14px;
   border-radius: ${props => props.theme.effects.radius};
-  background-color: rgba(0, 0, 0, 0.05);
+  width: 100%;
+  outline: 0;
+  border: 0;
+  color: ${props => props.theme.colors.black};
+  font-family: 'Trirong', serif;
+  letter-spacing: 1px;
+  resize: none;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0);
+  &[value]:not([value='']) ~ label,
+  &:focus ~ label {
+    top: -20px;
+    left: 3px;
+    font-size: 1rem;
+    color: ${props => props.theme.colors.lightBlack};
+  }
 `;
 
 const StyledComment = styled.div`
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  // box-shadow: ${props => props.theme.effects.shadowHover};
   padding: 1.2rem 0;
   margin: 1.2rem;
   &.comment-reply {
-    border-left: 1px solid ${props => props.theme.colors.grey};
-    padding-left: 1.2rem;
-    margin: 0.4rem;
+    border-left: 1px dashed ${props => props.theme.colors.black};
+    margin-left: 8px;
+    padding: 0 0 0 14px;
   }
 `;
 
@@ -44,16 +58,52 @@ const StyledCommentDateDivider = styled.span`
 
 const StyledCommentContainer = styled.div``;
 
+const StyledCommentContentContainer = styled.div`
+  padding: 1.2rem 0;
+`;
+
+const StyledCommentContentUserRef = styled.a`
+  border-radius: ${props => props.theme.effects.radius};
+  background-color: ${props => props.theme.colors.lightGreen};
+  padding: 0.2rem 0.4rem;
+`;
+
+const StyledCommentContent = styled.div`
+  p br {
+    content: '' !important;
+    display: block !important;
+    margin-bottom: 1.5em !important;
+  }
+`;
+
 const StyledCommentUserData = styled.a`
   display: inline-flex;
   align-items: center;
 `;
+
 const StyledCommentReplyTo = styled.a`
   padding: 0.4rem;
+  transition: all 0.25s;
+  &.active-reply {
+    transform: translateY(-25px);
+    opacity: 0;
+    z-index: -1;
+  }
+`;
+
+const StyledReplyContainer = styled(animated.div)`
+  label {
+    color: ${props => props.theme.colors.black};
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 6px;
+    transition: 300ms ease all;
+  }
 `;
 
 export {
-  StyledCommentReplyToInput,
+  StyledCommentReplyToArea,
   StyledCommentUserData,
   StyledComment,
   StyledCommentReplyTo,
@@ -62,4 +112,8 @@ export {
   StyledCommentDate,
   StyledCommentDateDivider,
   StyledCommentAuthorDate,
+  StyledReplyContainer,
+  StyledCommentContentContainer,
+  StyledCommentContentUserRef,
+  StyledCommentContent,
 };

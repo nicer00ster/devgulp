@@ -204,8 +204,6 @@ function apiSearch(query) {
 }
 
 function apiUpdatePostLikes(data, userLikes) {
-  console.log('apiUpdatePostLikes', data, userLikes);
-
   return axios({
     method: 'post',
     url: `${ACF_URL}/posts/${data.postId}`,
@@ -406,7 +404,6 @@ function* addCommentSaga(data) {
 function* addCommentReplySaga(data) {
   try {
     const response = yield call(apiAddCommentReply, data);
-    console.log('addCommentReplySaga', response);
     yield put({ type: types.ADD_COMMENT_REPLY_SUCCESS, response });
   } catch (error) {
     yield put({ type: types.ADD_COMMENT_REPLY_FAILURE, error });

@@ -22,7 +22,10 @@ function LikeButton(props) {
   }
 
   return (
-    <StyledLikeButton onClick={handleClick} className={active && 'active'}>
+    <StyledLikeButton
+      disabled={!props.token}
+      onClick={handleClick}
+      className={active && 'active'}>
       <StyledLikeIcon className={`${!active ? 'far' : 'fas'} fa-heart`} />
       <StyledLikeConfetti color="palegreen" />
       <StyledLikeConfetti color="tomato" />

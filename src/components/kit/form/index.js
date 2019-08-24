@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
-import { StyledForm, StyledInput, StyledFormHeading } from './form.styles';
+import { StyledForm, StyledFormHeading } from './form.styles';
+import { StyledInput } from '../input/input.styles';
 import { register } from '../../../redux/actions';
 import { useInput } from '../../../hooks';
 import Button from '../button';
+import Input from '../input';
 
 function Form(props) {
   const {
@@ -34,7 +36,7 @@ function Form(props) {
     hasError: verifyPasswordError,
   } = useInput('');
 
-  const handleSubmit = e => {
+  function handleSubmit(e) {
     e.preventDefault();
 
     setUsernameError(false);
@@ -72,7 +74,7 @@ function Form(props) {
     }
 
     props.register(username, email, password, verifyPassword);
-  };
+  }
 
   return (
     <StyledForm onSubmit={e => handleSubmit(e)}>
@@ -80,67 +82,38 @@ function Form(props) {
         disabled={props.user.isRegistering}
         aria-busy={props.user.isRegistering}>
         <StyledFormHeading>Register</StyledFormHeading>
-        <StyledInput>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            autoFocus
-            style={usernameError ? { borderBottom: '1px solid tomato' } : {}}
-            {...bindUsername}
-          />
-          <span className="bar" />
-          <label
-            htmlFor="username"
-            style={usernameError ? { color: 'tomato' } : {}}>
-            Username
-          </label>
-        </StyledInput>
-        <StyledInput>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            style={emailError ? { borderBottom: '1px solid tomato' } : {}}
-            {...bindEmail}
-          />
-          <span className="bar" />
-          <label htmlFor="email" style={emailError ? { color: 'tomato' } : {}}>
-            Email
-          </label>
-        </StyledInput>
-        <StyledInput>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            style={passwordError ? { borderBottom: '1px solid tomato' } : {}}
-            {...bindPassword}
-          />
-          <span className="bar" />
-          <label
-            htmlFor="password"
-            style={passwordError ? { color: 'tomato' } : {}}>
-            Password
-          </label>
-        </StyledInput>
-        <StyledInput>
-          <input
-            type="password"
-            name="password"
-            id="verifyPassword"
-            style={
-              verifyPasswordError ? { borderBottom: '1px solid tomato' } : {}
-            }
-            {...bindVerifyPassword}
-          />
-          <span className="bar" />
-          <label
-            htmlFor="verifyPassword"
-            style={verifyPasswordError ? { color: 'tomato' } : {}}>
-            Verify Password
-          </label>
-        </StyledInput>
+        <Input
+          type="text"
+          name="username"
+          label="Username"
+          styles={{ margin: '5rem 0' }}
+          error={usernameError}
+          bind={bindUsername}
+        />
+        <Input
+          type="email"
+          name="email"
+          label="Email"
+          styles={{ margin: '5rem 0' }}
+          error={emailError}
+          bind={bindEmail}
+        />
+        <Input
+          type="password"
+          name="password"
+          label="Password"
+          styles={{ margin: '5rem 0' }}
+          error={passwordError}
+          bind={bindPassword}
+        />
+        <Input
+          type="password"
+          name="verifyPassword"
+          label="Confirm Password"
+          styles={{ margin: '5rem 0' }}
+          error={verifyPasswordError}
+          bind={bindVerifyPassword}
+        />
         <Button type="submit">Submit</Button>
       </fieldset>
     </StyledForm>

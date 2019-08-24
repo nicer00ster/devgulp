@@ -163,7 +163,7 @@ function EnhancedPublish(props) {
         )}
         <StyledPublishButton
           onClick={() => handleAddPost()}
-          disabled={active || props.posts.isAddingPost}
+          disabled={active || props.posts.isAddingPost || !title || !body}
           aria-busy={active || props.posts.isAddingPost}
           className={active && 'active'}>
           <StyledPublishIcon className={`fal fa-envelope-open-text`} />
