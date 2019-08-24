@@ -130,7 +130,7 @@ class WP_REST_Post_Search_Handler extends WP_REST_Search_Handler {
 			$data[ WP_REST_Search_Controller::PROP_SUBTYPE ] = $post->post_type;
 		}
 
-        $excerpt = apply_filters( 'the_excerpt', apply_filters( 'get_the_excerpt', $post->post_excerpt, $post ) );
+        $excerpt = apply_filters( 'the_excerpt', apply_filters( 'the_excerpt', wp_trim_words(apply_filters( 'get_the_excerpt', $post->post_excerpt, $post ), 10) ) );
 
         $data['excerpt'] = array(
             'raw' => $post->post_excerpt,

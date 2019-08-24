@@ -33,6 +33,7 @@ const colors = {
   offWhite: '#fffaf1',
   yellow: '#ffeaa7',
   blue: '#92c5f8',
+  lightBlue: 'rgba(155,207,255,0.66)',
   red: '#faa1bc',
   green: '#80dad3',
 };

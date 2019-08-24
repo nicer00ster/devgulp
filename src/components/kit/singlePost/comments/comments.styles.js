@@ -28,9 +28,9 @@ const StyledComment = styled.div`
   padding: 1.2rem 0;
   margin: 1.2rem;
   &.comment-reply {
-    border-left: 1px solid ${props => props.theme.colors.grey};
-    padding-left: 1.2rem;
-    margin: 0.4rem;
+    border-left: 1px dashed ${props => props.theme.colors.black};
+    margin-left: 8px;
+    padding: 0 0 0 14px;
   }
 `;
 
@@ -57,6 +57,31 @@ const StyledCommentDateDivider = styled.span`
 `;
 
 const StyledCommentContainer = styled.div``;
+
+const StyledCommentContentContainer = styled.div`
+  padding: 1.2rem 0;
+`;
+
+const StyledCommentContentUserRef = styled.a`
+  border-radius: ${props => props.theme.effects.radius};
+  border: 1px solid ${props => props.theme.colors.lightBlue};
+  background-color: ${props => props.theme.colors.blue};
+  padding: 0.2rem 0.4rem;
+  transition: all 0.15s ease-in;
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.colors.lightBlue};
+    border: 1px solid ${props => props.theme.colors.blue};
+  }
+`;
+
+const StyledCommentContent = styled.div`
+  p br {
+    content: '' !important;
+    display: block !important;
+    margin-bottom: 1.5em !important;
+  }
+`;
 
 const StyledCommentUserData = styled.a`
   display: inline-flex;
@@ -95,4 +120,7 @@ export {
   StyledCommentDateDivider,
   StyledCommentAuthorDate,
   StyledReplyContainer,
+  StyledCommentContentContainer,
+  StyledCommentContentUserRef,
+  StyledCommentContent,
 };

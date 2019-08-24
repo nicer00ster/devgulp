@@ -13,6 +13,9 @@ import {
   StyledCommentReplyTo,
   StyledCommentReplyToArea,
   StyledCommentUserData,
+  StyledCommentContentContainer,
+  StyledCommentContentUserRef,
+  StyledCommentContent,
   StyledReplyContainer,
 } from './comments.styles';
 import { StyledComments } from '../singlePost.styles';
@@ -36,7 +39,7 @@ function EnhancedComment(props) {
   });
 
   useEffect(() => {
-    if(props.isAddingComment) {
+    if (props.isAddingComment) {
       props.setIsReplyingTo(null);
     }
   }, [props.isAddingComment]);
@@ -95,7 +98,20 @@ function EnhancedComment(props) {
             </StyledCommentAuthorDate>
           </StyledCommentUserData>
         </Link>
-        <div dangerouslySetInnerHTML={{ __html: comment.comment_content }} />
+        <StyledCommentContentContainer>
+          {comment.comment_parent !== '0' && (
+            <Link href={`/user?userId=${comment.comment_parent_user_id}`}>
+              <StyledCommentContentUserRef
+                aria-label={`Reply references ${comment.comment_parent_user}.`}
+                href="#">
+                @{comment.comment_parent_user}
+              </StyledCommentContentUserRef>
+            </Link>
+          )}
+          <StyledCommentContent
+            dangerouslySetInnerHTML={{ __html: comment.comment_content }}
+          />
+        </StyledCommentContentContainer>
       </StyledCommentContainer>
       <StyledCommentReplyTo
         href="#"
@@ -129,9 +145,7 @@ function EnhancedComment(props) {
                 }
               }}
             />
-            <label>
-              Replying to {comment.comment_author}
-            </label>
+            <label>Replying to {comment.comment_author}</label>
           </StyledReplyContainer>
         ))}
       {props.comment.comment_children &&

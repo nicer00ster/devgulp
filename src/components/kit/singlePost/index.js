@@ -79,7 +79,7 @@ function SinglePost(props) {
   const likesTransition = useTransition(props.isUpdatingLikes, null, {
     from: {
       transform: props.isUpdatingLikes ? `translateY(25px)` : `translateY(0px)`,
-      opacity:  props.isUpdatingLikes ? 1 : 0,
+      opacity: 0,
       position: 'absolute',
     },
     enter: {
@@ -90,7 +90,7 @@ function SinglePost(props) {
       transform: props.isUpdatingLikes
         ? `translateY(-25px)`
         : `translateY(0px)`,
-      opacity: props.isUpdatingLikes ? 0 : 1,
+      opacity: 0,
     },
   });
 
