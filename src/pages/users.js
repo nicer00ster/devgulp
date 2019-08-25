@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchUsers, openLoginMenu } from '../redux/actions';
 import EnhancedUsers from '../components/kit/users';
 import Container from '../components/kit/container';
+import Hero from '../components/kit/hero';
 
 function Users(props) {
   const router = useRouter();
@@ -15,11 +16,14 @@ function Users(props) {
     } else {
       props.fetchUsers();
     }
-  });
+  }, []);
   return (
+    <>
+      <Hero></Hero>
     <Container>
       <EnhancedUsers />
     </Container>
+    </>
   );
 }
 

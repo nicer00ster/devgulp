@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { useTrail, config } from 'react-spring';
-import { StyledUsers, StyledUser } from './users.styles';
+import { StyledUsers, StyledUser, StyledUserInfo } from './users.styles';
 import { StyledAvatar } from '../../header/header.styles';
 
 function EnhancedUsers(props) {
@@ -35,6 +35,9 @@ function EnhancedUsers(props) {
                         : props.users[index].avatar
                     }
                   />
+                  <StyledUserInfo>
+                    @{props.users[index].name}
+                  </StyledUserInfo>
                 </StyledAvatar>
               </a>
             </Link>
