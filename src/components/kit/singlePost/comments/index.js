@@ -100,7 +100,7 @@ function EnhancedComment(props) {
           </StyledCommentUserData>
         </Link>
         <StyledCommentContentContainer>
-          {comment.comment_parent !== '0' && (
+          {comment.comment_parent != 0 && (
             <Link href={`/user?userId=${comment.comment_parent_user_id}`}>
               <StyledCommentContentUserRef
                 aria-label={`Reply references ${comment.comment_parent_user}.`}

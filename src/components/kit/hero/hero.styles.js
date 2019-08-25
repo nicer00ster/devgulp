@@ -1,17 +1,18 @@
-import styled, { keyframes } from 'styled-components';
-
-const particleAnimation = keyframes`
-    from {
-        left: -100px;
-    }
-    to {
-        left: calc( 100% + 100px );
-    }
-`;
+import styled from 'styled-components';
 
 const StyledHero = styled.div`
   position: relative;
-  padding: 8rem 0;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0;
+  text-align: center;
+  min-height: 372px;
+  background-image: radial-gradient(#d7d7d7 1px, transparent 1px),
+    radial-gradient(#d7d7d7 1px, transparent 1px);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
   opacity: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? '0.4'
@@ -31,30 +32,18 @@ const StyledHero = styled.div`
   transition: all 0.25s linear;
 `;
 
-const StyledHeroSwift = styled.div`
+const StyledHeroOverlay = styled.div`
   position: absolute;
+  top: 0;
   left: 0;
-  top: 50px;
-  width: 1px;
-  height: 1px;
-  background-color: ${props => props.theme.colors.black};
-  animation-name: ${particleAnimation};
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  &:before {
-    position: absolute;
-    display: block;
-    content: '';
-    width: 100%;
-    right: 1px;
-    top: 0px;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(255, 255, 255, 0.4) 100%
-    );
-  }
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 1) 90%
+  );
+  pointer-events: none;
 `;
 
-export { StyledHero, StyledHeroSwift };
+export { StyledHero, StyledHeroOverlay };

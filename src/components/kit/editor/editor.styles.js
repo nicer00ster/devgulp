@@ -97,6 +97,7 @@ const StyledEditorLine = styled(animated.span)`
 `;
 
 const StyledEditorHeader = styled.div`
+  display: flex;
   width: 100%;
   height: 36px;
   margin: 0px auto -2px;
@@ -105,7 +106,7 @@ const StyledEditorHeader = styled.div`
 const StyledEditorButtons = styled.div`
   display: inline-block;
   padding: 1.4rem;
-  overflow: auto;
+  overflow-y: hidden;
   ${props => props.theme.mediaQuery.phone`
         padding-left: 1rem;
     `};

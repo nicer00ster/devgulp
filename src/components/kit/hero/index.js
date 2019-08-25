@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { StyledHero, StyledHeroSwift } from './hero.styles';
+import { StyledHero, StyledHeroOverlay } from './hero.styles';
 
 function Hero(props) {
   return (
@@ -7,9 +7,7 @@ function Hero(props) {
       drawerOpen={props.drawerOpen}
       userMenuOpen={props.userMenuOpen}
       loginMenuOpen={props.loginMenuOpen}>
-      <StyledHeroSwift />
-      <StyledHeroSwift />
-      <StyledHeroSwift />
+      <StyledHeroOverlay />
       {props.children}
     </StyledHero>
   );
