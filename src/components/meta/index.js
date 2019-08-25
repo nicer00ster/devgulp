@@ -23,6 +23,7 @@ function Meta() {
         content="https://devgulp.com/static/thumbnail.png"
       />
       <meta property="og:url" content="https://devgulp.com/" />
+      <meta property="fb:app_id" content="716860255431426" />
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://devgulp.com/" />
       <meta property="twitter:title" content="DevGulp" />
@@ -42,6 +43,12 @@ function Meta() {
       {/*<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />*/}
       {/*<link rel="icon" href="/static/favicon.ico" type="image/x-icon" />*/}
       {/*<link rel="manifest" href="/static/site.webmanifest" />*/}
+      <script defer src="https://platform.twitter.com/widgets.js"></script>
+      <script
+        async
+        defer
+        crossOrigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=716860255431426&autoLogAppEvents=1"></script>
       <link
         rel="preload"
         href="/static/fonts/Blinker.ttf"

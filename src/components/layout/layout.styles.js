@@ -36,13 +36,13 @@ const colors = {
   lightBlue: 'rgba(155,207,255,0.66)',
   red: '#faa1bc',
   green: '#80dad3',
-  lightGreen: 'rgba(12,242,143,.2)'
+  lightGreen: 'rgba(12,242,143,.2)',
 };
 
 const effects = {
   hover: 'rgba(31, 34, 46, 0.25)',
   shadow: '0px 4px 16px 0px rgba(46, 61, 73, 0.2)',
-  shadowHover: '2px 4px 8px 0px rgba(46, 61, 73, 0.2);',
+  shadowHover: '2px 4px 8px 0px rgba(46, 61, 73, 0.2)',
   radius: '0.275rem',
 };
 

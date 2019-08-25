@@ -120,7 +120,9 @@ const StyledLikeCount = styled(animated.p)`
   }
 `;
 
-const StyledMoreItems = styled.div``;
+const StyledMoreItems = styled.div`
+  position: relative;
+`;
 
 const StyledMoreItem = styled.button`
   position: relative;
@@ -133,6 +135,9 @@ const StyledMoreItem = styled.button`
   font-size: 20px;
   bottom: 0;
   transition: all 0.15s ease-in;
+  &.active {
+    opacity: 0.5;
+  }
   &:hover,
   &:focus {
     color: ${props => props.theme.colors.black};

@@ -31,6 +31,7 @@ import { StyledDivider } from '../globals/globals.styles';
 import { addComment, updatePostLikes } from '../../../redux/actions';
 import LikeButton from '../likeButton';
 import Comments from './comments';
+import SocialSharing from '../social';
 
 function SinglePost(props) {
   const { post } = props.post;
@@ -40,6 +41,7 @@ function SinglePost(props) {
   const [isBottom, setIsBottom] = useState(false);
   const [leftOffset, setLeftOffset] = useState(0);
   const [isReplyingTo, setIsReplyingTo] = useState(null);
+  const [open, set] = useState(false);
 
   const {
     value: reply,
@@ -182,7 +184,10 @@ function SinglePost(props) {
           </StyledLikeCount>
         </StyledLikeContainer>
         <StyledMoreItems>
-          <StyledMoreItem>
+          <SocialSharing open={open} postName={post.title.rendered} />
+          <StyledMoreItem
+            className={open && 'active'}
+            onClick={() => set(!open)}>
             <i className="fal fa-share-alt" />
           </StyledMoreItem>
           <StyledMoreItem>
@@ -219,6 +224,10 @@ function SinglePost(props) {
           comments={post.comments}
         />
       </StyledComments>
+      <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
+           data-layout="button_count" data-size="small"><a target="_blank"
+                                                           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                                           className="fb-xfbml-parse-ignore">Share</a></div>
     </StyledSinglePostContainer>
   );
 }
