@@ -58,6 +58,13 @@ const StyledPostTaxonomies = styled.ul`
   flex-wrap: wrap-reverse;
   padding: 0;
   margin: 1rem 0 0 1rem;
+  &.single-post {
+    margin: 0 2rem;
+    align-self: flex-end;
+    & span {
+      font-size: 28px;
+    }
+  }
 `;
 
 const StyledPostTaxonomyItem = styled.li`

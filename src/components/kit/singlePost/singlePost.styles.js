@@ -68,7 +68,10 @@ const StyledSidebar = styled(animated.aside)`
   }
 `;
 
-const StyledComments = styled.section``;
+const StyledComments = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
 
 const StyledCommentsHeading = styled.h2`
   font-size: 18px;

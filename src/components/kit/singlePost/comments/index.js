@@ -22,6 +22,7 @@ import { StyledComments } from '../singlePost.styles';
 import { StyledAvatar } from '../../../header/header.styles';
 import { addCommentReply } from '../../../../redux/actions';
 import { useInput, useOnClickOutside } from '../../../../hooks';
+import Tooltip from '../../tooltip';
 
 function EnhancedComment(props) {
   const { comment } = props;
@@ -99,7 +100,7 @@ function EnhancedComment(props) {
           </StyledCommentUserData>
         </Link>
         <StyledCommentContentContainer>
-          {comment.comment_parent !== '0' && (
+          {comment.comment_parent != 0 && (
             <Link href={`/user?userId=${comment.comment_parent_user_id}`}>
               <StyledCommentContentUserRef
                 aria-label={`Reply references ${comment.comment_parent_user}.`}
@@ -115,13 +116,17 @@ function EnhancedComment(props) {
       </StyledCommentContainer>
       <StyledCommentReplyTo
         href="#"
+        data-tooltip={!props.user.token}
         aria-label={`Reply to ${comment.comment_author}.`}
         className={props.isReplyingTo === comment.comment_ID && 'active-reply'}
         onClick={e => {
           e.preventDefault();
-          props.setIsReplyingTo(comment.comment_ID);
+          if (props.user.token) {
+            props.setIsReplyingTo(comment.comment_ID);
+          }
         }}>
         Reply
+        {!props.user.token && <Tooltip content="Sign in to reply." />}
       </StyledCommentReplyTo>
       {props.isReplyingTo === comment.comment_ID &&
         inputTrail.map(({ x, height, opacity, ...rest }, index) => (

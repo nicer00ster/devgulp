@@ -7,16 +7,19 @@ import {
 } from './social.styles';
 
 function SocialButton(props) {
-
   function handleFacebookDialog(url) {
-      return FB.ui({
-        method: 'share',
-        href: url,
-      });
+    return FB.ui({
+      method: 'share',
+      href: url,
+    });
   }
 
   function handleLinkedInDialog(url) {
-    window.open(url, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+    window.open(
+      url,
+      '',
+      'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0',
+    );
     return false;
   }
 
@@ -25,10 +28,10 @@ function SocialButton(props) {
       className="twitter-share-button"
       target="_blank"
       onClick={() => {
-        if(props.name === 'fab fa-facebook-f') {
+        if (props.name === 'fab fa-facebook-f') {
           handleFacebookDialog(props.url);
         }
-        if(props.name === 'fab fa-linkedin-in') {
+        if (props.name === 'fab fa-linkedin-in') {
           handleLinkedInDialog(props.url);
         }
       }}
