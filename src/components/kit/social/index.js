@@ -93,7 +93,7 @@ function SocialSharing(props) {
   useChain([transRef, transRef], [0, props.open ? 0.1 : 0.6]);
 
   return (
-    <StyledSocial>
+    <StyledSocial type={props.type}>
       {transitions.map(({ item, key, props }) => (
         <SocialButton
           key={key}

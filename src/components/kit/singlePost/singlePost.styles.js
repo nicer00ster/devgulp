@@ -59,6 +59,7 @@ const StyledSidebar = styled(animated.aside)`
   position: fixed;
   display: flex;
   flex-direction: column;
+  align-items: center;
   left: 50%;
   top: calc(65px + 54px + 40px);
   z-index: 99;
