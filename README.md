@@ -1,6 +1,6 @@
 # DevGulp
 
-### A platform build by developers, for developers.
+### A platform built by developers, for developers.
 ###### A place to deliver and digest valuable content on all programming related topics.
 
 ## Table of Contents
