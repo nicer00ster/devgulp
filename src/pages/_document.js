@@ -32,10 +32,12 @@ export default class CustomDocument extends Document {
       <html lang="en">
         <Meta />
         <Head>{this.props.styles}</Head>
+        <Head>{this.props.scripts}</Head>
         <body>
           <Main />
           <NextScript />
           <div id="portal" />
+          <div id="fb-root" />
         </body>
       </html>
     );
