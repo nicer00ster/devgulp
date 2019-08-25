@@ -52,7 +52,7 @@ export default function userReducer(state = initialState, action = {}) {
         isAuthenticated: true,
         hasError: false,
         errorMessage: '',
-        id: action.result.user_id,
+        id: Number(action.result.user_id),
         username: action.result.user_nicename,
         email: action.result.user_email,
         token: action.result.token,

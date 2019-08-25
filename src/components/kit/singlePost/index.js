@@ -68,13 +68,15 @@ function SinglePost(props) {
 
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
+    window.addEventListener('resize', handleWindowScroll);
     return () => {
       window.removeEventListener('scroll', handleWindowScroll);
+      window.removeEventListener('resize', handleWindowScroll);
     };
   }, [handleWindowScroll]);
 
   const spring = useSpring({
-    transform: `translateX(-${width / 2 + leftOffset / 2}px)`,
+    transform: `translateX(-${(width / 2) + (leftOffset / 2)}px)`,
     opacity: isScrolled && !isBottom ? 1 : 0,
   });
 
@@ -214,7 +216,12 @@ function SinglePost(props) {
           </StyledAvatar>
           <StyledCommentReplyInput
             {...bindReply}
-            placeholder="Have something to say?"
+            disabled={!props.user.token}
+            placeholder={
+              !props.user.token
+                ? 'Sign in to comment.'
+                : 'Have something to say?'
+            }
           />
         </StyledCommentReply>
         <Comments
@@ -224,10 +231,6 @@ function SinglePost(props) {
           comments={post.comments}
         />
       </StyledComments>
-      <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
-           data-layout="button_count" data-size="small"><a target="_blank"
-                                                           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-                                                           className="fb-xfbml-parse-ignore">Share</a></div>
     </StyledSinglePostContainer>
   );
 }

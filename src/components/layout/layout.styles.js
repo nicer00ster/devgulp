@@ -134,20 +134,26 @@ const GlobalStyles = createGlobalStyle`
     textarea::-webkit-scrollbar {
       width: 3px;
     }
-    
     textarea::-webkit-scrollbar-track {
       background: #f1f1f1; 
     }
-    
     textarea::-webkit-scrollbar-thumb {
       background: ${colors.lightBlack}; 
       border-radius: 12px;
       transition: all 0.25s ease-in;
       cursor: pointer;
     }
-    
     textarea::-webkit-scrollbar-thumb:hover {
       background: ${colors.black}; 
+    }
+    [data-tooltip="true"] {
+      position: relative;
+      &:hover {
+        > div {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     }
 `;
 

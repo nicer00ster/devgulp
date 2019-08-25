@@ -82,6 +82,7 @@ const StyledCommentUserData = styled.a`
 `;
 
 const StyledCommentReplyTo = styled.a`
+  align-self: flex-start;
   padding: 0.4rem;
   transition: all 0.25s;
   &.active-reply {
