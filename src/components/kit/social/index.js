@@ -15,6 +15,11 @@ function SocialButton(props) {
       });
   }
 
+  function handleLinkedInDialog(url) {
+    window.open(url, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+    return false;
+  }
+
   return (
     <StyledSocialButton
       className="twitter-share-button"
@@ -22,6 +27,9 @@ function SocialButton(props) {
       onClick={() => {
         if(props.name === 'fab fa-facebook-f') {
           handleFacebookDialog(props.url);
+        }
+        if(props.name === 'fab fa-linkedin-in') {
+          handleLinkedInDialog(props.url);
         }
       }}
       href={props.url}
@@ -51,11 +59,11 @@ function SocialSharing(props) {
     },
     {
       key: 3,
-      name: 'fab fa-google-plus-g',
-      url: '',
+      name: 'fab fa-linkedin-in',
+      url: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=LinkedIn&source=LinkedIn`,
       yPixels: 25,
       xPixels: -35,
-      color: '#d34836',
+      color: '#0077b5;',
     },
   ];
 
