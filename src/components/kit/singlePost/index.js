@@ -35,6 +35,7 @@ import {
 import { addComment, updatePostLikes } from '../../../redux/actions';
 import { getTaxonomyIcon } from '../../../utils';
 import LikeButton from '../likeButton';
+import ShareButton from '../shareButton';
 import Comments from './comments';
 import SocialSharing from '../social';
 import Tooltip from '../tooltip';
@@ -120,6 +121,7 @@ function SinglePost(props) {
               )
             }
           />
+          <ShareButton postName={post.title.rendered} />
         </StyledSidebar>
         <StyledSinglePostHeading>{post.title.rendered}</StyledSinglePostHeading>
         <StyledSinglePostMeta>

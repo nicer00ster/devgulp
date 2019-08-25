@@ -4,7 +4,8 @@ import { animated } from 'react-spring';
 const StyledSocial = styled(animated.div)`
   position: absolute;
   display: flex;
-  right: 50%;
+  right: ${props => (props.type === 'sidebar' ? '' : '50%')};
+  top: 0;
 `;
 
 const StyledSocialButton = styled(animated.a)`
@@ -18,6 +19,7 @@ const StyledSocialButton = styled(animated.a)`
   border: none;
   outline: 0;
   box-shadow: ${props => props.theme.effects.shadowHover};
+  background-color: ${props => props.theme.colors.white};
   cursor: pointer;
   top: 0;
   will-change: transform, opacity;
