@@ -11,7 +11,6 @@ import {
 } from './singleUser.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { toggleModal } from '../../../redux/actions';
-import Background from '../background';
 import Loading from '../loading';
 import Modal from '../modal';
 import { StyledPreviewImage } from '../publish/publish.styles';
@@ -23,7 +22,6 @@ function SingleUser(props) {
   }
   return (
     <StyledSingleUser>
-      <Background rotate="12deg" />
       <StyledSingleUserContainer>
         <StyledSingleUserContent>
           <StyledSingleUserInfo>

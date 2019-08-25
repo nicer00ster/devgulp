@@ -158,7 +158,7 @@ const StyledMenuItem = styled.li`
   }
 `;
 
-const StyledAvatar = styled.button`
+const StyledAvatar = styled(animated.button)`
   display: block;
   position: relative;
   padding: 0 0.5rem;

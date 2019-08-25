@@ -1,14 +1,17 @@
 import styled from 'styled-components';
+import { animated } from 'react-spring';
 
 const StyledUsers = styled.ul`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
 `;
 
-const StyledUser = styled.li`
+const StyledUser = styled(animated.li)`
   position: relative;
-  display: inline-flex;
+  display: flex;
 `;
 
 export { StyledUsers, StyledUser };
