@@ -42,7 +42,7 @@ $ docker-compose down --volumes
 > 1. After wordpress finishes installing head to http://localhost:8000 and finish setting up the installing of WordPress.
 > 2. Make sure the plugins for the REST API properly came over from cloning the repo.
 >> - If they didn't just manually install and activate them.
->
+> 3. Go to `Settings -> Permalinks` and change `Common Settings` to `Post name` and click "Save Changes" at the bottom of the page..
 
 ## Usage
 
@@ -82,3 +82,5 @@ Label all issues correctly and give a detailed description of the issue.
 ## Contributing
 
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/nicer00ster/devgulp/compare/).
+<br />
+- Before pushing commits make sure to run `npm run prettier`.
