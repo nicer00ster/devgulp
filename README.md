@@ -42,7 +42,7 @@ $ docker-compose down --volumes
 > 1. After wordpress finishes installing head to http://localhost:8000 and finish setting up the installing of WordPress.
 > 2. Make sure the plugins for the REST API properly came over from cloning the repo.
 >> - If they didn't just manually install and activate them.
-> 3. Go to `Settings -> Permalinks` and change `Common Settings` to `Post name` and click "Save Changes" at the bottom of the page..
+> 3. Go to `Settings -> Permalinks` and change `Common Settings` to `Post name` and click "Save Changes" at the bottom of the page.
 
 ## Usage
 
