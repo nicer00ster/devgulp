@@ -17,10 +17,11 @@ const StyledUser = styled(animated.li)`
   border-radius: 50%;
   width: 72px;
   height: 72px;
-  margin: 0 .4rem;
+  margin: 0 0.4rem;
   bottom: 0;
   transition: bottom 0.15s ease-in, box-shadow 0.15s ease-in;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     bottom: 4px;
     box-shadow: ${props => props.theme.effects.shadowHover};
     & div {
@@ -30,14 +31,4 @@ const StyledUser = styled(animated.li)`
   }
 `;
 
-const StyledUserInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transition: all 0.25s ease-in;
-  transform: translateY(-25px);
-  color: ${props => props.theme.colors.lightBlack};
-  margin: .4rem 0;
-`;
-
-export { StyledUsers, StyledUser, StyledUserInfo };
+export { StyledUsers, StyledUser };

@@ -20,9 +20,9 @@ function Users(props) {
   return (
     <>
       <Hero></Hero>
-    <Container>
-      <EnhancedUsers />
-    </Container>
+      <Container>
+        <EnhancedUsers />
+      </Container>
     </>
   );
 }
