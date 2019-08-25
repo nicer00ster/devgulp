@@ -91,7 +91,9 @@ const StyledPostContent = styled.div`
 `;
 
 const StyledPostTitle = styled.div`
-  font-weight: bold;
+  font-family: 'Trirong', serif;
+  font-size: 14px;
+  font-weight: 900;
 `;
 
 const StyledPostAuthor = styled.div`
