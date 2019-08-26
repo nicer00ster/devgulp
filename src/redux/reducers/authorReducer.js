@@ -3,6 +3,7 @@ import * as types from '../constants';
 const initialState = {
   author: {},
   isFetchingAuthor: true,
+  isUpdatingUser: false,
   hasError: false,
   errorMessage: '',
 };
@@ -31,6 +32,26 @@ export default function authorReducer(state = initialState, action = {}) {
         isFetchingAuthor: false,
         hasError: true,
         errorMessage: action.error.message,
+      };
+    case types.UPDATE_USER_INFO:
+      return {
+        ...state,
+        isUpdatingUser: true,
+      };
+    case types.UPDATE_USER_INFO_SUCCESS:
+      return {
+        ...state,
+        author: {
+          ...state.author,
+          description: action.response.data.description,
+          company_name: action.response.data.company_name,
+        },
+        isUpdatingUser: false,
+      };
+    case types.UPDATE_USER_INFO_FAILURE:
+      return {
+        ...state,
+        isUpdatingUser: false,
       };
     default:
       return state;

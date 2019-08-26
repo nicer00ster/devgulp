@@ -219,6 +219,21 @@ function apiUpdatePostLikes(data, userLikes) {
   }).then(post => post);
 }
 
+function apiUpdateUserInfo(data) {
+  return axios({
+    method: 'post',
+    url: `${API_URL}/users/me`,
+    headers: {
+      Authorization: `Bearer ${data.token}`,
+      'Content-Type': 'application/json',
+    },
+    data: {
+      description: data.description,
+      company_name: data.companyName,
+    },
+  }).then(user => user);
+}
+
 // Start sagas.
 // -------------------------------
 function* loginSaga(data) {
@@ -440,6 +455,15 @@ function* updatePostLikesSaga(data) {
   }
 }
 
+function* updateUserInfoSaga(data) {
+  try {
+    const response = yield call(apiUpdateUserInfo, data);
+    yield put({ type: types.UPDATE_USER_INFO_SUCCESS, response });
+  } catch (error) {
+    yield put({ type: types.UPDATE_USER_INFO_FAILURE });
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeEvery(types.VERIFIED_TOKEN, fetchTokenSaga),
@@ -452,6 +476,7 @@ function* rootSaga() {
     takeEvery(types.ADD_COMMENT, addCommentSaga),
     takeEvery(types.ADD_COMMENT_REPLY, addCommentReplySaga),
     takeEvery(types.UPDATE_POST_LIKES, updatePostLikesSaga),
+    takeEvery(types.UPDATE_USER_INFO, updateUserInfoSaga),
     takeEvery(types.FETCH_TOTAL_POSTS, fetchTotalPostsSaga),
     takeEvery(types.FETCH_USER, fetchUserSaga),
     takeEvery(types.FETCH_USERS, fetchUsersSaga),

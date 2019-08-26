@@ -36,20 +36,22 @@ function Editor(props) {
         </StyledEditorButtons>
       </StyledEditorHeader>
       <StyledEditorContent>
-        <StyledEditorMenu>
-          <StyledEditorMenuItem onClick={() => setTab('index')}>
-            <Javascript width={18} height={18} />
-            <span className={tab === 'index' ? 'active' : ''}>index.js</span>
-          </StyledEditorMenuItem>
-          <StyledEditorMenuItem onClick={() => setTab('styles')}>
-            <CSS width={18} height={18} />
-            <span className={tab === 'styles' ? 'active' : ''}>styles.css</span>
-          </StyledEditorMenuItem>
-          <StyledEditorMenuItem onClick={() => setTab('server')}>
-            <Database width={18} height={18} />
-            <span className={tab === 'server' ? 'active' : ''}>server.js</span>
-          </StyledEditorMenuItem>
-        </StyledEditorMenu>
+        {!props.profile && (
+            <StyledEditorMenu>
+              <StyledEditorMenuItem onClick={() => setTab('index')}>
+                <Javascript width={18} height={18} />
+                <span className={tab === 'index' ? 'active' : ''}>index.js</span>
+              </StyledEditorMenuItem>
+              <StyledEditorMenuItem onClick={() => setTab('styles')}>
+                <CSS width={18} height={18} />
+                <span className={tab === 'styles' ? 'active' : ''}>styles.css</span>
+              </StyledEditorMenuItem>
+              <StyledEditorMenuItem onClick={() => setTab('server')}>
+                <Database width={18} height={18} />
+                <span className={tab === 'server' ? 'active' : ''}>server.js</span>
+              </StyledEditorMenuItem>
+            </StyledEditorMenu>
+        )}
         <StyledEditorCode>
           {transitions.map(({ item, props, key }) => (
             <StyledEditorLine key={key} style={props}>

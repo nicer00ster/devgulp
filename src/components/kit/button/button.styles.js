@@ -29,6 +29,10 @@ const StyledButton = styled.button`
   border: 1px solid ${props => props.theme.colors.lightBlack};
   border-radius: ${props => props.theme.effects.radius};
   transition: all 0.25s ease-in;
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
   &:hover,
   &:focus {
     outline: 0;

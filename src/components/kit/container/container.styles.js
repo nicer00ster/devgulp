@@ -5,7 +5,10 @@ const StyledContainer = styled.section`
   flex-direction: column;
   position: relative;
   opacity: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+    props.loginMenuOpen ||
+    props.userMenuOpen ||
+    props.drawerOpen ||
+    props.isUpdatingUser
       ? '0.4'
       : '1'};
   transform: ${props =>

@@ -82,6 +82,15 @@ export function updatePostLikes(token, postLikes, postId, userId) {
   };
 }
 
+export function updateUserInfo(token, description, companyName) {
+  return {
+    type: types.UPDATE_USER_INFO,
+    token,
+    description,
+    companyName,
+  };
+}
+
 export function login(username, password) {
   return {
     type: types.LOGIN,

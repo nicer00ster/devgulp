@@ -67,6 +67,9 @@ const StyledPublishTitle = styled.input`
   &.error::placeholder {
     color: tomato;
   }
+  ::placeholder {
+    padding-left: 0.4rem;
+  }
 `;
 
 const StyledPublishBody = styled.textarea`
@@ -85,6 +88,9 @@ const StyledPublishBody = styled.textarea`
   }
   &.error::placeholder {
     color: tomato;
+  }
+  ::placeholder {
+    padding-left: 0.4rem;
   }
 `;
 

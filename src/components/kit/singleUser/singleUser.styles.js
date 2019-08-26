@@ -3,8 +3,6 @@ import styled from 'styled-components';
 const StyledSingleUser = styled.div`
     line-height: 20px;
     font-size: 16px;
-    // position: relative;
-    // background-color: ${props => props.theme.colors.black};
 `;
 
 const StyledSingleUserContainer = styled.div`
@@ -39,11 +37,49 @@ const StyledSingleUserDate = styled.div`
   font-size: 14px;
 `;
 
-const StyledSingleUserDescription = styled.p`
+const StyledSingleUserDescription = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: ${props => props.theme.colors.black};
+  padding: 4px;
   margin-top: 4px;
   margin-bottom: 0;
-  font-size: 18px;
+  font-size: 24px;
+  font-family: 'Trirong', serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-align: center;
+  &:after {
+    content: '';
+    position: absolute;
+    background-color: ${props => props.theme.colors.lightGreen};
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+  }
+  & blockquote {
+    padding: 0 2rem;
+    z-index: 1;
+  }
 `;
+
+const StyledSingleUserCompany = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  color: ${props => props.theme.colors.lightBlack};
+  & i {
+    padding-right: 4px;
+  }
+  & span {
+    font-size: 12px;
+  }
+`;
+
+const StyledSingleUserEmail = styled(StyledSingleUserCompany)``;
 
 export {
   StyledSingleUser,
@@ -53,4 +89,6 @@ export {
   StyledSingleUserName,
   StyledSingleUserDate,
   StyledSingleUserDescription,
+  StyledSingleUserCompany,
+  StyledSingleUserEmail,
 };
