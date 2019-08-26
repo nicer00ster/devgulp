@@ -21,11 +21,15 @@ function Users(props) {
     <>
       <Hero></Hero>
       <Container>
-        <EnhancedUsers />
+        <EnhancedUsers users={props.users} />
       </Container>
     </>
   );
 }
+
+const mapStateToProps = ({ users }) => ({
+  ...users,
+});
 
 const mapDispatchToProps = {
   fetchUsers,
@@ -33,6 +37,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(Users);

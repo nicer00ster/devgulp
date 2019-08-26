@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const StyledSingleUser = styled.div`
-    line-height: 20px;
-    font-size: 16px;
-    margin: 4rem 0;
+  line-height: 20px;
+  font-size: 16px;
+  margin: 4rem 0;
 `;
 
 const StyledSingleUserContainer = styled.div`

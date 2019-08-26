@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { connect } from 'react-redux';
 import { useTrail, config } from 'react-spring';
 import { StyledUsers, StyledUser } from './users.styles';
 import { StyledAvatar } from '../../header/header.styles';
@@ -44,11 +43,4 @@ function EnhancedUsers(props) {
   );
 }
 
-const mapStateToProps = ({ users }) => ({
-  ...users,
-});
-
-export default connect(
-  mapStateToProps,
-  null,
-)(EnhancedUsers);
+export default EnhancedUsers;

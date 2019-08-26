@@ -164,6 +164,14 @@ function apiFetchCategories() {
   }).then(categories => categories);
 }
 
+function apiFetchUserFollowers(userFollowers) {
+  const users = userFollowers.toString();
+  return axios({
+    method: 'get',
+    url: `${API_URL}/users?include=${users}`,
+  }).then(users => users);
+}
+
 function apiAddComment(data) {
   return axios({
     method: 'post',
@@ -380,6 +388,15 @@ function* fetchCategoriesSaga() {
   }
 }
 
+function* fetchUserFollowersSaga(data) {
+  try {
+    const response = yield call(apiFetchUserFollowers, data.userFollowers);
+    yield put({ type: types.FETCH_USER_FOLLOWERS_SUCCESS, response });
+  } catch (error) {
+    yield put({ type: types.FETCH_USER_FOLLOWERS_FAILURE, error });
+  }
+}
+
 function* addPostSaga(data) {
   yield delay(2000);
   try {
@@ -484,6 +501,7 @@ function* rootSaga() {
     takeEvery(types.FETCH_POST, fetchPostSaga),
     takeEvery(types.FETCH_CATEGORIES, fetchCategoriesSaga),
     takeEvery(types.FETCH_AUTHOR, fetchAuthorSaga),
+    takeEvery(types.FETCH_USER_FOLLOWERS, fetchUserFollowersSaga),
   ]);
 }
 

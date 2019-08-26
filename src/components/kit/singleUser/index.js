@@ -16,11 +16,12 @@ import { StyledAvatar } from '../../header/header.styles';
 import { StyledPreviewImage } from '../publish/publish.styles';
 import { toggleModal } from '../../../redux/actions';
 import EditProfile from './editProfile';
+import Followers from '../followers';
 import Loading from '../loading';
 import Modal from '../modal';
 
 function SingleUser(props) {
-  const { author, isFetchingAuthor } = props.author;
+  const { author, isFetchingAuthor, fetchedFollowers } = props.author;
   const [isUsersProfile, setIsUsersProfile] = useState(false);
 
   useEffect(() => {
@@ -75,6 +76,12 @@ function SingleUser(props) {
             />
           </StyledAvatar>
         </StyledSingleUserContent>
+        {author.acf.user_followers.length && (
+          <Followers
+            followerIds={author.acf.user_followers}
+            followers={fetchedFollowers}
+          />
+        )}
         {isUsersProfile && <EditProfile user={author} />}
       </StyledSingleUserContainer>
       <Modal>

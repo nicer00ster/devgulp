@@ -206,3 +206,10 @@ export function fetchCategories() {
     type: types.FETCH_CATEGORIES,
   };
 }
+
+export function fetchUserFollowers(userFollowers) {
+  return {
+    type: types.FETCH_USER_FOLLOWERS,
+    userFollowers,
+  };
+}
