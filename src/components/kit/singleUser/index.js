@@ -13,12 +13,11 @@ import {
   StyledSingleUserEmail,
 } from './singleUser.styles';
 import { StyledAvatar } from '../../header/header.styles';
+import { StyledPreviewImage } from '../publish/publish.styles';
 import { toggleModal } from '../../../redux/actions';
 import EditProfile from './editProfile';
 import Loading from '../loading';
 import Modal from '../modal';
-import Editor from '../editor';
-import { StyledPreviewImage } from '../publish/publish.styles';
 
 function SingleUser(props) {
   const { author, isFetchingAuthor } = props.author;

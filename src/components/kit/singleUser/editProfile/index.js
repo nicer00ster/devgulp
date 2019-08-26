@@ -46,7 +46,7 @@ function EditProfile(props) {
 
   return (
     <StyledEditProfile>
-      <h2>Update Profile</h2>
+      <p>Update Profile</p>
       <StyledDivider />
       <StyledEditForm onSubmit={handleUpdateUser}>
         <StyledEditInputFields>

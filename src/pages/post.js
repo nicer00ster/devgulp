@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';

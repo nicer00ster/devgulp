@@ -67,6 +67,7 @@ typings/
 .htaccess
 /wp-includes/*
 !/wp-includes/rest-api
+!/wp-includes/functions.php
 /wp-content/themes
 /wp-content/uploads
 /wp-admin
