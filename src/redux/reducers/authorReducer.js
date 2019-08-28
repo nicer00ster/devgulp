@@ -113,7 +113,6 @@ export default function authorReducer(state = initialState, action = {}) {
         },
       };
     case types.UPLOAD_AVATAR_FAILURE:
-      console.log('UPLOAD_AVATAR_FAILURE', action);
       return {
         ...state,
         isUploadingAvatar: false,

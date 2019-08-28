@@ -141,7 +141,12 @@ const StyledMenu = styled.ul`
 const StyledMenuItem = styled.li`
   padding: 0.5rem;
   white-space: nowrap;
-  & a {
+  i {
+    font-size: 18px;
+    padding: 0 0.5rem;
+    color: ${props => props.theme.colors.lightBlack};
+  }
+  a {
     padding: 0.5rem;
     border-radius: ${props => props.theme.effects.radius};
     transition: all 0.25s ease-in;

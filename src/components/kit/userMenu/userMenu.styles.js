@@ -52,6 +52,16 @@ const StyledUserInfo = styled.div`
 const StyledUserMenuListItem = styled.li`
   position: relative;
   padding: 1.2rem 2.4rem;
+  a {
+    display: inline-flex;
+    align-items: center;
+  }
+  i {
+    font-size: 18px;
+    max-height: 18px;
+    max-width: 18px;
+    padding-right: 3.2rem;
+  }
 `;
 
 const StyledUserMenuDivider = styled.li`

@@ -63,20 +63,47 @@ function UserMenu(props) {
             </StyledUserInfo>
           </StyledUserDataListItem>
           <StyledUserMenuDivider />
-          <StyledUserMenuListItem>More</StyledUserMenuListItem>
           <StyledUserMenuListItem>
             <Link href="/publish">
-              <a onClick={props.toggleUserMenu}>New Post</a>
+              <a onClick={props.toggleUserMenu}>
+                <i className="fal fa-feather-alt" />
+                New Post
+              </a>
+            </Link>
+          </StyledUserMenuListItem>
+          <StyledUserMenuListItem>
+            <Link href="/users">
+              <a onClick={props.toggleUserMenu}>
+                <i className="fal fa-users" />
+                Users
+              </a>
             </Link>
           </StyledUserMenuListItem>
           <StyledUserMenuDivider />
           <StyledUserMenuListItem>
             <Link href={`/user?userId=${props.user.id}`}>
-              <a onClick={props.toggleUserMenu}>Profile</a>
+              <a onClick={props.toggleUserMenu}>
+                <i className="fal fa-user" />
+                Profile
+              </a>
             </Link>
           </StyledUserMenuListItem>
-          <StyledUserMenuListItem>Settings</StyledUserMenuListItem>
-          <StyledUserMenuListItem>Help</StyledUserMenuListItem>
+          <StyledUserMenuListItem>
+            <Link href={`/settings?userId=${props.user.id}`}>
+              <a onClick={props.toggleUserMenu}>
+                <i className="fal fa-cogs" />
+                Settings
+              </a>
+            </Link>
+          </StyledUserMenuListItem>
+          <StyledUserMenuListItem>
+            <Link href="/help">
+              <a onClick={props.toggleUserMenu}>
+                <i className="fal fa-life-ring" />
+                Help
+              </a>
+            </Link>
+          </StyledUserMenuListItem>
           <StyledUserMenuDivider />
           <StyledUserMenuListItem>
             <StyledLogoutButton onClick={() => props.logout()}>

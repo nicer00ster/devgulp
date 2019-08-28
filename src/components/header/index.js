@@ -160,6 +160,9 @@ function Header(props) {
             <Burger />
           ) : (
             <>
+              <StyledMenuItem>
+                <i className="fal fa-life-ring" />
+              </StyledMenuItem>
               <EnhancedLink href="/publish">Publish</EnhancedLink>
               <EnhancedLink href="/users">Users</EnhancedLink>
               {!props.user.token ? (
