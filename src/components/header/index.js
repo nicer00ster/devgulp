@@ -7,10 +7,6 @@ import Link from 'next/link';
 import {
   StyledHeader,
   StyledNav,
-  StyledFilterNav,
-  StyledFilterItems,
-  StyledFilterItem,
-  StyledCategoryCount,
   StyledLogin,
   StyledSignup,
   StyledLogoContainer,
@@ -47,7 +43,6 @@ function Header(props) {
   const ref = useRef();
   const searchRef = useRef();
   const [bind, { width }] = useMeasure();
-  const [activeFilter, setActiveFilter] = useState(1);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const {
@@ -65,11 +60,6 @@ function Header(props) {
       setIsScrolled(false);
     }
   }, []);
-
-  function handleFilter(id) {
-    setActiveFilter(id);
-    props.filterTaxonomy(id);
-  }
 
   function toggleSearch() {
     props.toggleSearch();
@@ -196,23 +186,6 @@ function Header(props) {
           )}
         </StyledMenu>
       </StyledNav>
-      {props.router.pathname === '/' && (
-        <StyledFilterNav
-          loginMenuOpen={props.loginMenuOpen}
-          userMenuOpen={props.userMenuOpen}>
-          <StyledFilterItems className="filter-items">
-            {props.categories &&
-              props.categories.map(category => (
-                <StyledFilterItem
-                  key={category.id}
-                  className={activeFilter === category.id && 'active-filter'}
-                  onClick={() => handleFilter(category.id)}>
-                  {category.name === 'Uncategorized' ? 'All' : category.name}
-                </StyledFilterItem>
-              ))}
-          </StyledFilterItems>
-        </StyledFilterNav>
-      )}
       {props.screenWidth >= 578 && (
         <>
           <Login />

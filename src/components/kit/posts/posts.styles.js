@@ -179,6 +179,45 @@ const StyledNoResults = styled.p`
   text-align: center;
 `;
 
+const StyledFilterNav = styled.nav`
+  opacity: ${props =>
+    props.loginMenuOpen || props.userMenuOpen ? '0.4' : '1'};
+  transform: ${props =>
+    props.loginMenuOpen || props.userMenuOpen ? 'scale(0.95)' : ''};
+  overflow: ${props =>
+    props.loginMenuOpen || props.userMenuOpen ? 'hidden' : 'visible'};
+  pointer-events: ${props =>
+    props.loginMenuOpen || props.userMenuOpen ? 'none' : 'all'};
+  transition: all 0.25s linear;
+`;
+
+const StyledFilterItems = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 2rem 0;
+  transition: all 0.25s ease-in;
+`;
+
+const StyledFilterItem = styled.button`
+  color: ${props => props.theme.colors.lightBlack};
+  padding: 0.4rem;
+  margin: 0.4rem;
+  cursor: pointer;
+  border-radius: ${props => props.theme.effects.radius};
+  border: 1px solid ${props => props.theme.colors.lightBlack};
+  background-color: ${props => props.theme.colors.white};
+  transition: all 0.25s ease-in;
+  outline: 0;
+  &:hover,
+  &:focus,
+  &.active-filter {
+    color: ${props => props.theme.colors.white};
+    background-color: ${props => props.theme.colors.black};
+  }
+`;
+
 export {
   StyledPosts,
   StyledPost,
@@ -193,4 +232,7 @@ export {
   StyledPostExcerpt,
   StyledPostImage,
   StyledNoResults,
+  StyledFilterNav,
+  StyledFilterItems,
+  StyledFilterItem,
 };

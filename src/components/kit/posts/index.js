@@ -1,33 +1,31 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useTransition } from 'react-spring';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import debounce from 'lodash.debounce';
 import {
   StyledPosts,
-  StyledPost,
-  StyledPostContent,
-  StyledPostTaxonomies,
-  StyledPostTaxonomyItem,
-  StyledPostTitle,
-  StyledDateAuthor,
-  StyledDateAuthorDivider,
-  StyledPostAuthor,
-  StyledPostExcerpt,
-  StyledPostDateStamp,
-  StyledPostImage,
   StyledNoResults,
+  StyledFilterNav,
+  StyledFilterItems,
+  StyledFilterItem,
 } from './posts.styles';
-import { getTaxonomyIcon } from '../../../utils';
-import { fetchPosts } from '../../../redux/actions';
+import { fetchPosts, filterTaxonomy } from '../../../redux/actions';
 import PostItem from './PostItem';
 
 function EnhancedPosts(props) {
+  const router = useRouter();
+  const [activeFilter, setActiveFilter] = useState(1);
   const filteredPosts = props.posts.filter(post => post.isFiltered);
   const currentFilter = props.categories.map(category =>
     category.id === props.taxonomyFilter ? category.name : null,
   );
+
+  function handleFilter(id) {
+    setActiveFilter(id);
+    props.filterTaxonomy(id);
+  }
 
   const fetchPosts = debounce(() => {
     if (
@@ -60,6 +58,23 @@ function EnhancedPosts(props) {
 
   return (
     <>
+      {router.pathname === '/' && (
+        <StyledFilterNav
+          loginMenuOpen={props.loginMenuOpen}
+          userMenuOpen={props.userMenuOpen}>
+          <StyledFilterItems className="filter-items">
+            {props.categories &&
+              props.categories.map(category => (
+                <StyledFilterItem
+                  key={category.id}
+                  className={activeFilter === category.id && 'active-filter'}
+                  onClick={() => handleFilter(category.id)}>
+                  {category.name === 'Uncategorized' ? 'All' : category.name}
+                </StyledFilterItem>
+              ))}
+          </StyledFilterItems>
+        </StyledFilterNav>
+      )}
       <StyledPosts>
         {props.posts &&
           transitions.map(
@@ -98,6 +113,7 @@ const mapStateToProps = ({ posts }) => ({
 
 const mapDispatchToProps = {
   fetchPosts,
+  filterTaxonomy,
 };
 
 export default connect(
