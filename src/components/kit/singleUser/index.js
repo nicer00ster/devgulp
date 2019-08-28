@@ -12,10 +12,17 @@ import {
   StyledSingleUserCompany,
   StyledSingleUserEmail,
   StyledSingleUserFollowers,
+  StyledSingleUserAvatar,
+  StyledSingleUserAvatarUpload,
 } from './singleUser.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledPreviewImage } from '../publish/publish.styles';
-import { toggleModal, followUnfollowUser } from '../../../redux/actions';
+import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
+import {
+  toggleModal,
+  followUnfollowUser,
+  uploadAvatar,
+} from '../../../redux/actions';
 import EditProfile from './editProfile';
 import Followers from '../followers';
 import Loading from '../loading';
@@ -29,6 +36,7 @@ function SingleUser(props) {
     isFetchingFollowers,
     isFetchingAuthor,
     isUpdatingUser,
+    isUploadingAvatar,
   } = props.author;
   const [isUsersProfile, setIsUsersProfile] = useState(false);
 
@@ -39,6 +47,19 @@ function SingleUser(props) {
       setIsUsersProfile(false);
     }
   }, [author.id, props.user.id]);
+
+  async function handleImage(e) {
+    const files = e.target.files;
+    const data = new FormData();
+
+    // Validate MIME type
+    if (ALLOWED_MIME_TYPES.indexOf(files[0].type) == -1) {
+      return new Error('File type not allowed.');
+    } else {
+      data.append('file', files[0]);
+    }
+    return data;
+  }
 
   if (isFetchingAuthor) {
     return <Loading />;
@@ -93,19 +114,40 @@ function SingleUser(props) {
               </Button>
             )}
           </StyledSingleUserInfo>
-          <StyledAvatar
-            size={100}
-            className="bordered"
-            onClick={props.toggleModal}>
-            <img
-              alt="Avatar"
-              src={
-                !author.acf.avatar
-                  ? '/static/icons/default_avatar.png'
-                  : author.acf.avatar
-              }
-            />
-          </StyledAvatar>
+          <StyledSingleUserAvatar isUploadingAvatar={isUploadingAvatar}>
+            <StyledAvatar
+              size={100}
+              className="bordered"
+              onClick={() => {
+                if (!author.acf.avatar) return;
+                props.toggleModal();
+              }}>
+              <img
+                alt="Avatar"
+                src={
+                  !author.acf.avatar
+                    ? '/static/icons/default_avatar.png'
+                    : author.acf.avatar
+                }
+              />
+              {isUploadingAvatar && <Loading />}
+            </StyledAvatar>
+            {isUsersProfile && (
+              <>
+                <StyledSingleUserAvatarUpload
+                  onChange={e =>
+                    props.uploadAvatar(props.user.token, handleImage(e))
+                  }
+                  className="upload-avatar"
+                  type="file"
+                  name="file"
+                  id="upload-avatar"
+                  accept="image/*"
+                />
+                <label htmlFor="upload-avatar">Upload Avatar</label>
+              </>
+            )}
+          </StyledSingleUserAvatar>
         </StyledSingleUserContent>
         {author.acf.user_followers.length ? (
           <Followers
@@ -130,6 +172,7 @@ const mapStateToProps = ({ user }) => ({
 const mapDispatchToProps = {
   toggleModal,
   followUnfollowUser,
+  uploadAvatar,
 };
 
 export default connect(

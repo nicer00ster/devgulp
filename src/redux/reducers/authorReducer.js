@@ -5,6 +5,7 @@ const initialState = {
   fetchedFollowers: [],
   isFetchingAuthor: true,
   isUpdatingUser: false,
+  isUploadingAvatar: false,
   hasError: false,
   errorMessage: '',
 };
@@ -93,6 +94,30 @@ export default function authorReducer(state = initialState, action = {}) {
       return {
         ...state,
         isUpdatingUser: false,
+      };
+    case types.UPLOAD_AVATAR:
+      return {
+        ...state,
+        isUploadingAvatar: true,
+      };
+    case types.UPLOAD_AVATAR_SUCCESS:
+      return {
+        ...state,
+        isUploadingAvatar: false,
+        author: {
+          ...state.author,
+          acf: {
+            ...state.author.acf,
+            avatar: action.response.data.acf.avatar,
+          },
+        },
+      };
+    case types.UPLOAD_AVATAR_FAILURE:
+      console.log('UPLOAD_AVATAR_FAILURE', action);
+      return {
+        ...state,
+        isUploadingAvatar: false,
+        errorMessage: action.error,
       };
     default:
       return state;

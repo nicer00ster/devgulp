@@ -132,14 +132,14 @@ async function apiAddMedia(token, media) {
   let fileType;
   // Make sure the Form Data being passed from the client is
   // an array and we can loop over the values.
-  // if (formData.entries().next().done) {
-  for (let value of formData.values()) {
-    fileName = value.name;
-    fileType = value.type;
+  if (typeof formData.entries === 'function') {
+    for (let value of formData.values()) {
+      fileName = value.name;
+      fileType = value.type;
+    }
+  } else {
+    return types.FILE_TYPE_ERROR;
   }
-  // } else {
-  //   return types.FILE_TYPE_ERROR;
-  // }
 
   if (types.ALLOWED_MIME_TYPES.includes(fileType)) {
     return axios({
@@ -152,6 +152,53 @@ async function apiAddMedia(token, media) {
       url: `${API_URL}/media`,
     })
       .then(media => media)
+      .catch(error => ({ error }));
+  } else {
+    return types.FILE_TYPE_ERROR;
+  }
+}
+
+async function apiUploadAvatar(token, media) {
+  const formData = await media;
+  let fileName;
+  let fileType;
+  // Make sure the Form Data being passed from the client is
+  // an array and we can loop over the values.
+  if (typeof formData.entries === 'function') {
+    for (let value of formData.values()) {
+      fileName = value.name;
+      fileType = value.type;
+    }
+  } else {
+    return types.FILE_TYPE_ERROR;
+  }
+
+  if (types.ALLOWED_MIME_TYPES.includes(fileType)) {
+    return axios({
+      method: 'post',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Disposition': `form-data; filename=${fileName}`,
+      },
+      data: formData,
+      url: `${API_URL}/media`,
+    })
+      .then(image => {
+        console.log(image);
+        return axios({
+          method: 'post',
+          url: `${ACF_URL}/users/${image.data.author}`,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          data: {
+            fields: {
+              avatar: image.data.media_details.sizes.medium_large.source_url,
+            },
+          },
+        }).then(user => user);
+      })
       .catch(error => ({ error }));
   } else {
     return types.FILE_TYPE_ERROR;
@@ -517,6 +564,19 @@ function* updateUserInfoSaga(data) {
   }
 }
 
+function* uploadAvatarSaga(data) {
+  const response = yield call(apiUploadAvatar, data.token, data.media);
+
+  if (response.error) {
+    yield put({
+      type: types.UPLOAD_AVATAR_FAILURE,
+      error: response.error.message,
+    });
+  } else {
+    yield put({ type: types.UPLOAD_AVATAR_SUCCESS, response });
+  }
+}
+
 function* followUserSaga(data) {
   try {
     const response = yield call(apiFollowUser, data);
@@ -539,6 +599,7 @@ function* rootSaga() {
     takeEvery(types.ADD_COMMENT_REPLY, addCommentReplySaga),
     takeEvery(types.UPDATE_POST_LIKES, updatePostLikesSaga),
     takeEvery(types.UPDATE_USER_INFO, updateUserInfoSaga),
+    takeEvery(types.UPLOAD_AVATAR, uploadAvatarSaga),
     takeEvery(types.FOLLOW_OR_UNFOLLOW_USER, followUserSaga),
     takeEvery(types.FETCH_TOTAL_POSTS, fetchTotalPostsSaga),
     takeEvery(types.FETCH_USER, fetchUserSaga),

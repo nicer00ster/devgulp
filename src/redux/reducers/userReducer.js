@@ -123,6 +123,11 @@ export default function userReducer(state = initialState, action = {}) {
         errorMessage: action.error.message,
         isCheckingToken: false,
       };
+    case types.UPLOAD_AVATAR_SUCCESS:
+      return {
+        ...state,
+        avatar: action.response.data.acf.avatar,
+      };
     default:
       return state;
   }

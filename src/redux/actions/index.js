@@ -147,6 +147,14 @@ export function addMedia(token, media) {
   };
 }
 
+export function uploadAvatar(token, media) {
+  return {
+    type: types.UPLOAD_AVATAR,
+    token,
+    media,
+  };
+}
+
 export function followUnfollowUser(
   token,
   currentUser,
