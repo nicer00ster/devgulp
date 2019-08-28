@@ -58,6 +58,7 @@ export default function authorReducer(state = initialState, action = {}) {
       return {
         ...state,
         isFetchingFollowers: true,
+        fetchedFollowers: [],
       };
     case types.FETCH_USER_FOLLOWERS_SUCCESS:
       return {
@@ -69,6 +70,29 @@ export default function authorReducer(state = initialState, action = {}) {
       return {
         ...state,
         isFetchingFollowers: false,
+      };
+    case types.FOLLOW_OR_UNFOLLOW_USER:
+      return {
+        ...state,
+        isUpdatingUser: true,
+      };
+    case types.FOLLOW_OR_UNFOLLOW_USER_SUCCESS:
+      return {
+        ...state,
+        isUpdatingUser: false,
+        author: {
+          ...state.author,
+          acf: {
+            ...state.author.acf,
+            user_followers: action.response.data.map(user => user.id),
+          },
+        },
+        fetchedFollowers: action.response.data,
+      };
+    case types.FOLLOW_OR_UNFOLLOW_USER_FAILURE:
+      return {
+        ...state,
+        isUpdatingUser: false,
       };
     default:
       return state;

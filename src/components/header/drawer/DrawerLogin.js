@@ -47,6 +47,7 @@ function DrawerLogin(props) {
         type="text"
         name="drawerUsername"
         label="Username"
+        styles={{ margin: '4rem 0' }}
         error={usernameError}
         bind={bindUsername}
       />
@@ -54,6 +55,7 @@ function DrawerLogin(props) {
         type="password"
         name="drawerPassword"
         label="Password"
+        styles={{ margin: '4rem 0' }}
         error={passwordError}
         bind={bindPassword}
       />

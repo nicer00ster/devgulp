@@ -16,7 +16,7 @@ const StyledDrawer = styled.div`
     props.drawerOpen ? 'translateX(0px)' : 'translateX(1200px)'};
   &:before {
     content: '';
-    background-color: ${props => props.theme.colors.yellow};
+    background-color: ${props => props.theme.colors.lightGreen};
     position: absolute;
     height: 100%;
     width: 100%;

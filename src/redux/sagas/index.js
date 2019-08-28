@@ -15,6 +15,7 @@ import { API_URL, TOKEN_URL, ACF_URL } from '../constants';
 import { setToken, verifyToken, arrangeComments } from '../../utils';
 
 import * as types from '../constants';
+import {followUser} from "../actions";
 
 function apiFetchToken(data) {
   return axios({
@@ -240,6 +241,41 @@ function apiUpdateUserInfo(data) {
       company_name: data.companyName,
     },
   }).then(user => user);
+}
+
+function apiFollowUser(data) {
+  let followers = [...data.targetUserFollowers];
+
+  if(data.currentUser === data.targetUser) {
+    return new Error('You can\'t follow yourself!');
+  }
+
+  if(followers.includes(data.currentUser)) {
+    followers = followers.filter(user => user !== data.currentUser);
+  } else {
+    followers = followers.concat(data.currentUser);
+  }
+
+  if(!followers.length) {
+    followers = 0;
+  }
+
+  return axios({
+    method: 'post',
+    url: `${ACF_URL}/users/${data.targetUser}`,
+    headers: {
+      Authorization: `Bearer ${data.token}`,
+      'Content-Type': 'application/json',
+    },
+    data: {
+      fields: {
+        user_followers: followers
+      },
+    },
+  })
+  .then(user => user)
+  .then(() => apiFetchUserFollowers(followers))
+  .then(res => res);
 }
 
 // Start sagas.
@@ -481,6 +517,15 @@ function* updateUserInfoSaga(data) {
   }
 }
 
+function* followUserSaga(data) {
+  try {
+    const response = yield call(apiFollowUser, data);
+    yield put({ type: types.FOLLOW_OR_UNFOLLOW_USER_SUCCESS, response });
+  } catch (error) {
+    yield put({ type: types.FOLLOW_OR_UNFOLLOW_USER_FAILURE, error });
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeEvery(types.VERIFIED_TOKEN, fetchTokenSaga),
@@ -494,6 +539,7 @@ function* rootSaga() {
     takeEvery(types.ADD_COMMENT_REPLY, addCommentReplySaga),
     takeEvery(types.UPDATE_POST_LIKES, updatePostLikesSaga),
     takeEvery(types.UPDATE_USER_INFO, updateUserInfoSaga),
+    takeEvery(types.FOLLOW_OR_UNFOLLOW_USER, followUserSaga),
     takeEvery(types.FETCH_TOTAL_POSTS, fetchTotalPostsSaga),
     takeEvery(types.FETCH_USER, fetchUserSaga),
     takeEvery(types.FETCH_USERS, fetchUsersSaga),

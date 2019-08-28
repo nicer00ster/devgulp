@@ -105,6 +105,7 @@ const StyledFilterItem = styled.button`
   cursor: pointer;
   border-radius: ${props => props.theme.effects.radius};
   border: 1px solid ${props => props.theme.colors.lightBlack};
+  background-color: ${props => props.theme.colors.white};
   transition: all 0.25s ease-in;
   outline: 0;
   &:hover,
@@ -130,10 +131,10 @@ const StyledMenu = styled.ul`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex: 0 0 auto;
+  flex: 1 0 auto;
   list-style: none;
   ${props => props.theme.mediaQuery.phone`
-    flex: 1;  
+    // flex: 1; 
   `};
 `;
 

@@ -11,12 +11,16 @@ const StyledSingleUserContainer = styled.div`
   margin-right: auto;
   padding-left: 24px;
   padding-right: 24px;
-  max-width: 640px;
+  max-width: 768px;
 `;
 
 const StyledSingleUserContent = styled.div`
   display: flex;
   align-items: flex-start;
+  ${props => props.theme.mediaQuery.phone`
+    flex-direction: column-reverse;
+    align-items: center;
+  `};
 `;
 
 const StyledSingleUserInfo = styled.div`
@@ -71,9 +75,10 @@ const StyledSingleUserCompany = styled.div`
   display: flex;
   align-items: center;
   margin-top: 12px;
+  letter-spacing: 1px;
   color: ${props => props.theme.colors.lightBlack};
   & i {
-    padding-right: 4px;
+    padding-right: 8px;
   }
   & span {
     font-size: 12px;
@@ -81,6 +86,8 @@ const StyledSingleUserCompany = styled.div`
 `;
 
 const StyledSingleUserEmail = styled(StyledSingleUserCompany)``;
+
+const StyledSingleUserFollowers = styled(StyledSingleUserCompany)``;
 
 export {
   StyledSingleUser,
@@ -92,4 +99,5 @@ export {
   StyledSingleUserDescription,
   StyledSingleUserCompany,
   StyledSingleUserEmail,
+  StyledSingleUserFollowers,
 };
