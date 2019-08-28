@@ -117,7 +117,7 @@ function Header(props) {
         loginMenuOpen={props.loginMenuOpen}
         userMenuOpen={props.userMenuOpen}>
         {props.screenWidth <= 576 && <Drawer />}
-        <StyledLogoContainer screenWidth={props.screenWidth}>
+        <StyledLogoContainer>
           <Link href="/" prefetch scroll={false}>
             <StyledLogo href="#" style={logoSpring}>
               DevGulp
