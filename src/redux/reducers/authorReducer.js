@@ -2,8 +2,10 @@ import * as types from '../constants';
 
 const initialState = {
   author: {},
+  posts: [],
   fetchedFollowers: [],
   isFetchingAuthor: true,
+  isFetchingUserPosts: true,
   isUpdatingUser: false,
   isUploadingAvatar: false,
   hasError: false,
@@ -71,6 +73,21 @@ export default function authorReducer(state = initialState, action = {}) {
       return {
         ...state,
         isFetchingFollowers: false,
+      };
+    case types.FETCH_USER_POSTS:
+      return {
+        ...state,
+      };
+    case types.FETCH_USER_POSTS_SUCCESS:
+      return {
+        ...state,
+        posts: action.response.data,
+        isFetchingUserPosts: false,
+      };
+    case types.FETCH_USER_POSTS_FAILURE:
+      return {
+        ...state,
+        isFetchingUserPosts: false,
       };
     case types.FOLLOW_OR_UNFOLLOW_USER:
       return {

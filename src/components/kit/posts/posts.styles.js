@@ -103,6 +103,7 @@ const StyledPostAuthor = styled.div`
 const StyledPostExcerpt = styled.div`
   color: ${props => props.theme.colors.lightBlack};
   font-style: italic;
+  font-size: 12px;
   & p {
     margin: 0.5rem 0;
   }
@@ -162,6 +163,7 @@ const StyledPostImage = styled.div`
 
 const StyledDateAuthor = styled.div`
   display: inline-flex;
+  font-size: 12px;
 `;
 
 const StyledDateAuthorDivider = styled.span`
