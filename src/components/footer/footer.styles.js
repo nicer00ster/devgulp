@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledFooterOuter = styled.div`
   padding: 0 0;
   width: 100%;
+  max-width: 1080px;
   margin: 0 auto;
   color: ${props => props.theme.colors.lightBlack};
   opacity: ${props =>
@@ -12,7 +13,7 @@ const StyledFooterOuter = styled.div`
   transform: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? 'scale(0.95)'
-      : ''};
+      : 'scale(1)'};
   overflow: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? 'hidden'
@@ -31,13 +32,15 @@ const StyledFooterInner = styled.div`
 `;
 
 const StyledFooter = styled.footer`
-  padding: 2rem 0 4rem;
-  min-height: 400px;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
 `;
 
 const StyledFooterList = styled.ul`
   display: flex;
-  justify-content: center;
+  justify-content: ${props => props.align};
+  width: 100%;
   list-style: none;
   padding: 0;
 `;

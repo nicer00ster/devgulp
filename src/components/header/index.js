@@ -117,7 +117,7 @@ function Header(props) {
         loginMenuOpen={props.loginMenuOpen}
         userMenuOpen={props.userMenuOpen}>
         {props.screenWidth <= 576 && <Drawer />}
-        <StyledLogoContainer screenWidth={props.screenWidth}>
+        <StyledLogoContainer>
           <Link href="/" prefetch scroll={false}>
             <StyledLogo href="#" style={logoSpring}>
               DevGulp
@@ -137,8 +137,10 @@ function Header(props) {
                 if (props.router.pathname !== '/search') {
                   props.searchQuery(query);
                   props.router.push(`/search`);
+                  props.searchExpanded && toggleSearch()
                 } else {
                   props.searchQuery(query);
+                  props.searchExpanded && toggleSearch()
                 }
                 resetQuery();
               }}>

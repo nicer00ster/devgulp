@@ -7,6 +7,8 @@ import {
   StyledFooterList,
   StyledFooterListItem,
 } from './footer.styles';
+import { StyledLogo } from '../header/header.styles';
+import { StyledDivider } from '../kit/globals/globals.styles';
 
 function Footer(props) {
   return (
@@ -14,27 +16,48 @@ function Footer(props) {
       drawerOpen={props.drawerOpen}
       loginMenuOpen={props.loginMenuOpen}
       userMenuOpen={props.userMenuOpen}>
+      <StyledDivider />
       <StyledFooterInner>
         <StyledFooter>
-          <StyledFooterList>
+          <StyledFooterList align="flex-start">
+            <StyledFooterListItem>
+              @ {new Date().getFullYear()} DevGulp, Inc.
+            </StyledFooterListItem>
             <StyledFooterListItem>
               <Link href="/">
-                <a>Item</a>
+                <a>Terms</a>
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>
               <Link href="/">
-                <a>Item</a>
+                <a>Privacy</a>
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>
               <Link href="/">
-                <a>Item</a>
+                <a>Status</a>
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>
               <Link href="/">
-                <a>Item</a>
+                <a>Help</a>
+              </Link>
+            </StyledFooterListItem>
+          </StyledFooterList>
+          <Link href="/" prefetch scroll={false}>
+            <StyledLogo href="#" style={{ width: '100%', textAlign: 'center' }}>
+              DevGulp
+            </StyledLogo>
+          </Link>
+          <StyledFooterList align="flex-end">
+            <StyledFooterListItem>
+              <Link href="/publish">
+                <a>Publish</a>
+              </Link>
+            </StyledFooterListItem>
+            <StyledFooterListItem>
+              <Link href="/users">
+                <a>Users</a>
               </Link>
             </StyledFooterListItem>
           </StyledFooterList>

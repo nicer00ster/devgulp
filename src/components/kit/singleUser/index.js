@@ -23,7 +23,13 @@ import Modal from '../modal';
 import Button from '../button';
 
 function SingleUser(props) {
-  const { author, fetchedFollowers, isFetchingFollowers, isFetchingAuthor, isUpdatingUser } = props.author;
+  const {
+    author,
+    fetchedFollowers,
+    isFetchingFollowers,
+    isFetchingAuthor,
+    isUpdatingUser,
+  } = props.author;
   const [isUsersProfile, setIsUsersProfile] = useState(false);
 
   useEffect(() => {
@@ -65,13 +71,25 @@ function SingleUser(props) {
             )}
             <StyledSingleUserFollowers>
               <i className="fal fa-user" />
-              <span>{author.acf.user_followers.length} follower{author.acf.user_followers.length !== 1 ? 's' : ''}</span>
+              <span>
+                {author.acf.user_followers.length} follower
+                {author.acf.user_followers.length !== 1 ? 's' : ''}
+              </span>
             </StyledSingleUserFollowers>
             {!isUsersProfile && (
               <Button
-                  onClick={() => props.followUnfollowUser(props.user.token, props.user.id, author.id, author.acf.user_followers)}
-                  style={{ marginTop: '12px' }}>
-                {author.acf.user_followers.includes(props.user.id) ? `Unfollow${isUpdatingUser ? 'ing' : ''}`: `Follow${isUpdatingUser ? 'ing' : ''}`}
+                onClick={() =>
+                  props.followUnfollowUser(
+                    props.user.token,
+                    props.user.id,
+                    author.id,
+                    author.acf.user_followers,
+                  )
+                }
+                style={{ marginTop: '12px' }}>
+                {author.acf.user_followers.includes(props.user.id)
+                  ? `Unfollow${isUpdatingUser ? 'ing' : ''}`
+                  : `Follow${isUpdatingUser ? 'ing' : ''}`}
               </Button>
             )}
           </StyledSingleUserInfo>
