@@ -26,6 +26,7 @@ function Button(props) {
 
   return (
     <StyledButton
+      className={props.className}
       style={{ ...props.style }}
       type={props.type}
       disabled={props.disabled}

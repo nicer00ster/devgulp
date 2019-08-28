@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { StyledPublishImageUpload } from '../publish/publish.styles';
 
 const StyledSingleUser = styled.div`
   line-height: 20px;
@@ -46,7 +47,7 @@ const StyledSingleUserDescription = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.white};
   padding: 4px;
   margin-top: 4px;
   margin-bottom: 0;
@@ -60,14 +61,14 @@ const StyledSingleUserDescription = styled.div`
     content: '';
     position: absolute;
     background-color: ${props => props.theme.colors.lightGreen};
-    width: 100%;
+    width: 75%;
     height: 50%;
     bottom: 0;
-    left: 0;
+    pointer-events: none;
   }
   & blockquote {
-    padding: 0 2rem;
-    z-index: 1;
+    padding: 2rem;
+    background-color: ${props => props.theme.colors.lightBlack};
   }
 `;
 
@@ -89,6 +90,32 @@ const StyledSingleUserEmail = styled(StyledSingleUserCompany)``;
 
 const StyledSingleUserFollowers = styled(StyledSingleUserCompany)``;
 
+const StyledSingleUserAvatar = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: ${props => (props.isUploadingAvatar ? '.4' : '1')};
+  pointer-events: ${props => (props.isUploadingAvatar ? 'none' : 'all')};
+  &:hover {
+    .upload-avatar + label {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  .upload-avatar + label {
+    opacity: 0;
+    margin: 1.2rem 0;
+    transform: translateY(-20px);
+  }
+`;
+
+const StyledSingleUserAvatarUpload = styled(StyledPublishImageUpload)`
+  + label {
+    font-size: 12px;
+  }
+`;
+
 export {
   StyledSingleUser,
   StyledSingleUserContainer,
@@ -100,4 +127,6 @@ export {
   StyledSingleUserCompany,
   StyledSingleUserEmail,
   StyledSingleUserFollowers,
+  StyledSingleUserAvatar,
+  StyledSingleUserAvatarUpload,
 };

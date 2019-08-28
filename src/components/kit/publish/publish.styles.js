@@ -201,14 +201,15 @@ const StyledPublishImageUpload = styled.input`
     display: inline-block;
     padding: 0.4rem;
     cursor: pointer;
-    color: ${props => props.theme.colors.white};
-    background-color: ${props => props.theme.colors.black};
+
+    color: ${props => props.theme.colors.black};
+    background-color: ${props => props.theme.colors.white};
     border-radius: ${props => props.theme.effects.radius};
     border: 1px solid ${props => props.theme.colors.black};
     transition: all 0.15s ease-in;
     &:hover {
-      background-color: ${props => props.theme.colors.white};
-      color: ${props => props.theme.colors.black};
+      background-color: ${props => props.theme.colors.black};
+      color: ${props => props.theme.colors.white};
     }
   }
   &:focus + label {
