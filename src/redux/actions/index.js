@@ -147,7 +147,12 @@ export function addMedia(token, media) {
   };
 }
 
-export function followUnfollowUser(token, currentUser, targetUser, targetUserFollowers) {
+export function followUnfollowUser(
+  token,
+  currentUser,
+  targetUser,
+  targetUserFollowers,
+) {
   return {
     type: types.FOLLOW_OR_UNFOLLOW_USER,
     token,

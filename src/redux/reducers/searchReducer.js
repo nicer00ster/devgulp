@@ -12,7 +12,6 @@ const initialState = {
 export default function searchReducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.SEARCH:
-      console.log(action);
       return {
         ...state,
         isSearching: true,

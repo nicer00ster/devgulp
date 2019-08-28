@@ -137,8 +137,10 @@ function Header(props) {
                 if (props.router.pathname !== '/search') {
                   props.searchQuery(query);
                   props.router.push(`/search`);
+                  props.searchExpanded && toggleSearch()
                 } else {
                   props.searchQuery(query);
+                  props.searchExpanded && toggleSearch()
                 }
                 resetQuery();
               }}>

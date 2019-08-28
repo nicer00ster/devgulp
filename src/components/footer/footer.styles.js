@@ -13,7 +13,7 @@ const StyledFooterOuter = styled.div`
   transform: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? 'scale(0.95)'
-      : ''};
+      : 'scale(1)'};
   overflow: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? 'hidden'

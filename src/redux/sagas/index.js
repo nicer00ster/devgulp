@@ -15,7 +15,7 @@ import { API_URL, TOKEN_URL, ACF_URL } from '../constants';
 import { setToken, verifyToken, arrangeComments } from '../../utils';
 
 import * as types from '../constants';
-import {followUser} from "../actions";
+import { followUser } from '../actions';
 
 function apiFetchToken(data) {
   return axios({
@@ -246,17 +246,17 @@ function apiUpdateUserInfo(data) {
 function apiFollowUser(data) {
   let followers = [...data.targetUserFollowers];
 
-  if(data.currentUser === data.targetUser) {
-    return new Error('You can\'t follow yourself!');
+  if (data.currentUser === data.targetUser) {
+    return new Error("You can't follow yourself!");
   }
 
-  if(followers.includes(data.currentUser)) {
+  if (followers.includes(data.currentUser)) {
     followers = followers.filter(user => user !== data.currentUser);
   } else {
     followers = followers.concat(data.currentUser);
   }
 
-  if(!followers.length) {
+  if (!followers.length) {
     followers = 0;
   }
 
@@ -269,13 +269,13 @@ function apiFollowUser(data) {
     },
     data: {
       fields: {
-        user_followers: followers
+        user_followers: followers,
       },
     },
   })
-  .then(user => user)
-  .then(() => apiFetchUserFollowers(followers))
-  .then(res => res);
+    .then(user => user)
+    .then(() => apiFetchUserFollowers(followers))
+    .then(res => res);
 }
 
 // Start sagas.

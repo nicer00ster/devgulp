@@ -7,12 +7,8 @@ import {
   StyledFooterList,
   StyledFooterListItem,
 } from './footer.styles';
-import {
-  StyledLogo,
-} from "../header/header.styles";
-import {
-  StyledDivider
-} from "../kit/globals/globals.styles";
+import { StyledLogo } from '../header/header.styles';
+import { StyledDivider } from '../kit/globals/globals.styles';
 
 function Footer(props) {
   return (
