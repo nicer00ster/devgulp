@@ -26,6 +26,7 @@ function Button(props) {
 
   return (
     <StyledButton
+      style={{ ...props.style }}
       type={props.type}
       disabled={props.disabled}
       onClick={e => handleClick(e)}>

@@ -11,7 +11,7 @@ function User(props) {
 
   useEffect(() => {
     props.fetchAuthor(userId);
-  }, []);
+  }, [userId]);
 
   return (
     <Container>

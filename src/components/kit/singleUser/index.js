@@ -11,16 +11,19 @@ import {
   StyledSingleUserDescription,
   StyledSingleUserCompany,
   StyledSingleUserEmail,
+  StyledSingleUserFollowers,
 } from './singleUser.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledPreviewImage } from '../publish/publish.styles';
-import { toggleModal } from '../../../redux/actions';
+import { toggleModal, followUnfollowUser } from '../../../redux/actions';
 import EditProfile from './editProfile';
+import Followers from '../followers';
 import Loading from '../loading';
 import Modal from '../modal';
+import Button from '../button';
 
 function SingleUser(props) {
-  const { author, isFetchingAuthor } = props.author;
+  const { author, fetchedFollowers, isFetchingFollowers, isFetchingAuthor, isUpdatingUser } = props.author;
   const [isUsersProfile, setIsUsersProfile] = useState(false);
 
   useEffect(() => {
@@ -60,6 +63,17 @@ function SingleUser(props) {
                 <span>{author.company_name}</span>
               </StyledSingleUserCompany>
             )}
+            <StyledSingleUserFollowers>
+              <i className="fal fa-user" />
+              <span>{author.acf.user_followers.length} follower{author.acf.user_followers.length !== 1 ? 's' : ''}</span>
+            </StyledSingleUserFollowers>
+            {!isUsersProfile && (
+              <Button
+                  onClick={() => props.followUnfollowUser(props.user.token, props.user.id, author.id, author.acf.user_followers)}
+                  style={{ marginTop: '12px' }}>
+                {author.acf.user_followers.includes(props.user.id) ? `Unfollow${isUpdatingUser ? 'ing' : ''}`: `Follow${isUpdatingUser ? 'ing' : ''}`}
+              </Button>
+            )}
           </StyledSingleUserInfo>
           <StyledAvatar
             size={100}
@@ -75,6 +89,13 @@ function SingleUser(props) {
             />
           </StyledAvatar>
         </StyledSingleUserContent>
+        {author.acf.user_followers.length ? (
+          <Followers
+            isFetchingFollowers={isFetchingFollowers}
+            followerIds={author.acf.user_followers}
+            followers={fetchedFollowers}
+          />
+        ) : null}
         {isUsersProfile && <EditProfile user={author} />}
       </StyledSingleUserContainer>
       <Modal>
@@ -90,6 +111,7 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = {
   toggleModal,
+  followUnfollowUser,
 };
 
 export default connect(

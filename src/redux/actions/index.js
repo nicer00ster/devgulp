@@ -147,6 +147,16 @@ export function addMedia(token, media) {
   };
 }
 
+export function followUnfollowUser(token, currentUser, targetUser, targetUserFollowers) {
+  return {
+    type: types.FOLLOW_OR_UNFOLLOW_USER,
+    token,
+    currentUser,
+    targetUser,
+    targetUserFollowers,
+  };
+}
+
 export function searchQuery(query) {
   return {
     type: types.SEARCH,
@@ -204,5 +214,12 @@ export function fetchPost(postId) {
 export function fetchCategories() {
   return {
     type: types.FETCH_CATEGORIES,
+  };
+}
+
+export function fetchUserFollowers(userFollowers) {
+  return {
+    type: types.FETCH_USER_FOLLOWERS,
+    userFollowers,
   };
 }

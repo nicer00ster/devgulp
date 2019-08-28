@@ -17,7 +17,7 @@ const StyledUser = styled(animated.li)`
   border-radius: 50%;
   width: 72px;
   height: 72px;
-  margin: 0 0.4rem;
+  margin: .4rem;
   bottom: 0;
   transition: bottom 0.15s ease-in, box-shadow 0.15s ease-in;
   &:hover,
