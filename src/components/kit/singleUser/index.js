@@ -15,7 +15,7 @@ import {
   StyledSingleUserAvatar,
   StyledSingleUserAvatarUpload,
 } from './singleUser.styles';
-import { StyledPosts } from '../posts/posts.styles';
+import { StyledPosts, StyledNoResults } from '../posts/posts.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledPreviewImage } from '../publish/publish.styles';
 import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
@@ -161,17 +161,18 @@ function SingleUser(props) {
             followers={fetchedFollowers}
           />
         ) : null}
-        {posts && (
-          <>
             <p>{author.name}'s posts</p>
             <StyledDivider />
-            <StyledPosts>
-              {posts.map(post => (
+            <StyledPosts noResults={!posts.length}>
+              {posts && posts.map(post => (
                 <PostItem key={post.id} post={post} />
               ))}
+              {!posts.length && (
+                  <StyledNoResults>
+                    User has not published any posts.
+                  </StyledNoResults>
+              )}
             </StyledPosts>
-          </>
-        )}
         {isUsersProfile && <EditProfile user={author} />}
       </StyledSingleUserContainer>
       <Modal>

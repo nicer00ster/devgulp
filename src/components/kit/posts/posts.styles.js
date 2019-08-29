@@ -3,7 +3,7 @@ import { animated } from 'react-spring';
 
 const StyledPosts = styled.ul`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: ${props => props.noResults ? 'repeat(1, 1fr)' : 'repeat(2, 1fr)'};
   justify-items: stretch;
   grid-gap: 12px;
   width: 100%;
