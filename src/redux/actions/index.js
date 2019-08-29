@@ -236,3 +236,10 @@ export function fetchUserFollowers(userFollowers) {
     userFollowers,
   };
 }
+
+export function fetchUserPosts(userId) {
+  return {
+    type: types.FETCH_USER_POSTS,
+    userId,
+  };
+}

@@ -3,7 +3,7 @@ import { animated } from 'react-spring';
 
 const StyledPosts = styled.ul`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: ${props => props.noResults ? 'repeat(1, 1fr)' : 'repeat(2, 1fr)'};
   justify-items: stretch;
   grid-gap: 12px;
   width: 100%;
@@ -103,6 +103,7 @@ const StyledPostAuthor = styled.div`
 const StyledPostExcerpt = styled.div`
   color: ${props => props.theme.colors.lightBlack};
   font-style: italic;
+  font-size: 12px;
   & p {
     margin: 0.5rem 0;
   }
@@ -162,6 +163,7 @@ const StyledPostImage = styled.div`
 
 const StyledDateAuthor = styled.div`
   display: inline-flex;
+  font-size: 12px;
 `;
 
 const StyledDateAuthorDivider = styled.span`

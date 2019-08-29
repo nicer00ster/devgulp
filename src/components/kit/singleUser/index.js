@@ -15,6 +15,7 @@ import {
   StyledSingleUserAvatar,
   StyledSingleUserAvatarUpload,
 } from './singleUser.styles';
+import { StyledPosts, StyledNoResults } from '../posts/posts.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledPreviewImage } from '../publish/publish.styles';
 import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
@@ -28,10 +29,14 @@ import Followers from '../followers';
 import Loading from '../loading';
 import Modal from '../modal';
 import Button from '../button';
+import PostItem from '../posts/PostItem';
+import { StyledDivider } from '../globals/globals.styles';
+import { StyledEditProfile } from './editProfile/editProfile.styles';
 
 function SingleUser(props) {
   const {
     author,
+    posts,
     fetchedFollowers,
     isFetchingFollowers,
     isFetchingAuthor,
@@ -156,6 +161,18 @@ function SingleUser(props) {
             followers={fetchedFollowers}
           />
         ) : null}
+            <p>{author.name}'s posts</p>
+            <StyledDivider />
+            <StyledPosts noResults={!posts.length}>
+              {posts && posts.map(post => (
+                <PostItem key={post.id} post={post} />
+              ))}
+              {!posts.length && (
+                  <StyledNoResults>
+                    User has not published any posts.
+                  </StyledNoResults>
+              )}
+            </StyledPosts>
         {isUsersProfile && <EditProfile user={author} />}
       </StyledSingleUserContainer>
       <Modal>
