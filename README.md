@@ -42,7 +42,7 @@ $ docker-compose down --volumes
 > 1. After wordpress finishes installing head to http://localhost:8000 and finish setting up the installing of WordPress.
 > 2. Make sure the plugins for the REST API properly came over from cloning the repo. If they didn't just manually install and activate them.
 > 3. Go to `Settings -> Permalinks` and change `Common Settings` to `Post name` and click "Save Changes" at the bottom of the page.
-> 4. __Enable CORS__:
+> 4. Enable CORS:
 >   -  SSH into your WordPress Docker instance by doing the following:
 >       - Find your Container ID by typing `docker ps` in your terminal.
 >       - Copy the ID; should look like `54014e8496dd` or something.
