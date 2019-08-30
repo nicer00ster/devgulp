@@ -161,18 +161,14 @@ function SingleUser(props) {
             followers={fetchedFollowers}
           />
         ) : null}
-            <p>{author.name}'s posts</p>
-            <StyledDivider />
-            <StyledPosts noResults={!posts.length}>
-              {posts && posts.map(post => (
-                <PostItem key={post.id} post={post} />
-              ))}
-              {!posts.length && (
-                  <StyledNoResults>
-                    User has not published any posts.
-                  </StyledNoResults>
-              )}
-            </StyledPosts>
+        <p>{author.name}'s posts</p>
+        <StyledDivider />
+        <StyledPosts noResults={!posts.length}>
+          {posts && posts.map(post => <PostItem key={post.id} post={post} />)}
+          {!posts.length && (
+            <StyledNoResults>User has not published any posts.</StyledNoResults>
+          )}
+        </StyledPosts>
         {isUsersProfile && <EditProfile user={author} />}
       </StyledSingleUserContainer>
       <Modal>

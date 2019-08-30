@@ -19,11 +19,11 @@ function Editor(props) {
   const [tab, setTab] = useState('index');
   const [lines, _] = useState(props.lines);
 
-  const transitions = useTransition(lines, (lines, index) => index, {
+  const transitions = useTransition(lines[tab], (lines, index) => index, {
     from: { transform: 'translate3d(0,-40px,0)', opacity: 0 },
     enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
     leave: { transform: 'translate3d(0,-40px,0)', opacity: 0 },
-    trail: 1000,
+    trail: 1500,
   });
 
   return (
@@ -59,7 +59,7 @@ function Editor(props) {
         <StyledEditorCode>
           {transitions.map(({ item, props, key }) => (
             <StyledEditorLine key={key} style={props}>
-              {item}
+              <span dangerouslySetInnerHTML={{ __html: item }} />
             </StyledEditorLine>
           ))}
         </StyledEditorCode>

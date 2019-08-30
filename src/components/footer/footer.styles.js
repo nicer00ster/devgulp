@@ -39,6 +39,7 @@ const StyledFooter = styled.footer`
 
 const StyledFooterList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   justify-content: ${props => props.align};
   width: 100%;
   list-style: none;

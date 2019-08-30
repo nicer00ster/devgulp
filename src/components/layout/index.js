@@ -1,11 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-
-import { fetchUser, screenResize } from '../../redux/actions';
-import Header from '../header';
-import Footer from '../footer';
-import Loading from '../../components/kit/loading';
 import {
   LayoutStyles,
   GlobalStyles,
@@ -14,6 +9,11 @@ import {
   effects,
   mediaQuery,
 } from './layout.styles';
+import { fetchUser, screenResize } from '../../redux/actions';
+import Header from '../header';
+import Footer from '../footer';
+import Loading from '../../components/kit/loading';
+import Background from '../../components/kit/background';
 
 const theme = {
   breakpoints,
@@ -40,6 +40,10 @@ function Layout(props) {
   return (
     <ThemeProvider theme={theme}>
       <>
+        <Background
+          userMenuOpen={props.root.userMenuOpen}
+          loginMenuOpen={props.root.loginMenuOpen}
+        />
         <Header />
         <LayoutStyles
           userMenuOpen={props.root.userMenuOpen}

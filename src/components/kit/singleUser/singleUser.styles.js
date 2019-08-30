@@ -10,9 +10,11 @@ const StyledSingleUser = styled.div`
 const StyledSingleUserContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 2rem;
   max-width: 768px;
+  background-color: ${props => props.theme.colors.white};
+  border-radius: ${props => props.theme.effects.radius};
+  box-shadow: ${props => props.theme.effects.shadow};
 `;
 
 const StyledSingleUserContent = styled.div`

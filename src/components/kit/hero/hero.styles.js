@@ -9,10 +9,6 @@ const StyledHero = styled.div`
   padding: 0 0;
   text-align: center;
   min-height: 372px;
-  background-image: radial-gradient(#d7d7d7 1px, transparent 1px),
-    radial-gradient(#d7d7d7 1px, transparent 1px);
-  background-position: 0 0, 25px 25px;
-  background-size: 50px 50px;
   opacity: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? '0.4'
@@ -38,11 +34,6 @@ const StyledHeroOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0) 50%,
-    rgba(255, 255, 255, 1) 90%
-  );
   pointer-events: none;
 `;
 

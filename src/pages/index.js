@@ -18,11 +18,27 @@ function Index(props) {
     <>
       <Hero>
         <Editor
-          lines={[
-            'Welcome to DevGulp',
-            'Enjoy hassle-free content',
-            "Deliver value to what you're passionate about.",
-          ]}
+          lines={{
+            index: [
+              'Welcome to DevGulp!',
+              'Completely free and open source.',
+              'Build your personal growth and career.',
+              'No obnoxious fees to view content.',
+              'Help our community grow by providing value.',
+            ],
+            styles: [
+              'Completely customize your UI.',
+              'Express yourself freely.',
+              '.',
+              '.',
+            ],
+            server: [
+              'Want to contribute to DevGulp?',
+              'View our GitHub <a href="https://github.com/nicer00ster/devgulp" target="_blank" style="color: #80dad3;">here</a>.',
+              '.',
+              '.',
+            ],
+          }}
         />
       </Hero>
       <Container>

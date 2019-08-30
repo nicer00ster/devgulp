@@ -3,7 +3,8 @@ import { animated } from 'react-spring';
 
 const StyledPosts = styled.ul`
   display: grid;
-  grid-template-columns: ${props => props.noResults ? 'repeat(1, 1fr)' : 'repeat(2, 1fr)'};
+  grid-template-columns: ${props =>
+    props.noResults ? 'repeat(1, 1fr)' : 'repeat(2, 1fr)'};
   justify-items: stretch;
   grid-gap: 12px;
   width: 100%;
@@ -18,6 +19,8 @@ const StyledPost = styled(animated.li)`
   position: relative;
   box-shadow: ${props => props.theme.effects.shadow};
   border-radius: ${props => props.theme.effects.radius};
+  background-color: ${props => props.theme.colors.white};
+  z-index: 1;
   transition: all 0.35s ease;
   cursor: pointer;
   height: 150px;

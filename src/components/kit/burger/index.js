@@ -7,8 +7,8 @@ function Burger(props) {
     <StyledBurger
       onClick={e => {
         e.preventDefault();
+        props.toggleDrawer();
       }}
-      onMouseDown={props.toggleDrawer}
       drawerOpen={props.drawerOpen}
       href="#"
       aria-label="Menu"

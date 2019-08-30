@@ -1,7 +1,7 @@
 import {
+  StyledPost,
   StyledDateAuthor,
   StyledDateAuthorDivider,
-  StyledPost,
   StyledPostAuthor,
   StyledPostContent,
   StyledPostDateStamp,

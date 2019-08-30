@@ -11,7 +11,7 @@ const StyledEditor = styled.div`
   box-shadow: ${props => props.theme.effects.shadow};
   background: ${props => props.theme.colors.white};
   max-width: 50%;
-  margin-left: auto;
+  margin: 0 auto;
   transition: all 0.25s ease !important;
   ${props => props.theme.mediaQuery.phone`
     min-width: auto;
@@ -79,11 +79,13 @@ const StyledEditorMenuItem = styled.li`
 `;
 
 const StyledEditorLine = styled(animated.span)`
+  display: flex;
+  white-space: pre-wrap;
   &:before {
     counter-increment: line;
     content: counter(line);
     display: inline-block;
-    margin-right: 15px;
+    margin-right: 12px;
     color: ${props => props.theme.colors.grey};
     text-align: right;
     width: 18px;

@@ -23,6 +23,7 @@ import {
   toggleSearch,
   searchQuery,
   filterTaxonomy,
+  closeDrawer,
 } from '../../redux/actions';
 import { useOnClickOutside, useMeasure, useInput } from '../../hooks';
 import EnhancedLink from './EnhancedLink';
@@ -79,6 +80,9 @@ function Header(props) {
     }
     if (props.searchExpanded) {
       props.toggleSearch();
+    }
+    if (props.drawerOpen) {
+      props.closeDrawer();
     }
   });
 
@@ -151,7 +155,7 @@ function Header(props) {
           ) : (
             <>
               <StyledMenuItem>
-                <i className="fal fa-life-ring" />
+                <i className="fal fa-donate" />
               </StyledMenuItem>
               <EnhancedLink href="/publish">Publish</EnhancedLink>
               <EnhancedLink href="/users">Users</EnhancedLink>
@@ -213,6 +217,7 @@ const mapDispatchToProps = {
   toggleSearch,
   searchQuery,
   filterTaxonomy,
+  closeDrawer,
 };
 
 export default connect(

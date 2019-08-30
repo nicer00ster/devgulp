@@ -31,6 +31,7 @@ const colors = {
   grey: '#cacacc',
   white: '#fefefe',
   offWhite: '#fffaf1',
+  lightWhite: 'rgba(254,254,254,0.75)',
   yellow: '#ffeaa7',
   blue: '#92c5f8',
   lightBlue: 'rgba(155,207,255,0.66)',

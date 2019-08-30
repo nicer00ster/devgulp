@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import {
@@ -6,17 +5,11 @@ import {
   StyledDrawerList,
   StyledDrawerUser,
 } from './drawer.styles';
-import {
-  StyledAvatar,
-  StyledLogin,
-  StyledMenuItem,
-} from '../../header/header.styles';
+import { StyledAvatar } from '../../header/header.styles';
 import {
   StyledLogoutButton,
   StyledUserDataListItem,
   StyledUserInfo,
-  StyledUserMenuList,
-  StyledUserMenuListItem,
 } from '../../kit/userMenu/userMenu.styles';
 import {
   toggleDrawer,
@@ -24,21 +17,13 @@ import {
   closeDrawer,
   logout,
 } from '../../../redux/actions';
-import { useOnClickOutside } from '../../../hooks';
 import EnhancedLink from '../EnhancedLink';
 import DrawerLogin from './DrawerLogin';
 import Loading from '../../kit/loading';
 
 function Drawer(props) {
-  const ref = useRef();
-  useOnClickOutside(ref, e => {
-    if (props.drawerOpen) {
-      props.closeDrawer();
-    }
-  });
   return (
     <StyledDrawer
-      ref={ref}
       isLoggingOut={props.isLoggingOut}
       isLoggingIn={props.isLoggingIn}
       drawerOpen={props.drawerOpen}>

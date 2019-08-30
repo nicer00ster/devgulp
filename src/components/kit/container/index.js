@@ -5,6 +5,7 @@ import Loading from '../loading';
 function Container(props) {
   return (
     <StyledContainer
+      className={props.className}
       isUpdatingUser={props.isUpdatingUser}
       isSearching={props.isSearching}
       isFetchingPosts={props.isFetchingPosts}

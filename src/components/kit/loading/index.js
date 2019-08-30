@@ -11,6 +11,7 @@ const Spinner = styled.span`
     content: '';
     box-sizing: border-box;
     position: absolute;
+    z-index: 9999;
     top: 50%;
     left: 50%;
     width: 30px;
