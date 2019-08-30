@@ -29,11 +29,6 @@ function Background(props) {
 
   return (
     <StyledBackground {...bind} userMenuOpen={props.userMenuOpen}>
-      {/*<div className="grid">*/}
-      {/*  {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((element, key) => (*/}
-      {/*    <div key={key} className="stripe" />*/}
-      {/*  ))}*/}
-      {/*</div>*/}
         <StyledBackgroundDevices style={spring}>
             <StyledBackgroundTablet offset={100}>
                 <img src="/static/code-tablet.png" />
