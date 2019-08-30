@@ -15,6 +15,13 @@ const StyledPosts = styled.ul`
   `};
 `;
 
+const StyledPostsContainer = styled.div`
+  background-color: ${props => props.theme.colors.white};
+  border-radius: ${props => props.theme.effects.radius};
+  box-shadow: ${props => props.theme.effects.shadow};
+  padding: 2rem;
+`;
+
 const StyledPost = styled(animated.li)`
   position: relative;
   box-shadow: ${props => props.theme.effects.shadow};
@@ -225,6 +232,7 @@ const StyledFilterItem = styled.button`
 
 export {
   StyledPosts,
+  StyledPostsContainer,
   StyledPost,
   StyledPostContent,
   StyledPostTaxonomies,

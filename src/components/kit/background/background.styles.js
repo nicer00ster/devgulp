@@ -13,7 +13,7 @@ const StyledBackground = styled.div`
   right: 0;
   bottom: 0;
   z-index: -10000;
-  opacity: ${props => (props.userMenuOpen ? '0.2    5' : '0.5')};
+  opacity: ${props => (props.userMenuOpen ? '0.25' : '0.5')};
   width: 150vw;
   transition: opacity 0.25s linear;
   transform: rotate(-12deg);

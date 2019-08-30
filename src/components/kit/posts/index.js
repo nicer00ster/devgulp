@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { useTransition } from 'react-spring';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import {
   StyledPosts,
+  StyledPostsContainer,
   StyledNoResults,
   StyledFilterNav,
   StyledFilterItems,
@@ -15,7 +15,6 @@ import { fetchPosts, filterTaxonomy } from '../../../redux/actions';
 import PostItem from './PostItem';
 
 function EnhancedPosts(props) {
-  const router = useRouter();
   const [activeFilter, setActiveFilter] = useState(1);
   const filteredPosts = props.posts.filter(post => post.isFiltered);
   const currentFilter = props.categories.map(category =>
@@ -57,8 +56,7 @@ function EnhancedPosts(props) {
   });
 
   return (
-    <>
-      {router.pathname === '/' && (
+    <StyledPostsContainer>
         <StyledFilterNav
           loginMenuOpen={props.loginMenuOpen}
           userMenuOpen={props.userMenuOpen}>
@@ -74,7 +72,6 @@ function EnhancedPosts(props) {
               ))}
           </StyledFilterItems>
         </StyledFilterNav>
-      )}
       <StyledPosts>
         {props.posts &&
           transitions.map(
@@ -98,7 +95,7 @@ function EnhancedPosts(props) {
           !
         </StyledNoResults>
       ) : null}
-    </>
+    </StyledPostsContainer>
   );
 }
 
