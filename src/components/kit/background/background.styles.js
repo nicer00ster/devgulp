@@ -22,8 +22,8 @@ const StyledBackground = styled.div`
 `;
 
 const StyledBackgroundDevices = styled(animated.div)`
-    display: flex;
-    align-self: flex-start;
+  display: flex;
+  align-self: flex-start;
 `;
 
 const StyledBackgroundTablet = styled.div`
@@ -37,7 +37,9 @@ const StyledBackgroundTablet = styled.div`
   z-index: 1;
   border: 1px solid ${props => props.theme.colors.grey};
   background-color: ${props => props.theme.colors.white};
-  box-shadow: inset 0 4px 7px 1px #fefefe, inset 0 -5px 20px rgba(173,186,204,.25), 0 2px 6px rgba(0,21,64,.14), 0 10px 20px rgba(0,21,64,.05);
+  box-shadow: inset 0 4px 7px 1px #fefefe,
+    inset 0 -5px 20px rgba(173, 186, 204, 0.25), 0 2px 6px rgba(0, 21, 64, 0.14),
+    0 10px 20px rgba(0, 21, 64, 0.05);
   transform: translateY(${props => props.offset}px);
 `;
 
@@ -52,45 +54,51 @@ const StyledBackgroundPhone = styled.div`
   z-index: 1;
   border: 1px solid ${props => props.theme.colors.grey};
   background-color: ${props => props.theme.colors.white};
-  box-shadow: inset 0 4px 7px 1px #fefefe, inset 0 -5px 20px rgba(173,186,204,.25), 0 2px 6px rgba(0,21,64,.14), 0 10px 20px rgba(0,21,64,.05);
+  box-shadow: inset 0 4px 7px 1px #fefefe,
+    inset 0 -5px 20px rgba(173, 186, 204, 0.25), 0 2px 6px rgba(0, 21, 64, 0.14),
+    0 10px 20px rgba(0, 21, 64, 0.05);
   transform: translateY(${props => props.offset}px);
 `;
 
 const StyledBackgroundBigPhone = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 267px;
-    height: 553px;
-    margin-left: 50px;
-    border-radius: 38px;
-    border: 1px solid ${props => props.theme.colors.grey};
-    background-color: ${props => props.theme.colors.white};
-    z-index: 1;
-    box-shadow: inset 0 4px 7px 1px #fefefe, inset 0 -5px 20px rgba(173,186,204,.25), 0 2px 6px rgba(0,21,64,.14), 0 10px 20px rgba(0,21,64,.05);
-    transform: translateY(${props => props.offset}px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 267px;
+  height: 553px;
+  margin-left: 50px;
+  border-radius: 38px;
+  border: 1px solid ${props => props.theme.colors.grey};
+  background-color: ${props => props.theme.colors.white};
+  z-index: 1;
+  box-shadow: inset 0 4px 7px 1px #fefefe,
+    inset 0 -5px 20px rgba(173, 186, 204, 0.25), 0 2px 6px rgba(0, 21, 64, 0.14),
+    0 10px 20px rgba(0, 21, 64, 0.05);
+  transform: translateY(${props => props.offset}px);
 `;
 
 const StyledBackgroundBigTablet = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 450px;
-    height: 675px;
-    margin-left: 50px;
-    border-radius: 38px;
-    background-color: ${props => props.theme.colors.white};
-    border: 1px solid ${props => props.theme.colors.grey};
-    z-index: 1;
-    box-shadow: inset 0 4px 7px 1px #fff, inset 0 -5px 20px rgba(173,186,204,.25), 0 2px 6px rgba(0,21,64,.14), 0 10px 20px rgba(0,21,64,.05);
-    transform: translateY(${props => props.offset}px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 675px;
+  margin-left: 50px;
+  border-radius: 38px;
+  background-color: ${props => props.theme.colors.white};
+  border: 1px solid ${props => props.theme.colors.grey};
+  z-index: 1;
+  box-shadow: inset 0 4px 7px 1px #fff,
+    inset 0 -5px 20px rgba(173, 186, 204, 0.25), 0 2px 6px rgba(0, 21, 64, 0.14),
+    0 10px 20px rgba(0, 21, 64, 0.05);
+  transform: translateY(${props => props.offset}px);
 `;
 
 export {
-    StyledBackground,
-    StyledBackgroundDevices,
-    StyledBackgroundTablet,
-    StyledBackgroundPhone,
-    StyledBackgroundBigPhone,
-    StyledBackgroundBigTablet,
+  StyledBackground,
+  StyledBackgroundDevices,
+  StyledBackgroundTablet,
+  StyledBackgroundPhone,
+  StyledBackgroundBigPhone,
+  StyledBackgroundBigTablet,
 };
