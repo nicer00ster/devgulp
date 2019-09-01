@@ -83,6 +83,16 @@ const GlobalStyles = createGlobalStyle`
       margin: 0;
       // overflow: ${props => (props.menuOpen ? 'hidden' : 'auto')};
       overflow-x: hidden;
+      // :before {
+      //   content: "";
+      //   width: 100%;
+      //   height: 100%;
+      //   position: fixed;
+      //   z-index: -1;
+      //   top: 0;
+      //   left: 0;
+      //   background: rgba(0, 0, 0, 0.25);
+      // }
     }
     a {
       text-decoration: none;
@@ -158,4 +168,22 @@ const GlobalStyles = createGlobalStyle`
     }
 `;
 
-export { LayoutStyles, GlobalStyles, breakpoints, colors, effects, mediaQuery };
+const LayoutOverlay = styled.div`
+  background-color: ${props => props.theme.colors.lightBlack};
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+`;
+
+export {
+  LayoutStyles,
+  LayoutOverlay,
+  GlobalStyles,
+  breakpoints,
+  colors,
+  effects,
+  mediaQuery,
+};

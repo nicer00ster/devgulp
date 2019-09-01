@@ -15,9 +15,9 @@ function User(props) {
   }, [userId]);
 
   return (
-      <Container className="panelled">
-        <SingleUser author={props.author} posts={props.author.posts} />
-      </Container>
+    <Container className="panelled">
+      <SingleUser author={props.author} posts={props.author.posts} />
+    </Container>
   );
 }
 

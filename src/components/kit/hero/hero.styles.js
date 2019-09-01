@@ -5,10 +5,9 @@ const StyledHero = styled.div`
   align-items: center;
   display: flex;
   width: 100%;
-  margin: 0 auto;
   padding: 0 0;
+  margin-top: 8rem;
   text-align: center;
-  min-height: 372px;
   opacity: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? '0.4'

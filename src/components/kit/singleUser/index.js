@@ -164,7 +164,10 @@ function SingleUser(props) {
         <p>{author.name}'s posts</p>
         <StyledDivider />
         <StyledPosts columns={2} noResults={!posts.length}>
-          {posts && posts.map(post => <PostItem className="flatten" key={post.id} post={post} />)}
+          {posts &&
+            posts.map(post => (
+              <PostItem className="flatten" key={post.id} post={post} />
+            ))}
           {!posts.length && (
             <StyledNoResults>User has not published any posts.</StyledNoResults>
           )}

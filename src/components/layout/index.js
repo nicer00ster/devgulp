@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import {
   LayoutStyles,
+  LayoutOverlay,
   GlobalStyles,
   breakpoints,
   colors,

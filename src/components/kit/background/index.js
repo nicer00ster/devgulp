@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useSpring } from 'react-spring';
-import { useMeasure } from '../../../hooks';
 import {
   StyledBackground,
   StyledBackgroundDevices,
@@ -11,7 +10,6 @@ import {
 } from './background.styles';
 
 function Background(props) {
-  // const [bind, { width, height }] = useMeasure();
   const [scrollY, setScrollY] = useState(0);
 
   function handleWindowScroll() {
@@ -33,15 +31,15 @@ function Background(props) {
         <StyledBackgroundTablet offset={125}>
           <img src="/static/devgulp-editor.svg" />
         </StyledBackgroundTablet>
-        <StyledBackgroundPhone offset={0}>
-          <img src="/static/devgulp-cards.svg" />
-        </StyledBackgroundPhone>
-        <StyledBackgroundBigTablet offset={100}>
-          <img src="/static/devgulp-big-tablet.svg" />
-        </StyledBackgroundBigTablet>
         <StyledBackgroundBigPhone offset={0}>
           <img src="/static/phone-big-wireframe.png" />
         </StyledBackgroundBigPhone>
+        <StyledBackgroundBigTablet offset={100}>
+          <img src="/static/devgulp-big-tablet.svg" />
+        </StyledBackgroundBigTablet>
+        <StyledBackgroundPhone offset={0}>
+          <img src="/static/devgulp-cards.svg" />
+        </StyledBackgroundPhone>
         <StyledBackgroundTablet offset={0}>
           <img src="https://stripe.com/img/v3/home/app-illustrations/salesforce.svg" />
         </StyledBackgroundTablet>

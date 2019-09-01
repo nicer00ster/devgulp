@@ -143,41 +143,42 @@ function EnhancedPublish(props) {
               ),
           )}
         </StyledPublishCategories>
-        {!props.posts.imageUrl ? (
-          <StyledPublishImageUploadWrapper
-            disabled={props.posts.isUploadingImage}
-            aria-busy={props.posts.isUploadingImage}>
-            <StyledPublishImageUpload
-              onChange={e => props.addMedia(props.user.token, handleImage(e))}
-              type="file"
-              name="file"
-              id="image-file"
-              accept="image/*"
-            />
-            <label htmlFor="image-file">Choose an Image</label>
-            <StyledPublishButton
-                onClick={() => handleAddPost()}
-                disabled={active || props.posts.isAddingPost || !title || !body}
-                aria-busy={active || props.posts.isAddingPost}
-                className={active && 'active'}>
-              <StyledPublishIcon className={`fal fa-envelope-open-text`} />
-              <StyledPublishConfetti color="palegreen" />
-              <StyledPublishConfetti color="tomato" />
-              <StyledPublishConfetti color="blue" />
-              <StyledPublishConfetti color="yellow" />
-              <StyledPublishConfetti color="pink" />
-              <StyledPublishConfetti color="purple" />
-              <StyledPublishConfetti color="orange" />
-              <StyledPublishConfetti color="green" />
-              {props.posts.isAddingPost && <Loading />}
-            </StyledPublishButton>
-          </StyledPublishImageUploadWrapper>
-
-        ) : (
-          <StyledPreviewImageButton onClick={() => props.toggleModal()}>
-            Preview Image
-          </StyledPreviewImageButton>
-        )}
+        <StyledPublishImageUploadWrapper
+          disabled={props.posts.isUploadingImage}
+          aria-busy={props.posts.isUploadingImage}>
+          {!props.posts.imageUrl ? (
+            <>
+              <StyledPublishImageUpload
+                onChange={e => props.addMedia(props.user.token, handleImage(e))}
+                type="file"
+                name="file"
+                id="image-file"
+                accept="image/*"
+              />
+              <label htmlFor="image-file">Choose an Image</label>
+            </>
+          ) : (
+            <StyledPreviewImageButton onClick={() => props.toggleModal()}>
+              Preview Image
+            </StyledPreviewImageButton>
+          )}
+          <StyledPublishButton
+            onClick={() => handleAddPost()}
+            disabled={active || props.posts.isAddingPost || !title || !body}
+            aria-busy={active || props.posts.isAddingPost}
+            className={active && 'active'}>
+            <StyledPublishIcon className={`fal fa-envelope-open-text`} />
+            <StyledPublishConfetti color="palegreen" />
+            <StyledPublishConfetti color="tomato" />
+            <StyledPublishConfetti color="blue" />
+            <StyledPublishConfetti color="yellow" />
+            <StyledPublishConfetti color="pink" />
+            <StyledPublishConfetti color="purple" />
+            <StyledPublishConfetti color="orange" />
+            <StyledPublishConfetti color="green" />
+            {props.posts.isAddingPost && <Loading />}
+          </StyledPublishButton>
+        </StyledPublishImageUploadWrapper>
       </StyledPublishContainer>
       <Modal>
         {props.posts.imageUrl && (

@@ -17,9 +17,9 @@ function Publish(props) {
     }
   }, []);
   return (
-      <Container>
-        <EnhancedPublish />
-      </Container>
+    <Container>
+      <EnhancedPublish />
+    </Container>
   );
 }
 

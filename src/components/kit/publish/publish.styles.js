@@ -185,7 +185,6 @@ const StyledPublishImageUploadWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem 0;
   &:disabled,
   &[aria-busy='true'] {
     opacity: 0.5;

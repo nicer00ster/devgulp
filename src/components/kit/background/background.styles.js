@@ -14,10 +14,15 @@ const StyledBackground = styled.div`
   z-index: -10000;
   opacity: ${props => (props.userMenuOpen ? '0.25' : '0.5')};
   width: 150vw;
-  transition: opacity 0.25s linear;
-  transform: rotate(-12deg);
+  background-image: radial-gradient(#d7d7d7 1px, transparent 1px),
+    radial-gradient(#d7d7d7 1px, transparent 1px);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
+  transform: rotate(-12deg)
+    ${props => (props.userMenuOpen ? 'scale(0.95)' : '')};
   transform-origin: 0 100%;
   border-bottom: 1px solid ${props => props.theme.colors.grey};
+  transition: all 0.25s linear;
 `;
 
 const StyledBackgroundDevices = styled(animated.div)`

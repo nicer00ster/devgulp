@@ -18,9 +18,9 @@ function Post(props) {
     return <Loading />;
   }
   return (
-      <Container>
-        <SinglePost post={props.post} />
-      </Container>
+    <Container>
+      <SinglePost post={props.post} />
+    </Container>
   );
 }
 

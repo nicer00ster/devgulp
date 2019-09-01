@@ -43,11 +43,11 @@ $ docker-compose down --volumes
 > 2. Make sure the plugins for the REST API properly came over from cloning the repo. If they didn't just manually install and activate them.
 > 3. Go to `Settings -> Permalinks` and change `Common Settings` to `Post name` and click "Save Changes" at the bottom of the page.
 > 4. Enable CORS: SSH into your WordPress Docker instance by doing the following:
->   - Find your Container ID by typing `docker ps` in your terminal.
->   - Copy the ID; should look like `54014e8496dd` or something.
->   - Run `docker exec -it <container_id> /bin/bash` in your terminal to SSH into the container.
->   - Once you're in type: `a2enmod headers` to enable CORS on the Apache server.
->   - After you've enabled CORS, make sure you can upload an image via the `Publish` page on the front-end of DevGulp.
+>   * Find your Container ID by typing `docker ps` in your terminal.
+>   * Copy the ID; should look like `54014e8496dd` or something.
+>   * Run `docker exec -it <container_id> /bin/bash` in your terminal to SSH into the container.
+>   * Once you're in type: `a2enmod headers` to enable CORS on the Apache server.
+>   * After you've enabled CORS, make sure you can upload an image via the `Publish` page on the front-end of DevGulp.
 
 ## Usage
 

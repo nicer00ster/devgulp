@@ -12,9 +12,12 @@ const StyledPosts = styled.ul`
   width: 100%;
   margin: 0;
   padding: 0;
-  ${props => props.columns === 2 ? css`
-    grid-template-columns: repeat(2, 1fr);
-  ` : ``};
+  ${props =>
+    props.columns === 2
+      ? css`
+          grid-template-columns: repeat(2, 1fr);
+        `
+      : ``};
   ${props => props.theme.mediaQuery.tablet`
     grid-template-columns: repeat(2, 1fr);
   `};

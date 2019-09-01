@@ -13,7 +13,7 @@ const StyledSinglePostContainer = styled.div`
   background-color: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.effects.radius};
   box-shadow: ${props => props.theme.effects.shadow};
-  padding: 0.8rem;
+  padding: 1.2rem;
 `;
 
 const StyledSinglePostHeading = styled.h1`
