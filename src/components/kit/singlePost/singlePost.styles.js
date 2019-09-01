@@ -1,20 +1,25 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 
-const StyleSinglePost = styled.article``;
+const StyleSinglePost = styled.article`
+  position: relative;
+`;
 
 const StyledSinglePostContainer = styled.div`
   position: relative;
   margin: 0 auto;
   max-width: 720px;
   width: 100%;
-  padding-left: 24px;
-  padding-right: 24px;
+  background-color: ${props => props.theme.colors.white};
+  border-radius: ${props => props.theme.effects.radius};
+  box-shadow: ${props => props.theme.effects.shadow};
+  padding: 0.8rem;
 `;
 
 const StyledSinglePostHeading = styled.h1`
   font-family: 'Trirong', serif;
   font-size: 40px;
+  margin: 1.2rem 0.4rem;
 `;
 
 const StyledSinglePostMeta = styled.div`
@@ -56,14 +61,13 @@ const StyledSinglePostContent = styled.div`
 `;
 
 const StyledSidebar = styled(animated.aside)`
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   left: 50%;
-  top: calc(65px + 54px + 40px);
   z-index: 99;
-  will-change: opacity;
+  will-change: opacity, transform;
   & button {
     margin: 0.4rem 0;
   }

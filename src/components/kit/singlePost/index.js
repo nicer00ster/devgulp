@@ -42,11 +42,12 @@ import Tooltip from '../tooltip';
 
 function SinglePost(props) {
   const { post } = props.post;
-  const [bind, { width }] = useMeasure();
+  const [bind, { width, height }] = useMeasure();
   const offsetRef = useRef();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
   const [leftOffset, setLeftOffset] = useState(0);
+  const [scroll, setScroll] = useState(window.scrollY);
   const [isReplyingTo, setIsReplyingTo] = useState(null);
   const [open, set] = useState(false);
 
@@ -59,10 +60,12 @@ function SinglePost(props) {
   } = useInput('');
 
   const handleWindowScroll = useCallback(() => {
-    window.scrollY > 50 ? setIsScrolled(true) : setIsScrolled(false);
+    setScroll(window.scrollY);
+
     window.scrollY > bind.ref.current.scrollHeight - 150
       ? setIsBottom(true)
       : setIsBottom(false);
+    window.scrollY > 50 ? setIsScrolled(true) : setIsScrolled(false);
 
     setLeftOffset(offsetRef.current.offsetLeft);
   }, []);
@@ -83,8 +86,9 @@ function SinglePost(props) {
   }, []);
 
   const spring = useSpring({
-    transform: `translateX(-${width / 2 + leftOffset / 2}px)`,
-    opacity: isScrolled && !isBottom ? 1 : 0,
+    transform: `translateX(-${width / 2 +
+      leftOffset / 2}px) translateY(${scroll}px)`,
+    opacity: !isBottom && isScrolled ? 1 : 0,
   });
 
   const likesTransition = useTransition(props.isUpdatingLikes, null, {

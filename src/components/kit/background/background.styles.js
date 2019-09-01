@@ -4,7 +4,6 @@ import { animated } from 'react-spring';
 const StyledBackground = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   justify-content: flex-end;
   background-color: ${props => props.theme.colors.white};
   position: fixed;

@@ -6,6 +6,7 @@ import {
   StyledFooter,
   StyledFooterList,
   StyledFooterListItem,
+  StyledFooterLogo,
 } from './footer.styles';
 import { StyledLogo } from '../header/header.styles';
 import { StyledDivider } from '../kit/globals/globals.styles';
@@ -44,11 +45,15 @@ function Footer(props) {
               </Link>
             </StyledFooterListItem>
           </StyledFooterList>
-          <Link href="/" prefetch scroll={false}>
-            <StyledLogo href="#" style={{ width: '100%', textAlign: 'center' }}>
-              DevGulp
-            </StyledLogo>
-          </Link>
+          <StyledFooterLogo>
+            <Link href="/" prefetch scroll={false}>
+              <StyledLogo
+                href="#"
+                style={{ width: '100%', textAlign: 'center' }}>
+                DevGulp
+              </StyledLogo>
+            </Link>
+          </StyledFooterLogo>
           <StyledFooterList align="flex-end">
             <StyledFooterListItem>
               <Link href="/publish">

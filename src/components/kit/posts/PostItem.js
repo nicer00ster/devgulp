@@ -19,6 +19,7 @@ function PostItem(props) {
   return (
     <StyledPost
       key={props.post.id}
+      className={props.className}
       style={{ opacity: props.opacity, transform: props.transform }}>
       <Link href={`/post?id=${props.post.id}`}>
         <a>

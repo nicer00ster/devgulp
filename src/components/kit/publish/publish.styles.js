@@ -38,6 +38,10 @@ const shake = keyframes`
 const StyledPublish = styled.div`
   position: relative;
   margin: 0 auto;
+  background-color: ${props => props.theme.colors.white};
+  border-radius: ${props => props.theme.effects.radius};
+  box-shadow: ${props => props.theme.effects.shadow};
+  padding: 1.2rem;
   ${props => props.theme.mediaQuery.phone`
     margin: unset;
   `};
@@ -101,10 +105,6 @@ const StyledPublishCategories = styled.div`
 `;
 
 const StyledPublishButton = styled.button`
-  position: absolute;
-  margin: 2rem 0;
-  right: 0;
-  bottom: 0;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -182,6 +182,9 @@ const StyledPublishConfetti = styled.div`
 `;
 
 const StyledPublishImageUploadWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 2rem 0;
   &:disabled,
   &[aria-busy='true'] {
@@ -201,7 +204,7 @@ const StyledPublishImageUpload = styled.input`
     display: inline-block;
     padding: 0.4rem;
     cursor: pointer;
-
+    height: 30px;
     color: ${props => props.theme.colors.black};
     background-color: ${props => props.theme.colors.white};
     border-radius: ${props => props.theme.effects.radius};

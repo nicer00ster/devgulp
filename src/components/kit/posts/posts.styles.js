@@ -1,21 +1,30 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { animated } from 'react-spring';
 
 const StyledPosts = styled.ul`
+  position: relative;
   display: grid;
   grid-template-columns: ${props =>
-    props.noResults ? 'repeat(1, 1fr)' : 'repeat(2, 1fr)'};
-  justify-items: stretch;
+    props.noResults ? 'repeat(1, 1fr)' : 'repeat(3, 1fr)'};
+  justify-items: center;
   grid-gap: 12px;
-  width: 100%;
   list-style: none;
+  width: 100%;
+  margin: 0;
   padding: 0;
+  ${props => props.columns === 2 ? css`
+    grid-template-columns: repeat(2, 1fr);
+  ` : ``};
+  ${props => props.theme.mediaQuery.tablet`
+    grid-template-columns: repeat(2, 1fr);
+  `};
   ${props => props.theme.mediaQuery.phone`
     grid-template-columns: repeat(1, 1fr);
   `};
 `;
 
 const StyledPostsContainer = styled.div`
+  position: relative;
   background-color: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.effects.radius};
   box-shadow: ${props => props.theme.effects.shadow};
@@ -31,11 +40,16 @@ const StyledPost = styled(animated.li)`
   transition: all 0.35s ease;
   cursor: pointer;
   height: 150px;
+  width: 100%;
   bottom: 0;
+  &.flatten {
+    box-shadow: none;
+    border: 1px solid ${props => props.theme.colors.grey};
+  }
   &:hover,
   &:active {
     box-shadow: ${props => props.theme.effects.shadowHover};
-    bottom: 4px;
+    bottom: 3px;
     & .post-image {
       clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
       &:before {
@@ -200,6 +214,11 @@ const StyledFilterNav = styled.nav`
     props.loginMenuOpen || props.userMenuOpen ? 'hidden' : 'visible'};
   pointer-events: ${props =>
     props.loginMenuOpen || props.userMenuOpen ? 'none' : 'all'};
+  padding: 0.4rem;
+  margin: 0 auto;
+  z-index: 1;
+  border-top-right-radius: ${props => props.theme.effects.radius};
+  border-top-left-radius: ${props => props.theme.effects.radius};
   transition: all 0.25s linear;
 `;
 

@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { fetchAuthor, fetchUserPosts } from '../redux/actions';
 import SingleUser from '../components/kit/singleUser';
 import Container from '../components/kit/container';
-import Hero from '../components/kit/hero';
 
 function User(props) {
   const router = useRouter();
@@ -16,12 +15,9 @@ function User(props) {
   }, [userId]);
 
   return (
-    <>
-      <Hero></Hero>
       <Container className="panelled">
         <SingleUser author={props.author} posts={props.author.posts} />
       </Container>
-    </>
   );
 }
 

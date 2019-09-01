@@ -3,9 +3,10 @@ import styled from 'styled-components';
 const StyledFooterOuter = styled.div`
   padding: 0 0;
   width: 100%;
-  max-width: 1080px;
   margin: 0 auto;
   color: ${props => props.theme.colors.lightBlack};
+  background-color: ${props => props.theme.colors.white};
+  box-shadow: ${props => props.theme.effects.shadow};
   opacity: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? '0.4'
@@ -26,15 +27,15 @@ const StyledFooterOuter = styled.div`
 `;
 
 const StyledFooterInner = styled.div`
-  padding: 0 2rem;
   width: 100%;
   margin: 0 auto;
+  max-width: 1080px;
 `;
 
 const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 0 1.2rem;
 `;
 
 const StyledFooterList = styled.ul`
@@ -50,10 +51,16 @@ const StyledFooterListItem = styled.li`
   padding: 0.4rem;
 `;
 
+const StyledFooterLogo = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export {
   StyledFooterOuter,
   StyledFooterInner,
   StyledFooter,
   StyledFooterList,
   StyledFooterListItem,
+  StyledFooterLogo,
 };

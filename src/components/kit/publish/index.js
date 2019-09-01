@@ -155,28 +155,29 @@ function EnhancedPublish(props) {
               accept="image/*"
             />
             <label htmlFor="image-file">Choose an Image</label>
+            <StyledPublishButton
+                onClick={() => handleAddPost()}
+                disabled={active || props.posts.isAddingPost || !title || !body}
+                aria-busy={active || props.posts.isAddingPost}
+                className={active && 'active'}>
+              <StyledPublishIcon className={`fal fa-envelope-open-text`} />
+              <StyledPublishConfetti color="palegreen" />
+              <StyledPublishConfetti color="tomato" />
+              <StyledPublishConfetti color="blue" />
+              <StyledPublishConfetti color="yellow" />
+              <StyledPublishConfetti color="pink" />
+              <StyledPublishConfetti color="purple" />
+              <StyledPublishConfetti color="orange" />
+              <StyledPublishConfetti color="green" />
+              {props.posts.isAddingPost && <Loading />}
+            </StyledPublishButton>
           </StyledPublishImageUploadWrapper>
+
         ) : (
           <StyledPreviewImageButton onClick={() => props.toggleModal()}>
             Preview Image
           </StyledPreviewImageButton>
         )}
-        <StyledPublishButton
-          onClick={() => handleAddPost()}
-          disabled={active || props.posts.isAddingPost || !title || !body}
-          aria-busy={active || props.posts.isAddingPost}
-          className={active && 'active'}>
-          <StyledPublishIcon className={`fal fa-envelope-open-text`} />
-          <StyledPublishConfetti color="palegreen" />
-          <StyledPublishConfetti color="tomato" />
-          <StyledPublishConfetti color="blue" />
-          <StyledPublishConfetti color="yellow" />
-          <StyledPublishConfetti color="pink" />
-          <StyledPublishConfetti color="purple" />
-          <StyledPublishConfetti color="orange" />
-          <StyledPublishConfetti color="green" />
-          {props.posts.isAddingPost && <Loading />}
-        </StyledPublishButton>
       </StyledPublishContainer>
       <Modal>
         {props.posts.imageUrl && (

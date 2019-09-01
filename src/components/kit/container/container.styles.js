@@ -5,6 +5,7 @@ const StyledContainer = styled.section`
   flex-direction: column;
   position: relative;
   min-height: 400px;
+  margin: 8rem 0;
   opacity: ${props =>
     props.loginMenuOpen ||
     props.userMenuOpen ||

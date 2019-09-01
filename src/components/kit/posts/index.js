@@ -33,7 +33,7 @@ function EnhancedPosts(props) {
     )
       return;
     if (props.postCount >= props.totalPosts) return;
-    props.fetchPosts(props.postCount + 2);
+    props.fetchPosts(props.postCount + 6);
   }, 500);
 
   useEffect(() => {
@@ -56,23 +56,23 @@ function EnhancedPosts(props) {
   });
 
   return (
-    <StyledPostsContainer>
-        <StyledFilterNav
-          loginMenuOpen={props.loginMenuOpen}
-          userMenuOpen={props.userMenuOpen}>
-          <StyledFilterItems className="filter-items">
-            {props.categories &&
-              props.categories.map(category => (
-                <StyledFilterItem
-                  key={category.id}
-                  className={activeFilter === category.id && 'active-filter'}
-                  onClick={() => handleFilter(category.id)}>
-                  {category.name === 'Uncategorized' ? 'All' : category.name}
-                </StyledFilterItem>
-              ))}
-          </StyledFilterItems>
-        </StyledFilterNav>
-      <StyledPosts>
+    <>
+      <StyledFilterNav
+        loginMenuOpen={props.loginMenuOpen}
+        userMenuOpen={props.userMenuOpen}>
+        <StyledFilterItems className="filter-items">
+          {props.categories &&
+            props.categories.map(category => (
+              <StyledFilterItem
+                key={category.id}
+                className={activeFilter === category.id && 'active-filter'}
+                onClick={() => handleFilter(category.id)}>
+                {category.name === 'Uncategorized' ? 'All' : category.name}
+              </StyledFilterItem>
+            ))}
+        </StyledFilterItems>
+      </StyledFilterNav>
+      <StyledPosts noResults={filteredPosts.length === 0}>
         {props.posts &&
           transitions.map(
             post =>
@@ -85,17 +85,17 @@ function EnhancedPosts(props) {
                 />
               ),
           )}
+        {props.posts.length && props.posts && filteredPosts.length === 0 ? (
+          <StyledNoResults>
+            No articles have been posted about {currentFilter}. Be the{' '}
+            <Link href="/publish">
+              <a>first</a>
+            </Link>
+            !
+          </StyledNoResults>
+        ) : null}
       </StyledPosts>
-      {props.posts.length && props.posts && filteredPosts.length === 0 ? (
-        <StyledNoResults>
-          No articles have been posted about {currentFilter}. Be the{' '}
-          <Link href="/publish">
-            <a>first</a>
-          </Link>
-          !
-        </StyledNoResults>
-      ) : null}
-    </StyledPostsContainer>
+    </>
   );
 }
 

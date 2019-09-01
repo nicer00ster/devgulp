@@ -11,7 +11,7 @@ import { fetchPosts, fetchTotalPosts, fetchCategories } from '../redux/actions';
 function Index(props) {
   useEffect(() => {
     props.fetchTotalPosts();
-    props.fetchPosts(props.postCount + 2);
+    props.fetchPosts(props.postCount + 6);
     props.fetchCategories();
   }, []);
   return (
@@ -31,10 +31,12 @@ function Index(props) {
               'Express yourself freely.',
               '.',
               '.',
+              '.',
             ],
             server: [
               'Want to contribute to DevGulp?',
               'View our GitHub <a href="https://github.com/nicer00ster/devgulp" target="_blank" style="color: #80dad3;">here</a>.',
+              '.',
               '.',
               '.',
             ],
