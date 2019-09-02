@@ -22,6 +22,7 @@ const check = keyframes`
 `;
 
 const StyledForm = styled.form`
+  position: relative;
   width: 50%;
   border-radius: ${props => props.theme.effects.radius};
   background-color: ${props => props.theme.colors.white};
@@ -30,7 +31,6 @@ const StyledForm = styled.form`
   transition: all 0.25s ease !important;
   overflow: ${props => (props.formStatus !== '' ? 'unset' : 'hidden')};
   opacity: 1;
-  position: relative;
   &:before {
     content: '';
     width: 100%;

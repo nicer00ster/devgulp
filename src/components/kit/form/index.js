@@ -1,12 +1,15 @@
+import { useContext } from 'react';
 import { connect } from 'react-redux';
+import { AppContext } from "../notifications/provider";
 import { StyledForm, StyledFormHeading } from './form.styles';
-import { StyledInput } from '../input/input.styles';
 import { register } from '../../../redux/actions';
 import { useInput } from '../../../hooks';
 import Button from '../button';
 import Input from '../input';
+import Loading from '../loading';
 
 function Form(props) {
+  const { addNotification } = useContext(AppContext);
   const {
     value: username,
     bind: bindUsername,
@@ -59,17 +62,19 @@ function Form(props) {
 
     if (username.length <= 4) {
       setUsernameError(true);
+      addNotification('Username must be greater than 4 characters!');
       return;
     }
 
     if (password !== verifyPassword) {
       setPasswordError(true);
       setVerifyPasswordError(true);
+      addNotification('Passwords must match!');
       return;
     }
 
     if (!username || !email || !password || !verifyPassword) {
-      console.log('Make sure to fill out all the fields!');
+      addNotification('Make sure to fill out all the fields!');
       return;
     }
 
@@ -116,12 +121,14 @@ function Form(props) {
         />
         <Button type="submit">Submit</Button>
       </fieldset>
+      {props.isRegistering && <Loading />}
     </StyledForm>
   );
 }
 
 const mapStateToProps = ({ user }) => ({
   user,
+  isRegistering: user.isRegistering,
 });
 
 const mapDispatchToProps = {

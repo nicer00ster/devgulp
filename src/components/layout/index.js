@@ -25,7 +25,7 @@ const theme = {
 };
 
 function Layout(props) {
-  const { state } = useContext(AppContext);
+  const { state, addNotification } = useContext(AppContext);
 
   function screenResize() {
     props.screenResize(window.innerWidth);
@@ -35,8 +35,16 @@ function Layout(props) {
     props.fetchUser();
     screenResize();
     window.addEventListener('resize', screenResize);
+
     return () => window.removeEventListener('resize', screenResize);
   }, []);
+
+  // Listener for error messages.
+  useEffect(() => {
+    if (props.user.hasError) {
+      addNotification(props.user.errorMessage);
+    }
+  }, [props.user.hasError]);
 
   if (props.user.checkingCredentials) {
     return <Loading />;

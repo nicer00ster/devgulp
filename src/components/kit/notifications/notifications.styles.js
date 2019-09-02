@@ -25,7 +25,6 @@ const StyledNotificationOuter = styled(animated.div)`
     margin-top: .4rem;
     bottom: 0;
     right: 0;
-    transition: all 0.25s ease 0s;
     ${props => props.theme.mediaQuery.phone`
         width: 100%;
     `};

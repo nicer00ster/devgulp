@@ -68,6 +68,7 @@ typings/
 /wp-includes/*
 !/wp-includes/rest-api
 !/wp-includes/functions.php
+!/wp-includes/user.php
 /wp-content/themes
 /wp-content/uploads
 /wp-admin
