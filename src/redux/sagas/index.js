@@ -77,6 +77,13 @@ function apiFetchUser(userId) {
   }).then(user => user);
 }
 
+function apiFetchPage(slug) {
+  return axios({
+    method: 'get',
+    url: `${API_URL}/pages?slug=${slug}`,
+  }).then(page => page);
+}
+
 function apiFetchPosts(postCount) {
   return axios({
     method: 'get',
@@ -87,7 +94,7 @@ function apiFetchPosts(postCount) {
 function apiFetchTotalPosts() {
   return axios({
     method: 'get',
-    url: `${API_URL}/posts`,
+    url: `${API_URL}/posts?per_page=100`,
   }).then(posts => posts);
 }
 
@@ -493,6 +500,15 @@ function* fetchUserPostsSaga(data) {
   }
 }
 
+function* fetchPageSaga(data) {
+  try {
+    const response = yield call(apiFetchPage, data.slug);
+    yield put({ type: types.FETCH_PAGE_SUCCESS, response });
+  } catch (error) {
+    yield put({ type: types.FETCH_PAGE_FAILURE, error });
+  }
+}
+
 function* addPostSaga(data) {
   yield delay(2000);
   try {
@@ -623,6 +639,7 @@ function* rootSaga() {
     takeEvery(types.FETCH_AUTHOR, fetchAuthorSaga),
     takeEvery(types.FETCH_USER_FOLLOWERS, fetchUserFollowersSaga),
     takeEvery(types.FETCH_USER_POSTS, fetchUserPostsSaga),
+    takeEvery(types.FETCH_PAGE, fetchPageSaga),
   ]);
 }
 

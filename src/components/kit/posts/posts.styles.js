@@ -13,7 +13,7 @@ const StyledPosts = styled.ul`
   margin: 0;
   padding: 0;
   ${props =>
-    props.columns === 2
+    props.columns === 2 && !props.noResults
       ? css`
           grid-template-columns: repeat(2, 1fr);
         `
