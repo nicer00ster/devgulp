@@ -31,7 +31,6 @@ import Modal from '../modal';
 import Button from '../button';
 import PostItem from '../posts/PostItem';
 import { StyledDivider } from '../globals/globals.styles';
-import { StyledEditProfile } from './editProfile/editProfile.styles';
 
 function SingleUser(props) {
   const {

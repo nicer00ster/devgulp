@@ -168,19 +168,8 @@ const GlobalStyles = createGlobalStyle`
     }
 `;
 
-const LayoutOverlay = styled.div`
-  background-color: ${props => props.theme.colors.lightBlack};
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 10;
-`;
-
 export {
   LayoutStyles,
-  LayoutOverlay,
   GlobalStyles,
   breakpoints,
   colors,
