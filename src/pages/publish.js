@@ -1,17 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
-import EnhancedPublish from '../components/kit/publish';
+import { AppContext } from "../components/kit/notifications/provider";
 import { fetchCategories, openLoginMenu } from '../redux/actions';
+import EnhancedPublish from '../components/kit/publish';
 import Container from '../components/kit/container';
 
 function Publish(props) {
   const router = useRouter();
+  const { addNotification } = useContext(AppContext);
 
   useEffect(() => {
     if (!props.cookie) {
       router.push('/');
-      //  TODO: Warn user to login in order to view this page.
+      addNotification('Sign in to start publishing stories!');
     } else {
       props.fetchCategories();
     }

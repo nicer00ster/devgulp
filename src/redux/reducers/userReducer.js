@@ -13,6 +13,7 @@ const initialState = {
   isCheckingToken: false,
   checkingCredentials: true,
   hasError: false,
+  errorMessage: '',
 };
 
 export default function userReducer(state = initialState, action = {}) {
@@ -37,8 +38,8 @@ export default function userReducer(state = initialState, action = {}) {
         ...state,
         checkingCredentials: false,
         isAuthenticated: false,
-        hasError: true,
-        errorMessage: action.error.message,
+        // hasError: true,
+        // errorMessage: action.error.message,
       };
     case types.LOGIN:
       return {
@@ -63,7 +64,7 @@ export default function userReducer(state = initialState, action = {}) {
         ...state,
         isLoggingIn: false,
         hasError: true,
-        errorMessage: action.error.message,
+        errorMessage: action.error.response.data.message,
       };
     case types.LOGOUT:
       return {

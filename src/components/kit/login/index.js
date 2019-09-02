@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import { connect } from 'react-redux';
 import { useTrail } from 'react-spring';
 import { StyledLogin, StyledLoginForm, StyledLoginCaret } from './login.styles';
 import { StyledFormHeading } from '../form/form.styles';
 import { useInput } from '../../../hooks';
 import { login, toggleLoginMenu } from '../../../redux/actions';
+import { AppContext } from "../notifications/provider";
 import Loading from '../loading';
 import Button from '../button';
 import Input from '../input';
@@ -11,6 +13,7 @@ import Input from '../input';
 const config = { mass: 5, tension: 2000, friction: 100 };
 
 function Login(props) {
+  const { addNotification } = useContext(AppContext);
   const {
     value: username,
     bind: bindUsername,
@@ -50,8 +53,10 @@ function Login(props) {
       setPasswordError(true);
     }
     if (!username || !password) {
+      addNotification('Make sure to enter a username & password!');
       return;
     }
+
     props.login(username, password);
   }
 

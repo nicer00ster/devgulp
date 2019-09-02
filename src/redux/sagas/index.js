@@ -13,9 +13,7 @@ import {
 import axios from 'axios';
 import { API_URL, TOKEN_URL, ACF_URL } from '../constants';
 import { setToken, verifyToken, arrangeComments } from '../../utils';
-
 import * as types from '../constants';
-import { followUser } from '../actions';
 
 function apiFetchToken(data) {
   return axios({
@@ -412,7 +410,6 @@ function* fetchUserSaga() {
     } else {
       yield put({
         type: types.FETCH_USER_FAILURE,
-        error: { message: 'Not logged in.' },
       });
     }
   } catch (error) {
