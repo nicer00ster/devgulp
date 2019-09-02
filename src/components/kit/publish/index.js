@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useSpring } from 'react-spring';
 import { useRouter } from 'next/router';
+import { Picker, Emoji } from 'emoji-mart';
 import {
   StyledPublish,
   StyledPublishContainer,
@@ -14,18 +16,33 @@ import {
   StyledPublishCategories,
   StyledPublishConfetti,
   StyledPublishIcon,
+  StyledPublishEmojis,
 } from './publish.styles';
 import Checkbox from '../checkbox';
 import Loading from '../loading';
 import Modal from '../modal';
-import { useInput, usePrevious } from '../../../hooks';
+import { useInput, usePrevious, useMeasure } from '../../../hooks';
+import { placeCaretAtEnd } from '../../../utils';
 import { addPost, addMedia, toggleModal } from '../../../redux/actions';
 import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
 
 function EnhancedPublish(props) {
   const router = useRouter();
+  const bodyRef = useRef();
+  const emojiRef = useRef();
+  const [bind, { width }] = useMeasure();
+  const [body, setBody] = useState(null);
+  const [bodyError, setBodyError] = useState(false);
+  const [showEmojis, setShowEmojis] = useState(false);
   const [active, setActive] = useState();
   const [categories, setCategories] = useState([1]);
+  const {
+    value: title,
+    bind: bindTitle,
+    reset: resetTitle,
+    setError: setTitleError,
+    hasError: titleError,
+  } = useInput('');
 
   const prevPostId = usePrevious(props.addPostId);
 
@@ -39,20 +56,41 @@ function EnhancedPublish(props) {
     }
   }, [props.addPostId]);
 
-  const {
-    value: title,
-    bind: bindTitle,
-    reset: resetTitle,
-    setError: setTitleError,
-    hasError: titleError,
-  } = useInput('');
-  const {
-    value: body,
-    bind: bindBody,
-    reset: resetBody,
-    setError: setBodyError,
-    hasError: bodyError,
-  } = useInput('');
+  useEffect(() => {
+    let sequence = [];
+    let lastKeyTime = Date.now();
+
+    bodyRef.current.addEventListener('keydown', e => {
+      const charList = ':';
+      const key = e.key.toLowerCase();
+
+      if (charList.indexOf(key) === -1) return;
+
+      const currentTime = Date.now();
+
+      if (currentTime - lastKeyTime > 1000) {
+        sequence = [];
+      }
+
+      if (e.shiftKey) {
+        sequence.push(key);
+        lastKeyTime = currentTime;
+      }
+
+      if (sequence[0] === ':' && sequence[1] === ':') {
+        setShowEmojis(true);
+        setTimeout(() => {
+          document.querySelector('.emoji-mart-search input').focus();
+        }, 150);
+      }
+    });
+  }, []);
+
+  const emojiSpring = useSpring({
+    opacity: showEmojis ? 1 : 0,
+    transform: showEmojis ? `translateX(0px)` : `translateX(-${width / 2}px)`,
+    pointerEvents: showEmojis ? 'all' : 'none',
+  });
 
   function toggleButton() {
     setActive(true);
@@ -67,10 +105,10 @@ function EnhancedPublish(props) {
     if (!title) {
       setTitleError(true);
     }
-    if (!body) {
+    if (!bodyRef.current.innerText.length) {
       setBodyError(true);
     }
-    if (!title || !body) {
+    if (!title || !bodyRef.current.innerText.length) {
       return;
     }
 
@@ -78,7 +116,7 @@ function EnhancedPublish(props) {
       props.addPost(
         props.user.token,
         title,
-        body,
+        bodyRef.current.innerHTML,
         categories,
         props.posts.imageId,
       );
@@ -86,7 +124,7 @@ function EnhancedPublish(props) {
     })
       .then(() => {
         resetTitle();
-        resetBody();
+        bodyRef.current.innerHTML = '';
       })
       .catch(err => {
         console.error(err);
@@ -114,9 +152,34 @@ function EnhancedPublish(props) {
     return data;
   }
 
+  function addEmoji(emoji) {
+    const emojiHTML = Emoji({
+      html: true,
+      set: 'twitter',
+      emoji: emoji.id,
+      size: 24,
+    });
+
+    bodyRef.current.innerHTML =
+      bodyRef.current.innerHTML.replace('::', '') + emojiHTML + '&nbsp;';
+    setShowEmojis(false);
+    placeCaretAtEnd(bodyRef.current);
+  }
+
   return (
-    <StyledPublish>
+    <StyledPublish {...bind}>
+      <StyledPublishEmojis style={emojiSpring}>
+        <Picker
+          ref={emojiRef}
+          onClick={emoji => addEmoji(emoji)}
+          color="#80dad3"
+          title="DevGulp"
+          emoji="smile"
+          set="twitter"
+        />
+      </StyledPublishEmojis>
       <StyledPublishContainer
+        showEmojis={showEmojis}
         disabled={props.posts.isAddingPost}
         aria-busy={props.posts.isAddingPost}>
         <StyledPublishTitle
@@ -125,9 +188,10 @@ function EnhancedPublish(props) {
           placeholder="Title"
         />
         <StyledPublishBody
+          ref={bodyRef}
+          contentEditable={true}
+          onInput={e => setBody(e.target.innerHTML)}
           className={bodyError && 'error'}
-          rows={10}
-          {...bindBody}
           placeholder="Tell your story."
         />
         <StyledPublishCategories>

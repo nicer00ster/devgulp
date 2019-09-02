@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { animated } from 'react-spring';
 
 const fadeOut = keyframes`
     0% {
@@ -42,6 +43,10 @@ const StyledPublish = styled.div`
   border-radius: ${props => props.theme.effects.radius};
   box-shadow: ${props => props.theme.effects.shadow};
   padding: 1.2rem;
+  width: 50%;
+  ${props => props.theme.mediaQuery.tablet`
+    width: 100%;
+  `};
   ${props => props.theme.mediaQuery.phone`
     margin: unset;
   `};
@@ -51,6 +56,9 @@ const StyledPublishContainer = styled.fieldset`
   border: none;
   display: flex;
   flex-direction: column;
+  min-width: 100%;
+  opacity: ${props => (props.showEmojis ? 0.25 : 1)};
+  transition: all 0.25s ease-in;
   &[disabled] {
     opacity: 0.5;
     pointer-events: none;
@@ -61,6 +69,7 @@ const StyledPublishTitle = styled.input`
   font-size: 36px;
   outline: 0;
   border: 0;
+  max-width: 100%;
   color: ${props => props.theme.colors.black};
   font-family: 'Trirong', serif;
   letter-spacing: 1px;
@@ -76,8 +85,9 @@ const StyledPublishTitle = styled.input`
   }
 `;
 
-const StyledPublishBody = styled.textarea`
+const StyledPublishBody = styled.div`
   width: 100%;
+  height: 400px;
   font-size: 24px;
   outline: 0;
   border: 0;
@@ -93,6 +103,12 @@ const StyledPublishBody = styled.textarea`
   &.error::placeholder {
     color: tomato;
   }
+  :empty:before {
+    padding-left: 0.4rem;
+    content: attr(placeholder);
+    color: ${props => props.theme.colors.lightBlack};
+    display: block; /* For Firefox */
+  }
   ::placeholder {
     padding-left: 0.4rem;
   }
@@ -101,10 +117,14 @@ const StyledPublishBody = styled.textarea`
 const StyledPublishCategories = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding: 0.4rem;
+  border: 1px solid ${props => props.theme.colors.grey};
+  border-radius: 5px;
   margin: 2rem 0;
 `;
 
 const StyledPublishButton = styled.button`
+  position: relative;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -245,6 +265,13 @@ const StyledPreviewImage = styled.img`
   object-fit: cover;
 `;
 
+const StyledPublishEmojis = styled(animated.div)`
+  position: absolute;
+  width: 260px;
+  z-index: 1;
+  will-change: opacity, transform;
+`;
+
 export {
   StyledPublish,
   StyledPublishContainer,
@@ -258,4 +285,5 @@ export {
   StyledPublishImageUpload,
   StyledPreviewImageButton,
   StyledPreviewImage,
+  StyledPublishEmojis,
 };

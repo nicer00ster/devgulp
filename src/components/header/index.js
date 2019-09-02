@@ -155,9 +155,7 @@ function Header(props) {
           ) : (
             <>
               <StyledMenuItem>
-                <i
-                  className="fal fa-donate"
-                />
+                <i className="fal fa-donate" />
               </StyledMenuItem>
               <EnhancedLink href="/publish">Publish</EnhancedLink>
               <EnhancedLink href="/users">Users</EnhancedLink>

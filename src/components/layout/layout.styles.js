@@ -28,7 +28,7 @@ const breakpoints = {
 const colors = {
   black: '#1f222e',
   lightBlack: 'rgba(31, 34, 46, 0.75)',
-  grey: '#cacacc',
+  grey: '#d9d9d9',
   white: '#fefefe',
   offWhite: '#fffaf1',
   lightWhite: 'rgba(254,254,254,0.75)',
@@ -95,6 +95,23 @@ const GlobalStyles = createGlobalStyle`
       //   left: 0;
       //   background: rgba(0, 0, 0, 0.25);
       // }
+      //&.show-emoji-picker {
+      //  .emoji-mart-search {
+      //    height: auto !important;
+      //    pointer-events: all !important;
+      //    opacity: 1;
+      //  }
+      //  .emoji-mart-scroll {
+      //    height: 270px !important;
+      //    pointer-events: all !important;
+      //    opacity: 1;
+      //  }
+      //  .emoji-mart-bar {
+      //    height: auto !important;
+      //    pointer-events: all !important;
+      //    opacity: 1;
+      //  }
+      //}
     }
     a {
       text-decoration: none;
@@ -117,29 +134,30 @@ const GlobalStyles = createGlobalStyle`
     .bold {
         font-weight: 600;
     }
-    @keyframes showFrame {
-       0% {
-         height: unset;
-         overflow: unset;
-       }
-       99% {
-         height: unset;
-         overflow: unset;
-       }
-       100% {
-         height: 0;
-       }
+    .emoji-mart {
+      width: 100% !important;
     }
-    @keyframes lastFrame {
-       0% {
-         height: unset;
-         overflow: unset;
-       }
-       100% {
-         height: unset;
-         overflow: unset;
-       }
-    }
+    //.emoji-mart-bar:last-child {
+    //  height: 0px !important;
+    //  opacity: 0;
+    //  pointer-events: none !important;
+    //  transition: all 0.15s ease-in;
+    //  will-change: height, opacity;
+    //}
+    //.emoji-mart-search {
+    //  height: 0px !important;
+    //  opacity: 0;
+    //  pointer-events: none !important;
+    //  transition: all 0.15s ease-in;
+    //  will-change: height, opacity;
+    //}
+    //.emoji-mart-scroll {
+    //  height: 0px !important;
+    //  opacity: 0;
+    //  pointer-events: none !important;
+    //  transition: all 0.15s ease-in;
+    //  will-change: height, opacity;
+    //}
     ::selection {
       color: ${colors.white};
       background: ${colors.lightBlack};
