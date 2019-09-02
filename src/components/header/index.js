@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import { useSpring } from 'react-spring';
 import NProgress from 'nprogress';
@@ -26,6 +26,7 @@ import {
   closeDrawer,
 } from '../../redux/actions';
 import { useOnClickOutside, useMeasure, useInput } from '../../hooks';
+import { AppContext } from "../kit/notifications/provider";
 import EnhancedLink from './EnhancedLink';
 import Login from '../kit/login';
 import Burger from '../kit/burger';
@@ -45,6 +46,7 @@ function Header(props) {
   const searchRef = useRef();
   const [bind, { width }] = useMeasure();
   const [isScrolled, setIsScrolled] = useState(false);
+  const { addNotification } = useContext(AppContext);
 
   const {
     value: query,
@@ -155,7 +157,7 @@ function Header(props) {
           ) : (
             <>
               <StyledMenuItem>
-                <i className="fal fa-donate" />
+                <i className="fal fa-donate" onClick={() => addNotification('har')}/>
               </StyledMenuItem>
               <EnhancedLink href="/publish">Publish</EnhancedLink>
               <EnhancedLink href="/users">Users</EnhancedLink>

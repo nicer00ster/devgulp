@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import {
@@ -10,10 +10,12 @@ import {
   mediaQuery,
 } from './layout.styles';
 import { fetchUser, screenResize } from '../../redux/actions';
+import { AppContext } from "../kit/notifications/provider";
 import Header from '../header';
 import Footer from '../footer';
 import Loading from '../../components/kit/loading';
 import Background from '../../components/kit/background';
+import Notifications from "../kit/notifications";
 
 const theme = {
   breakpoints,
@@ -23,6 +25,8 @@ const theme = {
 };
 
 function Layout(props) {
+  const { state } = useContext(AppContext);
+
   function screenResize() {
     props.screenResize(window.innerWidth);
   }
@@ -48,6 +52,7 @@ function Layout(props) {
         <LayoutStyles
           userMenuOpen={props.root.userMenuOpen}
           loginMenuOpen={props.root.loginMenuOpen}>
+          <Notifications children={add => (state.notificationRef.current = add)} />
           <GlobalStyles />
           {props.children}
         </LayoutStyles>

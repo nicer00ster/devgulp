@@ -1,6 +1,7 @@
 import App, { Container } from 'next/app';
 import { Provider } from 'react-redux';
 import { parseCookies } from 'nookies';
+import AppProvider from "../components/kit/notifications/provider";
 
 import withReduxStore from '../lib/with-redux-store';
 import Layout from '../components/layout';
@@ -28,9 +29,11 @@ class CustomApp extends App {
     return (
       <Container>
         <Provider store={reduxStore}>
-          <Layout {...pageProps}>
-            <Component {...pageProps} />
-          </Layout>
+          <AppProvider>
+            <Layout {...pageProps}>
+              <Component {...pageProps} />
+            </Layout>
+          </AppProvider>
         </Provider>
       </Container>
     );
