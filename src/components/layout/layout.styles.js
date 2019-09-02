@@ -71,6 +71,8 @@ const GlobalStyles = createGlobalStyle`
     html {
       box-sizing: border-box;
       font-size: 12px;
+      position: relative;
+      min-height: 100%;
     }
     *, *:before, *:after {
       box-sizing: inherit;

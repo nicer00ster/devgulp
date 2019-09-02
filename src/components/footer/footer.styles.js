@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
 const StyledFooterOuter = styled.div`
+  position: absolute;
   padding: 0 0;
   width: 100%;
+  left: 0;
+  bottom: 0;
   margin: 0 auto;
   color: ${props => props.theme.colors.lightBlack};
   background-color: ${props => props.theme.colors.white};
-  box-shadow: ${props => props.theme.effects.shadow};
+  border-top: 1px solid ${props => props.theme.colors.grey};
   opacity: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? '0.4'

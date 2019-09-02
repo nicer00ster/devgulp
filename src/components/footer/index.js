@@ -9,7 +9,6 @@ import {
   StyledFooterLogo,
 } from './footer.styles';
 import { StyledLogo } from '../header/header.styles';
-import { StyledDivider } from '../kit/globals/globals.styles';
 
 function Footer(props) {
   return (
@@ -17,7 +16,6 @@ function Footer(props) {
       drawerOpen={props.drawerOpen}
       loginMenuOpen={props.loginMenuOpen}
       userMenuOpen={props.userMenuOpen}>
-      <StyledDivider />
       <StyledFooterInner>
         <StyledFooter>
           <StyledFooterList align="flex-start">

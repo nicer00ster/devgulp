@@ -14,12 +14,9 @@ function Post(props) {
     props.fetchPost(id);
   }, []);
 
-  if (props.post.isFetchingPost) {
-    return <Loading />;
-  }
   return (
     <Container>
-      <SinglePost post={props.post} />
+      {props.post.isFetchingPost ? <Loading /> : <SinglePost post={props.post} />}
     </Container>
   );
 }
