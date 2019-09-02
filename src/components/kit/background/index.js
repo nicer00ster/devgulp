@@ -26,7 +26,10 @@ function Background(props) {
   });
 
   return (
-    <StyledBackground userMenuOpen={props.userMenuOpen}>
+    <StyledBackground
+      drawerOpen={props.drawerOpen}
+      loginMenuOpen={props.loginMenuOpen}
+      userMenuOpen={props.userMenuOpen}>
       <StyledBackgroundDevices style={spring}>
         <StyledBackgroundTablet offset={125}>
           <img src="/static/devgulp-editor.svg" />

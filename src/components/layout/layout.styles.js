@@ -168,11 +168,4 @@ const GlobalStyles = createGlobalStyle`
     }
 `;
 
-export {
-  LayoutStyles,
-  GlobalStyles,
-  breakpoints,
-  colors,
-  effects,
-  mediaQuery,
-};
+export { LayoutStyles, GlobalStyles, breakpoints, colors, effects, mediaQuery };

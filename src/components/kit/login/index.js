@@ -5,7 +5,7 @@ import { StyledLogin, StyledLoginForm, StyledLoginCaret } from './login.styles';
 import { StyledFormHeading } from '../form/form.styles';
 import { useInput } from '../../../hooks';
 import { login, toggleLoginMenu } from '../../../redux/actions';
-import { AppContext } from "../notifications/provider";
+import { AppContext } from '../notifications/provider';
 import Loading from '../loading';
 import Button from '../button';
 import Input from '../input';

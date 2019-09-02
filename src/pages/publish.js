@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
-import { AppContext } from "../components/kit/notifications/provider";
+import { AppContext } from '../components/kit/notifications/provider';
 import { fetchCategories, openLoginMenu } from '../redux/actions';
 import EnhancedPublish from '../components/kit/publish';
 import Container from '../components/kit/container';

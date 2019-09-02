@@ -155,7 +155,10 @@ function Header(props) {
           ) : (
             <>
               <StyledMenuItem>
-                <i className="fal fa-donate" onClick={() => addNotification('har')}/>
+                <i
+                  className="fal fa-donate"
+                  onClick={() => addNotification('har')}
+                />
               </StyledMenuItem>
               <EnhancedLink href="/publish">Publish</EnhancedLink>
               <EnhancedLink href="/users">Users</EnhancedLink>

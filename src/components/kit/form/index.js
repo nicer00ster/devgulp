@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { connect } from 'react-redux';
-import { AppContext } from "../notifications/provider";
+import { AppContext } from '../notifications/provider';
 import { StyledForm, StyledFormHeading } from './form.styles';
 import { register } from '../../../redux/actions';
 import { useInput } from '../../../hooks';

@@ -10,12 +10,12 @@ import {
   mediaQuery,
 } from './layout.styles';
 import { fetchUser, screenResize } from '../../redux/actions';
-import { AppContext } from "../kit/notifications/provider";
+import { AppContext } from '../kit/notifications/provider';
 import Header from '../header';
 import Footer from '../footer';
 import Loading from '../../components/kit/loading';
 import Background from '../../components/kit/background';
-import Notifications from "../kit/notifications";
+import Notifications from '../kit/notifications';
 
 const theme = {
   breakpoints,
@@ -53,14 +53,18 @@ function Layout(props) {
     <ThemeProvider theme={theme}>
       <>
         <Background
+          drawerOpen={props.root.drawerOpen}
           userMenuOpen={props.root.userMenuOpen}
           loginMenuOpen={props.root.loginMenuOpen}
         />
         <Header />
         <LayoutStyles
+          drawerOpen={props.root.drawerOpen}
           userMenuOpen={props.root.userMenuOpen}
           loginMenuOpen={props.root.loginMenuOpen}>
-          <Notifications children={add => (state.notificationRef.current = add)} />
+          <Notifications
+            children={add => (state.notificationRef.current = add)}
+          />
           <GlobalStyles />
           {props.children}
         </LayoutStyles>

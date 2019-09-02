@@ -13,6 +13,10 @@ const StyledEditor = styled.div`
   max-width: 50%;
   margin: 0 auto;
   transition: all 0.25s ease !important;
+  ${props => props.theme.mediaQuery.tablet`
+    min-width: auto;
+    max-width: 75%;
+  `};
   ${props => props.theme.mediaQuery.phone`
     min-width: auto;
     max-width: 100%;

@@ -2,7 +2,7 @@ import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { fetchUsers, openLoginMenu } from '../redux/actions';
-import { AppContext } from "../components/kit/notifications/provider";
+import { AppContext } from '../components/kit/notifications/provider';
 import EnhancedUsers from '../components/kit/users';
 import Container from '../components/kit/container';
 import Hero from '../components/kit/hero';

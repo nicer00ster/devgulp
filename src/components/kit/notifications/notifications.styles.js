@@ -2,49 +2,50 @@ import styled from 'styled-components';
 import { animated } from 'react-spring';
 
 const StyledNotifications = styled.div`
-    position: fixed;
-    display: flex;
-    flex-direction: column-reverse;
-    bottom: 24px;
-    right: 36px;
-    max-width: 420px;
-    z-index: 2000;
-    transition: transform 0.4s ease 0s;
-    &:hover {
-        transform: translate3d(0px, -5px, 0px);
-    }
-    ${props => props.theme.mediaQuery.phone`
+  position: fixed;
+  display: flex;
+  flex-direction: column-reverse;
+  bottom: 24px;
+  right: 36px;
+  max-width: 420px;
+  z-index: 2000;
+  transition: transform 0.4s ease 0s;
+  &:hover {
+    transform: translate3d(0px, -5px, 0px);
+  }
+  ${props => props.theme.mediaQuery.phone`
         width: 82%;
         max-width: 100%;
     `};
 `;
 
 const StyledNotificationOuter = styled(animated.div)`
-    width: 420px;
-    position: relative;
-    margin-top: .4rem;
-    bottom: 0;
-    right: 0;
-    ${props => props.theme.mediaQuery.phone`
+  width: 420px;
+  position: relative;
+  margin-top: 0.4rem;
+  bottom: 0;
+  right: 0;
+  ${props => props.theme.mediaQuery.phone`
         width: 100%;
     `};
 `;
 
 const StyledNotificationInner = styled(animated.div)`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 420px;
-    height: 52px;
-    border-radius: ${props => props.theme.effects.radius};
-    ${props => props.theme.mediaQuery.phone`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 420px;
+  height: 52px;
+  border-radius: ${props => props.theme.effects.radius};
+  ${props => props.theme.mediaQuery.phone`
         width: 100%;
     `};
 `;
 
 const StyledNotificationContent = styled.div`
   display: grid;
-  grid-template-columns: ${props => (props.canClose === false ? '1fr' : '1fr auto')};
+  grid-template-columns: ${props =>
+    props.canClose === false ? '1fr' : '1fr auto'};
   grid-gap: 10px;
   align-items: center;
   color: ${props => props.theme.colors.black};
@@ -84,12 +85,13 @@ const StyledNotificationButtonClose = styled.div`
   height: 16px;
   opacity: 0.3;
   z-index: 1001;
-  &:before, &:after {
-      content: "";
-      position: absolute;
-      height: 16px;
-      width: 2px;
-      background-color: #333;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 2px;
+    background-color: #333;
   }
   &:before {
     transform: rotate(45deg);
@@ -109,11 +111,11 @@ const StyledNotificationDuration = styled(animated.div)`
 `;
 
 export {
-    StyledNotifications,
-    StyledNotificationOuter,
-    StyledNotificationInner,
-    StyledNotificationContent,
-    StyledNotificationButton,
-    StyledNotificationButtonClose,
-    StyledNotificationDuration,
+  StyledNotifications,
+  StyledNotificationOuter,
+  StyledNotificationInner,
+  StyledNotificationContent,
+  StyledNotificationButton,
+  StyledNotificationButtonClose,
+  StyledNotificationDuration,
 };
