@@ -75,6 +75,7 @@ function Meta() {
         type="text/css"
         href="/static/icons/fontawesome/css/all.min.css"
       />
+      <link rel="stylesheet" type="text/css" href="/static/emoji-mart.css" />
     </Head>
   );
 }

@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { animated } from 'react-spring';
 
 const fadeOut = keyframes`
     0% {
@@ -42,6 +43,7 @@ const StyledPublish = styled.div`
   border-radius: ${props => props.theme.effects.radius};
   box-shadow: ${props => props.theme.effects.shadow};
   padding: 1.2rem;
+  width: 50%;
   ${props => props.theme.mediaQuery.phone`
     margin: unset;
   `};
@@ -76,8 +78,9 @@ const StyledPublishTitle = styled.input`
   }
 `;
 
-const StyledPublishBody = styled.textarea`
+const StyledPublishBody = styled.div`
   width: 100%;
+  height: 400px;
   font-size: 24px;
   outline: 0;
   border: 0;
@@ -92,6 +95,12 @@ const StyledPublishBody = styled.textarea`
   }
   &.error::placeholder {
     color: tomato;
+  }
+  :empty:before {
+    padding-left: 0.4rem;
+    content: attr(placeholder);
+    color: ${props => props.theme.colors.lightBlack};
+    display: block; /* For Firefox */
   }
   ::placeholder {
     padding-left: 0.4rem;
@@ -182,6 +191,7 @@ const StyledPublishConfetti = styled.div`
 `;
 
 const StyledPublishImageUploadWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -245,6 +255,11 @@ const StyledPreviewImage = styled.img`
   object-fit: cover;
 `;
 
+const StyledPublishEmojis = styled(animated.div)`
+  position: relative;
+  padding: 2rem 0;
+`;
+
 export {
   StyledPublish,
   StyledPublishContainer,
@@ -258,4 +273,5 @@ export {
   StyledPublishImageUpload,
   StyledPreviewImageButton,
   StyledPreviewImage,
+  StyledPublishEmojis,
 };

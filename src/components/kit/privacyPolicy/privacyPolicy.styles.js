@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-const StyledPrivacyPolicy = styled.div`
+const StyledPrivacyPolicy = styled.div``;
 
-`;
-
-export {
-    StyledPrivacyPolicy,
-};
+export { StyledPrivacyPolicy };

@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useSpring } from 'react-spring';
 import { useRouter } from 'next/router';
+import { Picker, Emoji } from 'emoji-mart';
 import {
   StyledPublish,
   StyledPublishContainer,
@@ -14,6 +16,7 @@ import {
   StyledPublishCategories,
   StyledPublishConfetti,
   StyledPublishIcon,
+  StyledPublishEmojis,
 } from './publish.styles';
 import Checkbox from '../checkbox';
 import Loading from '../loading';
@@ -24,6 +27,9 @@ import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
 
 function EnhancedPublish(props) {
   const router = useRouter();
+  const bodyRef = useRef();
+  const [body, setBody] = useState(null);
+  const [bodyError, setBodyError] = useState(false);
   const [active, setActive] = useState();
   const [categories, setCategories] = useState([1]);
 
@@ -46,13 +52,6 @@ function EnhancedPublish(props) {
     setError: setTitleError,
     hasError: titleError,
   } = useInput('');
-  const {
-    value: body,
-    bind: bindBody,
-    reset: resetBody,
-    setError: setBodyError,
-    hasError: bodyError,
-  } = useInput('');
 
   function toggleButton() {
     setActive(true);
@@ -67,10 +66,10 @@ function EnhancedPublish(props) {
     if (!title) {
       setTitleError(true);
     }
-    if (!body) {
+    if (!bodyRef.current.innerText.length) {
       setBodyError(true);
     }
-    if (!title || !body) {
+    if (!title || !bodyRef.current.innerText.length) {
       return;
     }
 
@@ -78,7 +77,7 @@ function EnhancedPublish(props) {
       props.addPost(
         props.user.token,
         title,
-        body,
+        bodyRef.current.innerHTML,
         categories,
         props.posts.imageId,
       );
@@ -86,7 +85,7 @@ function EnhancedPublish(props) {
     })
       .then(() => {
         resetTitle();
-        resetBody();
+        bodyRef.current.innerHTML = '';
       })
       .catch(err => {
         console.error(err);
@@ -114,6 +113,17 @@ function EnhancedPublish(props) {
     return data;
   }
 
+  function addEmoji(emoji) {
+    const emojiHTML = Emoji({
+      html: true,
+      set: 'twitter',
+      emoji: emoji.id,
+      size: 24,
+    });
+
+    bodyRef.current.innerHTML += emojiHTML + '&nbsp;';
+  }
+
   return (
     <StyledPublish>
       <StyledPublishContainer
@@ -125,11 +135,24 @@ function EnhancedPublish(props) {
           placeholder="Title"
         />
         <StyledPublishBody
+          ref={bodyRef}
+          contentEditable={true}
+          onInput={e => setBody(e.target.innerHTML)}
           className={bodyError && 'error'}
-          rows={10}
-          {...bindBody}
-          placeholder="Tell your story."
-        />
+          placeholder="Tell your story."></StyledPublishBody>
+        <StyledPublishEmojis
+          onMouseLeave={() =>
+            document.body.classList.remove('show-emoji-picker')
+          }
+          onMouseEnter={() => document.body.classList.add('show-emoji-picker')}>
+          <Picker
+            onClick={emoji => addEmoji(emoji)}
+            color="#80dad3"
+            title="DevGulp"
+            emoji="smile"
+            set="twitter"
+          />
+        </StyledPublishEmojis>
         <StyledPublishCategories>
           {props.posts.categories.map(
             taxonomy =>

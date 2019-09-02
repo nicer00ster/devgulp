@@ -6,26 +6,30 @@ import Container from '../components/kit/container';
 import Loading from '../components/kit/loading';
 
 function Policy(props) {
-    useEffect(() => {
-        props.fetchPage('privacy-policy');
-    }, []);
+  useEffect(() => {
+    props.fetchPage('privacy-policy');
+  }, []);
 
-    return (
-        <Container>
-            {props.page.isFetchingPage ? <Loading /> : <PrivacyPolicy page={props.page.page} />}
-        </Container>
-    );
+  return (
+    <Container>
+      {props.page.isFetchingPage ? (
+        <Loading />
+      ) : (
+        <PrivacyPolicy page={props.page.page} />
+      )}
+    </Container>
+  );
 }
 
 const mapStateToProps = ({ page }) => ({
-    page,
+  page,
 });
 
 const mapDispatchToProps = {
-    fetchPage,
+  fetchPage,
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(Policy);

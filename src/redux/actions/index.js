@@ -248,5 +248,5 @@ export function fetchPage(slug) {
   return {
     type: types.FETCH_PAGE,
     slug,
-  }
+  };
 }

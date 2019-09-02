@@ -16,7 +16,11 @@ function Post(props) {
 
   return (
     <Container>
-      {props.post.isFetchingPost ? <Loading /> : <SinglePost post={props.post} />}
+      {props.post.isFetchingPost ? (
+        <Loading />
+      ) : (
+        <SinglePost post={props.post} />
+      )}
     </Container>
   );
 }
