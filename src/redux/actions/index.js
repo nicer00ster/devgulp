@@ -243,3 +243,10 @@ export function fetchUserPosts(userId) {
     userId,
   };
 }
+
+export function fetchPage(slug) {
+  return {
+    type: types.FETCH_PAGE,
+    slug,
+  }
+}

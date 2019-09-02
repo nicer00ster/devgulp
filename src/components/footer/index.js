@@ -28,7 +28,7 @@ function Footer(props) {
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>
-              <Link href="/">
+              <Link href="/policy">
                 <a>Privacy</a>
               </Link>
             </StyledFooterListItem>

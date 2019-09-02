@@ -6,6 +6,7 @@ import postsReducer from './postsReducer';
 import postReducer from './postReducer';
 import authorReducer from './authorReducer';
 import searchReducer from './searchReducer';
+import pageReducer from './pageReducer';
 
 const rootReducer = combineReducers({
   root: appReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   post: postReducer,
   author: authorReducer,
   search: searchReducer,
+  page: pageReducer,
 });
 
 export default rootReducer;
