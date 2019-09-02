@@ -44,6 +44,9 @@ const StyledPublish = styled.div`
   box-shadow: ${props => props.theme.effects.shadow};
   padding: 1.2rem;
   width: 50%;
+  ${props => props.theme.mediaQuery.tablet`
+    width: 100%;
+  `};
   ${props => props.theme.mediaQuery.phone`
     margin: unset;
   `};
@@ -53,6 +56,9 @@ const StyledPublishContainer = styled.fieldset`
   border: none;
   display: flex;
   flex-direction: column;
+  min-width: 100%;
+  opacity: ${props => (props.showEmojis ? 0.25 : 1)};
+  transition: all 0.25s ease-in;
   &[disabled] {
     opacity: 0.5;
     pointer-events: none;
@@ -63,6 +69,7 @@ const StyledPublishTitle = styled.input`
   font-size: 36px;
   outline: 0;
   border: 0;
+  max-width: 100%;
   color: ${props => props.theme.colors.black};
   font-family: 'Trirong', serif;
   letter-spacing: 1px;
@@ -110,10 +117,14 @@ const StyledPublishBody = styled.div`
 const StyledPublishCategories = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding: 0.4rem;
+  border: 1px solid ${props => props.theme.colors.grey};
+  border-radius: 5px;
   margin: 2rem 0;
 `;
 
 const StyledPublishButton = styled.button`
+  position: relative;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -191,7 +202,6 @@ const StyledPublishConfetti = styled.div`
 `;
 
 const StyledPublishImageUploadWrapper = styled.div`
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -256,8 +266,10 @@ const StyledPreviewImage = styled.img`
 `;
 
 const StyledPublishEmojis = styled(animated.div)`
-  position: relative;
-  padding: 2rem 0;
+  position: absolute;
+  width: 260px;
+  z-index: 1;
+  will-change: opacity, transform;
 `;
 
 export {

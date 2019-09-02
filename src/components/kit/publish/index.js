@@ -21,17 +21,28 @@ import {
 import Checkbox from '../checkbox';
 import Loading from '../loading';
 import Modal from '../modal';
-import { useInput, usePrevious } from '../../../hooks';
+import { useInput, usePrevious, useMeasure } from '../../../hooks';
+import { placeCaretAtEnd } from '../../../utils';
 import { addPost, addMedia, toggleModal } from '../../../redux/actions';
 import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
 
 function EnhancedPublish(props) {
   const router = useRouter();
   const bodyRef = useRef();
+  const emojiRef = useRef();
+  const [bind, { width }] = useMeasure();
   const [body, setBody] = useState(null);
   const [bodyError, setBodyError] = useState(false);
+  const [showEmojis, setShowEmojis] = useState(false);
   const [active, setActive] = useState();
   const [categories, setCategories] = useState([1]);
+  const {
+    value: title,
+    bind: bindTitle,
+    reset: resetTitle,
+    setError: setTitleError,
+    hasError: titleError,
+  } = useInput('');
 
   const prevPostId = usePrevious(props.addPostId);
 
@@ -45,13 +56,41 @@ function EnhancedPublish(props) {
     }
   }, [props.addPostId]);
 
-  const {
-    value: title,
-    bind: bindTitle,
-    reset: resetTitle,
-    setError: setTitleError,
-    hasError: titleError,
-  } = useInput('');
+  useEffect(() => {
+    let sequence = [];
+    let lastKeyTime = Date.now();
+
+    bodyRef.current.addEventListener('keydown', e => {
+      const charList = ':';
+      const key = e.key.toLowerCase();
+
+      if (charList.indexOf(key) === -1) return;
+
+      const currentTime = Date.now();
+
+      if (currentTime - lastKeyTime > 1000) {
+        sequence = [];
+      }
+
+      if (e.shiftKey) {
+        sequence.push(key);
+        lastKeyTime = currentTime;
+      }
+
+      if (sequence[0] === ':' && sequence[1] === ':') {
+        setShowEmojis(true);
+        setTimeout(() => {
+          document.querySelector('.emoji-mart-search input').focus();
+        }, 150);
+      }
+    });
+  }, []);
+
+  const emojiSpring = useSpring({
+    opacity: showEmojis ? 1 : 0,
+    transform: showEmojis ? `translateX(0px)` : `translateX(-${width / 2}px)`,
+    pointerEvents: showEmojis ? 'all' : 'none',
+  });
 
   function toggleButton() {
     setActive(true);
@@ -121,12 +160,26 @@ function EnhancedPublish(props) {
       size: 24,
     });
 
-    bodyRef.current.innerHTML += emojiHTML + '&nbsp;';
+    bodyRef.current.innerHTML =
+      bodyRef.current.innerHTML.replace('::', '') + emojiHTML + '&nbsp;';
+    setShowEmojis(false);
+    placeCaretAtEnd(bodyRef.current);
   }
 
   return (
-    <StyledPublish>
+    <StyledPublish {...bind}>
+      <StyledPublishEmojis style={emojiSpring}>
+        <Picker
+          ref={emojiRef}
+          onClick={emoji => addEmoji(emoji)}
+          color="#80dad3"
+          title="DevGulp"
+          emoji="smile"
+          set="twitter"
+        />
+      </StyledPublishEmojis>
       <StyledPublishContainer
+        showEmojis={showEmojis}
         disabled={props.posts.isAddingPost}
         aria-busy={props.posts.isAddingPost}>
         <StyledPublishTitle
@@ -139,20 +192,8 @@ function EnhancedPublish(props) {
           contentEditable={true}
           onInput={e => setBody(e.target.innerHTML)}
           className={bodyError && 'error'}
-          placeholder="Tell your story."></StyledPublishBody>
-        <StyledPublishEmojis
-          onMouseLeave={() =>
-            document.body.classList.remove('show-emoji-picker')
-          }
-          onMouseEnter={() => document.body.classList.add('show-emoji-picker')}>
-          <Picker
-            onClick={emoji => addEmoji(emoji)}
-            color="#80dad3"
-            title="DevGulp"
-            emoji="smile"
-            set="twitter"
-          />
-        </StyledPublishEmojis>
+          placeholder="Tell your story."
+        />
         <StyledPublishCategories>
           {props.posts.categories.map(
             taxonomy =>

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const StyledCheckboxLabel = styled.label`
   display: inline-flex;
+  justify-content: center;
   position: relative;
   cursor: pointer;
   font-size: 10px;
