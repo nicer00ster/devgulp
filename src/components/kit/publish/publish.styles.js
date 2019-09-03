@@ -45,10 +45,7 @@ const StyledPublish = styled.div`
   padding: 1.2rem;
   width: 50%;
   ${props => props.theme.mediaQuery.tablet`
-    width: 100%;
-  `};
-  ${props => props.theme.mediaQuery.phone`
-    margin: unset;
+    width: 90%;
   `};
 `;
 
@@ -271,7 +268,6 @@ const StyledPublishEmojis = styled(animated.div)`
   position: absolute;
   width: 260px;
   z-index: 1;
-  will-change: opacity, transform;
 `;
 
 export {

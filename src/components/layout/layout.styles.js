@@ -29,6 +29,7 @@ const colors = {
   black: '#1f222e',
   lightBlack: 'rgba(31, 34, 46, 0.75)',
   grey: '#d9d9d9',
+  lightGrey: 'rgba(27,31,35,.05)',
   white: '#fefefe',
   offWhite: '#fffaf1',
   lightWhite: 'rgba(254,254,254,0.75)',

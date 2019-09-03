@@ -18,6 +18,7 @@ import {
   StyledPublishIcon,
   StyledPublishEmojis,
 } from './publish.styles';
+import Hints from './hints';
 import Checkbox from '../checkbox';
 import Loading from '../loading';
 import Modal from '../modal';
@@ -175,6 +176,7 @@ function EnhancedPublish(props) {
 
   return (
     <StyledPublish {...bind}>
+      <Hints />
       <StyledPublishEmojis style={emojiSpring}>
         <Picker
           ref={emojiRef}
