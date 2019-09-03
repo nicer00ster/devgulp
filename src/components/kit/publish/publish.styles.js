@@ -264,10 +264,13 @@ const StyledPreviewImage = styled.img`
   object-fit: cover;
 `;
 
-const StyledPublishEmojis = styled(animated.div)`
+const StyledPublishEmojis = styled(animated.fieldset)`
   position: absolute;
   width: 260px;
   z-index: 1;
+  border: 0;
+  padding: 0;
+  margin: 0;
 `;
 
 export {

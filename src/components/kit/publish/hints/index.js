@@ -1,10 +1,12 @@
 import { useState, useRef } from 'react';
 import { useSpring } from 'react-spring';
+import { Emoji } from "emoji-mart";;
 import { useOnClickOutside } from "../../../../hooks";
 import {
     StyledHints,
     StyledHintItems,
     StyledHintItem,
+    StyledHintContent,
     StyledHintButton,
     StyledHintIcon,
     StyledHintConfetti,
@@ -15,7 +17,9 @@ function Hints(props) {
     const hintRef = useRef();
 
     useOnClickOutside(hintRef, () => {
-        setActive(false);
+        if (active) {
+          setActive(false);
+        }
     });
 
     const spring = useSpring({
@@ -44,7 +48,11 @@ function Hints(props) {
             </StyledHintButton>
             <StyledHintItems active={active}>
                 <StyledHintItem>
-                    <span>You can use emojis by typing <code>::</code> in the body of your post.</span>
+                    <StyledHintContent>
+                        You can use emojis by typing <code>::</code> in the body of your post.
+                        {' '}
+                        <Emoji set="twitter" size={24} emoji="smile" />
+                    </StyledHintContent>
                 </StyledHintItem>
             </StyledHintItems>
         </StyledHints>

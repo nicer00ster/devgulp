@@ -46,11 +46,13 @@ function EnhancedPublish(props) {
   } = useInput('');
 
   useOnClickOutside(bind.ref, () => {
-    setShowEmojis(false);
-    bodyRef.current.innerHTML = bodyRef.current.innerHTML.replace('::', '');
-    setTimeout(function() {
-      placeCaretAtEnd(bodyRef.current);
-    }, 0);
+    if (showEmojis) {
+      setShowEmojis(false);
+      bodyRef.current.innerHTML = bodyRef.current.innerHTML.replace('::', '');
+      setTimeout(function() {
+        placeCaretAtEnd(bodyRef.current);
+      }, 0);
+    }
   });
 
   const prevPostId = usePrevious(props.addPostId);
@@ -177,7 +179,9 @@ function EnhancedPublish(props) {
   return (
     <StyledPublish {...bind}>
       <Hints />
-      <StyledPublishEmojis style={emojiSpring}>
+      <StyledPublishEmojis
+          disabled={!showEmojis}
+          style={emojiSpring}>
         <Picker
           ref={emojiRef}
           onClick={emoji => addEmoji(emoji)}

@@ -49,11 +49,8 @@ const StyledHintItem = styled.li`
     border-left: 6px solid ${props => props.theme.colors.grey};
   }
   span {
-    background-color: ${props => props.theme.colors.lightGrey};
-    border-top-right-radius: ${props => props.theme.effects.radius};
-    border-bottom-right-radius: ${props => props.theme.effects.radius};
-    padding: .4rem;
-    padding-left: 12px;
+    display: inline-flex;
+    align-items: center;
   }
   code {
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
@@ -61,6 +58,13 @@ const StyledHintItem = styled.li`
     border-radius: 3px;
     background-color: ${props => props.theme.colors.lightGrey};
   }
+`;
+
+const StyledHintContent = styled.div`
+    background-color: ${props => props.theme.colors.lightGrey};
+    border-top-right-radius: ${props => props.theme.effects.radius};
+    border-bottom-right-radius: ${props => props.theme.effects.radius};
+    padding: .4rem .4rem .4rem 12px;
 `;
 
 const StyledHintButton = styled.button`
@@ -147,6 +151,7 @@ export {
     StyledHints,
     StyledHintItems,
     StyledHintItem,
+    StyledHintContent,
     StyledHintButton,
     StyledHintIcon,
     StyledHintConfetti,
