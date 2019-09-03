@@ -59,6 +59,7 @@ const StyledPublishContainer = styled.fieldset`
   min-width: 100%;
   opacity: ${props => (props.showEmojis ? 0.25 : 1)};
   transition: all 0.25s ease-in;
+  pointer-events: ${props => props.showEmojis ? 'none' : 'all'};
   &[disabled] {
     opacity: 0.5;
     pointer-events: none;

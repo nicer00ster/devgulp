@@ -30,7 +30,7 @@ function EnhancedPublish(props) {
   const router = useRouter();
   const bodyRef = useRef();
   const emojiRef = useRef();
-  const [bind, { width,height }] = useMeasure();
+  const [bind, { width, height, left, top }] = useMeasure();
   const [body, setBody] = useState(null);
   const [bodyError, setBodyError] = useState(false);
   const [showEmojis, setShowEmojis] = useState(false);
@@ -96,7 +96,7 @@ function EnhancedPublish(props) {
 
   const emojiSpring = useSpring({
     opacity: showEmojis ? 1 : 0,
-    transform: showEmojis ? `translate3d(${width / 5}px, ${height / 7}px, 0px)` : `translate3d(0px, 0px, 0px)`,
+    transform: showEmojis ? `translate3d(${(left + width / 2) - 144}px, ${(top + height / 2) - 226}px, 0px)` : `translate3d(0px, 0px, 0px)`,
     pointerEvents: showEmojis ? 'all' : 'none',
   });
 
@@ -168,8 +168,7 @@ function EnhancedPublish(props) {
       size: 24,
     });
 
-    bodyRef.current.innerHTML =
-      bodyRef.current.innerHTML.replace('::', '') + emojiHTML + '&nbsp;';
+    bodyRef.current.innerHTML = bodyRef.current.innerHTML.replace('::', '') + emojiHTML + '&nbsp;';
     setShowEmojis(false);
     placeCaretAtEnd(bodyRef.current);
   }
