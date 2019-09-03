@@ -53,6 +53,12 @@ export function toggleDrawer() {
   };
 }
 
+export function toggleDonationMenu() {
+  return {
+    type: types.TOGGLE_DONATION_MENU,
+  };
+}
+
 export function closeDrawer() {
   return {
     type: types.CLOSE_DRAWER,

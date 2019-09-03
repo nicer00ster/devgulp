@@ -92,11 +92,7 @@ const StyledMenu = styled.ul`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex: 1 0 auto;
   list-style: none;
-  ${props => props.theme.mediaQuery.phone`
-    // flex: 1; 
-  `};
 `;
 
 const StyledMenuItem = styled.li`

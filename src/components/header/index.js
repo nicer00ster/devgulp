@@ -21,6 +21,7 @@ import {
   toggleLoginMenu,
   toggleUserMenu,
   toggleSearch,
+  toggleDonationMenu,
   searchQuery,
   filterTaxonomy,
   closeDrawer,
@@ -85,6 +86,9 @@ function Header(props) {
     }
     if (props.drawerOpen) {
       props.closeDrawer();
+    }
+    if (props.donationMenuOpen) {
+      props.toggleDonationMenu();
     }
   });
 
@@ -154,9 +158,9 @@ function Header(props) {
           </StyledSearchInput>
           <StyledMenuItem data-tooltip>
             <Stripe>
-              <i className="fal fa-donate" />
+              <i onClick={props.toggleDonationMenu} className="fal fa-donate" />
             </Stripe>
-            <Tooltip content="Help us continue delivering features!" />
+            {!props.donationMenuOpen ? <Tooltip content="Help us continue delivering new features!" /> : null}
           </StyledMenuItem>
           {props.screenWidth <= 576 ? (
             <Burger />
@@ -213,6 +217,7 @@ const mapStateToProps = ({ root, posts, user }) => ({
   screenWidth: root.screenWidth,
   categories: posts.categories,
   drawerOpen: root.drawerOpen,
+  donationMenuOpen: root.donationMenuOpen,
   user,
 });
 
@@ -220,6 +225,7 @@ const mapDispatchToProps = {
   toggleLoginMenu,
   toggleUserMenu,
   toggleSearch,
+  toggleDonationMenu,
   searchQuery,
   filterTaxonomy,
   closeDrawer,

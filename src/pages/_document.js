@@ -20,9 +20,6 @@ export default class CustomDocument extends Document {
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
-        ),
-        scripts: (
-          <script src="https://checkout.stripe.com/checkout.js" />
         )
       };
     } finally {
@@ -33,7 +30,6 @@ export default class CustomDocument extends Document {
     return (
       <Html lang="en">
         <Head>{this.props.styles}</Head>
-        <Head>{this.props.scripts}</Head>
         <body>
           <Main />
           <NextScript />
