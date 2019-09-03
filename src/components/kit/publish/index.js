@@ -21,7 +21,7 @@ import {
 import Checkbox from '../checkbox';
 import Loading from '../loading';
 import Modal from '../modal';
-import { useInput, usePrevious, useMeasure } from '../../../hooks';
+import { useInput, usePrevious, useMeasure, useOnClickOutside } from '../../../hooks';
 import { placeCaretAtEnd } from '../../../utils';
 import { addPost, addMedia, toggleModal } from '../../../redux/actions';
 import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
@@ -30,7 +30,7 @@ function EnhancedPublish(props) {
   const router = useRouter();
   const bodyRef = useRef();
   const emojiRef = useRef();
-  const [bind, { width }] = useMeasure();
+  const [bind, { width,height }] = useMeasure();
   const [body, setBody] = useState(null);
   const [bodyError, setBodyError] = useState(false);
   const [showEmojis, setShowEmojis] = useState(false);
@@ -43,6 +43,14 @@ function EnhancedPublish(props) {
     setError: setTitleError,
     hasError: titleError,
   } = useInput('');
+
+  useOnClickOutside(bind.ref, () => {
+    setShowEmojis(false);
+    bodyRef.current.innerHTML = bodyRef.current.innerHTML.replace('::', '');
+    setTimeout(function() {
+      placeCaretAtEnd(bodyRef.current);
+    }, 0);
+  });
 
   const prevPostId = usePrevious(props.addPostId);
 
@@ -88,7 +96,7 @@ function EnhancedPublish(props) {
 
   const emojiSpring = useSpring({
     opacity: showEmojis ? 1 : 0,
-    transform: showEmojis ? `translateX(0px)` : `translateX(-${width / 2}px)`,
+    transform: showEmojis ? `translate3d(${width / 5}px, ${height / 7}px, 0px)` : `translate3d(0px, 0px, 0px)`,
     pointerEvents: showEmojis ? 'all' : 'none',
   });
 

@@ -117,6 +117,7 @@ const StyledPublishBody = styled.div`
 const StyledPublishCategories = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   padding: 0.4rem;
   border: 1px solid ${props => props.theme.colors.grey};
   border-radius: 5px;

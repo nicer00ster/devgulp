@@ -7,7 +7,6 @@ const StyledCheckboxLabel = styled.label`
   cursor: pointer;
   font-size: 10px;
   padding: 0.4rem 0;
-  width: 25%;
   font-family: 'Trirong', serif;
 `;
 
