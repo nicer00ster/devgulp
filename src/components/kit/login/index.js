@@ -53,7 +53,7 @@ function Login(props) {
       setPasswordError(true);
     }
     if (!username || !password) {
-      addNotification('Make sure to enter a username & password!');
+      addNotification('Make sure to enter a username & password!', 'error');
       return;
     }
 

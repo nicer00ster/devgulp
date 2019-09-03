@@ -22,7 +22,12 @@ import Hints from './hints';
 import Checkbox from '../checkbox';
 import Loading from '../loading';
 import Modal from '../modal';
-import { useInput, usePrevious, useMeasure, useOnClickOutside } from '../../../hooks';
+import {
+  useInput,
+  usePrevious,
+  useMeasure,
+  useOnClickOutside,
+} from '../../../hooks';
 import { placeCaretAtEnd } from '../../../utils';
 import { addPost, addMedia, toggleModal } from '../../../redux/actions';
 import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
@@ -99,7 +104,11 @@ function EnhancedPublish(props) {
 
   const emojiSpring = useSpring({
     opacity: showEmojis ? 1 : 0,
-    transform: showEmojis ? `translate3d(${(left + width / 2) - 144}px, ${(top + height / 2) - 226}px, 0px)` : `translate3d(0px, 0px, 0px)`,
+    transform: showEmojis
+      ? `translate3d(${left + width / 2 - 144}px, ${top +
+          height / 2 -
+          226}px, 0px)`
+      : `translate3d(0px, 0px, 0px)`,
     pointerEvents: showEmojis ? 'all' : 'none',
   });
 
@@ -171,7 +180,8 @@ function EnhancedPublish(props) {
       size: 24,
     });
 
-    bodyRef.current.innerHTML = bodyRef.current.innerHTML.replace('::', '') + emojiHTML + '&nbsp;';
+    bodyRef.current.innerHTML =
+      bodyRef.current.innerHTML.replace('::', '') + emojiHTML + '&nbsp;';
     setShowEmojis(false);
     placeCaretAtEnd(bodyRef.current);
   }
@@ -179,9 +189,7 @@ function EnhancedPublish(props) {
   return (
     <StyledPublish {...bind}>
       <Hints />
-      <StyledPublishEmojis
-          disabled={!showEmojis}
-          style={emojiSpring}>
+      <StyledPublishEmojis disabled={!showEmojis} style={emojiSpring}>
         <Picker
           ref={emojiRef}
           onClick={emoji => addEmoji(emoji)}
@@ -258,9 +266,7 @@ function EnhancedPublish(props) {
         </StyledPublishImageUploadWrapper>
       </StyledPublishContainer>
       <Modal>
-        {props.posts.imageUrl && (
-          <StyledPreviewImage src={props.posts.imageUrl} />
-        )}
+        {props.posts.imageUrl && <StyledPreviewImage src={props.posts.imageUrl} />}
       </Modal>
       {props.posts.isAddingPost && <Loading />}
     </StyledPublish>

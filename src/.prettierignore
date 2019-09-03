@@ -4,4 +4,4 @@ build
 .idea/
 .next/
 
-src/components/meta/index.js
+components/meta/index.js

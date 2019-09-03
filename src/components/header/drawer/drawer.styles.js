@@ -25,8 +25,7 @@ const StyledDrawer = styled.div`
   }
   ul,
   div {
-    opacity: ${props =>
-      props.isLoggingOut || props.isLoggingIn ? '0.4' : '1'};
+    opacity: ${props => (props.isLoggingOut || props.isLoggingIn ? '0.4' : '1')};
   }
 `;
 

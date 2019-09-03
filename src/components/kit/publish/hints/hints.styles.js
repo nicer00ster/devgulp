@@ -34,7 +34,7 @@ const StyledHintItems = styled.ul`
   align-items: center;
   padding: 0;
   list-style: none;
-  opacity: ${props => props.active ? 1 : 0};
+  opacity: ${props => (props.active ? 1 : 0)};
   font-family: 'Trirong', serif;
   font-size: 18px;
   transition: opacity 0.25s ease-in;
@@ -45,7 +45,7 @@ const StyledHintItem = styled.li`
   padding: 1.2rem;
   line-height: 24px;
   &:before {
-    content: "";
+    content: '';
     border-left: 6px solid ${props => props.theme.colors.grey};
   }
   span {
@@ -53,18 +53,18 @@ const StyledHintItem = styled.li`
     align-items: center;
   }
   code {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-    padding: .2em .4em;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    padding: 0.2em 0.4em;
     border-radius: 3px;
     background-color: ${props => props.theme.colors.lightGrey};
   }
 `;
 
 const StyledHintContent = styled.div`
-    background-color: ${props => props.theme.colors.lightGrey};
-    border-top-right-radius: ${props => props.theme.effects.radius};
-    border-bottom-right-radius: ${props => props.theme.effects.radius};
-    padding: .4rem .4rem .4rem 12px;
+  background-color: ${props => props.theme.colors.lightGrey};
+  border-top-right-radius: ${props => props.theme.effects.radius};
+  border-bottom-right-radius: ${props => props.theme.effects.radius};
+  padding: 0.4rem 0.4rem 0.4rem 12px;
 `;
 
 const StyledHintButton = styled.button`
@@ -148,11 +148,11 @@ const StyledHintConfetti = styled.div`
 `;
 
 export {
-    StyledHints,
-    StyledHintItems,
-    StyledHintItem,
-    StyledHintContent,
-    StyledHintButton,
-    StyledHintIcon,
-    StyledHintConfetti,
+  StyledHints,
+  StyledHintItems,
+  StyledHintItem,
+  StyledHintContent,
+  StyledHintButton,
+  StyledHintIcon,
+  StyledHintConfetti,
 };

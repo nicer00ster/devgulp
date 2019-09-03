@@ -30,9 +30,7 @@ const StyledBurger = styled.a`
     width: 8px;
     height: 2px;
     background: ${props =>
-      props.drawerOpen
-        ? props.theme.colors.lightBlack
-        : props.theme.colors.black};
+      props.drawerOpen ? props.theme.colors.lightBlack : props.theme.colors.black};
     transition: width 0.125s ease-in-out, background 0.25s linear,
       top 0.25s ease-in-out 0.5s, transform 0.25s ease-out 0.25s,
       opacity 0.125s linear 0.5s;

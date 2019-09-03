@@ -28,7 +28,7 @@ import {
 } from '../../redux/actions';
 import { useOnClickOutside, useMeasure, useInput } from '../../hooks';
 import EnhancedLink from './EnhancedLink';
-import Tooltip from "../kit/tooltip";
+import Tooltip from '../kit/tooltip';
 import Stripe from '../kit/stripe';
 import Login from '../kit/login';
 import Burger from '../kit/burger';
@@ -160,7 +160,9 @@ function Header(props) {
             <Stripe>
               <i onClick={props.toggleDonationMenu} className="fal fa-donate" />
             </Stripe>
-            {!props.donationMenuOpen ? <Tooltip content="Help us continue delivering new features!" /> : null}
+            {!props.donationMenuOpen ? (
+              <Tooltip content="Help us continue delivering new features!" />
+            ) : null}
           </StyledMenuItem>
           {props.screenWidth <= 576 ? (
             <Burger />

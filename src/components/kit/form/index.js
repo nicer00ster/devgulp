@@ -62,19 +62,19 @@ function Form(props) {
 
     if (username.length <= 4) {
       setUsernameError(true);
-      addNotification('Username must be greater than 4 characters!');
+      addNotification('Username must be greater than 4 characters!', 'error');
       return;
     }
 
     if (password !== verifyPassword) {
       setPasswordError(true);
       setVerifyPasswordError(true);
-      addNotification('Passwords must match!');
+      addNotification('Passwords must match!', 'error');
       return;
     }
 
     if (!username || !email || !password || !verifyPassword) {
-      addNotification('Make sure to fill out all the fields!');
+      addNotification('Make sure to fill out all the fields!', 'error');
       return;
     }
 

@@ -11,9 +11,7 @@ const StyledFooterOuter = styled.div`
   background-color: ${props => props.theme.colors.white};
   border-top: 1px solid ${props => props.theme.colors.grey};
   opacity: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? '0.4'
-      : '1'};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? '0.4' : '1'};
   transform: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? 'scale(0.95)'

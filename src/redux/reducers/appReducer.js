@@ -58,6 +58,11 @@ export default function appReducer(state = initialState, action = {}) {
         ...state,
         donationMenuOpen: !state.donationMenuOpen,
       };
+    case types.CLOSE_DONATION_MENU:
+      return {
+        ...state,
+        donationMenuOpen: false,
+      };
     case types.CLOSE_DRAWER:
       return {
         ...state,

@@ -102,9 +102,7 @@ function SinglePost(props) {
       opacity: 1,
     },
     leave: {
-      transform: props.isUpdatingLikes
-        ? `translateY(-25px)`
-        : `translateY(0px)`,
+      transform: props.isUpdatingLikes ? `translateY(-25px)` : `translateY(0px)`,
       opacity: 0,
     },
   });
@@ -164,9 +162,7 @@ function SinglePost(props) {
                       post._embedded['wp:term']['0'][index].name,
                     )}
                   />
-                  <Tooltip
-                    content={post._embedded['wp:term']['0'][index].name}
-                  />
+                  <Tooltip content={post._embedded['wp:term']['0'][index].name} />
                 </StyledPostTaxonomyItem>
               ))}
           </StyledPostTaxonomies>
@@ -214,9 +210,7 @@ function SinglePost(props) {
         </StyledLikeContainer>
         <StyledMoreItems>
           <SocialSharing open={open} postName={post.title.rendered} />
-          <StyledMoreItem
-            className={open && 'active'}
-            onClick={() => set(!open)}>
+          <StyledMoreItem className={open && 'active'} onClick={() => set(!open)}>
             <i className="fal fa-share-alt" />
           </StyledMoreItem>
           <StyledMoreItem>
@@ -245,9 +239,7 @@ function SinglePost(props) {
             {...bindReply}
             disabled={!props.user.token}
             placeholder={
-              !props.user.token
-                ? 'Sign in to comment.'
-                : 'Have something to say?'
+              !props.user.token ? 'Sign in to comment.' : 'Have something to say?'
             }
           />
         </StyledCommentReply>

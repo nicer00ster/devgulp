@@ -9,9 +9,7 @@ const StyledHero = styled.div`
   margin-top: 8rem;
   text-align: center;
   opacity: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? '0.4'
-      : '1'};
+    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? '0.4' : '1'};
   transform: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? 'scale(0.95)'

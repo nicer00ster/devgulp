@@ -71,10 +71,7 @@ export function arrangeComments(commentsList) {
       .join('T')
       .concat('Z');
     commentsList[i].comment_date = new Date(date);
-    commentsList[i].comment_depth = getCommentDepth(
-      commentsList[i],
-      commentsList,
-    );
+    commentsList[i].comment_depth = getCommentDepth(commentsList[i], commentsList);
     if (getCommentDepth(commentsList[i], commentsList) > maxDepth) {
       maxDepth = getCommentDepth(commentsList[i], commentsList);
     }

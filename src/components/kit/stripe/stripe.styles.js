@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import {animated} from "react-spring";
+import { animated } from 'react-spring';
 
-const StyledStripe = styled.div`
-
-`;
+const StyledStripe = styled.div``;
 
 const StyledStripeAmounts = styled(animated.fieldset)`
   position: absolute;

@@ -21,8 +21,7 @@ const StyledBackground = styled.div`
     radial-gradient(#d7d7d7 1px, transparent 1px);
   background-position: 0 0, 25px 25px;
   background-size: 50px 50px;
-  transform: rotate(-12deg)
-    ${props => (props.userMenuOpen ? 'scale(0.95)' : '')};
+  transform: rotate(-12deg) ${props => (props.userMenuOpen ? 'scale(0.95)' : '')};
   transform-origin: 0 100%;
   border-bottom: 1px solid ${props => props.theme.colors.grey};
   transition: all 0.25s linear;
@@ -95,9 +94,8 @@ const StyledBackgroundBigTablet = styled.div`
   background-color: ${props => props.theme.colors.white};
   border: 1px solid ${props => props.theme.colors.grey};
   z-index: 1;
-  box-shadow: inset 0 4px 7px 1px #fff,
-    inset 0 -5px 20px rgba(173, 186, 204, 0.25), 0 2px 6px rgba(0, 21, 64, 0.14),
-    0 10px 20px rgba(0, 21, 64, 0.05);
+  box-shadow: inset 0 4px 7px 1px #fff, inset 0 -5px 20px rgba(173, 186, 204, 0.25),
+    0 2px 6px rgba(0, 21, 64, 0.14), 0 10px 20px rgba(0, 21, 64, 0.05);
   transform: translateY(${props => props.offset}px);
 `;
 

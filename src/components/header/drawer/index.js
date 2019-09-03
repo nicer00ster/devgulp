@@ -1,10 +1,6 @@
 import { connect } from 'react-redux';
 import Link from 'next/link';
-import {
-  StyledDrawer,
-  StyledDrawerList,
-  StyledDrawerUser,
-} from './drawer.styles';
+import { StyledDrawer, StyledDrawerList, StyledDrawerUser } from './drawer.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import {
   StyledLogoutButton,

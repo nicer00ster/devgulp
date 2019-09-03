@@ -16,7 +16,7 @@ import Footer from '../footer';
 import Loading from '../../components/kit/loading';
 import Background from '../../components/kit/background';
 import Notifications from '../kit/notifications';
-import Meta from "../meta";
+import Meta from '../meta';
 
 const theme = {
   breakpoints,
@@ -65,9 +65,7 @@ function Layout(props) {
           drawerOpen={props.root.drawerOpen}
           userMenuOpen={props.root.userMenuOpen}
           loginMenuOpen={props.root.loginMenuOpen}>
-          <Notifications
-            children={add => (state.notificationRef.current = add)}
-          />
+          <Notifications children={add => (state.notificationRef.current = add)} />
           <GlobalStyles />
           {props.children}
         </LayoutStyles>

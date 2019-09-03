@@ -209,8 +209,7 @@ const StyledNoResults = styled.p`
 `;
 
 const StyledFilterNav = styled.nav`
-  opacity: ${props =>
-    props.loginMenuOpen || props.userMenuOpen ? '0.4' : '1'};
+  opacity: ${props => (props.loginMenuOpen || props.userMenuOpen ? '0.4' : '1')};
   transform: ${props =>
     props.loginMenuOpen || props.userMenuOpen ? 'scale(0.95)' : ''};
   overflow: ${props =>

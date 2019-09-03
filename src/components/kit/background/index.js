@@ -22,7 +22,7 @@ function Background(props) {
   }, [window.scrollY]);
 
   const spring = useSpring({
-    transform: `translate3d(-${scrollY}px, 80px, 0px)`,
+    transform: `translate3d(-${scrollY / 4}px, 80px, 0px)`,
   });
 
   return (

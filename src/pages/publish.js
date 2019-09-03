@@ -13,7 +13,7 @@ function Publish(props) {
   useEffect(() => {
     if (!props.cookie) {
       router.push('/');
-      addNotification('Sign in to start publishing stories!');
+      addNotification('Sign in to start publishing stories!', 'warning');
     } else {
       props.fetchCategories();
     }

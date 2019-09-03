@@ -12,9 +12,7 @@ function Input(props) {
         {...props.bind}
       />
       <span className="bar" />
-      <label
-        htmlFor={props.name}
-        style={props.error ? { color: 'tomato' } : {}}>
+      <label htmlFor={props.name} style={props.error ? { color: 'tomato' } : {}}>
         {props.label}
       </label>
     </StyledInput>

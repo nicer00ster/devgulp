@@ -58,6 +58,15 @@ const StyledNotificationContent = styled.div`
   border-radius: 3px;
   margin-top: ${props => (props.top ? '0' : '10px')};
   margin-bottom: ${props => (props.top ? '10px' : '0')};
+  &.error {
+    background: ${props => props.theme.colors.errorBackground};
+  }
+  &.warning {
+    background: ${props => props.theme.colors.warningBackground};
+  }
+  &.success {
+    background: ${props => props.theme.colors.successBackground};
+  }
 `;
 
 const StyledNotificationButton = styled.button`
@@ -107,7 +116,16 @@ const StyledNotificationDuration = styled(animated.div)`
   left: 0;
   width: auto;
   background: ${props => props.theme.colors.black};
-  height: 2px;
+  height: 3px;
+  &.error {
+    background: ${props => props.theme.colors.errorDuration};
+  }
+  &.warning {
+    background: ${props => props.theme.colors.warningDuration};
+  }
+  &.success {
+    background: ${props => props.theme.colors.successDuration};
+  }
 `;
 
 export {

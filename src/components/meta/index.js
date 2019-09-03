@@ -6,20 +6,35 @@ function Meta() {
       <title>DevGulp</title>
       <meta charSet="utf-8" />
       <meta name="title" content="DevGulp" />
-      <meta name="description" content="A community built for developers, by developers" />
+      <meta
+        name="description"
+        content="A community built for developers, by developers"
+      />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#1f222e" />
       <meta name="msapplication-TileColor" content="#1f222e" />
       <meta property="og:title" content="DevGulp" />
-      <meta property="og:description" content="A community built for developers, by developers"/>
-      <meta property="og:image" content="https://devgulp.com/static/thumbnail.png" />
+      <meta
+        property="og:description"
+        content="A community built for developers, by developers"
+      />
+      <meta
+        property="og:image"
+        content="https://devgulp.com/static/thumbnail.png"
+      />
       <meta property="og:url" content="https://devgulp.com/" />
       <meta property="fb:app_id" content="716860255431426" />
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://devgulp.com/" />
       <meta property="twitter:title" content="DevGulp" />
-      <meta property="twitter:description" content="A community built for developers, by developers" />
-      <meta property="twitter:image" content="https://devgulp.com/static/thumbnail.png" />
+      <meta
+        property="twitter:description"
+        content="A community built for developers, by developers"
+      />
+      <meta
+        property="twitter:image"
+        content="https://devgulp.com/static/thumbnail.png"
+      />
       <meta property="og:site_name" content="DevGulp" />
       <meta name="twitter:image:alt" content="DevGulp" />
       {/*<link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#1f222e" />*/}
@@ -29,14 +44,39 @@ function Meta() {
       {/*<link rel="icon" href="/static/favicon.ico" type="image/x-icon" />*/}
       {/*<link rel="manifest" href="/static/site.webmanifest" />*/}
       <script defer src="https://platform.twitter.com/widgets.js" />
-      <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=716860255431426&autoLogAppEvents=1" />
+      <script
+        async
+        defer
+        crossOrigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=716860255431426&autoLogAppEvents=1"
+      />
       <script src="https://checkout.stripe.com/checkout.js" />
-      <link rel="preload" href="/static/fonts/Blinker.ttf" as="font" type="font/ttf" crossOrigin="true" />
-      <link rel="preload" href="/static/fonts/Trirong.ttf" as="font" type="font/ttf" crossOrigin="true" />
+      <link
+        rel="preload"
+        href="/static/fonts/Blinker.ttf"
+        as="font"
+        type="font/ttf"
+        crossOrigin="true"
+      />
+      <link
+        rel="preload"
+        href="/static/fonts/Trirong.ttf"
+        as="font"
+        type="font/ttf"
+        crossOrigin="true"
+      />
       <link rel="preload" as="style" href="/static/nprogress.css" />
-      <link rel="preload" as="style" href="/static/icons/fontawesome/css/all.min.css" />
+      <link
+        rel="preload"
+        as="style"
+        href="/static/icons/fontawesome/css/all.min.css"
+      />
       <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
-      <link rel="stylesheet" type="text/css" href="/static/icons/fontawesome/css/all.min.css" />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="/static/icons/fontawesome/css/all.min.css"
+      />
       <link rel="stylesheet" type="text/css" href="/static/emoji-mart.css" />
     </Head>
   );

@@ -39,6 +39,12 @@ const colors = {
   red: '#faa1bc',
   green: '#80dad3',
   lightGreen: 'rgba(12,242,143,.2)',
+  successBackground: 'rgb(227, 252, 239)',
+  successDuration: 'rgb(54, 179, 126)',
+  warningBackground: 'rgb(255, 250, 230)',
+  warningDuration: 'rgb(255, 171, 0)',
+  errorBackground: 'rgb(255, 235, 230)',
+  errorDuration: 'rgb(191, 38, 0)',
 };
 
 const effects = {

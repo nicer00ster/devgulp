@@ -88,9 +88,7 @@ function EnhancedComment(props) {
               />
             </StyledAvatar>
             <StyledCommentAuthorDate>
-              <StyledCommentAuthor>
-                {comment.comment_author}
-              </StyledCommentAuthor>
+              <StyledCommentAuthor>{comment.comment_author}</StyledCommentAuthor>
               <StyledCommentDate>
                 {moment(comment.comment_date).format('MMM Do')}
                 <StyledCommentDateDivider />

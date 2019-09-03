@@ -45,9 +45,7 @@ function Footer(props) {
           </StyledFooterList>
           <StyledFooterLogo>
             <Link href="/" prefetch scroll={false}>
-              <StyledLogo
-                href="#"
-                style={{ width: '100%', textAlign: 'center' }}>
+              <StyledLogo href="#" style={{ width: '100%', textAlign: 'center' }}>
                 DevGulp
               </StyledLogo>
             </Link>

@@ -59,6 +59,12 @@ export function toggleDonationMenu() {
   };
 }
 
+export function closeDonationMenu() {
+  return {
+    type: types.CLOSE_DONATION_MENU,
+  };
+}
+
 export function closeDrawer() {
   return {
     type: types.CLOSE_DRAWER,

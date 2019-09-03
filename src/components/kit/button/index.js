@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-  StyledButton,
-  StyledRipple,
-  StyledRippleCircle,
-} from './button.styles';
+import { StyledButton, StyledRipple, StyledRippleCircle } from './button.styles';
 
 function Button(props) {
   const [isActive, setIsActive] = useState(false);
@@ -32,9 +28,7 @@ function Button(props) {
       disabled={props.disabled}
       onClick={e => handleClick(e)}>
       <StyledRipple className={isActive ? 'active' : ''}>
-        <StyledRippleCircle
-          style={{ left: position.left, top: position.top }}
-        />
+        <StyledRippleCircle style={{ left: position.left, top: position.top }} />
       </StyledRipple>
       {props.children}
     </StyledButton>

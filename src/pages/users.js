@@ -14,7 +14,7 @@ function Users(props) {
   useEffect(() => {
     if (!props.cookie) {
       router.push('/');
-      addNotification('Sign in to view other users!');
+      addNotification('Sign in to view other users!', 'warning');
     } else {
       props.fetchUsers();
     }

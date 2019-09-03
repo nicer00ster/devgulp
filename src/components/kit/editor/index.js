@@ -44,15 +44,11 @@ function Editor(props) {
             </StyledEditorMenuItem>
             <StyledEditorMenuItem onClick={() => setTab('styles')}>
               <CSS width={18} height={18} />
-              <span className={tab === 'styles' ? 'active' : ''}>
-                styles.css
-              </span>
+              <span className={tab === 'styles' ? 'active' : ''}>styles.css</span>
             </StyledEditorMenuItem>
             <StyledEditorMenuItem onClick={() => setTab('server')}>
               <Database width={18} height={18} />
-              <span className={tab === 'server' ? 'active' : ''}>
-                server.js
-              </span>
+              <span className={tab === 'server' ? 'active' : ''}>server.js</span>
             </StyledEditorMenuItem>
           </StyledEditorMenu>
         )}

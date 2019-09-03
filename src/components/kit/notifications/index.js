@@ -46,9 +46,10 @@ function Notifications({
 
   useEffect(
     () =>
-      void children(msg => {
+      void children((msg, appearance) => {
+        console.log(msg, appearance);
         setIndex(index + 1);
-        setItems(state => [...state, { key: index, msg }]);
+        setItems(state => [...state, { key: index, msg, appearance }]);
       }),
     [index],
   );
@@ -58,12 +59,17 @@ function Notifications({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={debounce(() => setIsHovered(false), 500)}>
       {transitions.map(({ item, key, props: { life, ...style } }) => {
+        console.log(item);
         return (
           <StyledNotificationOuter key={key} style={style}>
             <StyledNotificationInner>
               <StyledNotificationContent
+                className={item.appearance}
                 ref={ref => ref && refMap.set(item, ref)}>
-                <StyledNotificationDuration style={{ right: life }} />
+                <StyledNotificationDuration
+                  className={item.appearance}
+                  style={{ right: life }}
+                />
                 <p>{item.msg}</p>
                 <StyledNotificationButton
                   onClick={e => {

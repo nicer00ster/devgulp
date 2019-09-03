@@ -105,8 +105,7 @@ const StyledCheckmark = styled.div`
       .check {
         stroke-dasharray: 18.391849517822266;
         stroke-dashoffset: -18.391849517822266;
-        animation: ${check} 0.4s cubic-bezier(0.55, 0.09, 0.59, 0.96) 2s
-          forwards;
+        animation: ${check} 0.4s cubic-bezier(0.55, 0.09, 0.59, 0.96) 2s forwards;
       }
     }
   }
