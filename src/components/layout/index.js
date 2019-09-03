@@ -16,6 +16,7 @@ import Footer from '../footer';
 import Loading from '../../components/kit/loading';
 import Background from '../../components/kit/background';
 import Notifications from '../kit/notifications';
+import Meta from "../meta";
 
 const theme = {
   breakpoints,
@@ -26,6 +27,7 @@ const theme = {
 
 function Layout(props) {
   const { state, addNotification } = useContext(AppContext);
+  // const [stripe, setStripe] = useState(null);
 
   function screenResize() {
     props.screenResize(window.innerWidth);
@@ -52,6 +54,7 @@ function Layout(props) {
   return (
     <ThemeProvider theme={theme}>
       <>
+        <Meta />
         <Background
           drawerOpen={props.root.drawerOpen}
           userMenuOpen={props.root.userMenuOpen}

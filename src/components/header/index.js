@@ -27,6 +27,8 @@ import {
 } from '../../redux/actions';
 import { useOnClickOutside, useMeasure, useInput } from '../../hooks';
 import EnhancedLink from './EnhancedLink';
+import Tooltip from "../kit/tooltip";
+import Stripe from '../kit/stripe';
 import Login from '../kit/login';
 import Burger from '../kit/burger';
 import Drawer from './drawer';
@@ -150,13 +152,16 @@ function Header(props) {
               <span className="bar" />
             </form>
           </StyledSearchInput>
+          <StyledMenuItem data-tooltip>
+            <Stripe>
+              <i className="fal fa-donate" />
+            </Stripe>
+            <Tooltip content="Help us continue delivering features!" />
+          </StyledMenuItem>
           {props.screenWidth <= 576 ? (
             <Burger />
           ) : (
             <>
-              <StyledMenuItem>
-                <i className="fal fa-donate" />
-              </StyledMenuItem>
               <EnhancedLink href="/publish">Publish</EnhancedLink>
               <EnhancedLink href="/users">Users</EnhancedLink>
               {!props.user.token ? (

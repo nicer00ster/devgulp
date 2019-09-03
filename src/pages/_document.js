@@ -1,6 +1,5 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript,  } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import Meta from '../components/meta';
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx) {
@@ -22,6 +21,9 @@ export default class CustomDocument extends Document {
             {sheet.getStyleElement()}
           </>
         ),
+        scripts: (
+          <script src="https://checkout.stripe.com/checkout.js" />
+        )
       };
     } finally {
       sheet.seal();
@@ -29,8 +31,7 @@ export default class CustomDocument extends Document {
   }
   render() {
     return (
-      <html lang="en">
-        <Meta />
+      <Html lang="en">
         <Head>{this.props.styles}</Head>
         <Head>{this.props.scripts}</Head>
         <body>
@@ -39,7 +40,7 @@ export default class CustomDocument extends Document {
           <div id="portal" />
           <div id="fb-root" />
         </body>
-      </html>
+      </Html>
     );
   }
 }
