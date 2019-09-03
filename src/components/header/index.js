@@ -21,12 +21,15 @@ import {
   toggleLoginMenu,
   toggleUserMenu,
   toggleSearch,
+  toggleDonationMenu,
   searchQuery,
   filterTaxonomy,
   closeDrawer,
 } from '../../redux/actions';
 import { useOnClickOutside, useMeasure, useInput } from '../../hooks';
 import EnhancedLink from './EnhancedLink';
+import Tooltip from "../kit/tooltip";
+import Stripe from '../kit/stripe';
 import Login from '../kit/login';
 import Burger from '../kit/burger';
 import Drawer from './drawer';
@@ -83,6 +86,9 @@ function Header(props) {
     }
     if (props.drawerOpen) {
       props.closeDrawer();
+    }
+    if (props.donationMenuOpen) {
+      props.toggleDonationMenu();
     }
   });
 
@@ -150,13 +156,16 @@ function Header(props) {
               <span className="bar" />
             </form>
           </StyledSearchInput>
+          <StyledMenuItem data-tooltip>
+            <Stripe>
+              <i onClick={props.toggleDonationMenu} className="fal fa-donate" />
+            </Stripe>
+            {!props.donationMenuOpen ? <Tooltip content="Help us continue delivering new features!" /> : null}
+          </StyledMenuItem>
           {props.screenWidth <= 576 ? (
             <Burger />
           ) : (
             <>
-              <StyledMenuItem>
-                <i className="fal fa-donate" />
-              </StyledMenuItem>
               <EnhancedLink href="/publish">Publish</EnhancedLink>
               <EnhancedLink href="/users">Users</EnhancedLink>
               {!props.user.token ? (
@@ -208,6 +217,7 @@ const mapStateToProps = ({ root, posts, user }) => ({
   screenWidth: root.screenWidth,
   categories: posts.categories,
   drawerOpen: root.drawerOpen,
+  donationMenuOpen: root.donationMenuOpen,
   user,
 });
 
@@ -215,6 +225,7 @@ const mapDispatchToProps = {
   toggleLoginMenu,
   toggleUserMenu,
   toggleSearch,
+  toggleDonationMenu,
   searchQuery,
   filterTaxonomy,
   closeDrawer,

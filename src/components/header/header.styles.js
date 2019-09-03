@@ -92,20 +92,18 @@ const StyledMenu = styled.ul`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex: 1 0 auto;
   list-style: none;
-  ${props => props.theme.mediaQuery.phone`
-    // flex: 1; 
-  `};
 `;
 
 const StyledMenuItem = styled.li`
+  position: relative;
   padding: 0.5rem;
   white-space: nowrap;
   i {
     font-size: 18px;
     padding: 0 0.5rem;
     color: ${props => props.theme.colors.lightBlack};
+    cursor: pointer;
   }
   a {
     padding: 0.5rem;

@@ -6,6 +6,7 @@ const initialState = {
   userMenuOpen: false,
   modalOpen: false,
   drawerOpen: false,
+  donationMenuOpen: false,
   searchExpanded: false,
   taxonomyFilter: 1,
   route: '/',
@@ -51,6 +52,11 @@ export default function appReducer(state = initialState, action = {}) {
         drawerOpen: !state.drawerOpen,
         loginMenuOpen: false,
         userMenuOpen: false,
+      };
+    case types.TOGGLE_DONATION_MENU:
+      return {
+        ...state,
+        donationMenuOpen: !state.donationMenuOpen,
       };
     case types.CLOSE_DRAWER:
       return {
