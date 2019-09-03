@@ -49,6 +49,10 @@ $ docker-compose down --volumes
 >   * Once you're in type: `a2enmod headers` to enable CORS on the Apache server.
 >   * After you've enabled CORS, make sure you can upload an image via the `Publish` page on the front-end of DevGulp.
 
+## Testing
+
+> To test Stripe payments; use the card <code>4242 4242 4242 4242</code> then any date that looks like <code>MM/YY</code> and any CVC number will work.
+
 ## Tech
 
 This is the tech stack behind DevGulp.

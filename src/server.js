@@ -1,7 +1,10 @@
 const express = require('express');
 const next = require('next');
-const stripe = require('stripe')('sk_test_PMldx8ddCUE6R2nujDV2vRBj');
+const dotenv = require('dotenv');
+dotenv.config();
+
 const bodyParser = require('body-parser');
+const stripe = require('stripe')(process.env.DEVGULP_STRIPE_SECRET_KEY_TEST);
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
