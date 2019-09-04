@@ -60,7 +60,7 @@ function Stripe(props) {
     config,
     opacity: props.donationMenuOpen ? 1 : 0,
     x: props.donationMenuOpen ? 5 : 20,
-    height: props.donationMenuOpen ? 175 : 0,
+    height: props.donationMenuOpen ? 165 : 0,
     pointerEvents: props.donationMenuOpen ? 'all' : 'none',
     from: {
       opacity: 0,

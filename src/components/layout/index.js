@@ -27,7 +27,6 @@ const theme = {
 
 function Layout(props) {
   const { state, addNotification } = useContext(AppContext);
-  // const [stripe, setStripe] = useState(null);
 
   function screenResize() {
     props.screenResize(window.innerWidth);
@@ -44,9 +43,12 @@ function Layout(props) {
   // Listener for error messages.
   useEffect(() => {
     if (props.user.hasError) {
-      addNotification(props.user.errorMessage);
+      addNotification(props.user.errorMessage, 'error');
     }
-  }, [props.user.hasError]);
+    if (props.post.hasError) {
+      addNotification(props.post.errorMessage, 'error');
+    }
+  }, [props.user.hasError, props.post.hasError]);
 
   if (props.user.checkingCredentials) {
     return <Loading />;
@@ -75,9 +77,10 @@ function Layout(props) {
   );
 }
 
-const mapStateToProps = ({ root, user }) => ({
+const mapStateToProps = ({ root, user, post }) => ({
   root,
   user,
+  post,
 });
 
 const mapDispatchToProps = {

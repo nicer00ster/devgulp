@@ -84,6 +84,8 @@ export default function postReducer(state = initialState, action = {}) {
       return {
         ...state,
         isAddingComment: true,
+        hasError: false,
+        errorMessage: '',
       };
     case types.ADD_COMMENT_REPLY_SUCCESS:
       return {
@@ -97,6 +99,8 @@ export default function postReducer(state = initialState, action = {}) {
       return {
         ...state,
         isAddingComment: false,
+        hasError: true,
+        errorMessage: action.error.response.data.message,
       };
     case types.UPDATE_POST_LIKES:
       return {

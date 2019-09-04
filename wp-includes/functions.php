@@ -82,7 +82,7 @@ add_filter( 'acf/rest_api/item_permissions/update', function($permission, $reque
 }, 10, 3);
 
 // Default values for ACF fields for users.
-add_filter( 'acf/rest_api/user/get_fields', function( $data ) {
+add_filter('acf/rest_api/user/get_fields', function($data) {
     if (method_exists($data, 'get_data')) {
         $data = $data->get_data();
     } else {
@@ -108,29 +108,29 @@ add_filter( 'acf/rest_api/user/get_fields', function( $data ) {
  * Register likes rest_route for comments.
  * @return int of # of likes.
  */
-add_action( 'rest_api_init', function () {
-    register_rest_field( 'comment', 'likes', array(
-        'get_callback' => function( $comment_arr ) {
-            $comment_obj = get_comment( $comment_arr['id'] );
+add_action('rest_api_init', function() {
+    register_rest_field('comment','likes', array(
+        'get_callback' => function($comment_arr) {
+            $comment_obj = get_comment($comment_arr['id']);
             return (int) $comment_obj->likes;
         },
-        'update_callback' => function( $likes, $comment_obj ) {
-            $ret = wp_update_comment( array(
-                'comment_ID'    => $comment_obj->comment_ID,
+        'update_callback' => function($likes, $comment_obj) {
+            $ret = wp_update_comment(array(
+                'comment_ID' => $comment_obj->comment_ID,
                 'comment_likes' => $likes
-            ) );
-            if ( false === $ret ) {
+            ));
+            if (false === $ret) {
                 return new WP_Error(
                     'rest_comment_likes_failed',
-                    __( 'Failed to update comment likes.' ),
+                    __('Failed to update comment likes.'),
                     array( 'status' => 500 )
                 );
             }
             return true;
         },
         'schema' => array(
-            'description' => __( 'Comment likes.' ),
-            'type'        => 'integer'
+            'description' => __('Comment likes.'),
+            'type' => 'integer'
         ),
     ) );
 } );
@@ -140,17 +140,17 @@ add_action('rest_api_init', 'wp_rest_user_endpoints');
 /**
  * Register the necessary fields to display post information correctly
  */
-add_action( 'rest_api_init', 'theme_slug_register_rest_fields' );
+add_action('rest_api_init', 'theme_slug_register_rest_fields');
 
 function theme_slug_register_rest_fields() {
 //    get_field('avatar', 'user_' . $user->ID);
     register_rest_field( 'post',
         'comments',
         array(
-            'get_callback' 	  => 'theme_slug_get_comments',
+            'get_callback' => 'theme_slug_get_comments',
             'update_callback' => null,
-            'schema' 		  => null,
-        ) );
+            'schema' => null,
+        ));
 }
 
 /**
@@ -164,11 +164,11 @@ function theme_slug_register_rest_fields() {
  *
  * @return mixed, list of comments for a post
  */
-function theme_slug_get_comments( $object, $field_name, $request ) {
-    return get_comments( array( 'post_id' => $object[ 'id' ] ) );
+function theme_slug_get_comments($object, $field_name, $request) {
+    return get_comments(array('post_id' => $object['id']));
 }
 
-function my_rest_prepare_user( $data ) {
+function my_rest_prepare_user($data) {
     $_data = $data->data;
 
     $_data['avatar'] = $_data['acf']['avatar'];
@@ -177,19 +177,26 @@ function my_rest_prepare_user( $data ) {
     return $data;
 }
 
-add_filter( 'rest_prepare_user', 'my_rest_prepare_user', 10, 3 );
+add_filter('rest_prepare_user', 'my_rest_prepare_user', 10, 3);
 
 // Get all comments in the post & add the avatar then format the content.
-function my_rest_prepare_post( $data ) {
+function my_rest_prepare_post($data) {
     $_data = $data->data;
-
     $comments = $_data['comments'];
+
+    $post = get_post($_data['id']);
+    $view_count = (int) get_field('views', $post->ID);
+    $view_count++;
+    update_field('views', $view_count, $_data['id']);
+
+    $_data['views'] = $view_count;
+
 
     foreach($comments as $comment) {
         $comment->comment_author_avatar = get_field('avatar', 'user_' . $comment->user_id);
-        $comment->comment_content = apply_filters( 'comment_text', $comment->comment_content, $comment );
-        $comment->comment_parent_user = get_comment( $comment->comment_parent )->comment_author;
-        $comment->comment_parent_user_id = get_comment( $comment->comment_parent )->user_id;
+        $comment->comment_content = apply_filters('comment_text', $comment->comment_content, $comment);
+        $comment->comment_parent_user = get_comment($comment->comment_parent)->comment_author;
+        $comment->comment_parent_user_id = get_comment($comment->comment_parent)->user_id;
     }
 
     $data->data = $_data;
@@ -218,20 +225,20 @@ add_filter('rest_prepare_post', 'my_rest_prepare_post', 10, 3);
 //});
 
 // Register user company_name
-
 function rest_register_company_name() {
-    register_rest_field( 'user', 'company_name',
+    register_rest_field('user', 'company_name',
         array(
-            'get_callback' => function( $user, $field_name, $request ) {
-                return get_user_meta( $user[ 'id' ], $field_name, true );
+            'get_callback' => function($user, $field_name, $request) {
+                return get_user_meta($user['id'], $field_name, true);
             },
             'update_callback' => function($meta_value, $user) {
-                $havemetafield  = get_user_meta($user->ID, 'company_name', false);
-                if ($havemetafield) {
-                    $ret = update_user_meta($user->ID, 'company_name', $meta_value );
+                $has_meta_field = get_user_meta($user->ID, 'company_name', false);
+
+                if ($has_meta_field) {
+                    $ret = update_user_meta($user->ID, 'company_name', $meta_value);
                     return true;
                 } else {
-                    $ret = add_user_meta($user->ID, 'company_name', $meta_value ,true );
+                    $ret = add_user_meta($user->ID, 'company_name', $meta_value ,true);
                     return true;
                 }
             },
@@ -239,7 +246,8 @@ function rest_register_company_name() {
         )
     );
 }
-add_action( 'rest_api_init', 'rest_register_company_name', 10, 2 );
+
+add_action('rest_api_init', 'rest_register_company_name', 10, 2);
 
 function wp_rest_user_endpoints($request) {
     /**
@@ -257,22 +265,22 @@ function wp_rest_user_endpoints($request) {
 }
 
 // Allow getting of user data without needing them to have posts.
-add_filter( 'rest_request_before_callbacks', function( $response, $handler, $request ){
+add_filter('rest_request_before_callbacks', function($response, $handler, $request) {
 
-    if ( WP_REST_Server::READABLE !== $request->get_method() ) {
+    if (WP_REST_Server::READABLE !== $request->get_method()) {
         return $response;
     }
 
-    if ( ! preg_match( '~/wp/v2/users/\d+~', $request->get_route() ) ) {
+    if (!preg_match( '~/wp/v2/users/\d+~', $request->get_route())) {
         return $response;
     }
 
-    add_filter( 'get_usernumposts', function( $count ) {
+    add_filter('get_usernumposts', function($count) {
         return $count > 0 ? $count : 1;
-    } );
+    });
 
     return $response;
-}, 10, 3 );
+}, 10, 3);
 
 function wc_rest_user_endpoint_handler($request = null) {
     $response = array();
@@ -308,7 +316,7 @@ function wc_rest_user_endpoint_handler($request = null) {
     if (!$user_id && email_exists($email) == false) {
         $user_id = wp_create_user($username, $password, $email);
         if (!is_wp_error($user_id)) {
-            // Ger User Meta Data (Sensitive, Password included. DO NOT pass to front end.)
+            // Get User Meta Data (Sensitive, Password included. DO NOT pass to front end.)
             $user = get_user_by('id', $user_id);
             // $user->set_role($role);
             $user->set_role('subscriber');
@@ -323,7 +331,7 @@ function wc_rest_user_endpoint_handler($request = null) {
             return $user_id;
         }
     } else {
-        $error->add(406, __("Email already exists, try again.", 'wp-rest-user'), array('status' => 400));
+        $error->add(406, __("Email already exists, try another email.", 'wp-rest-user'), array('status' => 400));
         return $error;
     }
     return new WP_REST_Response($response, 123);

@@ -250,6 +250,7 @@ function apiAddCommentReply(data) {
   return axios({
     method: 'post',
     headers: {
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${data.token}`,
     },
     data: {

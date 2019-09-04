@@ -13,7 +13,7 @@ import {
 
 function Notifications({
   config = { tension: 125, friction: 20, precision: 0.1 },
-  timeout = 25000,
+  timeout = 3000,
   children,
 }) {
   const [refMap] = useState(() => new WeakMap());
