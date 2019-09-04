@@ -4,6 +4,7 @@ const StyledBurger = styled.a`
   pointer-events: bounding-box;
   position: relative;
   display: block;
+  margin-left: 1.2rem;
   width: 36px;
   height: 36px;
   z-index: 99999;

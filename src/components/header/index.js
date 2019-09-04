@@ -158,7 +158,7 @@ function Header(props) {
           </StyledSearchInput>
           <StyledMenuItem data-tooltip>
             <Stripe>
-              <i onClick={props.toggleDonationMenu} className="fal fa-donate" />
+              <i className="fal fa-donate" />
             </Stripe>
             {!props.donationMenuOpen ? (
               <Tooltip content="Help us continue delivering new features!" />

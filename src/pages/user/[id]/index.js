@@ -6,31 +6,31 @@ import SingleUser from '../../../components/kit/singleUser';
 import Container from '../../../components/kit/container';
 
 function User(props) {
-    const router = useRouter();
-    const { id } = router.query;
+  const router = useRouter();
+  const { id } = router.query;
 
-    useEffect(() => {
-        props.fetchAuthor(id);
-        props.fetchUserPosts(id);
-    }, [id]);
+  useEffect(() => {
+    props.fetchAuthor(id);
+    props.fetchUserPosts(id);
+  }, [id]);
 
-    return (
-        <Container className="panelled">
-            <SingleUser author={props.author} posts={props.author.posts} />
-        </Container>
-    );
+  return (
+    <Container className="panelled">
+      <SingleUser author={props.author} posts={props.author.posts} />
+    </Container>
+  );
 }
 
 const mapStateToProps = ({ author }) => ({
-    author,
+  author,
 });
 
 const mapDispatchToProps = {
-    fetchAuthor,
-    fetchUserPosts,
+  fetchAuthor,
+  fetchUserPosts,
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(User);

@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 
-const StyledStripe = styled.div``;
+const StyledStripe = styled.button`
+  padding: 0 0.5rem;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+`;
 
 const StyledStripeAmounts = styled(animated.fieldset)`
   position: absolute;

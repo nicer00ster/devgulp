@@ -21,7 +21,7 @@ function PostItem(props) {
       key={props.post.id}
       className={props.className}
       style={{ opacity: props.opacity, transform: props.transform }}>
-      <Link href='/post/[id]' as={`/post/${props.post.id}`}>
+      <Link href="/post/[id]" as={`/post/${props.post.id}`}>
         <a>
           <StyledPostTaxonomies>
             {props.post._embedded['wp:term']['0']['0'].name !== 'Uncategorized' &&
@@ -33,7 +33,7 @@ function PostItem(props) {
                     )}
                   />
                 </StyledPostTaxonomyItem>
-            ))}
+              ))}
           </StyledPostTaxonomies>
           <StyledPostContent>
             <StyledPostTitle>

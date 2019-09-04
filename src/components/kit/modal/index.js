@@ -6,6 +6,7 @@ import {
   StyledModalContainer,
   StyledModalItem,
   StyledCloseModal,
+  StyledCloseIcon,
 } from './modal.styles';
 import Portal from './Portal';
 import { toggleModal, closeModal } from '../../../redux/actions';
@@ -39,10 +40,9 @@ function Modal(props) {
               aria-modal="true"
               role="dialog">
               <StyledModalItem ref={ref} key={key} style={props}>
-                <StyledCloseModal
-                  className="fa fa-window-close fa-2x"
-                  onClick={() => closeModal()}
-                />
+                <StyledCloseModal onClick={() => closeModal()}>
+                  <StyledCloseIcon className="fa fa-times" />
+                </StyledCloseModal>
                 {getChildren()}
               </StyledModalItem>
             </StyledModalContainer>

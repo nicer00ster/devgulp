@@ -69,7 +69,7 @@ function Stripe(props) {
     },
   });
   return (
-    <StyledStripe>
+    <StyledStripe onClick={props.toggleDonationMenu}>
       {trail.map(({ x, height, opacity, ...rest }, index) => {
         return (
           <StyledStripeAmounts

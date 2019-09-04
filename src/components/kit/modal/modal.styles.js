@@ -21,23 +21,52 @@ const StyledModalItem = styled(animated.div)`
   position: relative;
   animation-duration: 0.75s;
   border-radius: ${props => props.theme.effects.radius};
-  padding: 12px;
+  padding: 0.8rem;
   z-index: 1;
   min-width: 320px;
   background-color: ${props => props.theme.colors.white};
-  //height: 200px;
   box-shadow: ${props => props.theme.effects.shadow};
   @media screen and (max-width: 520px) {
     min-width: 284px;
   }
 `;
 
-const StyledCloseModal = styled.i`
+const StyledCloseModal = styled.button`
   cursor: pointer;
   position: absolute;
-  right: 0;
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: 0;
+  border-radius: 50%;
+  box-shadow: ${props => props.theme.effects.shadow};
   top: 0;
+  right: 0;
   padding: 0.4rem;
+  transform: translate(20px, -20px);
+  transition: all 0.075s ease-in;
+  &:active {
+    box-shadow: ${props => props.theme.effects.shadowHover};
+    & i {
+      font-size: 18px;
+    }
+  }
+  &:focus {
+    box-shadow: ${props => props.theme.effects.shadowHover};
+  }
 `;
 
-export { StyledModal, StyledModalContainer, StyledModalItem, StyledCloseModal };
+const StyledCloseIcon = styled.i`
+  color: ${props => props.theme.colors.lightBlack};
+  pointer-events: none;
+  font-size: 24px;
+  transition: font-size 0.075s ease-in;
+`;
+
+export {
+  StyledModal,
+  StyledModalContainer,
+  StyledModalItem,
+  StyledCloseModal,
+  StyledCloseIcon,
+};

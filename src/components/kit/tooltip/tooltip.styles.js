@@ -12,9 +12,9 @@ const StyledTooltip = styled.div`
   transition: all 0.3s ease-in-out;
   top: 100%;
   left: 50%;
-  margin-top: 10px;
+  margin-top: 0.4rem;
   width: max-content;
-  max-width: 250px;
+  max-width: 150px;
   overflow-wrap: break-word;
   white-space: pre-line;
   border-collapse: separate;
