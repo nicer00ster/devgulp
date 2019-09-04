@@ -47,7 +47,7 @@ function mysql2date( $format, $date, $translate = true ) {
 
 // This filter changes the default value of post_likes to an empty array if
 // there is no value.
-add_filter( 'acf/rest_api/post/get_fields', function( $data ) {
+add_filter('acf/rest_api/post/get_fields', function($data) {
     if (method_exists($data, 'get_data')) {
         $data = $data->get_data();
     } else {
@@ -159,6 +159,7 @@ function my_rest_prepare_user( $data ) {
 
     return $data;
 }
+
 add_filter( 'rest_prepare_user', 'my_rest_prepare_user', 10, 3 );
 
 // Get all comments in the post & add the avatar then format the content.
@@ -178,6 +179,7 @@ function my_rest_prepare_post( $data ) {
 
     return $data;
 }
+
 add_filter('rest_prepare_post', 'my_rest_prepare_post', 10, 3);
 
 //add_filter( 'acf/rest_api/post/get_fields', function( $data ) {

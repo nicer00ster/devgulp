@@ -68,7 +68,7 @@ function EnhancedPublish(props) {
       props.addPostId !== null &&
       prevPostId !== undefined
     ) {
-      router.push(`/post?id=${props.posts.addPostId}`);
+      router.push(`/post/${props.posts.addPostId}`);
     }
   }, [props.addPostId]);
 

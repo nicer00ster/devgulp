@@ -22,14 +22,6 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.get('/post/:id', (req, res) => {
-    return app.render(req, res, '/post', { id: req.params.id });
-  });
-
-  server.get('/user/:userId', (req, res) => {
-    return app.render(req, res, '/user', { userId: req.params.userId });
-  });
-
   server.post('/charge', async (req, res) => {
     stripe.customers
       .create({

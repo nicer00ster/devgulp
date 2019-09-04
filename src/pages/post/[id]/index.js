@@ -1,14 +1,16 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
-import { fetchPost } from '../redux/actions';
-import SinglePost from '../components/kit/singlePost';
-import Container from '../components/kit/container';
-import Loading from '../components/kit/loading';
+import { fetchPost } from '../../../redux/actions';
+import SinglePost from '../../../components/kit/singlePost';
+import Container from '../../../components/kit/container';
+import Loading from '../../../components/kit/loading';
 
 function Post(props) {
   const router = useRouter();
-  const { id } = router.query;
+  const { id, slug } = router.query;
+
+  console.log(router.query);
 
   useEffect(() => {
     props.fetchPost(id);

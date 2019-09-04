@@ -59,7 +59,6 @@ function Notifications({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={debounce(() => setIsHovered(false), 500)}>
       {transitions.map(({ item, key, props: { life, ...style } }) => {
-        console.log(item);
         return (
           <StyledNotificationOuter key={key} style={style}>
             <StyledNotificationInner>
