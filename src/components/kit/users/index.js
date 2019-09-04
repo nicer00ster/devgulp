@@ -23,7 +23,8 @@ function EnhancedUsers(props) {
             }}>
             <Link
               key={props.users[index].id}
-              href={`/user?userId=${props.users[index].id}`}>
+              href="/user/[id]"
+              as={`/user/${props.users[index].id}`}>
               <a>
                 <StyledAvatar tabIndex="-1" size={72}>
                   <img

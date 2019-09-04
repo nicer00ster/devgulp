@@ -33,7 +33,7 @@ function PostItem(props) {
                     )}
                   />
                 </StyledPostTaxonomyItem>
-              ))}
+            ))}
           </StyledPostTaxonomies>
           <StyledPostContent>
             <StyledPostTitle>
