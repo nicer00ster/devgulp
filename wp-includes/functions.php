@@ -64,6 +64,23 @@ add_filter('acf/rest_api/post/get_fields', function($data) {
     return $data;
 });
 
+// This filter allows user roles other than Administrators to update their own ACF fields.
+add_filter( 'acf/rest_api/item_permissions/update', function($permission, $request, $type) {
+    if ('user' == $type && method_exists($request, 'get_param') && get_current_user_id() == $request->get_param('id')) {
+        return true;
+    }
+
+    if ('user' == $type && in_array($request['fields']['user_followers'], $request['fields'])) {
+        return true;
+    }
+
+    if ('post' == $type && in_array($request['fields']['post_likes'], $request['fields'])) {
+        return true;
+    }
+
+    return $permission;
+}, 10, 3);
+
 // Default values for ACF fields for users.
 add_filter( 'acf/rest_api/user/get_fields', function( $data ) {
     if (method_exists($data, 'get_data')) {

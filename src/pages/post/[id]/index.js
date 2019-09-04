@@ -8,9 +8,7 @@ import Loading from '../../../components/kit/loading';
 
 function Post(props) {
   const router = useRouter();
-  const { id, slug } = router.query;
-
-  console.log(router.query);
+  const { id } = router.query;
 
   useEffect(() => {
     props.fetchPost(id);
