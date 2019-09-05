@@ -39,12 +39,12 @@ const StyledPost = styled(animated.li)`
   box-shadow: ${props => props.theme.effects.shadow};
   border-radius: ${props => props.theme.effects.radius};
   background-color: ${props => props.theme.colors.white};
-  z-index: 1;
-  transition: all 0.35s ease;
-  cursor: pointer;
-  height: 150px;
   width: 100%;
+  height: 150px;
+  z-index: 1;
   bottom: 0;
+  cursor: pointer;
+  transition: box-shadow 0.35s ease-in, bottom 0.25s ease;
   &.flatten {
     box-shadow: none;
     border: 1px solid ${props => props.theme.colors.grey};

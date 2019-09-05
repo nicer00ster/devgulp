@@ -6,12 +6,11 @@ import EnhancedPosts from '../components/kit/posts';
 import Editor from '../components/kit/editor';
 import Hero from '../components/kit/hero';
 import Loading from '../components/kit/loading';
-import { fetchPosts, fetchTotalPosts, fetchCategories } from '../redux/actions';
+import { fetchPosts, fetchCategories } from '../redux/actions';
 
 function Index(props) {
   useEffect(() => {
-    props.fetchTotalPosts();
-    props.fetchPosts(props.postCount + 6);
+    // props.fetchPosts(props.postCount + 12);
     props.fetchCategories();
   }, []);
   return (
@@ -58,7 +57,6 @@ const mapStateToProps = ({ posts }) => ({
 
 const mapDispatchToProps = {
   fetchPosts,
-  fetchTotalPosts,
   fetchCategories,
 };
 

@@ -179,6 +179,40 @@ function my_rest_prepare_user($data) {
 
 add_filter('rest_prepare_user', 'my_rest_prepare_user', 10, 3);
 
+
+function online_users() {
+//    $current_users = get_users();
+//
+//    $users = [];
+//
+//    foreach($current_users as $user) {
+//        if(is_user_logged_in()) {
+//            $users[] = $user->id;
+//        }
+//    }
+//
+//    return $users;
+    $aUsers = get_users([
+        'meta_key' => 'session_tokens',
+        'meta_compare' => 'EXISTS'
+    ]);
+
+    $online = array_map(function($oUser) {
+        return $oUser;
+    }, $aUsers);
+
+    return $online;
+}
+
+
+add_action('rest_api_init', function ()
+{
+    register_rest_route( 'wp/v2', 'online', array(
+        'methods' => 'GET',
+        'callback' => 'online_users'
+    ));
+});
+
 // Get all comments in the post & add the avatar then format the content.
 function my_rest_prepare_post($data) {
     $_data = $data->data;

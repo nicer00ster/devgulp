@@ -1,5 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
+
+const MOUSEDOWN = 'mousedown';
+const TOUCHSTART = 'touchstart';
+const events = [MOUSEDOWN, TOUCHSTART];
 
 export const useInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -23,34 +27,48 @@ export const useInput = initialValue => {
   };
 };
 
+export function useLatest(val) {
+  const ref = useRef(val);
+
+  useEffect(() => {
+    ref.current = val;
+  });
+
+  return ref;
+}
+
 export function useOnClickOutside(ref, handler) {
-  useEffect(
-    () => {
-      const listener = event => {
-        // Do nothing if clicking ref's element or descendent elements
-        if (!ref.current || ref.current.contains(event.target)) {
-          return;
-        }
+  const getOptions = event => {
+    if (event !== TOUCHSTART) {
+      return;
+    }
+  };
 
-        handler(event);
-      };
+  const handlerRef = useLatest(handler);
 
-      document.addEventListener('mousedown', listener);
-      document.addEventListener('touchstart', listener);
-
-      return () => {
-        document.removeEventListener('mousedown', listener);
-        document.removeEventListener('touchstart', listener);
-      };
-    },
-    // Add ref and handler to effect dependencies
-    // It's worth noting that because passed in handler is a new ...
-    // ... function on every render that will cause this effect ...
-    // ... callback/cleanup to run every render. It's not a big deal ...
-    // ... but to optimize you can wrap handler in useCallback before ...
-    // ... passing it into this hook.
-    [ref, handler],
-  );
+  useEffect(() => {
+    if (!handler) {
+      return;
+    }
+    const listener = event => {
+      if (
+        !ref.current ||
+        !handlerRef.current ||
+        ref.current.contains(event.target)
+      ) {
+        return;
+      }
+      handlerRef.current(event);
+    };
+    events.forEach(event => {
+      document.addEventListener(event, listener, getOptions(event));
+    });
+    return () => {
+      events.forEach(event => {
+        document.removeEventListener(event, listener, getOptions(event));
+      });
+    };
+  }, [!handler]);
 }
 
 export function useMeasure() {

@@ -47,7 +47,6 @@ function Notifications({
   useEffect(
     () =>
       void children((msg, appearance) => {
-        console.log(msg, appearance);
         setIndex(index + 1);
         setItems(state => [...state, { key: index, msg, appearance }]);
       }),

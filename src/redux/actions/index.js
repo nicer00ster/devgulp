@@ -216,16 +216,12 @@ export function fetchUsers() {
   };
 }
 
-export function fetchPosts(postCount) {
+export function fetchPosts(postCount, page, totalPosts) {
   return {
     type: types.FETCH_POSTS,
     postCount,
-  };
-}
-
-export function fetchTotalPosts() {
-  return {
-    type: types.FETCH_TOTAL_POSTS,
+    page,
+    totalPosts,
   };
 }
 

@@ -3,8 +3,9 @@ import * as types from '../constants';
 const initialState = {
   posts: [],
   categories: [],
-  postCount: 0,
+  postCount: 12,
   totalPosts: 0,
+  totalPages: 0,
   addPostId: null,
   isFetchingPosts: false,
   isFetchingCategories: false,
@@ -41,20 +42,6 @@ export default function postsReducer(state = initialState, action = {}) {
           }
         }),
       };
-    case types.FETCH_TOTAL_POSTS:
-      return {
-        ...state,
-      };
-    case types.FETCH_TOTAL_POSTS_SUCCESS:
-      return {
-        ...state,
-        totalPosts: action.totalPosts,
-      };
-    case types.FETCH_TOTAL_POSTS_FAILURE:
-      return {
-        ...state,
-        totalPosts: 0,
-      };
     case types.FETCH_POSTS:
       return {
         ...state,
@@ -65,6 +52,8 @@ export default function postsReducer(state = initialState, action = {}) {
         ...state,
         isFetchingPosts: false,
         postCount: action.postCount,
+        totalPosts: action.totalPosts,
+        totalPages: action.totalPages,
         posts: action.posts.map(post => {
           return {
             ...post,

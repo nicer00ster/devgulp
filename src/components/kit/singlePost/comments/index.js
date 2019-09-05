@@ -5,6 +5,7 @@ import moment from 'moment';
 import { useTrail } from 'react-spring';
 import {
   StyledComment,
+  StyledEnhancedComments,
   StyledCommentAuthor,
   StyledCommentAuthorDate,
   StyledCommentContainer,
@@ -18,11 +19,11 @@ import {
   StyledCommentContent,
   StyledReplyContainer,
 } from './comments.styles';
-import { StyledComments } from '../singlePost.styles';
 import { StyledAvatar } from '../../../header/header.styles';
 import { addCommentReply } from '../../../../redux/actions';
 import { useInput, useOnClickOutside } from '../../../../hooks';
 import Tooltip from '../../tooltip';
+import Loading from '../../loading';
 
 function EnhancedComment(props) {
   const { comment } = props;
@@ -169,7 +170,7 @@ function EnhancedComment(props) {
 function Comments(props) {
   const { comments } = props;
   return (
-    <StyledComments>
+    <StyledEnhancedComments disabled={props.isAddingComment}>
       {comments.map(comment => (
         <EnhancedComment
           {...props}
@@ -190,7 +191,8 @@ function Comments(props) {
             ))}
         </EnhancedComment>
       ))}
-    </StyledComments>
+      {props.isAddingComment && <Loading />}
+    </StyledEnhancedComments>
   );
 }
 

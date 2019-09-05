@@ -7,7 +7,8 @@ export function verifyToken(token) {
 
 export function setToken(token) {
   setCookie({}, '_app', token, {
-    maxAge: 30 * 24 * 60 * 60,
+    // 12 Hour Cookie.
+    maxAge: 30 * 24 * 60,
     path: '/',
   });
 }

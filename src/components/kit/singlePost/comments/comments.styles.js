@@ -103,10 +103,22 @@ const StyledReplyContainer = styled(animated.div)`
   }
 `;
 
+const StyledEnhancedComments = styled.fieldset`
+  display: flex;
+  flex-direction: column;
+  border: none;
+  transition: all 0.25s ease-in;
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+`;
+
 export {
   StyledCommentReplyToArea,
   StyledCommentUserData,
   StyledComment,
+  StyledEnhancedComments,
   StyledCommentReplyTo,
   StyledCommentContainer,
   StyledCommentAuthor,

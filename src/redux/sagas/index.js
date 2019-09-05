@@ -84,17 +84,16 @@ function apiFetchPage(slug) {
   }).then(page => page);
 }
 
-function apiFetchPosts(postCount) {
-  return axios({
-    method: 'get',
-    url: `${API_URL}/posts?_embed&per_page=${postCount}`,
-  }).then(posts => posts);
-}
+function apiFetchPosts(postCount, page, totalPosts) {
+  let offset = postCount * page;
+  let perPage = postCount;
 
-function apiFetchTotalPosts() {
+  if (offset > totalPosts) {
+    perPage = totalPosts - offset;
+  }
   return axios({
     method: 'get',
-    url: `${API_URL}/posts?per_page=100`,
+    url: `${API_URL}/posts?_embed&per_page=${perPage}&offset=${offset}`,
   }).then(posts => posts);
 }
 
@@ -437,11 +436,18 @@ function* fetchAuthorSaga(data) {
 function* fetchPostsSaga(data) {
   yield delay(250);
   try {
-    const response = yield call(apiFetchPosts, data.postCount);
+    const response = yield call(
+      apiFetchPosts,
+      data.postCount,
+      data.page,
+      data.totalPosts,
+    );
     yield put({
       type: types.FETCH_POSTS_SUCCESS,
       posts: response.data,
       postCount: data.postCount,
+      totalPosts: response.headers['x-wp-total'],
+      totalPages: response.headers['x-wp-totalpages'],
     });
   } catch (error) {
     yield put({ type: types.FETCH_POSTS_FAILURE, error });
@@ -456,18 +462,6 @@ function* fetchPostSaga(data) {
     yield put({ type: types.FETCH_POST_SUCCESS, post: response.data, author });
   } catch (error) {
     yield put({ type: types.FETCH_POST_FAILURE, error });
-  }
-}
-
-function* fetchTotalPostsSaga() {
-  try {
-    const response = yield call(apiFetchTotalPosts);
-    yield put({
-      type: types.FETCH_TOTAL_POSTS_SUCCESS,
-      totalPosts: response.data.length,
-    });
-  } catch (error) {
-    yield put({ type: types.FETCH_TOTAL_POSTS_FAILURE, error });
   }
 }
 
@@ -631,7 +625,6 @@ function* rootSaga() {
     takeEvery(types.UPDATE_USER_INFO, updateUserInfoSaga),
     takeEvery(types.UPLOAD_AVATAR, uploadAvatarSaga),
     takeEvery(types.FOLLOW_OR_UNFOLLOW_USER, followUserSaga),
-    takeEvery(types.FETCH_TOTAL_POSTS, fetchTotalPostsSaga),
     takeEvery(types.FETCH_USER, fetchUserSaga),
     takeEvery(types.FETCH_USERS, fetchUsersSaga),
     takeEvery(types.FETCH_POSTS, fetchPostsSaga),

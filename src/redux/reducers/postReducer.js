@@ -49,6 +49,7 @@ export default function postReducer(state = initialState, action = {}) {
     case types.ADD_COMMENT:
       return {
         ...state,
+        hasError: false,
         isAddingComment: true,
       };
     case types.ADD_COMMENT_SUCCESS:
@@ -63,7 +64,7 @@ export default function postReducer(state = initialState, action = {}) {
               comment_ID: data.id,
               comment_post_ID: data.post,
               comment_author: data.author_name,
-              comment_content: data.content.raw,
+              comment_content: data.content.rendered,
               comment_author_email: data.author_email,
               comment_author_url: data.author_url,
               comment_date: data.date,
@@ -79,6 +80,8 @@ export default function postReducer(state = initialState, action = {}) {
       return {
         ...state,
         isAddingComment: false,
+        hasError: true,
+        errorMessage: action.error.response.data.message,
       };
     case types.ADD_COMMENT_REPLY:
       return {

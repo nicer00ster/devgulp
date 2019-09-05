@@ -20,7 +20,7 @@ function PostItem(props) {
     <StyledPost
       key={props.post.id}
       className={props.className}
-      style={{ opacity: props.opacity, transform: props.transform }}>
+      style={props.style}>
       <Link href="/post/[id]" as={`/post/${props.post.id}`}>
         <a>
           <StyledPostTaxonomies>
