@@ -97,6 +97,13 @@ function apiFetchPosts(postCount, page, totalPosts) {
   }).then(posts => posts);
 }
 
+function apiFetchPostsByCategory(category) {
+  return axios({
+    method: 'get',
+    url: `${API_URL}/posts?_embed&categories=${category}`,
+  }).then(posts => posts);
+}
+
 function apiFetchPost(postId) {
   return axios({
     method: 'get',
@@ -188,7 +195,6 @@ async function apiUploadAvatar(token, media) {
       url: `${API_URL}/media`,
     })
       .then(image => {
-        console.log(image);
         return axios({
           method: 'post',
           url: `${ACF_URL}/users/${image.data.author}`,
@@ -454,6 +460,15 @@ function* fetchPostsSaga(data) {
   }
 }
 
+function* fetchPostsByCategorySaga(data) {
+  try {
+    const response = yield call(apiFetchPostsByCategory, data.category);
+    yield put({ type: types.FETCH_POSTS_BY_CATEGORY_SUCCESS, response });
+  } catch (error) {
+    yield put({ type: types.FETCH_POSTS_BY_CATEGORY_FAILURE, error });
+  }
+}
+
 function* fetchPostSaga(data) {
   try {
     let response = yield call(apiFetchPost, data.postId);
@@ -628,6 +643,7 @@ function* rootSaga() {
     takeEvery(types.FETCH_USER, fetchUserSaga),
     takeEvery(types.FETCH_USERS, fetchUsersSaga),
     takeEvery(types.FETCH_POSTS, fetchPostsSaga),
+    takeEvery(types.FETCH_POSTS_BY_CATEGORY, fetchPostsByCategorySaga),
     takeEvery(types.FETCH_POST, fetchPostSaga),
     takeEvery(types.FETCH_CATEGORIES, fetchCategoriesSaga),
     takeEvery(types.FETCH_AUTHOR, fetchAuthorSaga),

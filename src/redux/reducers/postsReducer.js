@@ -28,19 +28,6 @@ export default function postsReducer(state = initialState, action = {}) {
       return {
         ...state,
         taxonomyFilter: action.taxonomy,
-        posts: state.posts.map(item => {
-          if (item.categories.includes(action.taxonomy)) {
-            return {
-              ...item,
-              isFiltered: true,
-            };
-          } else {
-            return {
-              ...item,
-              isFiltered: false,
-            };
-          }
-        }),
       };
     case types.FETCH_POSTS:
       return {
@@ -53,22 +40,8 @@ export default function postsReducer(state = initialState, action = {}) {
         isFetchingPosts: false,
         postCount: action.postCount,
         totalPosts: action.totalPosts,
-        totalPages: action.totalPages,
-        posts: action.posts.map(post => {
-          return {
-            ...post,
-            isFiltered: true,
-          };
-        }),
-        // posts:
-        //   state.posts.length > 1
-        //     ? state.posts
-        //     : action.posts.map(post => {
-        //         return {
-        //           ...post,
-        //           isFiltered: true
-        //         };
-        //       })
+        totalPages: parseInt(action.totalPages),
+        posts: action.posts,
       };
     case types.FETCH_POSTS_FAILURE:
       return {
@@ -76,6 +49,22 @@ export default function postsReducer(state = initialState, action = {}) {
         isFetchingPosts: false,
         hasError: true,
         errorMessage: action.error.message,
+      };
+    case types.FETCH_POSTS_BY_CATEGORY:
+      return {
+        ...state,
+        isFetchingPosts: true,
+      };
+    case types.FETCH_POSTS_BY_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        isFetchingPosts: false,
+        posts: action.response.data,
+      };
+    case types.FETCH_POSTS_BY_CATEGORY_FAILURE:
+      return {
+        ...state,
+        isFetchingPosts: false,
       };
     case types.FETCH_CATEGORIES:
       return {
@@ -112,12 +101,7 @@ export default function postsReducer(state = initialState, action = {}) {
         imageUrl: '',
         posts: [
           ...state.posts,
-          {
-            ...action.response.data,
-            isFiltered: !!action.response.data.categories.includes(
-              state.taxonomyFilter,
-            ),
-          },
+          { ...action.response.data },
         ],
       };
     case types.ADD_POST_FAILURE:

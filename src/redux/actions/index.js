@@ -225,6 +225,13 @@ export function fetchPosts(postCount, page, totalPosts) {
   };
 }
 
+export function fetchPostsByCategory(category) {
+  return {
+    type: types.FETCH_POSTS_BY_CATEGORY,
+    category,
+  };
+}
+
 export function fetchPost(postId) {
   return {
     type: types.FETCH_POST,

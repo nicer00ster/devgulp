@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { animated } from 'react-spring';
 
-const StyledPosts = styled.ul`
+const StyledPosts = styled(animated.ul)`
   position: relative;
   display: grid;
   grid-template-columns: ${props =>
@@ -12,6 +12,7 @@ const StyledPosts = styled.ul`
   width: 100%;
   margin: 0;
   padding: 0;
+  will-change: transform, opacity;
   ${props =>
     props.columns === 2 && !props.noResults
       ? css`
@@ -34,7 +35,7 @@ const StyledPostsContainer = styled.div`
   padding: 2rem;
 `;
 
-const StyledPost = styled(animated.li)`
+const StyledPost = styled.li`
   position: relative;
   box-shadow: ${props => props.theme.effects.shadow};
   border-radius: ${props => props.theme.effects.radius};

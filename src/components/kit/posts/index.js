@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useTransition, useSpring, config } from 'react-spring';
+import { useSpring, config } from 'react-spring';
 import Link from 'next/link';
 import {
   StyledPosts,
@@ -10,14 +10,17 @@ import {
   StyledFilterItems,
   StyledFilterItem,
 } from './posts.styles';
-import { fetchPosts, filterTaxonomy } from '../../../redux/actions';
+import {
+  fetchPosts,
+  fetchPostsByCategory,
+  filterTaxonomy
+} from '../../../redux/actions';
 import PostItem from './PostItem';
 import Pagination from './pagination';
 
 function EnhancedPosts(props) {
   const [activeFilter, setActiveFilter] = useState(1);
   const [page, setPage] = useState(0);
-  const filteredPosts = props.posts.filter(post => post.isFiltered);
   const currentFilter = props.categories.map(category =>
     category.id === props.taxonomyFilter ? category.name : null,
   );
@@ -25,6 +28,7 @@ function EnhancedPosts(props) {
   function handleFilter(id) {
     setActiveFilter(id);
     props.filterTaxonomy(id);
+    props.fetchPostsByCategory(id);
   }
 
   function pages() {
@@ -73,12 +77,12 @@ function EnhancedPosts(props) {
             ))}
         </StyledFilterItems>
       </StyledFilterNav>
-      <StyledPosts noResults={filteredPosts.length === 0}>
+      <StyledPosts noResults={props.posts.length === 0} style={spring}>
         {props.posts &&
           props.posts.map(post => (
-            <PostItem key={post.id} post={post} style={spring} />
+            <PostItem key={post.id} post={post} />
           ))}
-        {props.posts.length && props.posts && filteredPosts.length === 0 ? (
+        {!props.posts.length ? (
           <StyledNoResults>
             No articles have been posted about {currentFilter}. Be the{' '}
             <Link href="/publish">
@@ -113,6 +117,7 @@ const mapStateToProps = ({ posts }) => ({
 
 const mapDispatchToProps = {
   fetchPosts,
+  fetchPostsByCategory,
   filterTaxonomy,
 };
 

@@ -11,7 +11,7 @@ function Pagination(props) {
             if (props.page < 1) return;
             props.setPage(props.page - 1);
           }}>
-          Previous
+          &#8810;
         </a>
       </StyledPaginationItem>
       {props.pages.map((page, index) => (
@@ -29,7 +29,7 @@ function Pagination(props) {
         </StyledPaginationItem>
       ))}
       <StyledPaginationItem
-        className={props.page === props.totalPages ? 'disabled' : ''}>
+        className={props.page + 1 === props.totalPages ? 'disabled' : ''}>
         <a
           href="#"
           onClick={e => {
@@ -37,7 +37,7 @@ function Pagination(props) {
             if (props.postsLength < props.postCount) return;
             props.setPage(props.page + 1);
           }}>
-          Next
+          &#8811;
         </a>
       </StyledPaginationItem>
     </StyledPagination>
