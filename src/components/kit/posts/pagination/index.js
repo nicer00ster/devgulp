@@ -2,7 +2,9 @@ import { StyledPagination, StyledPaginationItems,  StyledPaginationItem } from '
 
 function Pagination(props) {
   return (
-    <StyledPagination>
+    <StyledPagination
+        role="navigation"
+        aria-label="Pagination Navigation">
         <StyledPaginationItems>
             <StyledPaginationItem className={props.page === 0 ? 'disabled' : ''}>
                 <a
@@ -21,6 +23,8 @@ function Pagination(props) {
                     className={page === props.page ? 'active' : ''}>
                     <a
                         href="#"
+                        aria-label={`Current page, ${page + 1}.`}
+                        aria-current={page === props.page}
                         onClick={e => {
                             e.preventDefault();
                             props.setPage(page);
