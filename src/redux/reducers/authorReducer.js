@@ -49,6 +49,7 @@ export default function authorReducer(state = initialState, action = {}) {
           ...state.author,
           description: action.response.data.description,
           company_name: action.response.data.company_name,
+          url: action.response.data.url,
         },
         isUpdatingUser: false,
       };

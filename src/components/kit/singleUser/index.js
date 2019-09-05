@@ -11,6 +11,7 @@ import {
   StyledSingleUserDescription,
   StyledSingleUserCompany,
   StyledSingleUserEmail,
+  StyledSingleUserWebsite,
   StyledSingleUserFollowers,
   StyledSingleUserAvatar,
   StyledSingleUserAvatarUpload,
@@ -88,6 +89,12 @@ function SingleUser(props) {
               <i className="fal fa-at" />
               <span>{author.user_email}</span>
             </StyledSingleUserEmail>
+            {author.url && (
+              <StyledSingleUserWebsite>
+                <i className="fal fa-link" />
+                <a href={author.url} target="_blank">{author.url}</a>
+              </StyledSingleUserWebsite>
+            )}
             {author.company_name && (
               <StyledSingleUserCompany>
                 <i className="fal fa-building" />
@@ -122,6 +129,7 @@ function SingleUser(props) {
             <StyledAvatar
               size={100}
               className="bordered"
+              aria-label={`View ${author.name}'s avatar.`}
               onClick={() => {
                 if (!author.acf.avatar) return;
                 props.toggleModal();
@@ -142,6 +150,7 @@ function SingleUser(props) {
                   onChange={e =>
                     props.uploadAvatar(props.user.token, handleImage(e))
                   }
+                  aria-label="Upload Avatar"
                   className="upload-avatar"
                   type="file"
                   name="file"

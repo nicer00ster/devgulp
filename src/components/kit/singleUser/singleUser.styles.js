@@ -89,6 +89,12 @@ const StyledSingleUserCompany = styled.div`
 
 const StyledSingleUserEmail = styled(StyledSingleUserCompany)``;
 
+const StyledSingleUserWebsite = styled(StyledSingleUserEmail)`
+  a {
+    font-size: 12px;
+  }
+`;
+
 const StyledSingleUserFollowers = styled(StyledSingleUserCompany)``;
 
 const StyledSingleUserAvatar = styled.div`
@@ -126,6 +132,7 @@ export {
   StyledSingleUserDate,
   StyledSingleUserDescription,
   StyledSingleUserCompany,
+  StyledSingleUserWebsite,
   StyledSingleUserEmail,
   StyledSingleUserFollowers,
   StyledSingleUserAvatar,

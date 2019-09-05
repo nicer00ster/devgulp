@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useTransition } from 'react-spring';
 import { connect } from 'react-redux';
 import {
@@ -24,6 +24,12 @@ function Modal(props) {
   });
 
   useOnClickOutside(ref, () => closeModal());
+
+  useEffect(() => {
+    if(props.modalOpen) {
+      ref.current.querySelector('button').focus();
+    }
+  }, [props.modalOpen]);
 
   function getChildren() {
     return props.children;
