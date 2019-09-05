@@ -26,7 +26,10 @@ function EnhancedUsers(props) {
               href="/user/[id]"
               as={`/user/${props.users[index].id}`}>
               <a>
-                <StyledAvatar tabIndex="-1" size={72}>
+                <StyledAvatar
+                    tabIndex="-1"
+                    aria-label={props.users[index].name}
+                    size={72}>
                   <img
                     alt="Avatar"
                     src={

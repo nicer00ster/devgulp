@@ -29,6 +29,14 @@ function EditProfile(props) {
     setError: setCompanyNameError,
     hasError: companyNameError,
   } = useInput('');
+  const {
+    value: url,
+    bind: bindUrl,
+    setValue: setUrl,
+    reset: resetUrl,
+    setError: setUrlError,
+    hasError: urlError,
+  } = useInput('');
 
   useEffect(() => {
     if (user.description) {
@@ -37,11 +45,14 @@ function EditProfile(props) {
     if (user.company_name) {
       setCompanyName(user.company_name);
     }
+    if (user.url) {
+      setUrl(user.url);
+    }
   }, [user]);
 
   function handleUpdateUser(e) {
     e.preventDefault();
-    props.updateUserInfo(props.token, description, companyName);
+    props.updateUserInfo(props.token, description, companyName, url);
   }
 
   return (
@@ -63,6 +74,15 @@ function EditProfile(props) {
             label="Company"
             error={companyNameError}
             bind={bindCompanyName}
+          />
+        </StyledEditInputFields>
+        <StyledEditInputFields>
+          <Input
+              type="url"
+              name="url"
+              label="Website"
+              error={urlError}
+              bind={bindUrl}
           />
         </StyledEditInputFields>
         <Button type="submit">Save</Button>

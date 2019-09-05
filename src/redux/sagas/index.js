@@ -311,6 +311,7 @@ function apiUpdateUserInfo(data) {
     data: {
       description: data.description,
       company_name: data.companyName,
+      url: data.url,
     },
   }).then(user => user);
 }
