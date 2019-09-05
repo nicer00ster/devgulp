@@ -162,7 +162,7 @@ function SingleUser(props) {
         ) : null}
         <p>{author.name}'s posts</p>
         <StyledDivider />
-        <StyledPosts columns={2} noResults={!posts.length}>
+        <StyledPosts columns={2} className={!posts.length ? 'no-results' : ''}>
           {posts &&
             posts.map(post => (
               <PostItem className="flatten" key={post.id} post={post} />

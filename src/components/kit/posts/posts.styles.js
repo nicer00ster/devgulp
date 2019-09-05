@@ -4,8 +4,7 @@ import { animated } from 'react-spring';
 const StyledPosts = styled(animated.ul)`
   position: relative;
   display: grid;
-  grid-template-columns: ${props =>
-    props.noResults ? 'repeat(1, 1fr)' : 'repeat(3, 1fr)'};
+  grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   grid-gap: 12px;
   list-style: none;
@@ -13,6 +12,9 @@ const StyledPosts = styled(animated.ul)`
   margin: 0;
   padding: 0;
   will-change: transform, opacity;
+  &.no-results {
+    grid-template-columns: repeat(1, 1fr);
+  }
   ${props =>
     props.columns === 2 && !props.noResults
       ? css`

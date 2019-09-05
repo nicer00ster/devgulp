@@ -77,7 +77,7 @@ function EnhancedPosts(props) {
             ))}
         </StyledFilterItems>
       </StyledFilterNav>
-      <StyledPosts noResults={props.posts.length === 0} style={spring}>
+      <StyledPosts className={!props.posts.length ? 'no-results' : ''} style={spring}>
         {props.posts &&
           props.posts.map(post => (
             <PostItem key={post.id} post={post} />

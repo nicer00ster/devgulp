@@ -9,6 +9,7 @@ export const ALLOWED_MIME_TYPES = [
   'image/png',
   'image/bmp',
 ];
+
 export const FILE_TYPE_ERROR = {
   error: {
     message: 'File type not allowed.',
