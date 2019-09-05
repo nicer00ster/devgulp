@@ -89,7 +89,7 @@ function UserMenu(props) {
             </Link>
           </StyledUserMenuListItem>
           <StyledUserMenuListItem>
-            <Link href={`/settings?userId=${props.user.id}`}>
+            <Link href="/user/[id]" as={`/user/${props.user.id}`}>
               <a onClick={props.toggleUserMenu}>
                 <i className="fal fa-cogs" />
                 Settings
