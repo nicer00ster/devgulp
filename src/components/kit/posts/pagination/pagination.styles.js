@@ -18,6 +18,7 @@ const StyledPaginationItems = styled.ul`
 
 const StyledPaginationItem = styled.li`
   padding: 0.4rem auto;
+  font-size: 14px;
   a {
     padding: 0.4rem 0.8rem;
     border-radius: ${props => props.theme.effects.radius};
