@@ -97,10 +97,17 @@ function apiFetchPosts(postCount, page, totalPosts) {
   }).then(posts => posts);
 }
 
-function apiFetchPostsByCategory(category) {
+function apiFetchPostsByCategory(category, postCount, page, totalPosts) {
+  let offset = postCount * page;
+  let perPage = postCount;
+
+  if(offset > totalPosts) {
+    perPage = totalPosts - offset;
+  }
+
   return axios({
     method: 'get',
-    url: `${API_URL}/posts?_embed&categories=${category}`,
+    url: `${API_URL}/posts?_embed&categories=${category}&per_page=${perPage}&offset=${offset}`,
   }).then(posts => posts);
 }
 
@@ -462,8 +469,14 @@ function* fetchPostsSaga(data) {
 
 function* fetchPostsByCategorySaga(data) {
   try {
-    const response = yield call(apiFetchPostsByCategory, data.category);
-    yield put({ type: types.FETCH_POSTS_BY_CATEGORY_SUCCESS, response });
+    const response = yield call(apiFetchPostsByCategory, data.category, data.postCount, data.page, data.totalPosts);
+    yield put({
+      type: types.FETCH_POSTS_BY_CATEGORY_SUCCESS,
+      posts: response.data,
+      postCount: data.postCount,
+      totalPosts: response.headers['x-wp-total'],
+      totalPages: response.headers['x-wp-totalpages'],
+    });
   } catch (error) {
     yield put({ type: types.FETCH_POSTS_BY_CATEGORY_FAILURE, error });
   }

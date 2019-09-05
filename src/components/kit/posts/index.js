@@ -28,7 +28,7 @@ function EnhancedPosts(props) {
   function handleFilter(id) {
     setActiveFilter(id);
     props.filterTaxonomy(id);
-    props.fetchPostsByCategory(id);
+    props.fetchPostsByCategory(id, props.postCount, page, props.totalPosts);
   }
 
   function pages() {
@@ -92,15 +92,17 @@ function EnhancedPosts(props) {
           </StyledNoResults>
         ) : null}
       </StyledPosts>
-      <Pagination
-        pages={pages()}
-        totalPosts={props.totalPosts}
-        totalPages={props.totalPages}
-        postCount={props.postCount}
-        postsLength={props.posts.length}
-        setPage={setPage}
-        page={page}
-      />
+      {props.posts.length ? (
+          <Pagination
+              pages={pages()}
+              totalPosts={props.totalPosts}
+              totalPages={props.totalPages}
+              postCount={props.postCount}
+              postsLength={props.posts.length}
+              setPage={setPage}
+              page={page}
+          />
+      ) : null}
     </>
   );
 }

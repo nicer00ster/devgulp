@@ -59,7 +59,10 @@ export default function postsReducer(state = initialState, action = {}) {
       return {
         ...state,
         isFetchingPosts: false,
-        posts: action.response.data,
+        postCount: action.postCount,
+        totalPosts: action.totalPosts,
+        totalPages: parseInt(action.totalPages),
+        posts: action.posts,
       };
     case types.FETCH_POSTS_BY_CATEGORY_FAILURE:
       return {

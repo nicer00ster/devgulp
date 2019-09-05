@@ -207,7 +207,7 @@ const StyledDateAuthorDivider = styled.span`
 
 const StyledNoResults = styled.p`
   margin: 0 auto;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
 `;
 
