@@ -191,6 +191,7 @@ class WP_REST_Search_Controller extends WP_REST_Controller {
 
 		$context = ! empty( $request['context'] ) ? $request['context'] : 'view';
 		$data    = $this->filter_response_by_context( $data, $context );
+        $data['comments'] = get_comments(array('post_id' => $id));
 
 		$response = rest_ensure_response( $data );
 
