@@ -374,7 +374,7 @@ function wc_rest_user_endpoint_handler($request = null) {
             // Get User Meta Data (Sensitive, Password included. DO NOT pass to front end.)
             $user = get_user_by('id', $user_id);
             // $user->set_role($role);
-            $user->set_role('subscriber');
+            $user->set_role('author');
             // WooCommerce specific code
             if (class_exists('WooCommerce')) {
                 $user->set_role('customer');

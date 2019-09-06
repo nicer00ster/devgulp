@@ -209,6 +209,7 @@ async function apiUploadAvatar(token, media) {
       url: `${API_URL}/media`,
     })
       .then(image => {
+        console.log(image.data.media_details);
         return axios({
           method: 'post',
           url: `${ACF_URL}/users/${image.data.author}`,
@@ -218,7 +219,7 @@ async function apiUploadAvatar(token, media) {
           },
           data: {
             fields: {
-              avatar: image.data.media_details.sizes.medium_large.source_url,
+              avatar: image.data.media_details.sizes.full.source_url,
             },
           },
         }).then(user => user);

@@ -9,7 +9,7 @@ function Register(props) {
   const router = useRouter();
 
   useEffect(() => {
-    if (props.cookie || props.token) {
+    if (props.token || props.isAuthenticated) {
       router.push('/');
     }
   }, [props.cookie, props.token]);
@@ -26,6 +26,7 @@ function Register(props) {
 
 const mapStateToProps = ({ user }) => ({
   token: user.token,
+  isAuthenticated: user.isAuthenticated,
 });
 
 export default connect(
