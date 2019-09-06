@@ -126,6 +126,13 @@ function apiFetchPost(postId) {
   });
 }
 
+function apiFetchPostViews(postId) {
+  return axios({
+    method: 'get',
+    url: `${API_URL}/views/${postId}`,
+  }).then(views => views);
+}
+
 function apiAddPost(token, title, content, categories, featuredMedia) {
   return axios({
     method: 'post',
@@ -487,8 +494,9 @@ function* fetchPostSaga(data) {
   try {
     let response = yield call(apiFetchPost, data.postId);
     const author = yield call(apiFetchUser, response.data.author);
+    const views = yield call(apiFetchPostViews, data.postId);
 
-    yield put({ type: types.FETCH_POST_SUCCESS, post: response.data, author });
+    yield put({ type: types.FETCH_POST_SUCCESS, post: response.data, author, views: views.data });
   } catch (error) {
     yield put({ type: types.FETCH_POST_FAILURE, error });
   }

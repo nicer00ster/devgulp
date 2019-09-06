@@ -254,6 +254,14 @@ const StyledFilterItem = styled.button`
   }
 `;
 
+const StyledPostCommentCount = styled.div`
+  color: ${props => props.theme.colors.lightBlack};
+  margin: 0.4rem 0;
+  span {
+    margin-left: .4rem;
+  }
+`;
+
 export {
   StyledPosts,
   StyledPostsContainer,
@@ -267,6 +275,7 @@ export {
   StyledDateAuthor,
   StyledDateAuthorDivider,
   StyledPostExcerpt,
+  StyledPostCommentCount,
   StyledPostImage,
   StyledNoResults,
   StyledFilterNav,

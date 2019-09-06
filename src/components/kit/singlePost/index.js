@@ -14,6 +14,7 @@ import {
   StyledMoreItems,
   StyledMoreItem,
   StyledSinglePostAuthorDate,
+StyledDateViewsDivider,
   StyledSinglePostDate,
   StyledSinglePostAuthor,
   StyledSinglePostImage,
@@ -153,6 +154,8 @@ function SinglePost(props) {
             </StyledSinglePostAuthor>
             <StyledSinglePostDate>
               {moment(post.date).format('MMM Do')}
+            <StyledDateViewsDivider />
+              {props.views} views
             </StyledSinglePostDate>
           </StyledSinglePostAuthorDate>
           <StyledPostTaxonomies className="single-post">
@@ -258,6 +261,7 @@ function SinglePost(props) {
 
 const mapStateToProps = ({ user, post }) => ({
   isUpdatingLikes: post.isUpdatingLikes,
+  views: post.views,
   user,
 });
 

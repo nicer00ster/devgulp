@@ -27,8 +27,9 @@ function EnhancedPosts(props) {
 
   function handleFilter(id) {
     setActiveFilter(id);
+    setPage(0);
     props.filterTaxonomy(id);
-    props.fetchPostsByCategory(id, props.postCount, page, props.totalPosts);
+    props.fetchPostsByCategory(id, props.postCount, 0, props.totalPosts);
   }
 
   function pages() {
@@ -41,17 +42,10 @@ function EnhancedPosts(props) {
     return arr;
   }
 
-  const fetchPosts = () => {
-    if (props.postCount >= props.totalPosts) return;
-    props.fetchPosts(props.postCount, page, props.totalPosts);
-  };
-
   useEffect(() => {
-    props.fetchPosts(props.postCount, page, props.totalPosts);
-  }, []);
-
-  useEffect(() => {
-    fetchPosts();
+    if(activeFilter === 1) {
+      props.fetchPosts(props.postCount, page, props.totalPosts);
+    }
   }, [page]);
 
   const spring = useSpring({
