@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import {
@@ -19,6 +19,7 @@ import {
 import { StyledPosts, StyledNoResults } from '../posts/posts.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledPreviewImage } from '../publish/publish.styles';
+import { StyledDivider } from '../globals/globals.styles';
 import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
 import {
   toggleModal,
@@ -30,8 +31,8 @@ import Followers from '../followers';
 import Loading from '../loading';
 import Modal from '../modal';
 import Button from '../button';
+import Achievements from '../achievements';
 import PostItem from '../posts/PostItem';
-import { StyledDivider } from '../globals/globals.styles';
 
 function SingleUser(props) {
   const {
@@ -80,6 +81,7 @@ function SingleUser(props) {
               {` `}
               {moment(author.user_registered).format('MMMM Do, YYYY')}
             </StyledSingleUserDate>
+            <Achievements size={30} user={author} />
             {author.description && (
               <StyledSingleUserDescription>
                 <blockquote>{author.description}</blockquote>
@@ -92,7 +94,9 @@ function SingleUser(props) {
             {author.url && (
               <StyledSingleUserWebsite>
                 <i className="fal fa-link" />
-                <a href={author.url} target="_blank">{author.url}</a>
+                <a href={author.url} target="_blank">
+                  {author.url}
+                </a>
               </StyledSingleUserWebsite>
             )}
             {author.company_name && (

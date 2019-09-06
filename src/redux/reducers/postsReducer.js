@@ -102,10 +102,7 @@ export default function postsReducer(state = initialState, action = {}) {
         addPostId: action.response.data.id,
         addPostError: false,
         imageUrl: '',
-        posts: [
-          ...state.posts,
-          { ...action.response.data },
-        ],
+        posts: [...state.posts, { ...action.response.data }],
       };
     case types.ADD_POST_FAILURE:
       return {

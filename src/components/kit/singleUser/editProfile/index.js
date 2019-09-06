@@ -78,11 +78,11 @@ function EditProfile(props) {
         </StyledEditInputFields>
         <StyledEditInputFields>
           <Input
-              type="url"
-              name="url"
-              label="Website"
-              error={urlError}
-              bind={bindUrl}
+            type="url"
+            name="url"
+            label="Website"
+            error={urlError}
+            bind={bindUrl}
           />
         </StyledEditInputFields>
         <Button type="submit">Save</Button>

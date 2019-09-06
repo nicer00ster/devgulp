@@ -173,18 +173,22 @@ function my_rest_prepare_user($data) {
 
 add_filter('rest_prepare_user', 'my_rest_prepare_user', 10, 3);
 
-function prepare_user_achievements(WP_REST_Response $response, WP_User $user, WP_REST_Request $request ){
+function prepare_user_achievements(WP_REST_Response $response, WP_User $user, WP_REST_Request $request ) {
+    $data = $response->get_data();
+
     if(in_array( 'administrator', $user->roles)) {
-        $data = $response->get_data();
-        $data['stats']['admin'] = true;
-
-        $response->set_data($data);
+        $data['stats']['core'] = true;
     } else {
-        $data = $response->get_data();
         $data['stats'] = [];
-
-        $response->set_data($data);
     }
+
+    switch($followers = count($data['acf']['user_followers'])) {
+        case $followers >= 8:
+            $data['stats']['popular'] = true;
+            break;
+    }
+
+    $response->set_data($data);
 
     return $response;
 }
@@ -243,13 +247,6 @@ function my_rest_prepare_post($data) {
 
 add_filter('rest_prepare_post', 'my_rest_prepare_post', 10, 3);
 
-add_action('rest_api_init', function() {
-    register_rest_route( 'wp/v2', '/views/(?P<id>\d+)', array(
-        'methods' => 'GET',
-        'callback' => 'post_views',
-    ));
-});
-
 function post_views(WP_REST_Request $request) {
     $post_id = $request['id'];
     if (get_post_status($post_id) === false) {
@@ -261,6 +258,13 @@ function post_views(WP_REST_Request $request) {
         return $views;
     }
 }
+
+add_action('rest_api_init', function() {
+    register_rest_route( 'wp/v2', '/views/(?P<id>\d+)', array(
+        'methods' => 'GET',
+        'callback' => 'post_views',
+    ));
+});
 //add_filter( 'acf/rest_api/post/get_fields', function( $data ) {
 //    if (method_exists($data, 'get_data')) {
 //        $data = $data->get_data();

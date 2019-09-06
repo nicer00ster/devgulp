@@ -47,7 +47,10 @@ function PostItem(props) {
             />
             <StyledPostCommentCount>
               <i className="fal fa-comment-lines" />
-              <span>{props.post.comments.length} comment{props.post.comments.length === 1 ? '' : 's'}</span>
+              <span>
+                {props.post.comments.length} comment
+                {props.post.comments.length === 1 ? '' : 's'}
+              </span>
             </StyledPostCommentCount>
             <StyledDateAuthor>
               <StyledPostDateStamp>

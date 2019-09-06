@@ -89,10 +89,13 @@ const StyledPostTaxonomies = styled.ul`
   padding: 0;
   margin: 1rem 0 0 1rem;
   &.single-post {
+    width: 100%;
     margin: 0 2rem;
     align-self: flex-end;
+    justify-content: flex-end;
     & span {
       font-size: 28px;
+      margin: 0 0.4rem;
     }
   }
 `;
@@ -259,7 +262,7 @@ const StyledPostCommentCount = styled.div`
   margin: 0.4rem 0;
   font-size: 12px;
   span {
-    margin-left: .4rem;
+    margin-left: 0.4rem;
   }
 `;
 
