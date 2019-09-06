@@ -10,6 +10,7 @@ import {
   StyledPostTaxonomies,
   StyledPostTaxonomyItem,
   StyledPostTitle,
+  StyledPostCommentCount,
 } from './posts.styles';
 import Link from 'next/link';
 import { getTaxonomyIcon } from '../../../utils';
@@ -44,6 +45,10 @@ function PostItem(props) {
                 __html: props.post.excerpt.rendered,
               }}
             />
+            <StyledPostCommentCount>
+              <i className="fal fa-comment-lines" />
+              <span>{props.post.comments.length} comment{props.post.comments.length === 1 ? '' : 's'}</span>
+            </StyledPostCommentCount>
             <StyledDateAuthor>
               <StyledPostDateStamp>
                 {moment(props.post.date).format('MMM Do')}

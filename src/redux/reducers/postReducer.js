@@ -26,15 +26,7 @@ export default function postReducer(state = initialState, action = {}) {
         ...state,
         isFetchingPost: false,
         post: action.post,
-        // post: {
-        //   comments: arrangeComments(action.post.comments),
-        //   ...action.post,
-        // },
-        // post: {
-        // comments: arrangeComments(action.post.comments),
-        // comments: action.post._embedded['replies']['0'].map(post => post),
-        //   ...action.post,
-        // },
+        views: action.views,
         author: { ...action.author.data },
         hasError: false,
         errorMessage: '',

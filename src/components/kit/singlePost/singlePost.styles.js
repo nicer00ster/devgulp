@@ -50,6 +50,15 @@ const StyledSinglePostDate = styled.time`
   padding: 0.4rem;
 `;
 
+const StyledDateViewsDivider = styled.span`
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+  &:after {
+    font-weight: bold;
+    content: '\\00B7';
+  }
+`;
+
 const StyledSinglePostImage = styled.img`
   padding-top: 2rem;
   width: 100%;
@@ -161,6 +170,7 @@ export {
   StyledSinglePostMetaMore,
   StyledSinglePostAuthor,
   StyledSinglePostAuthorDate,
+  StyledDateViewsDivider,
   StyledSinglePostDate,
   StyledSinglePostImage,
   StyledSinglePostContent,

@@ -10,7 +10,6 @@ import { fetchPosts, fetchCategories } from '../redux/actions';
 
 function Index(props) {
   useEffect(() => {
-    // props.fetchPosts(props.postCount + 12);
     props.fetchCategories();
   }, []);
   return (
@@ -53,6 +52,7 @@ function Index(props) {
 const mapStateToProps = ({ posts }) => ({
   isFetchingPosts: posts.isFetchingPosts,
   postCount: posts.postCount,
+  posts: posts.posts,
 });
 
 const mapDispatchToProps = {

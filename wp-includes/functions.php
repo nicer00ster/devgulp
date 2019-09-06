@@ -140,14 +140,12 @@ add_action('rest_api_init', 'wp_rest_user_endpoints');
 /**
  * Register the necessary fields to display post information correctly
  */
-add_action('rest_api_init', 'theme_slug_register_rest_fields');
+add_action('rest_api_init', 'register_rest_comments');
 
-function theme_slug_register_rest_fields() {
-//    get_field('avatar', 'user_' . $user->ID);
-    register_rest_field( 'post',
-        'comments',
+function register_rest_comments() {
+    register_rest_field('post', 'comments',
         array(
-            'get_callback' => 'theme_slug_get_comments',
+            'get_callback' => 'rest_get_comments',
             'update_callback' => null,
             'schema' => null,
         ));
@@ -155,16 +153,12 @@ function theme_slug_register_rest_fields() {
 
 /**
  * Returns the array of comments for a given post
- *
  * @param $object
- *
  * @param $field_name
- *
  * @param $request
- *
  * @return mixed, list of comments for a post
  */
-function theme_slug_get_comments($object, $field_name, $request) {
+function rest_get_comments($object, $field_name, $request) {
     return get_comments(array('post_id' => $object['id']));
 }
 
@@ -178,6 +172,24 @@ function my_rest_prepare_user($data) {
 }
 
 add_filter('rest_prepare_user', 'my_rest_prepare_user', 10, 3);
+
+function prepare_user_achievements(WP_REST_Response $response, WP_User $user, WP_REST_Request $request ){
+    if(in_array( 'administrator', $user->roles)) {
+        $data = $response->get_data();
+        $data['stats']['admin'] = true;
+
+        $response->set_data($data);
+    } else {
+        $data = $response->get_data();
+        $data['stats'] = [];
+
+        $response->set_data($data);
+    }
+
+    return $response;
+}
+
+add_filter('rest_prepare_user', 'prepare_user_achievements', 10, 3);
 
 
 function online_users() {
@@ -205,8 +217,7 @@ function online_users() {
 }
 
 
-add_action('rest_api_init', function ()
-{
+add_action('rest_api_init', function() {
     register_rest_route( 'wp/v2', 'online', array(
         'methods' => 'GET',
         'callback' => 'online_users'
@@ -217,14 +228,6 @@ add_action('rest_api_init', function ()
 function my_rest_prepare_post($data) {
     $_data = $data->data;
     $comments = $_data['comments'];
-
-    $post = get_post($_data['id']);
-    $view_count = (int) get_field('views', $post->ID);
-    $view_count++;
-    update_field('views', $view_count, $_data['id']);
-
-    $_data['views'] = $view_count;
-
 
     foreach($comments as $comment) {
         $comment->comment_author_avatar = get_field('avatar', 'user_' . $comment->user_id);
@@ -240,6 +243,24 @@ function my_rest_prepare_post($data) {
 
 add_filter('rest_prepare_post', 'my_rest_prepare_post', 10, 3);
 
+add_action('rest_api_init', function() {
+    register_rest_route( 'wp/v2', '/views/(?P<id>\d+)', array(
+        'methods' => 'GET',
+        'callback' => 'post_views',
+    ));
+});
+
+function post_views(WP_REST_Request $request) {
+    $post_id = $request['id'];
+    if (get_post_status($post_id) === false) {
+        return new WP_Error( 'error_no_post', 'Post ID Doesn\'t Exist.', array('status' => 404));
+    } else {
+        $current_views = get_post_meta($post_id, 'views', true);
+        $views = $current_views + 1;
+        update_post_meta($post_id, 'views', $views);
+        return $views;
+    }
+}
 //add_filter( 'acf/rest_api/post/get_fields', function( $data ) {
 //    if (method_exists($data, 'get_data')) {
 //        $data = $data->get_data();
