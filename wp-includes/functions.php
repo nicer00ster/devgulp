@@ -175,17 +175,18 @@ add_filter('rest_prepare_user', 'my_rest_prepare_user', 10, 3);
 
 function prepare_user_achievements(WP_REST_Response $response, WP_User $user, WP_REST_Request $request ) {
     $data = $response->get_data();
+    $data['stats'] = [];
 
     if(in_array( 'administrator', $user->roles)) {
         $data['stats']['core'] = true;
-    } else {
-        $data['stats'] = [];
     }
 
-    switch($followers = count($data['acf']['user_followers'])) {
-        case $followers >= 8:
-            $data['stats']['popular'] = true;
-            break;
+    $followers = count($data['acf']['user_followers']);
+
+    if($followers >= 20) {
+        $data['stats']['very_popular'] = true;
+    } else if($followers >= 5) {
+        $data['stats']['popular'] = true;
     }
 
     $response->set_data($data);

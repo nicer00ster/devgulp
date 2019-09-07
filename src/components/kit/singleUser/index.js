@@ -81,7 +81,7 @@ function SingleUser(props) {
               {` `}
               {moment(author.user_registered).format('MMMM Do, YYYY')}
             </StyledSingleUserDate>
-            <Achievements size={30} user={author} />
+            <Achievements size={36} user={author} />
             {author.description && (
               <StyledSingleUserDescription>
                 <blockquote>{author.description}</blockquote>

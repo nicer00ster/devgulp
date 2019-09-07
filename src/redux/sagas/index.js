@@ -37,6 +37,13 @@ function apiLogin(data) {
   });
 }
 
+function apiLogout() {
+  return axios({
+    method: 'post',
+    url: `${API_URL}/logout`,
+  }).then(res => res);
+}
+
 async function apiRegister(data) {
   return axios({
     method: 'post',
@@ -380,11 +387,12 @@ function* loginSaga(data) {
 }
 
 function* logoutSaga() {
-  yield delay(1500);
+  yield delay(1000);
   try {
+    // const response = yield call(apiLogout);
     yield put({ type: types.LOGOUT_SUCCESS });
   } catch (error) {
-    yield put({ type: types.LOGOUT_FAILURE });
+    yield put({ type: types.LOGOUT_FAILURE, error });
   }
 }
 
