@@ -114,6 +114,7 @@ function SingleUser(props) {
             </StyledSingleUserFollowers>
             {!isUsersProfile && (
               <Button
+                disabled={!props.user.token}
                 onClick={() =>
                   props.followUnfollowUser(
                     props.user.token,

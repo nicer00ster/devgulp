@@ -5,6 +5,7 @@ const StyledAchievements = styled.div`
   align-items: flex-end;
   svg {
     margin: 0.4rem;
+    pointer-events: none;
   }
 `;
 
