@@ -83,6 +83,9 @@ const StyledSidebar = styled(animated.aside)`
   left: 50%;
   z-index: 99;
   will-change: opacity, transform;
+  &.hide {
+    display: none;
+  }
   & button {
     margin: 0.4rem 0;
   }
