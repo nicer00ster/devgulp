@@ -106,7 +106,7 @@ function UserMenu(props) {
           </StyledUserMenuListItem>
           <StyledUserMenuDivider />
           <StyledUserMenuListItem>
-            <StyledLogoutButton onClick={() => props.logout()}>
+            <StyledLogoutButton onClick={() => props.logout(props.user.token)}>
               Sign out
             </StyledLogoutButton>
           </StyledUserMenuListItem>

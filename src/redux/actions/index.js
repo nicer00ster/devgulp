@@ -190,10 +190,11 @@ export function searchQuery(query) {
   };
 }
 
-export function logout() {
+export function logout(token) {
   deleteToken();
   return {
     type: types.LOGOUT,
+    token,
   };
 }
 

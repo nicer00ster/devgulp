@@ -164,6 +164,7 @@ function rest_get_comments($object, $field_name, $request) {
 
 function my_rest_prepare_user($data) {
     $_data = $data->data;
+//    $_user_meta = get_user_meta($_data['id']);
 
     $_data['avatar'] = $_data['acf']['avatar'];
     $data->data = $_data;
@@ -248,7 +249,7 @@ function my_rest_prepare_post($data) {
 
 add_filter('rest_prepare_post', 'my_rest_prepare_post', 10, 3);
 
-function post_views(WP_REST_Request $request) {
+function rest_post_views(WP_REST_Request $request) {
     $post_id = $request['id'];
     if (get_post_status($post_id) === false) {
         return new WP_Error( 'error_no_post', 'Post ID Doesn\'t Exist.', array('status' => 404));
@@ -263,7 +264,7 @@ function post_views(WP_REST_Request $request) {
 add_action('rest_api_init', function() {
     register_rest_route( 'wp/v2', '/views/(?P<id>\d+)', array(
         'methods' => 'GET',
-        'callback' => 'post_views',
+        'callback' => 'rest_post_views',
     ));
 });
 //add_filter( 'acf/rest_api/post/get_fields', function( $data ) {

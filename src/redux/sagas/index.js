@@ -18,7 +18,7 @@ import * as types from '../constants';
 function apiFetchToken(data) {
   return axios({
     method: 'post',
-    url: TOKEN_URL,
+    url: `${TOKEN_URL}`,
     data: {
       username: data.username,
       password: data.password,
@@ -29,7 +29,7 @@ function apiFetchToken(data) {
 function apiLogin(data) {
   return axios({
     method: 'post',
-    url: TOKEN_URL,
+    url: `${TOKEN_URL}`,
     data: {
       username: data.username,
       password: data.password,
@@ -37,10 +37,13 @@ function apiLogin(data) {
   });
 }
 
-function apiLogout() {
+function apiLogout(token) {
   return axios({
     method: 'post',
-    url: `${API_URL}/logout`,
+    url: `${TOKEN_URL}/revoke`,
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
   }).then(res => res);
 }
 
@@ -64,10 +67,11 @@ function apiValidateToken() {
   return axios({
     method: 'post',
     headers: {
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     url: `${TOKEN_URL}/validate`,
-  });
+  }).then(token => token);
 }
 
 function apiFetchUsers() {
@@ -380,17 +384,18 @@ function* loginSaga(data) {
       type: types.LOGIN_SUCCESS,
       result,
       avatar: userData.data.acf.avatar,
+      is_online: userData.data.is_online,
     });
   } catch (error) {
     yield put({ type: types.LOGIN_FAILURE, error });
   }
 }
 
-function* logoutSaga() {
+function* logoutSaga(data) {
   yield delay(1000);
   try {
-    // const response = yield call(apiLogout);
-    yield put({ type: types.LOGOUT_SUCCESS });
+    const response = yield call(apiLogout, data.token);
+    yield put({ type: types.LOGOUT_SUCCESS, response });
   } catch (error) {
     yield put({ type: types.LOGOUT_FAILURE, error });
   }
