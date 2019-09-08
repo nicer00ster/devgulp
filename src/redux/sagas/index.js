@@ -42,8 +42,8 @@ function apiLogout(token) {
     method: 'post',
     url: `${TOKEN_URL}/revoke`,
     headers: {
-      Authorization: `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   }).then(res => res);
 }
 

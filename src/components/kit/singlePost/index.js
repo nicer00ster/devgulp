@@ -112,7 +112,9 @@ function SinglePost(props) {
   return (
     <StyledSinglePostContainer ref={offsetRef}>
       <StyleSinglePost {...bind}>
-        <StyledSidebar style={spring} className={props.screenWidth < 1024 ? 'hide' : ''}>
+        <StyledSidebar
+          style={spring}
+          className={props.screenWidth < 1024 ? 'hide' : ''}>
           <LikeButton
             token={props.user.token}
             isLiked={post.acf.post_likes.includes(props.user.id)}
