@@ -30,7 +30,6 @@ const StyledHelpHeaderWrapper = styled.div`
 `;
 
 const StyledHelpHeaderCircle = styled.div`
-  // border: 1px solid rgba(0,0,0,.2);
   width: 64px;
   height: 64px;
   border-radius: 100%;
@@ -57,11 +56,18 @@ const StyledHelpContent = styled.div`
     font-size: 24px;
     margin: 24px;
   }
+  h2 {
+    text-align: left;
+    font-family: 'Trirong', serif;
+    font-size: 16px;
+    margin: 0 24px;
+  }
   ul {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1.2rem;
+    margin: 0;
     list-style: none;
     font-family: 'Trirong', serif;
     font-size: 18px;
@@ -69,7 +75,6 @@ const StyledHelpContent = styled.div`
     li {
       display: flex;
       width: 100%;
-      margin: 1.2rem;
       background-color: ${props => props.theme.colors.lightGrey};
       border-top-right-radius: ${props => props.theme.effects.radius};
       border-bottom-right-radius: ${props => props.theme.effects.radius};
