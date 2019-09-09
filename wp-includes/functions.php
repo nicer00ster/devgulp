@@ -5,6 +5,8 @@
  * @package WordPress
  */
 
+use Firebase\JWT\JWT;
+
 require( ABSPATH . WPINC . '/option.php' );
 
 /**
@@ -230,6 +232,32 @@ add_action('rest_api_init', function() {
     ));
 });
 
+function rest_user_messages(WP_REST_Request $request) {
+//    var_dump(get_user_meta( $request['id'], 'jwt_data', true ));
+//    var_dump($request);
+
+    $user_auth = $request->get_header('Authorization');
+    $args = array(
+        'headers' => array(
+            'Authorization' => $user_auth
+        )
+    );
+    $response = wp_remote_get('http://localhost:8000/wp-json/wp/v2/users/1', $args);
+    var_dump($response);
+//    $token = JWT::encode( apply_filters( 'jwt_auth_token_before_sign', $user_token, $request['id'] ), Simple_Jwt_Authentication_Api::get_key());
+    $messages = [];
+
+    return $messages;
+}
+
+
+add_action('rest_api_init', function() {
+    register_rest_route( 'wp/v2', 'user/(?P<id>\d+)/messages', array(
+        'methods' => 'GET',
+        'callback' => 'rest_user_messages'
+    ));
+});
+
 // Get all comments in the post & add the avatar then format the content.
 function my_rest_prepare_post($data) {
     $_data = $data->data;
@@ -267,23 +295,6 @@ add_action('rest_api_init', function() {
         'callback' => 'rest_post_views',
     ));
 });
-//add_filter( 'acf/rest_api/post/get_fields', function( $data ) {
-//    if (method_exists($data, 'get_data')) {
-//        $data = $data->get_data();
-//    } else {
-//        $data = (array) $data;
-//    }
-//
-//    static $count = 0;
-//
-//    foreach($data as $acf) {
-//        if(in_array(1, $acf['post_likes'])) {
-//            $count++;
-//        }
-//    }
-//
-//    return $data;
-//});
 
 // Register user company_name
 function rest_register_company_name() {

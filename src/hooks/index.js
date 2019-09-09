@@ -8,6 +8,7 @@ const events = [MOUSEDOWN, TOUCHSTART];
 export const useInput = initialValue => {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState(false);
+  const inputRef = useRef();
 
   return {
     value,
@@ -19,6 +20,7 @@ export const useInput = initialValue => {
     setError: err => setError(err),
     bind: {
       value,
+      ref: inputRef,
       onChange: e => {
         setValue(e.target.value);
       },
