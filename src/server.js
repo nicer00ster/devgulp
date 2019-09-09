@@ -16,60 +16,79 @@ app.prepare().then(() => {
   const http = require('http').createServer(server);
   const io = require('socket.io')(http);
 
+
   io.on('connection', async function(socket) {
     let token = socket.handshake.query.token;
+    let users = {};
 
-    if(token) {
-      // const validation = axios({
-      //   method: 'post',
-      //   url: 'http://localhost:8000/wp-json/simple-jwt-authentication/v1/token/validate',
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   }
-      // })
-      //     .then(res => res)
-      //     .catch(err => console.log(err));
-      //
-      // const userId = await validation.then(user => user.data.data.user_id);
-      //
-      // const user = axios({
-      //   method: 'get',
-      //   url: `http://localhost:8000/wp-json/wp/v2/users/${userId}`,
-      // }).then(data => data);
+    if(token.length) {
+      // 1. Validate the user by making sure he token is still valid.
+      const userData = axios({
+        method: 'post',
+        url: 'http://localhost:8000/wp-json/simple-jwt-authentication/v1/token/validate',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+          .then(res => {
+            const { data } = res.data;
+            // 2. If it is, move on to fetching the users data.
+            if(data.status === 200) {
+              return axios({
+                method: 'get',
+                url: `http://localhost:8000/wp-json/wp/v2/users/${data.user_id}`,
+              })
+            }
+          })
+          .then(user => user)
+          .catch(err => console.log(err));
 
-      console.log('a user connected', token);
+      const user = await userData.then(user => user);
+
+      if(users[user.data.id]) return;
+
+      users[user.data.id] = user.data;
+
+      console.log('a user connected', user.data.name);
+      console.log('current users', users);
+
+      socket.on('disconnect', function() {
+        console.log('user disconnected');
+        delete users[user.data.id];
+        console.log('current users', users);
+      });
     }
 
-    socket.on('disconnect', function() {
-      console.log('user disconnected');
-    });
 
-    socket.on('chat_message', async function(data) {
-      if(data.token) {
-        const validation = axios({
-          method: 'post',
-          url: 'http://localhost:8000/wp-json/simple-jwt-authentication/v1/token/validate',
-          headers: {
-            Authorization: `Bearer ${data.token}`,
-          }
-        })
-        .then(res => res)
-        .catch(err => console.log(err));
-
-        const userId = await validation.then(user => user.data.data.user_id);
-
-        const user = axios({
-          method: 'get',
-          url: `http://localhost:8000/wp-json/wp/v2/users/${userId}`,
-        }).then(data => data);
-
-        const userData = await user.then(user => user);
-        const name = userData.data.name;
-
-        console.log(`Message from ${name}: ${data.message}`);
-        console.log(`To: ${data.messagingUser}`)
-      }
-    });
+    // socket.on('chat_message', async function(data) {
+    //   if(data.token) {
+    //     // 1. Validate the user by making sure he token is still valid.
+    //     const userData = axios({
+    //       method: 'post',
+    //       url: 'http://localhost:8000/wp-json/simple-jwt-authentication/v1/token/validate',
+    //       headers: {
+    //         Authorization: `Bearer ${data.token}`,
+    //       }
+    //     })
+    //     .then(res => {
+    //       const { data } = res.data;
+    //       // 2. If it is, move on to fetching the users data.
+    //       if(data.status === 200) {
+    //         return axios({
+    //           method: 'get',
+    //           url: `http://localhost:8000/wp-json/wp/v2/users/${data.user_id}`,
+    //         })
+    //       }
+    //     })
+    //     .then(user => user)
+    //     .catch(err => console.log(err));
+    //
+    //     const user = await userData.then(user => user);
+    //
+    //     console.log(`Message from ${user.data.name}: ${data.message}`);
+    //     console.log(`To: ${data.messagingUser}`)
+    //   }
+    // });
   });
 
 

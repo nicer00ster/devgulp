@@ -64,7 +64,7 @@ function Layout(props) {
 
   // Websocket connection.
   useEffect(() => {
-    socket.on('connect', (req) => {
+    socket.on('connect', () => {
       console.log('connected');
     });
     socket.on('disconnect', () => {
