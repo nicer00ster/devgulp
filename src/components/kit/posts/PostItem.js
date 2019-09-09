@@ -25,7 +25,8 @@ function PostItem(props) {
       <Link href="/post/[id]" as={`/post/${props.post.id}`}>
         <a>
           <StyledPostTaxonomies>
-            {props.post._embedded['wp:term'] && props.post._embedded['wp:term']['0']['0'].name !== 'Uncategorized' &&
+            {props.post._embedded['wp:term'] &&
+              props.post._embedded['wp:term']['0']['0'].name !== 'Uncategorized' &&
               props.post._embedded['wp:term']['0'].map((term, index) => (
                 <StyledPostTaxonomyItem key={index}>
                   <span

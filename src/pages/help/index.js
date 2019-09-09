@@ -6,30 +6,30 @@ import Container from '../../components/kit/container';
 import Loading from '../../components/kit/loading';
 
 function Help(props) {
-    useEffect(() => {
-        props.fetchPage('help');
-    }, []);
+  useEffect(() => {
+    props.fetchPage('help');
+  }, []);
 
-    return (
-        <Container>
-            {props.page.isFetchingPage ? (
-                <Loading />
-            ) : (
-                <EnhancedHelp page={props.page.page} />
-            )}
-        </Container>
-    );
+  return (
+    <Container>
+      {props.page.isFetchingPage ? (
+        <Loading />
+      ) : (
+        <EnhancedHelp page={props.page.page} />
+      )}
+    </Container>
+  );
 }
 
 const mapStateToProps = ({ page }) => ({
-    page,
+  page,
 });
 
 const mapDispatchToProps = {
-    fetchPage,
+  fetchPage,
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(Help);
