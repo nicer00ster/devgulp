@@ -29,20 +29,21 @@ const theme = {
 
 function Layout(props) {
   const { state, addNotification } = useContext(AppContext);
-  const { cookie } = props;
+  const { id, username } = props.user;
 
   function screenResize() {
     props.screenResize(window.innerWidth);
   }
 
-  // const socket = io('http://localhost:3000', {
-  //   reconnect: true,
-  //   forceNew: true,
-  //   transports: ['websocket'],
-  //   query: {
-  //     token: cookie,
-  //   }
-  // });
+  const socket = io('http://localhost:9000', ({
+    reconnect: true,
+    forceNew: true,
+    transports: ['websocket'],
+    query: {
+      userId: id,
+      name: username,
+    }
+  }));
 
   useEffect(() => {
     props.fetchUser();
@@ -63,21 +64,23 @@ function Layout(props) {
   }, [props.user.hasError, props.post.hasError]);
 
   // Websocket connection.
-  // useEffect(() => {
-  //   socket.on('connect', () => {
-  //     console.log('connected');
-  //   });
-  //   socket.on('disconnect', () => {
-  //     console.log('disconnected')
-  //   });
-  // }, []);
+  useEffect(() => {
+    if(props.cookie) {
+      socket.on('connect', () => {
+        console.log('connected');
+      });
+      socket.on('disconnect', () => {
+        console.log('disconnected')
+      });
+    }
+  }, []);
 
   // Socket listener for chat messages.
-  // useEffect(() => {
-  //   if(props.chat.message !== '') {
-  //     socket.emit('chat_message', { token: cookie, message: props.chat.message, messagingUser: props.chat.messagingUser.name });
-  //   }
-  // }, [props.chat.message]);
+  useEffect(() => {
+    if(props.chat.message !== '') {
+      socket.emit('chat_message', { token: cookie, message: props.chat.message, messagingUser: props.chat.messagingUser.name });
+    }
+  }, [props.chat.message]);
 
   if (props.user.checkingCredentials) {
     return <Loading />;
