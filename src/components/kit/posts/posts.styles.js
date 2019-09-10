@@ -138,7 +138,7 @@ const StyledPostExcerpt = styled.div`
   font-style: italic;
   font-size: 12px;
   & p {
-    margin: 0.5rem 0;
+    margin: 0;
   }
 `;
 

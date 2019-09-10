@@ -64,7 +64,6 @@ typings/
 .idea/
 
 # wordpress
-.htaccess
 /wp-includes/*
 !/wp-includes/rest-api
 !/wp-includes/functions.php
