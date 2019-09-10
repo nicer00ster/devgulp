@@ -12,7 +12,6 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
-
   server.use(express.static('public'));
 
   server.use(bodyParser.urlencoded({ extended: false }));

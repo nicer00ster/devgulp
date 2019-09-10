@@ -112,6 +112,14 @@ export function login(username, password) {
   };
 }
 
+export function logout(token) {
+  deleteToken();
+  return {
+    type: types.LOGOUT,
+    token,
+  };
+}
+
 export function register(username, email, password, verifyPassword) {
   return {
     type: types.REGISTER,
@@ -190,11 +198,18 @@ export function searchQuery(query) {
   };
 }
 
-export function logout(token) {
-  deleteToken();
+export function setMessagingUser(user) {
   return {
-    type: types.LOGOUT,
+    type: types.SET_MESSAGING_USER,
+    user,
+  }
+}
+
+export function sendMessage(token, message) {
+  return {
+    type: types.SEND_MESSAGE,
     token,
+    message,
   };
 }
 

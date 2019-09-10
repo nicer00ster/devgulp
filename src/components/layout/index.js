@@ -1,6 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import io from "socket.io-client";
 import {
   LayoutStyles,
   GlobalStyles,
@@ -16,6 +17,7 @@ import Footer from '../footer';
 import Loading from '../../components/kit/loading';
 import Background from '../../components/kit/background';
 import Notifications from '../kit/notifications';
+import Chat from '../kit/chat';
 import Meta from '../meta';
 
 const theme = {
@@ -27,10 +29,20 @@ const theme = {
 
 function Layout(props) {
   const { state, addNotification } = useContext(AppContext);
+  const { cookie } = props;
 
   function screenResize() {
     props.screenResize(window.innerWidth);
   }
+
+  // const socket = io('http://localhost:3000', {
+  //   reconnect: true,
+  //   forceNew: true,
+  //   transports: ['websocket'],
+  //   query: {
+  //     token: cookie,
+  //   }
+  // });
 
   useEffect(() => {
     props.fetchUser();
@@ -49,6 +61,23 @@ function Layout(props) {
       addNotification(props.post.errorMessage, 'error');
     }
   }, [props.user.hasError, props.post.hasError]);
+
+  // Websocket connection.
+  // useEffect(() => {
+  //   socket.on('connect', () => {
+  //     console.log('connected');
+  //   });
+  //   socket.on('disconnect', () => {
+  //     console.log('disconnected')
+  //   });
+  // }, []);
+
+  // Socket listener for chat messages.
+  // useEffect(() => {
+  //   if(props.chat.message !== '') {
+  //     socket.emit('chat_message', { token: cookie, message: props.chat.message, messagingUser: props.chat.messagingUser.name });
+  //   }
+  // }, [props.chat.message]);
 
   if (props.user.checkingCredentials) {
     return <Loading />;
@@ -70,6 +99,7 @@ function Layout(props) {
           <Notifications children={add => (state.notificationRef.current = add)} />
           <GlobalStyles />
           {props.children}
+          <Chat user={props.user} />
         </LayoutStyles>
         <Footer />
       </>
@@ -77,10 +107,11 @@ function Layout(props) {
   );
 }
 
-const mapStateToProps = ({ root, user, post }) => ({
+const mapStateToProps = ({ root, user, post, chat }) => ({
   root,
   user,
   post,
+  chat,
 });
 
 const mapDispatchToProps = {
