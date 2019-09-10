@@ -45,6 +45,7 @@ services:
       WORDPRESS_ADMIN_USER: admin
       WORDPRESS_ADMIN_PASSWORD: secretpassword
       WORDPRESS_ADMIN_EMAIL: fake@example.com
+      JWT_AUTHENTICATION_SECRET_KEY: secretkey
     networks:
       - wpsite
 networks:
