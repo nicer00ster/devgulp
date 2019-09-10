@@ -1,8 +1,9 @@
 // API URL
-export const API_URL = 'http://localhost:8000/wp-json/wp/v2';
+const BASE_URL = 'http://localhost:8000';
+export const API_URL = BASE_URL + '/wp-json/wp/v2';
 export const TOKEN_URL =
-  'http://localhost:8000/wp-json/simple-jwt-authentication/v1/token';
-export const ACF_URL = 'http://localhost:8000/wp-json/acf/v3';
+    BASE_URL + '/wp-json/simple-jwt-authentication/v1/token';
+export const ACF_URL = BASE_URL + '/wp-json/acf/v3';
 
 export const ALLOWED_MIME_TYPES = [
   'image/jpeg',
