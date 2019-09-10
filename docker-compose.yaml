@@ -6,7 +6,7 @@ services:
     image: mysql:5.7
     volumes:
       - db_data:/var/lib/mysql
-    restart: always
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: wordpress
@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     image: phpmyadmin/phpmyadmin
-    restart: always
+    restart: unless-stopped
     ports:
       - '8080:80'
     environment:
@@ -31,15 +31,20 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:latest
+    build: wordpress
+    image: devgulp_wordpress
     ports:
       - '8000:80'
-    restart: always
-    volumes: ['./:/var/www/html']
+    restart: unless-stopped
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_URL: 192.168.99.100:8000 # set this to your docker-machine url and port
+      WORDPRESS_TITLE: DevGulp
+      WORDPRESS_ADMIN_USER: admin
+      WORDPRESS_ADMIN_PASSWORD: secretpassword
+      WORDPRESS_ADMIN_EMAIL: fake@example.com
     networks:
       - wpsite
 networks:
