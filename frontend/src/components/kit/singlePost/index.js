@@ -1,5 +1,5 @@
+import React, { useRef } from 'react';
 import Link from 'next/link';
-import { useRef } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { useEffect, useState, useCallback } from 'react';
@@ -14,7 +14,7 @@ import {
   StyledMoreItems,
   StyledMoreItem,
   StyledSinglePostAuthorDate,
-StyledDateViewsDivider,
+  StyledDateViewsDivider,
   StyledSinglePostDate,
   StyledSinglePostAuthor,
   StyledSinglePostImage,
@@ -40,6 +40,7 @@ import ShareButton from '../shareButton';
 import Comments from './comments';
 import SocialSharing from '../social';
 import Tooltip from '../tooltip';
+import Achievements from '../achievements';
 
 function SinglePost(props) {
   const { post } = props.post;
@@ -111,7 +112,9 @@ function SinglePost(props) {
   return (
     <StyledSinglePostContainer ref={offsetRef}>
       <StyleSinglePost {...bind}>
-        <StyledSidebar style={spring}>
+        <StyledSidebar
+          style={spring}
+          className={props.screenWidth < 1024 ? 'hide' : ''}>
           <LikeButton
             token={props.user.token}
             isLiked={post.acf.post_likes.includes(props.user.id)}
@@ -150,26 +153,31 @@ function SinglePost(props) {
           </StyledAvatar>
           <StyledSinglePostAuthorDate>
             <StyledSinglePostAuthor>
-              {post._embedded['author']['0'].name}
+              <Achievements user={post._embedded['author']['0']} size={30} />
+              <span>{post._embedded['author']['0'].name}</span>
             </StyledSinglePostAuthor>
             <StyledSinglePostDate>
               {moment(post.date).format('MMM Do')}
-            <StyledDateViewsDivider />
+              <StyledDateViewsDivider />
               {props.views} views
             </StyledSinglePostDate>
           </StyledSinglePostAuthorDate>
           <StyledPostTaxonomies className="single-post">
-            {post._embedded['wp:term']['0']['0'].name !== 'Uncategorized' &&
-              post._embedded['wp:term']['0'].map((term, index) => (
-                <StyledPostTaxonomyItem data-tooltip="true" key={index}>
-                  <span
-                    className={getTaxonomyIcon(
-                      post._embedded['wp:term']['0'][index].name,
-                    )}
-                  />
-                  <Tooltip content={post._embedded['wp:term']['0'][index].name} />
-                </StyledPostTaxonomyItem>
-              ))}
+            {post._embedded['wp:term']['0'].map(
+              (term, index) =>
+                term.name !== 'Uncategorized' && (
+                  <StyledPostTaxonomyItem data-tooltip="true" key={index}>
+                    <span
+                      className={getTaxonomyIcon(
+                        post._embedded['wp:term']['0'][index].name,
+                      )}
+                    />
+                    <Tooltip
+                      content={post._embedded['wp:term']['0'][index].name}
+                    />
+                  </StyledPostTaxonomyItem>
+                ),
+            )}
           </StyledPostTaxonomies>
         </StyledSinglePostMeta>
         <StyledSinglePostImage
@@ -259,7 +267,8 @@ function SinglePost(props) {
   );
 }
 
-const mapStateToProps = ({ user, post }) => ({
+const mapStateToProps = ({ root, user, post }) => ({
+  screenWidth: root.screenWidth,
   isUpdatingLikes: post.isUpdatingLikes,
   views: post.views,
   user,

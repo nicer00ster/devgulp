@@ -48,7 +48,7 @@ function Drawer(props) {
             </StyledUserDataListItem>
             <StyledLogoutButton
               style={{ padding: '1.2rem' }}
-              onClick={() => props.logout()}>
+              onClick={() => props.logout(props.user.token)}>
               Sign out
             </StyledLogoutButton>
           </>

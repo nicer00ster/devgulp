@@ -164,6 +164,7 @@ function rest_get_comments($object, $field_name, $request) {
 
 function my_rest_prepare_user($data) {
     $_data = $data->data;
+//    $_user_meta = get_user_meta($_data['id']);
 
     $_data['avatar'] = $_data['acf']['avatar'];
     $data->data = $_data;
@@ -173,18 +174,23 @@ function my_rest_prepare_user($data) {
 
 add_filter('rest_prepare_user', 'my_rest_prepare_user', 10, 3);
 
-function prepare_user_achievements(WP_REST_Response $response, WP_User $user, WP_REST_Request $request ){
+function prepare_user_achievements(WP_REST_Response $response, WP_User $user, WP_REST_Request $request ) {
+    $data = $response->get_data();
+    $data['stats'] = [];
+
     if(in_array( 'administrator', $user->roles)) {
-        $data = $response->get_data();
-        $data['stats']['admin'] = true;
-
-        $response->set_data($data);
-    } else {
-        $data = $response->get_data();
-        $data['stats'] = [];
-
-        $response->set_data($data);
+        $data['stats']['core'] = true;
     }
+
+    $followers = count($data['acf']['user_followers']);
+
+    if($followers >= 20) {
+        $data['stats']['very_popular'] = true;
+    } else if($followers >= 5) {
+        $data['stats']['popular'] = true;
+    }
+
+    $response->set_data($data);
 
     return $response;
 }
@@ -243,14 +249,7 @@ function my_rest_prepare_post($data) {
 
 add_filter('rest_prepare_post', 'my_rest_prepare_post', 10, 3);
 
-add_action('rest_api_init', function() {
-    register_rest_route( 'wp/v2', '/views/(?P<id>\d+)', array(
-        'methods' => 'GET',
-        'callback' => 'post_views',
-    ));
-});
-
-function post_views(WP_REST_Request $request) {
+function rest_post_views(WP_REST_Request $request) {
     $post_id = $request['id'];
     if (get_post_status($post_id) === false) {
         return new WP_Error( 'error_no_post', 'Post ID Doesn\'t Exist.', array('status' => 404));
@@ -261,6 +260,13 @@ function post_views(WP_REST_Request $request) {
         return $views;
     }
 }
+
+add_action('rest_api_init', function() {
+    register_rest_route( 'wp/v2', '/views/(?P<id>\d+)', array(
+        'methods' => 'GET',
+        'callback' => 'rest_post_views',
+    ));
+});
 //add_filter( 'acf/rest_api/post/get_fields', function( $data ) {
 //    if (method_exists($data, 'get_data')) {
 //        $data = $data->get_data();

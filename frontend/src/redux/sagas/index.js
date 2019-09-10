@@ -18,7 +18,7 @@ import * as types from '../constants';
 function apiFetchToken(data) {
   return axios({
     method: 'post',
-    url: TOKEN_URL,
+    url: `${TOKEN_URL}`,
     data: {
       username: data.username,
       password: data.password,
@@ -29,12 +29,22 @@ function apiFetchToken(data) {
 function apiLogin(data) {
   return axios({
     method: 'post',
-    url: TOKEN_URL,
+    url: `${TOKEN_URL}`,
     data: {
       username: data.username,
       password: data.password,
     },
   });
+}
+
+function apiLogout(token) {
+  return axios({
+    method: 'post',
+    url: `${TOKEN_URL}/revoke`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(res => res);
 }
 
 async function apiRegister(data) {
@@ -57,10 +67,11 @@ function apiValidateToken() {
   return axios({
     method: 'post',
     headers: {
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     url: `${TOKEN_URL}/validate`,
-  });
+  }).then(token => token);
 }
 
 function apiFetchUsers() {
@@ -101,7 +112,7 @@ function apiFetchPostsByCategory(category, postCount, page, totalPosts) {
   let offset = postCount * page;
   let perPage = postCount;
 
-  if(offset > totalPosts) {
+  if (offset > totalPosts) {
     perPage = totalPosts - offset;
   }
 
@@ -209,7 +220,6 @@ async function apiUploadAvatar(token, media) {
       url: `${API_URL}/media`,
     })
       .then(image => {
-        console.log(image.data.media_details);
         return axios({
           method: 'post',
           url: `${ACF_URL}/users/${image.data.author}`,
@@ -374,18 +384,20 @@ function* loginSaga(data) {
       type: types.LOGIN_SUCCESS,
       result,
       avatar: userData.data.acf.avatar,
+      is_online: userData.data.is_online,
     });
   } catch (error) {
     yield put({ type: types.LOGIN_FAILURE, error });
   }
 }
 
-function* logoutSaga() {
-  yield delay(1500);
+function* logoutSaga(data) {
+  yield delay(1000);
   try {
-    yield put({ type: types.LOGOUT_SUCCESS });
+    const response = yield call(apiLogout, data.token);
+    yield put({ type: types.LOGOUT_SUCCESS, response });
   } catch (error) {
-    yield put({ type: types.LOGOUT_FAILURE });
+    yield put({ type: types.LOGOUT_FAILURE, error });
   }
 }
 
@@ -478,7 +490,13 @@ function* fetchPostsSaga(data) {
 
 function* fetchPostsByCategorySaga(data) {
   try {
-    const response = yield call(apiFetchPostsByCategory, data.category, data.postCount, data.page, data.totalPosts);
+    const response = yield call(
+      apiFetchPostsByCategory,
+      data.category,
+      data.postCount,
+      data.page,
+      data.totalPosts,
+    );
     yield put({
       type: types.FETCH_POSTS_BY_CATEGORY_SUCCESS,
       posts: response.data,
@@ -497,7 +515,12 @@ function* fetchPostSaga(data) {
     const author = yield call(apiFetchUser, response.data.author);
     const views = yield call(apiFetchPostViews, data.postId);
 
-    yield put({ type: types.FETCH_POST_SUCCESS, post: response.data, author, views: views.data });
+    yield put({
+      type: types.FETCH_POST_SUCCESS,
+      post: response.data,
+      author,
+      views: views.data,
+    });
   } catch (error) {
     yield put({ type: types.FETCH_POST_FAILURE, error });
   }

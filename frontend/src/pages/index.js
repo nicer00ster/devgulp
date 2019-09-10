@@ -22,10 +22,10 @@ function Index(props) {
               'Completely free and open source.',
               'Build your personal growth and career.',
               'No obnoxious fees to view content.',
-              'Help our community grow by providing value.',
+              'Or annoying ads that interrupt you.',
             ],
             styles: [
-              'Completely customize your UI.',
+              'Help the dev community by providing value.',
               'Express yourself freely.',
               '.',
               '.',

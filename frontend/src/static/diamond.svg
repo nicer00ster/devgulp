@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="51px" viewBox="0 0 52 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>diamond</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="diamond-1">
+            <g id="diamond" transform="translate(1.000000, 1.000000)">
+                <polygon id="Path" stroke="#1F222E" stroke-width="0.25" fill="#FFE182" fill-rule="nonzero" stroke-linejoin="round" points="35.1688477 15.3384793 25 49.9165899 50 15.3384793"></polygon>
+                <g id="Group" fill="#FFCD73" fill-rule="nonzero" stroke="#1F222E" stroke-linejoin="round" stroke-width="0.25">
+                    <polygon id="Path" points="10.3448242 0.0834101382 0 15.3384793 14.8311523 15.3384793"></polygon>
+                    <polygon id="Path" points="35.1688477 15.3384793 50 15.3384793 39.6551758 0.0834101382"></polygon>
+                    <polygon id="Path" points="35.1688477 15.3384793 25 0.0834101382 14.8311523 15.3384793"></polygon>
+                </g>
+                <polygon id="Path" stroke="#1F222E" stroke-width="0.25" fill="#FFAA64" fill-rule="nonzero" stroke-linejoin="round" points="25 0.0834101382 10.3448242 0.0834101382 14.8311523 15.3384793"></polygon>
+                <polygon id="Path" stroke="#1F222E" stroke-width="0.25" fill="#FFE182" fill-rule="nonzero" stroke-linejoin="round" points="39.6551758 0.0834101382 25 0.0834101382 35.1688477 15.3384793"></polygon>
+                <polygon id="Path" stroke="#1F222E" stroke-width="0.25" fill="#FFAA64" fill-rule="nonzero" stroke-linejoin="round" points="14.8311523 15.3384793 25 49.9165899 35.1688477 15.3384793"></polygon>
+                <polygon id="Path" stroke="#1F222E" stroke-width="0.25" fill="#FF8C5A" fill-rule="nonzero" stroke-linejoin="round" points="0 15.3384793 25 49.9165899 14.8311523 15.3384793"></polygon>
+                <g id="Level" transform="translate(19.000000, 35.000000)">
+                    <rect id="Rectangle" stroke="#1F222E" fill="#1F222E" x="0.5" y="1.5" width="29" height="12"></rect>
+                    <text id="LV.-1" fill="#FEFEFE" font-family="Krungthep" font-size="12" font-weight="bold">
+                        <tspan x="1" y="12">LV. 1</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

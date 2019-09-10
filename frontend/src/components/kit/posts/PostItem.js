@@ -25,7 +25,8 @@ function PostItem(props) {
       <Link href="/post/[id]" as={`/post/${props.post.id}`}>
         <a>
           <StyledPostTaxonomies>
-            {props.post._embedded['wp:term']['0']['0'].name !== 'Uncategorized' &&
+            {props.post._embedded['wp:term'] &&
+              props.post._embedded['wp:term']['0']['0'].name !== 'Uncategorized' &&
               props.post._embedded['wp:term']['0'].map((term, index) => (
                 <StyledPostTaxonomyItem key={index}>
                   <span
@@ -47,7 +48,10 @@ function PostItem(props) {
             />
             <StyledPostCommentCount>
               <i className="fal fa-comment-lines" />
-              <span>{props.post.comments.length} comment{props.post.comments.length === 1 ? '' : 's'}</span>
+              <span>
+                {props.post.comments.length} comment
+                {props.post.comments.length === 1 ? '' : 's'}
+              </span>
             </StyledPostCommentCount>
             <StyledDateAuthor>
               <StyledPostDateStamp>

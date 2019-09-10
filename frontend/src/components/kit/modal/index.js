@@ -26,7 +26,7 @@ function Modal(props) {
   useOnClickOutside(ref, () => closeModal());
 
   useEffect(() => {
-    if(props.modalOpen) {
+    if (props.modalOpen) {
       ref.current.querySelector('button').focus();
     }
   }, [props.modalOpen]);

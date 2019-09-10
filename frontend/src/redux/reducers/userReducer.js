@@ -5,6 +5,7 @@ const initialState = {
   username: '',
   email: '',
   avatar: '',
+  online: false,
   token: '',
   isAuthenticated: false,
   isRegistering: false,
@@ -32,14 +33,13 @@ export default function userReducer(state = initialState, action = {}) {
         id: action.user.id,
         token: action.token,
         avatar: action.user.acf.avatar,
+        online: action.user.is_online,
       };
     case types.FETCH_USER_FAILURE:
       return {
         ...state,
         checkingCredentials: false,
         isAuthenticated: false,
-        // hasError: true,
-        // errorMessage: action.error.message,
       };
     case types.LOGIN:
       return {
@@ -58,6 +58,7 @@ export default function userReducer(state = initialState, action = {}) {
         email: action.result.user_email,
         token: action.result.token,
         avatar: action.avatar,
+        online: action.is_online,
       };
     case types.LOGIN_FAILURE:
       return {

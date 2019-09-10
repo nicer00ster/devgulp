@@ -4,7 +4,6 @@ import { useSpring, config } from 'react-spring';
 import Link from 'next/link';
 import {
   StyledPosts,
-  StyledPostsContainer,
   StyledNoResults,
   StyledFilterNav,
   StyledFilterItems,
@@ -13,7 +12,7 @@ import {
 import {
   fetchPosts,
   fetchPostsByCategory,
-  filterTaxonomy
+  filterTaxonomy,
 } from '../../../redux/actions';
 import PostItem from './PostItem';
 import Pagination from './pagination';
@@ -43,7 +42,7 @@ function EnhancedPosts(props) {
   }
 
   useEffect(() => {
-    if(activeFilter === 1) {
+    if (activeFilter === 1) {
       props.fetchPosts(props.postCount, page, props.totalPosts);
     }
   }, [page]);
@@ -71,11 +70,11 @@ function EnhancedPosts(props) {
             ))}
         </StyledFilterItems>
       </StyledFilterNav>
-      <StyledPosts className={!props.posts.length ? 'no-results' : ''} style={spring}>
+      <StyledPosts
+        className={!props.posts.length ? 'no-results' : ''}
+        style={spring}>
         {props.posts &&
-          props.posts.map(post => (
-            <PostItem key={post.id} post={post} />
-          ))}
+          props.posts.map(post => <PostItem key={post.id} post={post} />)}
         {!props.posts.length ? (
           <StyledNoResults>
             No articles have been posted about {currentFilter}. Be the{' '}
@@ -87,15 +86,15 @@ function EnhancedPosts(props) {
         ) : null}
       </StyledPosts>
       {props.posts.length ? (
-          <Pagination
-              pages={pages()}
-              totalPosts={props.totalPosts}
-              totalPages={props.totalPages}
-              postCount={props.postCount}
-              postsLength={props.posts.length}
-              setPage={setPage}
-              page={page}
-          />
+        <Pagination
+          pages={pages()}
+          totalPosts={props.totalPosts}
+          totalPages={props.totalPages}
+          postCount={props.postCount}
+          postsLength={props.posts.length}
+          setPage={setPage}
+          page={page}
+        />
       ) : null}
     </>
   );

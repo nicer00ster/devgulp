@@ -38,11 +38,17 @@ const StyledSinglePostAuthorDate = styled.div`
   pointer-events: none;
 `;
 
-const StyledSinglePostAuthor = styled.p`
-  margin: 0;
-  font-weight: 800;
+const StyledSinglePostAuthor = styled.div`
+  display: inline-flex;
+  flex-direction: column;
   padding: 0.4rem;
   pointer-events: none;
+  span {
+    font-family: 'Trirong', serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-left: 0.4rem;
+  }
 `;
 
 const StyledSinglePostDate = styled.time`
@@ -77,6 +83,9 @@ const StyledSidebar = styled(animated.aside)`
   left: 50%;
   z-index: 99;
   will-change: opacity, transform;
+  &.hide {
+    display: none;
+  }
   & button {
     margin: 0.4rem 0;
   }
