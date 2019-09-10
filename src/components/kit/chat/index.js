@@ -5,11 +5,13 @@ import {
     StyledChat,
     StyledChatHeader,
     StyledChatHeaderMessaging,
-    StyledChatHeaderNewMessage,
+    StyledChatHeaderButton,
     StyledChatContent,
     StyledChatMessage,
     StyledChatInput,
     StyledChatUser,
+    StyledChatHeaderContainer,
+    StyledChatHeaderButtons,
 } from './chat.styles';
 import { StyledAvatar } from "../../header/header.styles";
 import {
@@ -51,7 +53,17 @@ function Chat(props) {
         resetChat();
     }
 
-    function handleChatWindow() {
+    function handleOnlineOffline(e) {
+        e.preventDefault();
+        if(props.connected) {
+            props.socket.emit('CLIENT_DISCONNECTION');
+        } else {
+            props.socket.emit('CLIENT_CONNECTION');
+        }
+    }
+
+    function handleChatWindow(e) {
+        e.preventDefault();
         set(!open);
         if(!open) {
             props.setMessagingUser(null);
@@ -96,30 +108,37 @@ function Chat(props) {
 
     return (
         <>
-        {props.chat.messagingUser && (
-            <UserMessage />
-        )}
+        {/*{props.chat.messagingUser && (*/}
+        {/*    <UserMessage />*/}
+        {/*)}*/}
         <StyledChat
             onSubmit={e => handleChatMessage(e)}
             style={chatSpring}
             ref={chatRef}>
-            <StyledChatHeader onClick={() => handleChatWindow()}>
-                <StyledAvatar className="no-touch">
-                    <img
-                        alt="Avatar"
-                        src={
-                            !props.user.avatar
-                                ? '/static/icons/default_avatar.png'
-                                : props.user.avatar
-                        }
-                    />
-                </StyledAvatar>
-                <StyledChatHeaderMessaging>
-                    Messenger
-                </StyledChatHeaderMessaging>
-                <StyledChatHeaderNewMessage className={open ? 'opened' : ''}>
-                    <i className="fal fa-chevron-up" />
-                </StyledChatHeaderNewMessage>
+            <StyledChatHeader>
+                <StyledChatHeaderContainer onClick={e => handleChatWindow(e)}>
+                    <StyledAvatar className="no-touch">
+                        <img
+                            alt="Avatar"
+                            src={
+                                !props.user.avatar
+                                    ? '/static/icons/default_avatar.png'
+                                    : props.user.avatar
+                            }
+                        />
+                    </StyledAvatar>
+                    <StyledChatHeaderMessaging>
+                        Messenger
+                    </StyledChatHeaderMessaging>
+                </StyledChatHeaderContainer>
+                <StyledChatHeaderButtons>
+                    <StyledChatHeaderButton onClick={e => handleOnlineOffline(e)}>
+                        <i className={`fal fa-power-off ${props.chat.connected ? 'online' : 'offline'}`} />
+                    </StyledChatHeaderButton>
+                    <StyledChatHeaderButton onClick={e => handleChatWindow(e)} className={open ? 'opened' : ''}>
+                        <i className="fal fa-chevron-up" />
+                    </StyledChatHeaderButton>
+                </StyledChatHeaderButtons>
             </StyledChatHeader>
             <StyledChatContent style={contentSpring}>
                 {props.users && (

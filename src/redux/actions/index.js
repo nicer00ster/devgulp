@@ -198,6 +198,18 @@ export function searchQuery(query) {
   };
 }
 
+export function chatConnect() {
+  return {
+    type: types.CHAT_CONNECTED,
+  };
+}
+
+export function chatDisconnect() {
+  return {
+    type: types.CHAT_DISCONNECTED,
+  };
+}
+
 export function setMessagingUser(user) {
   return {
     type: types.SET_MESSAGING_USER,

@@ -10,8 +10,14 @@ import {
   effects,
   mediaQuery,
 } from './layout.styles';
-import { fetchUser, screenResize } from '../../redux/actions';
+import {
+  fetchUser,
+  screenResize,
+  chatConnect,
+  chatDisconnect,
+} from '../../redux/actions';
 import { AppContext } from '../kit/notifications/provider';
+import * as types from '../../redux/constants';
 import Header from '../header';
 import Footer from '../footer';
 import Loading from '../../components/kit/loading';
@@ -35,7 +41,7 @@ function Layout(props) {
     props.screenResize(window.innerWidth);
   }
 
-  const socket = io('http://localhost:9000', ({
+  const socket = io('http://localhost:9000', {
     reconnect: true,
     forceNew: true,
     transports: ['websocket'],
@@ -43,7 +49,11 @@ function Layout(props) {
       userId: id,
       name: username,
     }
-  }));
+  });
+  //
+  // socket.on('reconnect_attempt', () => {
+  //   socket.io.opts.transports = ['polling', 'websocket'];
+  // });
 
   useEffect(() => {
     props.fetchUser();
@@ -65,20 +75,25 @@ function Layout(props) {
 
   // Websocket connection.
   useEffect(() => {
-    if(props.cookie) {
-      socket.on('connect', () => {
-        console.log('connected');
-      });
-      socket.on('disconnect', () => {
-        console.log('disconnected')
-      });
-    }
+    socket.emit(types.CLIENT_CONNECTION, username);
+
+    socket.on(types.SERVER_CONNECTION, () => {
+      props.chatConnect();
+      console.log('Connected: ', socket);
+    });
+
+    socket.on(types.SERVER_DISCONNECTION, (reason) => {
+      socket.emit(types.CLIENT_DISCONNECTION, username);
+      console.log(reason);
+      props.chatDisconnect();
+      console.log('Disconnected: ', socket)
+    });
   }, []);
 
   // Socket listener for chat messages.
   useEffect(() => {
     if(props.chat.message !== '') {
-      socket.emit('chat_message', { token: cookie, message: props.chat.message, messagingUser: props.chat.messagingUser.name });
+      socket.emit('chat_message', { userId: id, message: props.chat.message, messagingUser: props.chat.messagingUser.name });
     }
   }, [props.chat.message]);
 
@@ -102,7 +117,12 @@ function Layout(props) {
           <Notifications children={add => (state.notificationRef.current = add)} />
           <GlobalStyles />
           {props.children}
-          <Chat user={props.user} />
+          <Chat
+              socket={socket}
+              chatConnect={props.chatConnect}
+              chatDisconnect={props.chatDisconnect}
+              connected={props.chat.connected}
+              user={props.user} />
         </LayoutStyles>
         <Footer />
       </>
@@ -120,6 +140,8 @@ const mapStateToProps = ({ root, user, post, chat }) => ({
 const mapDispatchToProps = {
   fetchUser,
   screenResize,
+  chatConnect,
+  chatDisconnect,
 };
 
 export default connect(

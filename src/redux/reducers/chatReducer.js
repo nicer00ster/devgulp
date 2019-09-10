@@ -3,10 +3,21 @@ import * as types from '../constants';
 const initialState = {
     message: '',
     messagingUser: null,
+    connected: true,
 };
 
 export default function chatReducer(state = initialState, action = {}) {
     switch (action.type) {
+        case types.CHAT_CONNECTED:
+            return {
+                ...state,
+                connected: true,
+            };
+        case types.CHAT_DISCONNECTED:
+            return {
+                ...state,
+                connected: false,
+            };
         case types.SEND_MESSAGE:
             return {
                 ...state,

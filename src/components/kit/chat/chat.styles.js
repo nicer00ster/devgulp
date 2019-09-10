@@ -17,7 +17,6 @@ const StyledChatHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  padding: .8rem .4rem;
   cursor: pointer;
 `;
 
@@ -27,7 +26,7 @@ const StyledChatHeaderMessaging = styled.div`
   padding: .4rem;
 `;
 
-const StyledChatHeaderNewMessage = styled.button`
+const StyledChatHeaderButton = styled.button`
   background: none;
   border: 0;
   font-size: 16px;
@@ -36,6 +35,15 @@ const StyledChatHeaderNewMessage = styled.button`
   transition: transform 0.25s ease-in;
   &.opened {
     transform: rotate(180deg);
+  }
+  i {
+    color: ${props => props.theme.colors.lightBlack};
+    &.online {
+      color: ${props => props.theme.colors.green};
+    }
+    &.offline {
+      color: ${props => props.theme.colors.red};
+    }
   }
 `;
 
@@ -74,13 +82,27 @@ const StyledChatUser = styled.div`
   }
 `;
 
+const StyledChatHeaderContainer = styled.div`
+  display:flex;
+  align-items: center;
+  flex: 1 1 auto;
+  padding: .8rem .4rem;
+`;
+
+const StyledChatHeaderButtons = styled.div`
+  flex: 0 1 auto;
+  padding: .8rem .4rem;
+`;
+
 export {
   StyledChat,
   StyledChatHeader,
   StyledChatContent,
   StyledChatHeaderMessaging,
-  StyledChatHeaderNewMessage,
+  StyledChatHeaderButton,
   StyledChatMessage,
   StyledChatInput,
   StyledChatUser,
+  StyledChatHeaderContainer,
+  StyledChatHeaderButtons,
 };
