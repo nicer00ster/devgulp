@@ -4,38 +4,32 @@
     <title>gem-2</title>
     <desc>Created with Sketch.</desc>
     <g id="gem-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="gem" transform="translate(1.000000, 1.000000)">
-            <g fill-rule="nonzero" id="Path" stroke="#1F222E" stroke-width="0.25">
-                <polygon fill="#9BFCFF" points="15.6862745 -7.10542736e-15 5.88235294 15.4405578 13.3266081 20.5882353 22.4057461 20.4258452 22.5490196 11.50742"></polygon>
-                <polygon fill="#76E2F8" points="22.5545123 20.3968988 5.88235294 15.6862745 14.8085841 48.7248628 17.7459283 50 25.2657597 50 26.4705882 31.008301"></polygon>
-                <polygon fill="#28C7F7" points="28.0728165 14.4106024 22.5490196 20.3968988 25.190868 50 32.7150015 44.1656166 35.3736308 12.596836"></polygon>
-                <polygon fill="#76E2F8" points="22.5490196 20.3968988 35.2941176 12.4503723 15.8873595 0.0592147228"></polygon>
+        <g id="gem" transform="translate(1.000000, 1.000000)" fill-rule="nonzero" stroke="#1F222E" stroke-width="0.25">
+            <g id="Path">
+                <polygon fill="#B9CEFF" points="15.6862745 -7.10542736e-15 5.88235294 15.4405578 13.3266081 20.5882353 22.4057461 20.4258452 22.5490196 11.50742"></polygon>
+                <polygon fill="#76AEF8" points="22.5545123 20.3968988 5.88235294 15.6862745 14.8085841 48.7248628 17.7459283 50 25.2657597 50 26.4705882 31.008301"></polygon>
+                <polygon fill="#287AF7" points="28.0728165 14.4106024 22.5490196 20.3968988 25.190868 50 32.7150015 44.1656166 35.3736308 12.596836"></polygon>
+                <polygon fill="#76AEF8" points="22.5490196 20.3968988 35.2941176 12.4503723 15.8873595 0.0592147228"></polygon>
                 <polygon fill="#28C7F7" points="17.6470588 29.670931 11.3588676 30.7137149 10.3332994 38.2352941 7.84313725 43.1254059 10.6441011 50 17.6470588 50"></polygon>
-                <polygon fill="#76E2F8" points="1.33226763e-14 33.6898026 6.69817563 50 10.7843137 50 10.3332994 38.2352941 6.08678834 33.3333333"></polygon>
-                <polygon fill="#9BFCFF" points="-8.8817842e-15 33.6082037 10.3332994 38.2352941 17.6470588 29.670931 3.62825669 22.5490196"></polygon>
-                <polygon fill="#28C7F7" points="50 37.254902 44.2973626 33.3333333 38.2352941 34.7486016 31.9941095 42.5852648 30.8121656 50 37.505001 50"></polygon>
-                <polygon fill="#76E2F8" stroke-linejoin="round" points="38.2352941 34.9086547 50 37.254902 50 16.6666667 40.6523132 26.9569648"></polygon>
-                <polygon fill="#9BFCFF" stroke-linejoin="round" points="50 16.6666667 35.3635244 20.5882353 34.3137255 28.0561037 38.2352941 34.7486016"></polygon>
-                <polygon fill="#76E2F8" points="35.2941176 20.8901973 24.5098039 50 30.8121656 50 38.2352941 34.7486016"></polygon>
+                <polygon fill="#76AEF8" points="1.33226763e-14 33.6898026 6.69817563 50 10.7843137 50 10.3332994 38.2352941 6.08678834 33.3333333"></polygon>
+                <polygon fill="#B9CEFF" points="-8.8817842e-15 33.6082037 10.3332994 38.2352941 17.6470588 29.670931 3.62825669 22.5490196"></polygon>
+                <polygon fill="#287AF7" points="50 37.254902 44.2973626 33.3333333 38.2352941 34.7486016 31.9941095 42.5852648 30.8121656 50 37.505001 50"></polygon>
+                <polygon fill="#76AEF8" stroke-linejoin="round" points="38.2352941 34.9086547 50 37.254902 50 16.6666667 40.6523132 26.9569648"></polygon>
+                <polygon fill="#B9CEFF" stroke-linejoin="round" points="50 16.6666667 35.3635244 20.5882353 34.3137255 28.0561037 38.2352941 34.7486016"></polygon>
+                <polygon fill="#76AEF8" points="35.2941176 20.8901973 24.5098039 50 30.8121656 50 38.2352941 34.7486016"></polygon>
             </g>
-            <g transform="translate(6.000000, 15.000000)" fill-rule="nonzero" id="Path" stroke="#1F222E" stroke-width="0.25">
-                <polygon fill="#B9CEFF" stroke-linejoin="round" points="11.0609881 0 4 11 9.35986369 15 16 15 16 8.38397741"></polygon>
-                <polygon fill="#76B7F8" points="16 14.4220448 4 11 10.503397 34.1081326 12.6434621 35 18.1221964 35 19 21.7166631"></polygon>
-                <polygon fill="#287AF7" points="19.8764662 10.2608005 16 14.4220448 17.8539849 35 23.1342387 30.9443547 25 9"></polygon>
-                <polygon fill="#76AEF8" stroke-linejoin="round" points="16 14.4220448 25 9 11.0609881 -9.15873658e-15"></polygon>
-                <polygon fill="#287AF7" points="12 21 8.15162696 21.718133 6.74509804 26.6666667 6 30.26568 6.74509804 34.9165899 12 35"></polygon>
-                <polygon fill="#76AEF8" points="0 23.2566579 4.34772491 35 7 35 6.70725071 26.5294118 3.95087897 23"></polygon>
-                <polygon fill="#B9CEFF" points="0 23.2352941 6.74509804 26.6666667 12 20.9942404 2.46721455 16"></polygon>
-                <polygon fill="#287AF7" points="35 25.8235294 30.8391905 23 26.4161297 24.0189932 21.8623805 29.6613907 21 35 25.8832867 35"></polygon>
-                <polygon fill="#76AEF8" stroke-linejoin="round" points="27 24.2905913 35 26 35 10.7076342 28.6435729 18.4972172"></polygon>
-                <polygon fill="#B9CEFF" stroke-linejoin="round" points="35 10.7076342 25 15 24 20.1884312 26.75 25"></polygon>
-                <polygon fill="#76B7F8" stroke-linejoin="round" points="25 15 18 35 22.1325486 35 27 24.5214691"></polygon>
-            </g>
-            <g id="Level" transform="translate(17.000000, 35.000000)">
-                <rect id="Rectangle" stroke="#1F222E" fill="#1F222E" x="0.5" y="1.5" width="31" height="12"></rect>
-                <text id="LV.-2" fill="#FEFEFE" font-family="Krungthep" font-size="12" font-weight="bold">
-                    <tspan x="1" y="12">LV. 2</tspan>
-                </text>
+            <g transform="translate(6.000000, 15.000000)" id="Path">
+                <polygon fill="#9BFCFF" stroke-linejoin="round" points="11.0609881 0 4 11 9.35986369 15 16 15 16 8.38397741"></polygon>
+                <polygon fill="#76E2F8" points="16 14.4220448 4 11 10.503397 34.1081326 12.6434621 35 18.1221964 35 19 21.7166631"></polygon>
+                <polygon fill="#28C7F7" points="19.8764662 10.2608005 16 14.4220448 17.8539849 35 23.1342387 30.9443547 25 9"></polygon>
+                <polygon fill="#76E2F8" stroke-linejoin="round" points="16 14.4220448 25 9 11.0609881 -9.15873658e-15"></polygon>
+                <polygon fill="#28C7F7" points="12 21 8.15162696 21.718133 6.74509804 26.6666667 6 30.26568 6.74509804 34.9165899 12 35"></polygon>
+                <polygon fill="#76E2F8" points="0 23.2566579 4.34772491 35 7 35 6.70725071 26.5294118 3.95087897 23"></polygon>
+                <polygon fill="#9BFCFF" points="0 23.2352941 6.74509804 26.6666667 12 20.9942404 2.46721455 16"></polygon>
+                <polygon fill="#28C7F7" points="35 25.8235294 30.8391905 23 26.4161297 24.0189932 21.8623805 29.6613907 21 35 25.8832867 35"></polygon>
+                <polygon fill="#76E2F8" stroke-linejoin="round" points="27 24.2905913 35 26 35 10.7076342 28.6435729 18.4972172"></polygon>
+                <polygon fill="#9BFCFF" stroke-linejoin="round" points="35 10.7076342 25 15 24 20.1884312 26.75 25"></polygon>
+                <polygon fill="#76E2F8" stroke-linejoin="round" points="25 15 18 35 22.1325486 35 27 24.5214691"></polygon>
             </g>
         </g>
     </g>
