@@ -275,9 +275,11 @@ EOPHP
 		fi
 	fi
 
+	# Copy over the application files to ensure they are the latest version
+	cp -rf /opt/app/. /var/www/html/
+
 	# If the instance has not yet been configured, copy the plugins and API and run the wordpress install
 	if ! $(wp core is-installed); then
-		cp -rf /opt/app/. /var/www/html/
 		wp core install --url=$WORDPRESS_URL --title=$WORDPRESS_TITLE --admin_user=$WORDPRESS_ADMIN_USER --admin_password=$WORDPRESS_ADMIN_PASSWORD --admin_email=$WORDPRESS_ADMIN_EMAIL --skip-email
 		wp rewrite structure '/%postname%/'
 		wp plugin activate --all
