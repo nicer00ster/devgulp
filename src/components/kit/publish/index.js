@@ -194,8 +194,8 @@ function EnhancedPublish(props) {
           ref={emojiRef}
           onClick={emoji => addEmoji(emoji)}
           color="#80dad3"
-          title="DevGulp"
-          emoji="smile"
+          showPreview={false}
+          showSkinTones={false}
           set="twitter"
         />
       </StyledPublishEmojis>
