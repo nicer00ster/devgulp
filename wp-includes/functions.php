@@ -168,7 +168,6 @@ function my_rest_prepare_user($data) {
 
     $_data['avatar'] = $_data['acf']['avatar'];
     $data->data = $_data;
-
     return $data;
 }
 
