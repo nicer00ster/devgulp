@@ -19,7 +19,7 @@ export function deleteToken() {
 
 export function getTaxonomyIcon(taxonomy) {
   switch (taxonomy) {
-    case 'JavaScript':
+    case 'Javascript':
       return 'fab fa-js-square';
     case 'Python':
       return 'fab fa-python';
