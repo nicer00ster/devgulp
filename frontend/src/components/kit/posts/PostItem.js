@@ -68,7 +68,7 @@ function PostItem(props) {
             src={
               props.post._embedded && props.post._embedded['wp:featuredmedia']
                 ? props.post._embedded['wp:featuredmedia']['0'].source_url
-                : '/static/images/default_post.jpeg'
+                : '/static/images/default_post.jpg'
             }
           />
         </a>
