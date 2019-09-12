@@ -282,6 +282,7 @@ EOPHP
 	if ! $(wp core is-installed); then
 		wp core install --url=$WORDPRESS_URL --title=$WORDPRESS_TITLE --admin_user=$WORDPRESS_ADMIN_USER --admin_password=$WORDPRESS_ADMIN_PASSWORD --admin_email=$WORDPRESS_ADMIN_EMAIL --skip-email
 		wp rewrite structure '/%postname%/'
+		wp plugin install wordpress-importer --activate
 		wp plugin activate --all
 		wp config set SIMPLE_JWT_AUTHENTICATION_SECRET_KEY $JWT_AUTHENTICATION_SECRET_KEY
 		wp config set SIMPLE_JWT_AUTHENTICATION_CORS_ENABLE true --raw
@@ -290,6 +291,7 @@ EOPHP
 		wp option update users_can_register 1
 		wp option update show_avatars 0
 		wp option update comment_whitelist 0
+		wp import '/opt/misc/devgulp-content.xml' --authors=create
 	fi
 
 	# now that we're definitely done writing configuration, let's clear out the relevant environment variables (so that stray "phpinfo()" calls don't leak secrets from our code)
