@@ -22,6 +22,7 @@ import Hints from './hints';
 import Checkbox from '../checkbox';
 import Loading from '../loading';
 import Modal from '../modal';
+import Emotes from '../emotes';
 import {
   useInput,
   usePrevious,
@@ -176,7 +177,7 @@ function EnhancedPublish(props) {
     const emojiHTML = Emoji({
       html: true,
       set: 'twitter',
-      emoji: emoji.id,
+      emoji: emoji.custom ? emoji : emoji.id,
       size: 24,
     });
 
@@ -194,9 +195,15 @@ function EnhancedPublish(props) {
           ref={emojiRef}
           onClick={emoji => addEmoji(emoji)}
           color="#80dad3"
+          i18n={{
+            categories: {
+              custom: 'Blobs',
+            }
+          }}
           showPreview={false}
           showSkinTones={false}
           set="twitter"
+          custom={Emotes()}
         />
       </StyledPublishEmojis>
       <StyledPublishContainer
