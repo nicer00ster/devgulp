@@ -212,6 +212,7 @@ const StyledNoResults = styled.p`
   margin: 0 auto;
   font-size: 16px;
   text-align: center;
+  padding: 1.2rem 0;
 `;
 
 const StyledFilterNav = styled.nav`
