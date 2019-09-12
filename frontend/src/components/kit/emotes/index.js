@@ -14,7 +14,6 @@ function Emotes(props) {
 
     return (
         <Picker
-            ref={props.emojiRef}
             onClick={emoji => props.addEmoji(emoji)}
             color="#80dad3"
             i18n={{
@@ -22,10 +21,16 @@ function Emotes(props) {
                     custom: 'Blobs',
                 }
             }}
+            include={['recent', 'custom', 'people', 'foods']}
             showPreview={false}
             showSkinTones={false}
             set="twitter"
             custom={emojiData}
+            icons={{
+                categories: {
+                    custom: () => <img src='/static/emotes/blobs/blob-outline.png' />
+                }
+            }}
         />
     );
 }

@@ -36,7 +36,6 @@ import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
 function EnhancedPublish(props) {
   const router = useRouter();
   const bodyRef = useRef();
-  const emojiRef = useRef();
   const [bind, { width, height, left, top }] = useMeasure();
   const [body, setBody] = useState(null);
   const [bodyError, setBodyError] = useState(false);
@@ -204,7 +203,6 @@ function EnhancedPublish(props) {
       <StyledPublishEmojis disabled={!showEmojis} style={emojiSpring}>
         {emotes.length <= 0 ? null : (
             <Emotes
-                emojiRef={emojiRef}
                 emotes={emotes}
                 addEmoji={addEmoji} />
         )}
