@@ -14,8 +14,6 @@ function Help(props) {
     props.fetchPage(slug);
   }, []);
 
-  console.log(slug);
-
   return (
     <Container>
       {props.page.isFetchingPage ? (

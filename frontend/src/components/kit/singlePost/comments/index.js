@@ -74,7 +74,7 @@ function EnhancedComment(props) {
       key={comment.comment_ID}
       className={props.isChild ? 'comment-reply' : ''}>
       <StyledCommentContainer>
-        <Link href={`/user?userId=${comment.user_id}`}>
+        <Link href="/user/[id]" as={`/user/${comment.user_id}`}>
           <StyledCommentUserData
             aria-label={`Click to view ${comment.comment_author}'s profile.`}
             href="#">
@@ -100,7 +100,7 @@ function EnhancedComment(props) {
         </Link>
         <StyledCommentContentContainer>
           {comment.comment_parent != 0 && (
-            <Link href={`/user?userId=${comment.comment_parent_user_id}`}>
+            <Link href="/user/[id]" as={`/user/${comment.comment_parent_user_id}`}>
               <StyledCommentContentUserRef
                 aria-label={`Reply references ${comment.comment_parent_user}.`}
                 href="#">
