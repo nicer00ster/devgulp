@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>diamond-1</title>
+    <desc>Created with Sketch.</desc>
+    <g id="diamond-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g id="diamond" transform="translate(1.000000, 1.000000)" fill-rule="nonzero" stroke="#1F222E" stroke-width="0.25">
+            <polygon id="Path" fill="#FFE182" points="35.1688477 15.3384793 25 49.9165899 50 15.3384793"></polygon>
+            <g id="Group" fill="#FFCD73">
+                <polygon id="Path" points="10.3448242 0.0834101382 0 15.3384793 14.8311523 15.3384793"></polygon>
+                <polygon id="Path" points="35.1688477 15.3384793 50 15.3384793 39.6551758 0.0834101382"></polygon>
+                <polygon id="Path" points="35.1688477 15.3384793 25 0.0834101382 14.8311523 15.3384793"></polygon>
+            </g>
+            <polygon id="Path" fill="#FFAA64" points="25 0.0834101382 10.3448242 0.0834101382 14.8311523 15.3384793"></polygon>
+            <polygon id="Path" fill="#FFE182" points="39.6551758 0.0834101382 25 0.0834101382 35.1688477 15.3384793"></polygon>
+            <polygon id="Path" fill="#FFAA64" points="14.8311523 15.3384793 25 49.9165899 35.1688477 15.3384793"></polygon>
+            <polygon id="Path" fill="#FF8C5A" points="0 15.3384793 25 49.9165899 14.8311523 15.3384793"></polygon>
+        </g>
+    </g>
+</svg>

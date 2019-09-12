@@ -18,7 +18,7 @@ Instructions on how to get a local development copy up & running:
 # React installation.
 
 $ git clone https://github.com/nicer00ster/devgulp.git
-$ cd devgulp/src
+$ cd devgulp/frontend/src
 $ npm install
 $ npm run dev
 ```
@@ -30,24 +30,20 @@ Set up WordPress instance:
 # WordPress with Docker.
 
 $ cd devgulp
-$ docker-compose up -d
+$ docker-compose up -d --build
 
-# To Tear Down
-# Warning! This will delete everything you've done on your WordPress instance.
+# To Tear Down WITHOUT destroying database data
 
-$ docker-compose down --volumes
+$ docker-compose down
+
+# To Tear Down and destroy database data
+# Warning! This will delete everything you've done on your WordPress instance, including all posts and user accounts.
+# This is irreversible.
+
+$ docker-compose down -v
 ```
 
->
-> 1. After wordpress finishes installing head to http://localhost:8000 and finish setting up the installing of WordPress.
-> 2. Make sure the plugins for the REST API properly came over from cloning the repo. If they didn't just manually install and activate them.
-> 3. Go to `Settings -> Permalinks` and change `Common Settings` to `Post name` and click "Save Changes" at the bottom of the page.
-> 4. Enable CORS: SSH into your WordPress Docker instance by doing the following:
->   * Find your Container ID by typing `docker ps` in your terminal.
->   * Copy the ID; should look like `54014e8496dd` or something.
->   * Run `docker exec -it <container_id> /bin/bash` in your terminal to SSH into the container.
->   * Once you're in type: `a2enmod headers` to enable CORS on the Apache server.
->   * After you've enabled CORS, make sure you can upload an image via the `Publish` page on the front-end of DevGulp.
+> Head to http://localhost:8000 and confirm WordPress is running.
 
 ## Testing
 
@@ -63,6 +59,7 @@ This is the tech stack behind DevGulp.
 - [Styled Components](https://www.styled-components.com/)
 - [NextJS](https://nextjs.org/)
 - [WordPress REST API](https://developer.wordpress.org/rest-api/)
+- [Docker](https://www.docker.com/)
 
 
 ## Dev Tooling

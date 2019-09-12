@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>diamond-2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="diamond-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="diamond" transform="translate(1.000000, 1.000000)" fill-rule="nonzero" stroke="#1F222E" stroke-linejoin="round" stroke-width="0.25">
+            <polygon id="Path" fill="#FFC1C1" points="35.1688477 15.3384793 25 49.9165899 50 15.3384793"></polygon>
+            <g id="Group" fill="#FD8989">
+                <polygon id="Path" points="10.3448242 0.0834101382 0 15.3384793 14.8311523 15.3384793"></polygon>
+                <polygon id="Path" points="35.1688477 15.3384793 50 15.3384793 39.6551758 0.0834101382"></polygon>
+                <polygon id="Path" points="35.1688477 15.3384793 25 0.0834101382 14.8311523 15.3384793"></polygon>
+            </g>
+            <polygon id="Path" fill="#FF6E6E" points="25 0.0834101382 10.3448242 0.0834101382 14.8311523 15.3384793"></polygon>
+            <polygon id="Path" fill="#FFC1C1" points="39.6551758 0.0834101382 25 0.0834101382 35.1688477 15.3384793"></polygon>
+            <polygon id="Path" fill="#FF6E6E" points="14.8311523 15.3384793 25 49.9165899 35.1688477 15.3384793"></polygon>
+            <polygon id="Path" fill="#DF5B5B" points="0 15.3384793 25 49.9165899 14.8311523 15.3384793"></polygon>
+        </g>
+        <g id="diamond" transform="translate(1.000000, 16.000000)" fill-rule="nonzero" stroke="#1F222E" stroke-width="0.25">
+            <polygon id="Path" fill="#FFE182" stroke-linejoin="round" points="24.9148164 11 18 35 35 11"></polygon>
+            <g id="Group" fill="#FFCD73" stroke-linejoin="round">
+                <polygon id="Path" points="7 -4.4408921e-15 0 10.9405672 11.2 10.9405672"></polygon>
+                <polygon id="Path" points="25 11 35 11 28 0.0594328358"></polygon>
+                <polygon id="Path" points="25 11 18.3217539 0.0594328358 11.2 11"></polygon>
+            </g>
+            <polygon id="Path" fill="#FFAA64" stroke-linejoin="round" points="18.3217539 -8.8817842e-15 7 -8.8817842e-15 11.0556365 11"></polygon>
+            <polygon id="Path" fill="#FFE182" stroke-linejoin="round" points="28 0.0594328358 18.3217539 0 25 11"></polygon>
+            <polygon id="Path" fill="#FFAA64" points="11 11 18 34.9165899 25 11"></polygon>
+            <polygon id="Path" fill="#FF8C5A" stroke-linejoin="round" points="0 11 18 35 11.0769231 11"></polygon>
+        </g>
+    </g>
+</svg>
