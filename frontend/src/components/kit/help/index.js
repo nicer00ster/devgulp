@@ -9,8 +9,8 @@ import {
 } from './help.styles';
 
 function EnhancedHelp(props) {
-  if(!props.page.content) {
-    return <Error statusCode={404} />
+  if (!props.page.content) {
+    return <Error statusCode={404} />;
   }
   return (
     <StyledHelp>

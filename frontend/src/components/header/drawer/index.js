@@ -28,7 +28,7 @@ function Drawer(props) {
           <>
             <StyledUserDataListItem>
               <StyledAvatar size={52}>
-                <Link href='/user/[id]' as={`/user/${props.user.id}`}>
+                <Link href="/user/[id]" as={`/user/${props.user.id}`}>
                   <a onClick={props.closeDrawer}>
                     <img
                       src={

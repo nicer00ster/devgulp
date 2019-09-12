@@ -180,11 +180,14 @@ function SingleUser(props) {
           <StyledDivider />
           <StyledPosts columns={2} className={!posts.length ? 'no-results' : ''}>
             {posts &&
-            posts.map(post => (
+              posts.map(post => (
                 <PostItem className="flatten" key={post.id} post={post} />
-            ))}
+              ))}
             {!posts.length && (
-                <StyledNoResults>{isUsersProfile ? 'You have ' : `${author.name} has `} not published any stories yet.</StyledNoResults>
+              <StyledNoResults>
+                {isUsersProfile ? 'You have ' : `${author.name} has `} not
+                published any stories yet.
+              </StyledNoResults>
             )}
           </StyledPosts>
         </StyledSingleUserPosts>
