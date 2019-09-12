@@ -143,6 +143,16 @@ const GlobalStyles = createGlobalStyle`
     }
     .emoji-mart {
       width: 100% !important;
+      &-emoji {
+        &:hover {
+          span {
+            transform: scale(1.25);
+          }
+        }
+        span {
+          transition: 0.05s ease-in;
+        }
+      }
     }
     //.emoji-mart-bar:last-child {
     //  height: 0px !important;

@@ -40,6 +40,7 @@ function EnhancedPublish(props) {
   const [bind, { width, height, left, top }] = useMeasure();
   const [body, setBody] = useState(null);
   const [bodyError, setBodyError] = useState(false);
+  const [emotes, setEmotes] = useState([]);
   const [showEmojis, setShowEmojis] = useState(false);
   const [active, setActive] = useState();
   const [categories, setCategories] = useState([1]);
@@ -187,24 +188,26 @@ function EnhancedPublish(props) {
     placeCaretAtEnd(bodyRef.current);
   }
 
+  useEffect(() => {
+    fetch('http://localhost:3000/emotes', {
+      method: 'post',
+    })
+    .then(res => res.json())
+    .then(data => {
+      setEmotes(data.emotes);
+    })
+  }, []);
+
   return (
     <StyledPublish {...bind}>
       <Hints />
       <StyledPublishEmojis disabled={!showEmojis} style={emojiSpring}>
-        <Picker
-          ref={emojiRef}
-          onClick={emoji => addEmoji(emoji)}
-          color="#80dad3"
-          i18n={{
-            categories: {
-              custom: 'Blobs',
-            }
-          }}
-          showPreview={false}
-          showSkinTones={false}
-          set="twitter"
-          custom={Emotes()}
-        />
+        {emotes.length <= 0 ? null : (
+            <Emotes
+                emojiRef={emojiRef}
+                emotes={emotes}
+                addEmoji={addEmoji} />
+        )}
       </StyledPublishEmojis>
       <StyledPublishContainer
         showEmojis={showEmojis}
