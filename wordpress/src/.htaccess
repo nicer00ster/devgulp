@@ -1,14 +1,14 @@
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
-RewriteBase /
 RewriteEngine On
-
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{HTTP:Authorization} ^(.*)
-
 RewriteRule . /index.php [L]
-RewriteRule ^index\.php$ - [L]
+# END WordPress
+
+RewriteCond %{HTTP:Authorization} ^(.*)
 RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
 
 SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
@@ -28,5 +28,3 @@ php_value upload_max_filesize 3M
 #       allow from all
 #    </FilesMatch>
 #</IfModule>
-
-# END WordPress

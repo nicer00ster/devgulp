@@ -1,3 +1,4 @@
+import Error from 'next/error';
 import {
   StyledHelp,
   StyledHelpHeader,
@@ -8,6 +9,9 @@ import {
 } from './help.styles';
 
 function EnhancedHelp(props) {
+  if(!props.page.content) {
+    return <Error statusCode={404} />
+  }
   return (
     <StyledHelp>
       <StyledHelpHeader>

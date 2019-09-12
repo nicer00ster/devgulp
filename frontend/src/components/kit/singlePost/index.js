@@ -131,7 +131,7 @@ function SinglePost(props) {
         </StyledSidebar>
         <StyledSinglePostHeading>{post.title.rendered}</StyledSinglePostHeading>
         <StyledSinglePostMeta>
-          <StyledAvatar tabIndex="-1" size={52}>
+          <StyledAvatar tabIndex="-1" size={96}>
             <Link
               href="/user/[id]"
               as={`/user/${post._embedded['author']['0'].id}`}>
