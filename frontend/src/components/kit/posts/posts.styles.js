@@ -43,7 +43,7 @@ const StyledPost = styled.li`
   border-radius: ${props => props.theme.effects.radius};
   background-color: ${props => props.theme.colors.white};
   width: 100%;
-  height: 150px;
+  height: 165px;
   z-index: 1;
   bottom: 0;
   cursor: pointer;
@@ -51,6 +51,7 @@ const StyledPost = styled.li`
   &.flatten {
     box-shadow: none;
     border: 1px solid ${props => props.theme.colors.grey};
+    transition: box-shadow 0.15s ease-in, bottom 0.25s ease;
   }
   &:hover,
   &:active {
@@ -135,10 +136,19 @@ const StyledPostAuthor = styled.div`
 
 const StyledPostExcerpt = styled.div`
   color: ${props => props.theme.colors.lightBlack};
-  font-style: italic;
+  font-weight: bold;
   font-size: 12px;
   & p {
     margin: 0;
+  }
+`;
+
+const StyledPostCommentCount = styled.div`
+  color: ${props => props.theme.colors.lightBlack};
+  margin: 0.4rem 0;
+  font-size: 12px;
+  span {
+    margin-left: 0.4rem;
   }
 `;
 
@@ -255,15 +265,6 @@ const StyledFilterItem = styled.button`
   &.active-filter {
     color: ${props => props.theme.colors.white};
     background-color: ${props => props.theme.colors.black};
-  }
-`;
-
-const StyledPostCommentCount = styled.div`
-  color: ${props => props.theme.colors.lightBlack};
-  margin: 0.4rem 0;
-  font-size: 12px;
-  span {
-    margin-left: 0.4rem;
   }
 `;
 

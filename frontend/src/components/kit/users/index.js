@@ -34,7 +34,7 @@ function EnhancedUsers(props) {
                     alt="Avatar"
                     src={
                       !props.users[index].avatar
-                        ? '/static/icons/default_avatar.png'
+                        ? '/static/images/default_avatar.png'
                         : props.users[index].avatar
                     }
                   />

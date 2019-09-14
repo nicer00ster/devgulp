@@ -125,7 +125,7 @@
 		<wp:term_parent><![CDATA[]]></wp:term_parent>
 		<wp:term_name><![CDATA[Uncategorized]]></wp:term_name>
 	</wp:term>
-		
+
 	<generator>https://wordpress.org/?v=5.2.2</generator>
 
 		<item>
@@ -559,7 +559,7 @@
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost:8000/?post_type=acf-field&#038;p=71</guid>
 		<description></description>
-		<content:encoded><![CDATA[a:7:{s:4:"type";s:3:"url";s:12:"instructions";s:0:"";s:8:"required";i:0;s:17:"conditional_logic";i:0;s:7:"wrapper";a:3:{s:5:"width";s:0:"";s:5:"class";s:0:"";s:2:"id";s:0:"";}s:13:"default_value";s:53:"http://localhost:3000/static/icons/default_avatar.png";s:11:"placeholder";s:0:"";}]]></content:encoded>
+		<content:encoded><![CDATA[a:7:{s:4:"type";s:3:"url";s:12:"instructions";s:0:"";s:8:"required";i:0;s:17:"conditional_logic";i:0;s:7:"wrapper";a:3:{s:5:"width";s:0:"";s:5:"class";s:0:"";s:2:"id";s:0:"";}s:13:"default_value";s:53:"http://localhost:3000/static/images/default_avatar.png";s:11:"placeholder";s:0:"";}]]></content:encoded>
 		<excerpt:encoded><![CDATA[avatar]]></excerpt:encoded>
 		<wp:post_id>71</wp:post_id>
 		<wp:post_date><![CDATA[2019-09-11 23:58:37]]></wp:post_date>
@@ -814,7 +814,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://localhost:3000/static/icons/default_avatar.png]]></wp:meta_value>
+		<wp:meta_value><![CDATA[http://localhost:3000/static/images/default_avatar.png]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
@@ -947,4 +947,3 @@
 							</item>
 				</channel>
 </rss>
-	

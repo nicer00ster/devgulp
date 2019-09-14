@@ -139,7 +139,7 @@ function SinglePost(props) {
                 <img
                   src={
                     !post._embedded['author']['0'].acf.avatar
-                      ? '/static/icons/default_avatar.png'
+                      ? '/static/images/default_avatar.png'
                       : post._embedded['author']['0'].acf.avatar
                   }
                   alt={
@@ -242,7 +242,7 @@ function SinglePost(props) {
             <img
               src={
                 !props.user.avatar
-                  ? '/static/icons/default_avatar.png'
+                  ? '/static/images/default_avatar.png'
                   : props.user.avatar
               }
               alt={props.user.username}
