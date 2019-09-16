@@ -14,6 +14,7 @@ services:
       MYSQL_PASSWORD: wordpress
     networks:
       - wpsite
+
   # phpmyadmin
   phpmyadmin:
     depends_on:
@@ -27,6 +28,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
     networks:
       - wpsite
+
   # Wordpress
   wordpress:
     depends_on:
@@ -50,6 +52,15 @@ services:
       JWT_AUTHENTICATION_SECRET_KEY: secretkey
     networks:
       - wpsite
+
+  # Frontend Express/Next
+  frontend:
+    build: frontend
+    image: devgulp_frontend
+    ports:
+      - '80:3000'
+    restart: unless-stopped
+
 networks:
   wpsite:
 volumes:
