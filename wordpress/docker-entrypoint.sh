@@ -112,11 +112,6 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		: "${WORDPRESS_DB_COLLATE:=}"
 		: "${WORDPRESS_TABLE_PREFIX:=wp_}"
 
-		# version 4.4.1 decided to switch to windows line endings, that breaks our seds and awks
-		# https://github.com/docker-library/wordpress/issues/116
-		# https://github.com/WordPress/WordPress/commit/1acedc542fba2482bab88ec70d4bea4b997a92e4
-		sed -ri -e 's/\r$//' wp-config*
-
 		if [ ! -e wp-config.php ]; then
 			wp config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --dbprefix=$WORDPRESS_TABLE_PREFIX --dbcharset=$WORDPRESS_DB_CHARSET --dbcollate=$WORDPRESS_DB_COLLATE
 		fi
