@@ -60,6 +60,8 @@ services:
     ports:
       - '80:3000'
     restart: unless-stopped
+    environment:
+      API_URL: http://localhost:8000 # set this to your docker-machine url and port (for wordpress)
 
 networks:
   wpsite:

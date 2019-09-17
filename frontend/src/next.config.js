@@ -36,3 +36,9 @@ function moduleExists(name) {
 module.exports = moduleExists('next-offline')
   ? withOffline(nextConfig)
   : nextConfig;
+
+module.exports = {
+  publicRuntimeConfig: {
+    API_URL: process.env.API_URL ? process.env.API_URL : 'http://localhost:8000'
+  }
+}

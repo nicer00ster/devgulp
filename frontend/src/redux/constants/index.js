@@ -1,5 +1,8 @@
 // API URL
-const BASE_URL = 'http://localhost:8000';
+import getConfig from 'next/config'
+const { publicRuntimeConfig } = getConfig()
+
+const BASE_URL = publicRuntimeConfig.API_URL;
 export const API_URL = BASE_URL + '/wp-json/wp/v2';
 export const TOKEN_URL = BASE_URL + '/wp-json/simple-jwt-authentication/v1/token';
 export const ACF_URL = BASE_URL + '/wp-json/acf/v3';
