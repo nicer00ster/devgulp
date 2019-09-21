@@ -1,6 +1,6 @@
 // API URL
-import getConfig from 'next/config'
-const { publicRuntimeConfig } = getConfig()
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 
 const BASE_URL = publicRuntimeConfig.API_URL;
 export const API_URL = BASE_URL + '/wp-json/wp/v2';
