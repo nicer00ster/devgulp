@@ -1,0 +1,21 @@
+{
+  "name": "DevGulp",
+  "short_name": "DevGulp",
+  "icons": [
+    {
+      "src": "/static/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#fefefe",
+  "description": "A platform built by developers, for developers.",
+  "display": "fullscreen",
+  "start_url": "/",
+  "theme_color": "#1f222e"
+}
