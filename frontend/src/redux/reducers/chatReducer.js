@@ -3,7 +3,7 @@ import * as types from '../constants';
 const initialState = {
   message: '',
   messagingUser: null,
-  connected: true,
+  connected: false,
 };
 
 export default function chatReducer(state = initialState, action = {}) {

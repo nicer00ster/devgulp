@@ -19,6 +19,7 @@ import { StyledAvatar } from '../../header/header.styles';
 import { fetchUsers, sendMessage, setMessagingUser } from '../../../redux/actions';
 import { useInput } from '../../../hooks';
 import Input from '../input';
+import Loading from '../loading';
 import UserMessage from './userMessage';
 
 function Chat(props) {
@@ -176,13 +177,24 @@ function Chat(props) {
                 ),
             ) : (
                 <StyledChatDisconnected>
-                  <i className="fal fa-signal-alt-slash" />
+                  <i className="fal fa-bolt" />
                   <p>Not Connected.</p>
                 </StyledChatDisconnected>
               )}
           {props.chat.messagingUser && (
             <div>
               Starting chat with {props.chat.messagingUser.name}
+              <StyledChatMessage style={messageSpring}>
+                {props.chat.messagingUser && (
+                    <Input
+                        type="text"
+                        name="chat"
+                        label={`Messaging ${props.chat.messagingUser.name}`}
+                        error={chatError}
+                        bind={bindChat}
+                        styles={{ padding: '0 !important' }} />
+                )}
+              </StyledChatMessage>
             </div>
           )}
         </StyledChatContent>
