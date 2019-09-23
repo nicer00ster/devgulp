@@ -16,6 +16,7 @@ COPY src /opt/app/
 RUN a2enmod headers
 
 COPY docker-entrypoint.sh /usr/local/bin/
+COPY devgulp-content.xml /opt/misc/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]

@@ -190,7 +190,7 @@ function Header(props) {
                       alt="Avatar"
                       src={
                         !props.user.avatar
-                          ? '/static/icons/default_avatar.png'
+                          ? '/static/images/default_avatar.png'
                           : props.user.avatar
                       }
                     />

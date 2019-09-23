@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledEditProfile = styled.div`
-  margin: 4rem 0;
+  padding: 2rem 0;
 `;
 
 const StyledEditForm = styled.form`

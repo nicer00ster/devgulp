@@ -82,7 +82,7 @@ function EnhancedComment(props) {
               <img
                 src={
                   !comment.comment_author_avatar
-                    ? '/static/icons/default_avatar.png'
+                    ? '/static/images/default_avatar.png'
                     : comment.comment_author_avatar
                 }
                 alt={props.user.username}
