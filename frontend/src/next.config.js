@@ -33,6 +33,10 @@ function moduleExists(name) {
   }
 }
 
-module.exports = moduleExists('next-offline')
-  ? withOffline(nextConfig)
-  : nextConfig;
+require('dotenv').config();
+
+module.exports = {
+  publicRuntimeConfig: {
+    API_URL: process.env.API_URL,
+  },
+};

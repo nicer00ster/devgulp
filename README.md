@@ -13,23 +13,41 @@
 
 ## Installation
 
-Instructions on how to get a local development copy up & running:
+To spin up the whole application:
+<br/>
+**Make sure to install the latest version of [Docker](https://www.docker.com/) before continuing**
 ```sh
-# React installation.
-
 $ git clone https://github.com/nicer00ster/devgulp.git
+$ cd devgulp
+$ docker-compose up -d
+```
+
+Connect to http://localhost and confirm it is working.
+
+If you need to run on different host ports, edit the appropriate port lines in docker-compose.yaml. The ports are declared as \<HostPort\>:\<ContainerPort\>.
+
+
+Instructions on how to get a local development copy of the frontend up & running:
+```sh
+# Initial installation
 $ cd devgulp/frontend/src
+$ cp .env.defaults .env
 $ npm install
+# Run
 $ npm run dev
 ```
 
 Set up WordPress instance:
 <br />
-**Make sure to install the latest version of [Docker](https://www.docker.com/) before continuing**
 ```sh
 # WordPress with Docker.
+# To start up initially
 
 $ cd devgulp
+$ docker-compose up -d
+
+# To rebuild after making changes to the api
+
 $ docker-compose up -d --build
 
 # To Tear Down WITHOUT destroying database data
@@ -43,7 +61,7 @@ $ docker-compose down
 $ docker-compose down -v
 ```
 
-> Head to http://localhost:8000 and confirm WordPress is running.
+> Head to http://localhost:8000 and confirm WordPress is running. If your Docker instance is not running on localhost, you will need to modify `WORDPRESS_URL` and `API_URL` in `docker-compose.yml` (and `API_URL` in your frontend `.env` file for development).
 
 ## Testing
 

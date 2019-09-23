@@ -14,6 +14,7 @@ services:
       MYSQL_PASSWORD: wordpress
     networks:
       - wpsite
+
   # phpmyadmin
   phpmyadmin:
     depends_on:
@@ -27,6 +28,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
     networks:
       - wpsite
+
   # Wordpress
   wordpress:
     depends_on:
@@ -40,7 +42,7 @@ services:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_URL: localhost:8000 # set this to your docker-machine url and port
+      WORDPRESS_URL: localhost:8000 # set this to your docker-machine address and port
       WORDPRESS_TITLE: DevGulp
       WORDPRESS_TAGLINE: A platform built for developers, by developers.
       WORDPRESS_DEFAULT_ROLE: author
@@ -50,6 +52,17 @@ services:
       JWT_AUTHENTICATION_SECRET_KEY: secretkey
     networks:
       - wpsite
+
+  # Frontend Express/Next
+  frontend:
+    build: frontend
+    image: devgulp_frontend
+    ports:
+      - '80:3000'
+    restart: unless-stopped
+    environment:
+      API_URL: http://localhost:8000 # set this to your docker-machine url and port (for wordpress)
+
 networks:
   wpsite:
 volumes:

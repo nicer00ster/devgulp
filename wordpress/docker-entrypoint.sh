@@ -46,7 +46,47 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 	fi
 
 	if [ ! -e index.php ] && [ ! -e wp-includes/version.php ]; then
-		wp core download
+		# if the directory exists and WordPress doesn't appear to be installed AND the permissions of it are root:root, let's chown it (likely a Docker-created directory)
+		if [ "$(id -u)" = '0' ] && [ "$(stat -c '%u:%g' .)" = '0:0' ]; then
+			chown "$user:$group" .
+		fi
+
+		echo >&2 "WordPress not found in $PWD - copying now..."
+		if [ -n "$(ls -A)" ]; then
+			echo >&2 "WARNING: $PWD is not empty! (copying anyhow)"
+		fi
+		sourceTarArgs=(
+			--create
+			--file -
+			--directory /usr/src/wordpress
+			--owner "$user" --group "$group"
+		)
+		targetTarArgs=(
+			--extract
+			--file -
+		)
+		if [ "$user" != '0' ]; then
+			# avoid "tar: .: Cannot utime: Operation not permitted" and "tar: .: Cannot change mode to rwxr-xr-x: Operation not permitted"
+			targetTarArgs+=( --no-overwrite-dir )
+		fi
+		tar "${sourceTarArgs[@]}" . | tar "${targetTarArgs[@]}"
+		echo >&2 "Complete! WordPress has been successfully copied to $PWD"
+		if [ ! -e .htaccess ]; then
+			# NOTE: The "Indexes" option is disabled in the php:apache base image
+			cat > .htaccess <<-'EOF'
+				# BEGIN WordPress
+				<IfModule mod_rewrite.c>
+				RewriteEngine On
+				RewriteBase /
+				RewriteRule ^index\.php$ - [L]
+				RewriteCond %{REQUEST_FILENAME} !-f
+				RewriteCond %{REQUEST_FILENAME} !-d
+				RewriteRule . /index.php [L]
+				</IfModule>
+				# END WordPress
+			EOF
+			chown "$user:$group" .htaccess
+		fi
 	fi
 
 	# allow any of these "Authentication Unique Keys and Salts." to be specified via
@@ -112,11 +152,6 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		: "${WORDPRESS_DB_COLLATE:=}"
 		: "${WORDPRESS_TABLE_PREFIX:=wp_}"
 
-		# version 4.4.1 decided to switch to windows line endings, that breaks our seds and awks
-		# https://github.com/docker-library/wordpress/issues/116
-		# https://github.com/WordPress/WordPress/commit/1acedc542fba2482bab88ec70d4bea4b997a92e4
-		sed -ri -e 's/\r$//' wp-config*
-
 		if [ ! -e wp-config.php ]; then
 			wp config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --dbprefix=$WORDPRESS_TABLE_PREFIX --dbcharset=$WORDPRESS_DB_CHARSET --dbcollate=$WORDPRESS_DB_COLLATE
 		fi
@@ -140,7 +175,7 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 	if ! $(wp core is-installed); then
 		wp core install --url=$WORDPRESS_URL --title=$WORDPRESS_TITLE --admin_user=$WORDPRESS_ADMIN_USER --admin_password=$WORDPRESS_ADMIN_PASSWORD --admin_email=$WORDPRESS_ADMIN_EMAIL --skip-email
 		wp rewrite structure '/%postname%/'
-		wp plugin install wordpress-importer --activate
+		wp plugin install wordpress-importer
 		wp plugin activate --all
 		wp config set SIMPLE_JWT_AUTHENTICATION_SECRET_KEY $JWT_AUTHENTICATION_SECRET_KEY
 		wp config set SIMPLE_JWT_AUTHENTICATION_CORS_ENABLE true --raw
