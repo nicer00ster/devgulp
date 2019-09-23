@@ -29,9 +29,11 @@ If you need to run on different host ports, edit the appropriate port lines in d
 
 Instructions on how to get a local development copy of the frontend up & running:
 ```sh
-# React installation.
+# Initial installation
 $ cd devgulp/frontend/src
+$ cp .env.defaults .env
 $ npm install
+# Run
 $ npm run dev
 ```
 
