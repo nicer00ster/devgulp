@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import io from "socket.io-client";
+import io from 'socket.io-client';
 import {
   LayoutStyles,
   GlobalStyles,
@@ -45,10 +45,11 @@ function Layout(props) {
     reconnect: true,
     forceNew: true,
     transports: ['websocket'],
+    reconnectionDelay: 5000,
     query: {
       userId: id,
       name: username,
-    }
+    },
   });
   //
   // socket.on('reconnect_attempt', () => {
@@ -82,18 +83,22 @@ function Layout(props) {
       console.log('Connected: ', socket);
     });
 
-    socket.on(types.SERVER_DISCONNECTION, (reason) => {
+    socket.on(types.SERVER_DISCONNECTION, reason => {
       socket.emit(types.CLIENT_DISCONNECTION, username);
       console.log(reason);
       props.chatDisconnect();
-      console.log('Disconnected: ', socket)
+      console.log('Disconnected: ', socket);
     });
   }, []);
 
   // Socket listener for chat messages.
   useEffect(() => {
-    if(props.chat.message !== '') {
-      socket.emit('chat_message', { userId: id, message: props.chat.message, messagingUser: props.chat.messagingUser.name });
+    if (props.chat.message !== '') {
+      socket.emit('chat_message', {
+        userId: id,
+        message: props.chat.message,
+        messagingUser: props.chat.messagingUser.name,
+      });
     }
   }, [props.chat.message]);
 
@@ -118,11 +123,12 @@ function Layout(props) {
           <GlobalStyles />
           {props.children}
           <Chat
-              socket={socket}
-              chatConnect={props.chatConnect}
-              chatDisconnect={props.chatDisconnect}
-              connected={props.chat.connected}
-              user={props.user} />
+            socket={socket}
+            chatConnect={props.chatConnect}
+            chatDisconnect={props.chatDisconnect}
+            connected={props.chat.connected}
+            user={props.user}
+          />
         </LayoutStyles>
         <Footer />
       </>

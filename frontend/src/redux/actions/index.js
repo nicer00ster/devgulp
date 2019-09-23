@@ -214,7 +214,7 @@ export function setMessagingUser(user) {
   return {
     type: types.SET_MESSAGING_USER,
     user,
-  }
+  };
 }
 
 export function sendMessage(token, message) {

@@ -7,10 +7,8 @@ const StyledUserMessage = styled.div`
   left: 0;
   box-shadow: ${props => props.theme.effects.shadow};
   border-top-right-radius: ${props => props.theme.effects.radius};
-  border-top-left-radius: ${props => props.theme.effects.radius}; 
+  border-top-left-radius: ${props => props.theme.effects.radius};
   background-color: ${props => props.theme.colors.white};
 `;
 
-export {
-    StyledUserMessage,
-};
+export { StyledUserMessage };
