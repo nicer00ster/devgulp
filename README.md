@@ -31,7 +31,6 @@ Instructions on how to get a local development copy of the frontend up & running
 ```sh
 # Initial installation
 $ cd devgulp/frontend/src
-$ cp .env.defaults .env
 $ npm install
 # Run
 $ npm run dev

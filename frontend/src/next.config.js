@@ -23,6 +23,9 @@ const nextConfig = {
   },
   crossOrigin: 'anonymous',
   target: 'serverless',
+  env: {
+    API_URL: process.env.API_URL,
+  },
 };
 
 function moduleExists(name) {
@@ -33,10 +36,8 @@ function moduleExists(name) {
   }
 }
 
-require('dotenv').config();
+require('dotenv-defaults').config()
 
-module.exports = {
-  publicRuntimeConfig: {
-    API_URL: process.env.API_URL,
-  },
-};
+module.exports = moduleExists('next-offline')
+  ? withOffline(nextConfig)
+  : nextConfig;
