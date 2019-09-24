@@ -36,7 +36,7 @@ function moduleExists(name) {
   }
 }
 
-require('dotenv-defaults').config()
+require('dotenv-defaults').config();
 
 module.exports = moduleExists('next-offline')
   ? withOffline(nextConfig)
