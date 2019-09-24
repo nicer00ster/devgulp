@@ -26,6 +26,7 @@
     "babel-plugin-inline-react-svg": "^1.1.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.1.0",
+    "dotenv-defaults": "^1.0.2",
     "emoji-mart": "^2.11.1",
     "express": "^4.17.1",
     "lodash.debounce": "^4.0.8",
