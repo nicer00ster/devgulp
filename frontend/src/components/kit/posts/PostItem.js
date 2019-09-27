@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import moment from 'moment';
+import { getTaxonomyIcon } from '../../../utils';
 import {
   StyledPost,
   StyledDateAuthor,
@@ -12,9 +15,6 @@ import {
   StyledPostTitle,
   StyledPostCommentCount,
 } from './posts.styles';
-import Link from 'next/link';
-import { getTaxonomyIcon } from '../../../utils';
-import moment from 'moment';
 
 function PostItem(props) {
   return (
@@ -38,22 +38,23 @@ function PostItem(props) {
               ))}
           </StyledPostTaxonomies>
           <StyledPostContent>
-            <StyledPostTitle>
+            <StyledPostTitle size={14}>
               {props.post.title.rendered || props.post.title}
             </StyledPostTitle>
             <StyledPostExcerpt
+              size={12}
               dangerouslySetInnerHTML={{
                 __html: props.post.excerpt.rendered,
               }}
             />
-            <StyledPostCommentCount>
+            <StyledPostCommentCount size={12}>
               <i className="fal fa-comment-lines" />
               <span>
                 {props.post.comments.length} comment
                 {props.post.comments.length === 1 ? '' : 's'}
               </span>
             </StyledPostCommentCount>
-            <StyledDateAuthor>
+            <StyledDateAuthor size={12}>
               <StyledPostDateStamp>
                 {moment(props.post.date).format('MMM Do')}
               </StyledPostDateStamp>

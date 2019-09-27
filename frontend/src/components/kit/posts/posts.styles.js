@@ -126,7 +126,7 @@ const StyledPostContent = styled.div`
 
 const StyledPostTitle = styled.div`
   font-family: 'Trirong', serif;
-  font-size: 14px;
+  font-size: ${props => props.size}px;
   font-weight: 900;
 `;
 
@@ -137,7 +137,7 @@ const StyledPostAuthor = styled.div`
 const StyledPostExcerpt = styled.div`
   color: ${props => props.theme.colors.lightBlack};
   font-weight: bold;
-  font-size: 12px;
+  font-size: ${props => props.size}px;
   & p {
     margin: 0;
   }
@@ -146,7 +146,7 @@ const StyledPostExcerpt = styled.div`
 const StyledPostCommentCount = styled.div`
   color: ${props => props.theme.colors.lightBlack};
   margin: 0.4rem 0;
-  font-size: 12px;
+  font-size: ${props => props.size}px;
   span {
     margin-left: 0.4rem;
   }
@@ -206,7 +206,7 @@ const StyledPostImage = styled.div`
 
 const StyledDateAuthor = styled.div`
   display: inline-flex;
-  font-size: 12px;
+  font-size: ${props => props.size}px;
 `;
 
 const StyledDateAuthorDivider = styled.span`
@@ -273,16 +273,13 @@ const StyledFeaturedPost = styled.div`
   box-shadow: ${props => props.theme.effects.shadow};
   border-radius: ${props => props.theme.effects.radius};
   background-color: ${props => props.theme.colors.white};
-  width: 100%;
-  height: 165px;
+  width: 75%;
+  margin: 0 auto;
+  height: 250px;
   z-index: 1;
   bottom: 0;
   cursor: pointer;
   transition: box-shadow 0.35s ease-in, bottom 0.25s ease;
-  &.flatten {
-    box-shadow: none;
-    border: 1px solid ${props => props.theme.colors.grey};
-    transition: box-shadow 0.15s ease-in, bottom 0.25s ease;
   }
   &:hover,
   &:active {
@@ -314,6 +311,54 @@ const StyledFeaturedPost = styled.div`
   }
 `;
 
+const StyledFeaturedPostImage = styled.div`
+  background-image: ${props => `url(${props.src})`};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  border-radius: ${props => props.theme.effects.radius};
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 75% 100%);
+  transition: all 0.35s ease;
+  &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    border-radius: ${props => props.theme.effects.radius};
+    background: linear-gradient(
+        45deg,
+        hsla(214, 11%, 37%, 1) 0%,
+        hsla(214, 11%, 37%, 0) 70%
+      ),
+      linear-gradient(
+        135deg,
+        hsla(204, 25%, 67%, 1) 10%,
+        hsla(204, 25%, 67%, 0) 80%
+      ),
+      linear-gradient(
+        225deg,
+        hsla(183, 53%, 86%, 1) 10%,
+        hsla(183, 53%, 86%, 0) 80%
+      ),
+      linear-gradient(
+        315deg,
+        hsla(184, 78%, 93%, 1) 100%,
+        hsla(184, 78%, 93%, 0) 70%
+      );
+    opacity: 0.8;
+    z-index: 1;
+    clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
+    transition: all 0.35s ease;
+  }
+`;
+
 export {
   StyledPosts,
   StyledPostsContainer,
@@ -334,4 +379,5 @@ export {
   StyledFilterItems,
   StyledFilterItem,
   StyledFeaturedPost,
+  StyledFeaturedPostImage,
 };
