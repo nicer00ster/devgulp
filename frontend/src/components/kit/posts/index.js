@@ -15,10 +15,12 @@ import {
   filterTaxonomy,
 } from '../../../redux/actions';
 import PostItem from './PostItem';
+import FeaturedPost from './FeaturedPost';
 import Pagination from './pagination';
 
 function EnhancedPosts(props) {
   const [activeFilter, setActiveFilter] = useState(1);
+  const [featuredPost, setFeaturedPost] = useState(null);
   const [page, setPage] = useState(0);
   const currentFilter = props.categories.map(category =>
     category.id === props.taxonomyFilter ? category.name : null,
@@ -55,6 +57,7 @@ function EnhancedPosts(props) {
 
   return (
     <>
+      <FeaturedPost post={featuredPost} />
       <StyledFilterNav
         loginMenuOpen={props.loginMenuOpen}
         userMenuOpen={props.userMenuOpen}>

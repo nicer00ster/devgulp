@@ -268,6 +268,52 @@ const StyledFilterItem = styled.button`
   }
 `;
 
+const StyledFeaturedPost = styled.div`
+  position: relative;
+  box-shadow: ${props => props.theme.effects.shadow};
+  border-radius: ${props => props.theme.effects.radius};
+  background-color: ${props => props.theme.colors.white};
+  width: 100%;
+  height: 165px;
+  z-index: 1;
+  bottom: 0;
+  cursor: pointer;
+  transition: box-shadow 0.35s ease-in, bottom 0.25s ease;
+  &.flatten {
+    box-shadow: none;
+    border: 1px solid ${props => props.theme.colors.grey};
+    transition: box-shadow 0.15s ease-in, bottom 0.25s ease;
+  }
+  &:hover,
+  &:active {
+    box-shadow: ${props => props.theme.effects.shadowHover};
+    & .post-image {
+      clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
+      &:before {
+        clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
+        opacity: 0.6;
+      }
+    }
+  }
+  & a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    &:focus {
+      & .post-image {
+        clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
+        &:before {
+          clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+`;
+
 export {
   StyledPosts,
   StyledPostsContainer,
@@ -287,4 +333,5 @@ export {
   StyledFilterNav,
   StyledFilterItems,
   StyledFilterItem,
+  StyledFeaturedPost,
 };

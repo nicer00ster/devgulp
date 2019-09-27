@@ -61,6 +61,11 @@ add_filter('acf/rest_api/post/get_fields', function($data) {
     if ($data['acf']['post_likes'] === null || $data['acf']['post_likes'] === false) {
         $data['acf']['post_likes'] = [];
     }
+
+    if ($data['acf']['featured_post'] === null || $data['acf']['featured_post'] === false) {
+        $data['acf']['featured_post'] = false;
+    }
+
     return $data;
 });
 
