@@ -156,6 +156,15 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 			wp config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --dbprefix=$WORDPRESS_TABLE_PREFIX --dbcharset=$WORDPRESS_DB_CHARSET --dbcollate=$WORDPRESS_DB_COLLATE
 		fi
 
+		cat >> wp-config.php <<'EOPHP'
+// If we're behind a proxy server and using HTTPS, we need to alert Wordpress of that fact
+// see also http://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+	$_SERVER['HTTPS'] = 'on';
+}
+
+EOPHP
+
 		for unique in "${uniqueEnvs[@]}"; do
 			uniqVar="WORDPRESS_$unique"
 			if [ -n "${!uniqVar}" ]; then

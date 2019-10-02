@@ -21,13 +21,13 @@ services:
       - db
     image: phpmyadmin/phpmyadmin
     restart: unless-stopped
-    ports:
-      - '8080:80'
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: password
+      PMA_ABSOLUTE_URI: ${SCHEMA}://${HOST_URL}/phpma/
     networks:
       - wpsite
+      - proxysite
 
   # Wordpress
   wordpress:
@@ -35,15 +35,12 @@ services:
       - db
     build: wordpress
     image: devgulp_wordpress
-    ports:
-      - '8000:80'
     restart: unless-stopped
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      # set this to your docker host address and port
-      WORDPRESS_URL: localhost:8000
+      WORDPRESS_URL: ${HOST_URL}:8000
       WORDPRESS_TITLE: DevGulp
       WORDPRESS_TAGLINE: A platform built for developers, by developers.
       WORDPRESS_DEFAULT_ROLE: author
@@ -53,20 +50,34 @@ services:
       JWT_AUTHENTICATION_SECRET_KEY: secretkey
     networks:
       - wpsite
+      - proxysite
 
   # Frontend Express/Next
   frontend:
     build:
       context: frontend
       args:
-        # set this to your docker host url and port (for wordpress)
-        API_URL: http://localhost:8000
+        API_URL: ${SCHEMA}://${HOST_URL}:8000
     image: devgulp_frontend
-    ports:
-      - '80:3000'
     restart: unless-stopped
+    networks:
+      - proxysite
+
+  proxy:
+    build:
+      context: proxy
+    image: devgulp_proxy
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8000:8000'
+    networks:
+      - proxysite
+
 
 networks:
   wpsite:
+  proxysite:
 volumes:
   db_data:
