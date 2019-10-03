@@ -19,6 +19,7 @@ To spin up the whole application:
 ```sh
 $ git clone https://github.com/nicer00ster/devgulp.git
 $ cd devgulp
+$ cp .env.defaults .env
 $ docker-compose up -d
 ```
 
