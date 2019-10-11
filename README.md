@@ -94,5 +94,3 @@ Label all issues correctly and give a detailed description of the issue.
 ## Contributing
 
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/nicer00ster/devgulp/compare/).
-<br />
-- Before pushing commits make sure to run `npm run prettier`.
