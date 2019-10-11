@@ -24,7 +24,7 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: password
-      PMA_ABSOLUTE_URI: ${SCHEMA}://${HOST_URL}/phpma/
+      PMA_ABSOLUTE_URI: ${SCHEMA:?Schema must be set}://${HOST_URL:?Host URL must be set}/phpma/
     networks:
       - wpsite
       - proxysite
@@ -40,7 +40,7 @@ services:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_URL: ${HOST_URL}:8000
+      WORDPRESS_URL: ${HOST_URL:?Host URL must be set}:8000
       WORDPRESS_TITLE: DevGulp
       WORDPRESS_TAGLINE: A platform built for developers, by developers.
       WORDPRESS_DEFAULT_ROLE: author
@@ -57,7 +57,7 @@ services:
     build:
       context: frontend
       args:
-        API_URL: ${SCHEMA}://${HOST_URL}:8000
+        API_URL: ${SCHEMA:?Schema must be set}://${HOST_URL:?Host URL must be set}:8000
     image: devgulp_frontend
     restart: unless-stopped
     networks:
@@ -68,6 +68,8 @@ services:
       context: proxy
     image: devgulp_proxy
     restart: unless-stopped
+    environment:
+      - DEPLOY_ENV=${DEPLOY_ENV:-dev}
     ports:
       - '80:80'
       - '443:443'
