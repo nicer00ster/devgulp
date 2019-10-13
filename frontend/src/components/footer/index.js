@@ -76,5 +76,4 @@ const mapStateToProps = ({ root }) => ({
 
 export default connect(
   mapStateToProps,
-  null,
 )(Footer);
