@@ -24,24 +24,24 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: password
-      PMA_ABSOLUTE_URI: ${SCHEMA:?Schema must be set}://${HOST_URL:?Host URL must be set}/phpma/
+    ports:
+      - '8080:80'
     networks:
       - wpsite
-      - proxysite
 
   # Wordpress
   wordpress:
     depends_on:
       - db
     build: wordpress
-    image: devgulp_wordpress
+    image: devgulp_wordpress_dev
     restart: unless-stopped
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_URL: ${HOST_URL:?Host URL must be set}:8000
-      WORDPRESS_SCHEMA: ${SCHEMA:?Schema must be set}
+      WORDPRESS_SCHEMA: http
       WORDPRESS_TITLE: DevGulp
       WORDPRESS_TAGLINE: A platform built for developers, by developers.
       WORDPRESS_DEFAULT_ROLE: author
@@ -49,39 +49,12 @@ services:
       WORDPRESS_ADMIN_PASSWORD: secretpassword
       WORDPRESS_ADMIN_EMAIL: fake@example.com
       JWT_AUTHENTICATION_SECRET_KEY: secretkey
+    ports:
+      - '8000:80'
     networks:
       - wpsite
-      - proxysite
-
-  # Frontend Express/Next
-  frontend:
-    build:
-      context: frontend
-      args:
-        API_URL: ${SCHEMA:?Schema must be set}://${HOST_URL:?Host URL must be set}:8000
-    image: devgulp_frontend
-    restart: unless-stopped
-    networks:
-      - proxysite
-
-  proxy:
-    build:
-      context: proxy
-    image: devgulp_proxy
-    restart: unless-stopped
-    environment:
-      DEPLOY_ENV: ${DEPLOY_ENV:-dev}
-      HOST_URL: ${HOST_URL:?Host URL must be set}
-    ports:
-      - '80:80'
-      - '443:443'
-      - '8000:8000'
-    networks:
-      - proxysite
-
 
 networks:
   wpsite:
-  proxysite:
 volumes:
   db_data:

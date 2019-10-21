@@ -113,6 +113,7 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		WORDPRESS_DEBUG
 		WORDPRESS_CONFIG_EXTRA
 		WORDPRESS_URL
+		WORDPRESS_SCHEMA
 		WORDPRESS_TITLE
 		WORDPRESS_TAGLINE
 		WORDPRESS_DEFAULT_ROLE
@@ -195,6 +196,10 @@ EOPHP
 		wp option update comment_whitelist 0
 		wp import '/opt/misc/devgulp-content.xml' --authors=create
 	fi
+
+	# Update the wordpress siteurl and home to the proper address
+	wp option update siteurl "$WORDPRESS_SCHEMA://$WORDPRESS_URL"
+	wp option update home "$WORDPRESS_SCHEMA://$WORDPRESS_URL"
 
 	# now that we're definitely done writing configuration, let's clear out the relevant environment variables (so that stray "phpinfo()" calls don't leak secrets from our code)
 	for e in "${envs[@]}"; do
