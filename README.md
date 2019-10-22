@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/badge/MADE%20BY%20DEVGULP-1f222e.svg?style=for-the-badge&labelColor=1f222e">
   </a>
   <a aria-label="License" href="https://github.com/nicer00ster/devgulp/blob/master/LICENSE.md">
-    <img alt="" src="https://img.shields.io/github/license/nicer00ster/devgulp?color=faa1bc&style=for-the-badge&labelColor=1f222e">
+    <img alt="" src="https://img.shields.io/github/license/nicer00ster/devgulp?color=92c5f8&style=for-the-badge&labelColor=1f222e">
   </a>
   <a aria-label="Contributors" href="https://github.com/nicer00ster/devgulp/settings/collaboration">
     <img alt="" src="https://img.shields.io/github/contributors-anon/nicer00ster/devgulp?color=80dad3&style=for-the-badge&labelColor=1f222e">
