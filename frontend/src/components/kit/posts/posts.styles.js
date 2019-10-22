@@ -255,7 +255,6 @@ const StyledFilterItem = styled.button`
   padding: 0.4rem;
   margin: 0.4rem;
   cursor: pointer;
-
   border-radius: ${props => props.theme.effects.radius};
   border: 1px solid ${props => props.theme.colors.lightBlack};
   background-color: ${props => props.theme.colors.white};
