@@ -1,4 +1,19 @@
-# DevGulp
+<p align="center">
+  <img align="center" src="https://raw.githubusercontent.com/nicer00ster/devgulp/master/devgulp.png?token=AG5ZAQYDWP2TXOLHMA73GW25V47DC" width="600" />
+</p>
+
+
+<p align="center">
+  <a aria-label="DevGulp Logo" href="https://github.com/devgulp">
+    <img src="https://img.shields.io/badge/MADE%20BY%20DEVGULP-1f222e.svg?style=for-the-badge&labelColor=1f222e">
+  </a>
+  <a aria-label="License" href="https://github.com/nicer00ster/devgulp/blob/master/LICENSE.md">
+    <img alt="" src="https://img.shields.io/github/license/nicer00ster/devgulp?color=faa1bc&style=for-the-badge&labelColor=1f222e">
+  </a>
+  <a aria-label="Contributors" href="https://github.com/nicer00ster/devgulp/settings/collaboration">
+    <img alt="" src="https://img.shields.io/github/contributors-anon/nicer00ster/devgulp?color=80dad3&style=for-the-badge&labelColor=1f222e">
+  </a>
+</p>
 
 ### A platform built by developers, for developers.
 ###### A place to deliver and digest valuable content on all programming related topics.
