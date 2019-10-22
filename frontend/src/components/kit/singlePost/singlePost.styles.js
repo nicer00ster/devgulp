@@ -8,7 +8,7 @@ const StyleSinglePost = styled.article`
 const StyledSinglePostContainer = styled.div`
   position: relative;
   margin: 0 auto;
-  max-width: 720px;
+  //max-width: 720px;
   width: 100%;
   background-color: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.effects.radius};
