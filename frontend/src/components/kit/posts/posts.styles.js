@@ -258,6 +258,10 @@ const StyledFilterItem = styled.button`
   border-radius: ${props => props.theme.effects.radius};
   border: 1px solid ${props => props.theme.colors.lightBlack};
   background-color: ${props => props.theme.colors.white};
+  
+  
+  
+  
   transition: all 0.25s ease-in;
   outline: 0;
   &:hover,
