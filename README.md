@@ -1,5 +1,5 @@
 <p align="center">
-  <img align="center" src="https://raw.githubusercontent.com/nicer00ster/devgulp/master/devgulp.png?token=AG5ZAQYDWP2TXOLHMA73GW25V47DC" width="600" />
+  <img align="center" src="https://raw.githubusercontent.com/nicer00ster/devgulp/master/devgulp.png?token=AG5ZAQYDWP2TXOLHMA73GW25V47DC" width="600" height="350" />
 </p>
 
 
