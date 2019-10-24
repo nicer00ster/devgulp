@@ -28,27 +28,34 @@
 
 ## Installation
 
-To spin up the whole application:
+To spin up the whole application (in production mode):
 <br/>
 **Make sure to install the latest version of [Docker](https://www.docker.com/) before continuing**
 ```sh
 $ git clone https://github.com/nicer00ster/devgulp.git
 $ cd devgulp
 $ cp .env.defaults .env
-$ docker-compose up -d
+$ docker-compose up -d --build
 ```
+
+You may need to wait a while for the first startup, as the container will need to build certificates. If you are having issues, check `docker-compose logs proxy`, and if you see "This is going to take a long time" or a series of dashes and plusses, it is still generating certificates. This step will not need to be repeated unless you delete volumes.
 
 Connect to http://localhost and confirm it is working.
 
 If you need to run on different host ports, edit the appropriate port lines in docker-compose.yaml. The ports are declared as \<HostPort\>:\<ContainerPort\>.
 
+To shut down the application:
+```sh
+$ docker-compose down
+```
 
-Instructions on how to get a local development copy of the frontend up & running:
+
+Instructions on how to get a local development copy up & running:
 ```sh
 # Initial installation
 $ cd devgulp/frontend/src
 $ npm install
-# Run
+# Run dev frontend
 $ npm run dev
 ```
 
@@ -59,24 +66,26 @@ Set up WordPress instance:
 # To start up initially
 
 $ cd devgulp
-$ docker-compose up -d
+$ docker-compose -f docker-compose.dev.yml up -d --build
 
-# To rebuild after making changes to the api
-
-$ docker-compose up -d --build
+# Using the dev compose config, changes to functions.php will be automatically reflected in WordPress
+# To update other files:
+$ docker-compose -f docker-compose.dev.yml up -d --build
 
 # To Tear Down WITHOUT destroying database data
 
-$ docker-compose down
+$ docker-compose -f docker-compose.dev.yml docker-compose down
 
 # To Tear Down and destroy database data
 # Warning! This will delete everything you've done on your WordPress instance, including all posts and user accounts.
 # This is irreversible.
 
-$ docker-compose down -v
+$ docker-compose -f docker-compose.dev.yml down -v
 ```
 
-> Head to http://localhost:8000 and confirm WordPress is running. If your Docker instance is not running on localhost, you will need to modify `WORDPRESS_URL` and `API_URL` in `docker-compose.yml` (and `API_URL` in your frontend `.env` file for development).
+Head to http://localhost:8000 and confirm WordPress is running. If your Docker instance is not running on localhost, you will need to modify `WORDPRESS_URL` and `API_URL` in `docker-compose.yml` (and `API_URL` in your frontend `.env` file for development).
+
+> Note for Windows Docker users: You may need to enable shared drives to properly mount functions.php in the dev config. See https://docs.docker.com/docker-for-windows/#shared-drives for more details.
 
 ## Testing
 
