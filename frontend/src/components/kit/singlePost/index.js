@@ -45,7 +45,6 @@ import Achievements from '../achievements';
 function SinglePost(props) {
   const { post } = props.post;
   const [bind, { width, height }] = useMeasure();
-  const offsetRef = useRef();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
   const [leftOffset, setLeftOffset] = useState(0);
@@ -69,7 +68,7 @@ function SinglePost(props) {
       : setIsBottom(false);
     window.scrollY > 50 ? setIsScrolled(true) : setIsScrolled(false);
 
-    setLeftOffset(offsetRef.current.offsetLeft);
+    setLeftOffset(bind.ref.current.offsetLeft);
   }, []);
 
   function handleReply(e) {
@@ -89,7 +88,7 @@ function SinglePost(props) {
 
   const spring = useSpring({
     transform: `translateX(-${width / 2 +
-      leftOffset / 2}px) translateY(${scroll}px)`,
+      leftOffset * 6}px) translateY(${scroll}px)`,
     opacity: !isBottom && isScrolled ? 1 : 0,
   });
 
@@ -110,7 +109,7 @@ function SinglePost(props) {
   });
 
   return (
-    <StyledSinglePostContainer ref={offsetRef}>
+    <StyledSinglePostContainer>
       <StyleSinglePost {...bind}>
         <StyledSidebar
           style={spring}

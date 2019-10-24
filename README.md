@@ -1,4 +1,19 @@
-# DevGulp
+<p align="center">
+  <img align="center" src="https://github.com/nicer00ster/devgulp/blob/master/devgulp.png?raw=true" width="600" height="350" />
+</p>
+
+
+<p align="center">
+  <a aria-label="DevGulp Logo" href="https://github.com/devgulp">
+    <img src="https://img.shields.io/badge/❤️%20MADE%20WITH%20LOVE%20❤️-1f222e.svg?style=for-the-badge&labelColor=1f222e">
+  </a>
+  <a aria-label="License" href="https://github.com/nicer00ster/devgulp/blob/master/LICENSE.md">
+    <img alt="" src="https://img.shields.io/github/license/nicer00ster/devgulp?color=92c5f8&style=for-the-badge&labelColor=1f222e">
+  </a>
+  <a aria-label="Contributors" href="https://github.com/nicer00ster/devgulp/settings/collaboration">
+    <img alt="" src="https://img.shields.io/github/contributors-anon/nicer00ster/devgulp?color=80dad3&style=for-the-badge&labelColor=1f222e">
+  </a>
+</p>
 
 ### A platform built by developers, for developers.
 ###### A place to deliver and digest valuable content on all programming related topics.
@@ -95,5 +110,3 @@ Label all issues correctly and give a detailed description of the issue.
 ## Contributing
 
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/nicer00ster/devgulp/compare/).
-<br />
-- Before pushing commits make sure to run `npm run prettier`.
