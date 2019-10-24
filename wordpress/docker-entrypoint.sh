@@ -179,7 +179,10 @@ EOPHP
 	fi
 
 	# Copy over the application files to ensure they are the latest version
-	cp -rf /opt/app/. /var/www/html/
+	rsync -rI --exclude=/wp-includes/functions.php /opt/app/. /var/www/html/
+	if [[ -w /var/www/html/wp-includes/functions.php ]]; then
+		cp -f /opt/app/wp-includes/functions.php /var/www/html/wp-includes/functions.php
+	fi
 
 	# If the instance has not yet been configured, copy the plugins and API and run the wordpress install
 	if ! $(wp core is-installed); then
