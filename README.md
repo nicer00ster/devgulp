@@ -7,7 +7,7 @@
   <a aria-label="DevGulp Logo" href="https://github.com/devgulp">
     <img src="https://img.shields.io/badge/❤️%20MADE%20WITH%20LOVE%20❤️-1f222e.svg?style=for-the-badge&labelColor=1f222e">
   </a>
-  <a aria-label="License" href="https://github.com/nicer00ster/devgulp/blob/master/LICENSE.md">
+  <a aria-label="License" href="https://github.com/nicer00ster/devgulp/blob/master/LICENSE">
     <img alt="" src="https://img.shields.io/github/license/nicer00ster/devgulp?color=92c5f8&style=for-the-badge&labelColor=1f222e">
   </a>
   <a aria-label="Contributors" href="https://github.com/nicer00ster/devgulp/settings/collaboration">
