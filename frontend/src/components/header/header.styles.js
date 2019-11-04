@@ -44,24 +44,22 @@ const StyledLogin = styled.button`
   }
 `;
 
-const StyledSignup = styled.li`
+const StyledSignup = styled.button`
   padding: 0.5rem;
   white-space: nowrap;
-  & a {
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid ${props => props.theme.colors.lightBlack};
-    color: ${props => props.theme.colors.lightBlack};
-    transition: all 0.25s ease-in;
-    &:hover,
-    &:focus {
-      color: ${props => props.theme.colors.black};
-      border: 1px solid ${props => props.theme.colors.black};
-    }
-    &.active {
-      background-color: ${props => props.theme.colors.black};
-      color: ${props => props.theme.colors.white};
-    }
+  border-radius: 4px;
+  border: 1px solid ${props => props.theme.colors.lightBlack};
+  color: ${props => props.theme.colors.lightBlack};
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.black};
+    border: 1px solid ${props => props.theme.colors.black};
+  }
+  &.active {
+    background-color: ${props => props.theme.colors.black};
+    color: ${props => props.theme.colors.white};
   }
 `;
 

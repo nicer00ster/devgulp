@@ -14,7 +14,7 @@ import { useOnClickOutside } from '../../../hooks';
 
 function Modal(props) {
   const ref = useRef();
-  const { closeModal, toggleModal } = props;
+  const { closeModal, toggleModal, width } = props;
 
   const modalTransition = useTransition(props.modalOpen, null, {
     delay: 0.5,
@@ -39,13 +39,14 @@ function Modal(props) {
     <Portal>
       <StyledModal>
         {modalTransition.map(({ item, key, props }) => {
+          console.log(props);
           return item ? (
             <StyledModalContainer
               key={key}
               style={props}
               aria-modal="true"
               role="dialog">
-              <StyledModalItem ref={ref} key={key} style={props}>
+              <StyledModalItem ref={ref} key={key} width={width} style={props}>
                 <StyledCloseModal onClick={() => closeModal()}>
                   <StyledCloseIcon className="fa fa-times" />
                 </StyledCloseModal>

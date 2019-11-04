@@ -26,6 +26,7 @@ const StyledModalItem = styled(animated.div)`
   min-width: 320px;
   background-color: ${props => props.theme.colors.white};
   box-shadow: ${props => props.theme.effects.shadow};
+  width: ${props => (props.width ? `${props.width}px` : 'auto')};
   @media screen and (max-width: 520px) {
     min-width: 284px;
   }
@@ -37,6 +38,7 @@ const StyledCloseModal = styled.button`
   width: 50px;
   height: 50px;
   border: none;
+  z-index: 1;
   outline: 0;
   border-radius: 50%;
   box-shadow: ${props => props.theme.effects.shadow};
