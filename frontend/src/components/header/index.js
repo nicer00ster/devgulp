@@ -110,7 +110,7 @@ function Header(props) {
   const logoSpring = useSpring({
     transform: isScrolled
       ? 'translate3d(0px,0px,0px)'
-      : `translate3d(${width / 2 - 24}px, 40px, 0px)`,
+      : `translate3d(${width / 2 - 56}px, 80px, 0px)`,
   });
 
   return (
@@ -122,8 +122,8 @@ function Header(props) {
         {props.screenWidth <= 576 && <Drawer />}
         <StyledLogoContainer>
           <Link href="/" prefetch scroll={false}>
-            <StyledLogo href="#" style={logoSpring}>
-              DevGulp
+            <StyledLogo href="#" style={logoSpring} isScrolled={isScrolled}>
+              <img src="/static/devgulp-logo.svg" alt="DevGulp" />
             </StyledLogo>
           </Link>
         </StyledLogoContainer>
