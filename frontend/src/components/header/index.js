@@ -210,7 +210,7 @@ function Header(props) {
           <UserMenu />
         </>
       )}
-      <Modal width={400}>
+      <Modal noPadding={true} width={400}>
         <Form />
       </Modal>
     </StyledHeader>

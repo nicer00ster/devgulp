@@ -21,7 +21,7 @@ const StyledModalItem = styled(animated.div)`
   position: relative;
   animation-duration: 0.75s;
   border-radius: ${props => props.theme.effects.radius};
-  padding: 0.8rem;
+  padding: ${props => (props.noPadding ? '' : '0.8rem')};
   z-index: 1;
   min-width: 320px;
   background-color: ${props => props.theme.colors.white};
