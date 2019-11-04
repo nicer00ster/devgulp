@@ -23,6 +23,12 @@ export function toggleLoginMenu() {
   };
 }
 
+export function toggleSignUpMenu() {
+  return {
+    type: types.TOGGLE_MODAL,
+  };
+}
+
 export function toggleUserMenu() {
   return {
     type: types.TOGGLE_USER_MENU,

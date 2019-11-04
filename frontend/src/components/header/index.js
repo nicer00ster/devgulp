@@ -4,6 +4,8 @@ import { useSpring } from 'react-spring';
 import NProgress from 'nprogress';
 import Router, { withRouter } from 'next/router';
 import Link from 'next/link';
+import Modal from '../kit/modal';
+import Form from '../kit/form';
 import {
   StyledHeader,
   StyledNav,
@@ -19,6 +21,7 @@ import {
 } from './header.styles';
 import {
   toggleLoginMenu,
+  toggleSignUpMenu,
   toggleUserMenu,
   toggleSearch,
   toggleDonationMenu,
@@ -107,7 +110,7 @@ function Header(props) {
   const logoSpring = useSpring({
     transform: isScrolled
       ? 'translate3d(0px,0px,0px)'
-      : `translate3d(${width / 2 - 24}px, 40px, 0px)`,
+      : `translate3d(${width / 2 - 56}px, 80px, 0px)`,
   });
 
   return (
@@ -119,8 +122,8 @@ function Header(props) {
         {props.screenWidth <= 576 && <Drawer />}
         <StyledLogoContainer>
           <Link href="/" prefetch scroll={false}>
-            <StyledLogo href="#" style={logoSpring}>
-              DevGulp
+            <StyledLogo href="#" style={logoSpring} isScrolled={isScrolled}>
+              <img src="/static/devgulp-logo.svg" alt="DevGulp" />
             </StyledLogo>
           </Link>
         </StyledLogoContainer>
@@ -172,11 +175,11 @@ function Header(props) {
               <EnhancedLink href="/users">Users</EnhancedLink>
               {!props.user.token ? (
                 <>
-                  <StyledSignup>
-                    <Link scroll={false} prefetch href="/register">
-                      <a>Sign Up</a>
-                    </Link>
-                  </StyledSignup>
+                  <StyledMenuItem>
+                    <StyledSignup onClick={() => props.toggleSignUpMenu()}>
+                      Sign Up
+                    </StyledSignup>
+                  </StyledMenuItem>
                   <StyledMenuItem>
                     <StyledLogin onClick={() => props.toggleLoginMenu()}>
                       Login
@@ -207,24 +210,30 @@ function Header(props) {
           <UserMenu />
         </>
       )}
+      <Modal noPadding={true} width={400}>
+        <Form />
+      </Modal>
     </StyledHeader>
   );
 }
 
 const mapStateToProps = ({ root, posts, user }) => ({
   loginMenuOpen: root.loginMenuOpen,
+  signUpMenuOpen: root.signUpMenuOpen,
   userMenuOpen: root.userMenuOpen,
   filterTaxonomy: root.filterTaxonomy,
   searchExpanded: root.searchExpanded,
   screenWidth: root.screenWidth,
   categories: posts.categories,
   drawerOpen: root.drawerOpen,
+  modalOpen: root.modalOpen,
   donationMenuOpen: root.donationMenuOpen,
   user,
 });
 
 const mapDispatchToProps = {
   toggleLoginMenu,
+  toggleSignUpMenu,
   toggleUserMenu,
   toggleSearch,
   toggleDonationMenu,
