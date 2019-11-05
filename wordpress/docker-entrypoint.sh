@@ -113,6 +113,7 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		WORDPRESS_DEBUG
 		WORDPRESS_CONFIG_EXTRA
 		WORDPRESS_URL
+		WORDPRESS_SCHEMA
 		WORDPRESS_TITLE
 		WORDPRESS_TAGLINE
 		WORDPRESS_DEFAULT_ROLE
@@ -156,6 +157,15 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 			wp config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --dbprefix=$WORDPRESS_TABLE_PREFIX --dbcharset=$WORDPRESS_DB_CHARSET --dbcollate=$WORDPRESS_DB_COLLATE
 		fi
 
+		cat >> wp-config.php <<'EOPHP'
+// If we're behind a proxy server and using HTTPS, we need to alert Wordpress of that fact
+// see also http://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+	$_SERVER['HTTPS'] = 'on';
+}
+
+EOPHP
+
 		for unique in "${uniqueEnvs[@]}"; do
 			uniqVar="WORDPRESS_$unique"
 			if [ -n "${!uniqVar}" ]; then
@@ -169,7 +179,10 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 	fi
 
 	# Copy over the application files to ensure they are the latest version
-	cp -rf /opt/app/. /var/www/html/
+	rsync -rI --exclude=/wp-includes/functions.php /opt/app/. /var/www/html/
+	if [[ -w /var/www/html/wp-includes/functions.php ]]; then
+		cp -f /opt/app/wp-includes/functions.php /var/www/html/wp-includes/functions.php
+	fi
 
 	# If the instance has not yet been configured, copy the plugins and API and run the wordpress install
 	if ! $(wp core is-installed); then
@@ -186,6 +199,10 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		wp option update comment_whitelist 0
 		wp import '/opt/misc/devgulp-content.xml' --authors=create
 	fi
+
+	# Update the wordpress siteurl and home to the proper address
+	wp option update siteurl "$WORDPRESS_SCHEMA://$WORDPRESS_URL"
+	wp option update home "$WORDPRESS_SCHEMA://$WORDPRESS_URL"
 
 	# now that we're definitely done writing configuration, let's clear out the relevant environment variables (so that stray "phpinfo()" calls don't leak secrets from our code)
 	for e in "${envs[@]}"; do

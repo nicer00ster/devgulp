@@ -1,8 +1,8 @@
 FROM wordpress:latest
 
-# install WP-CLI
+# install WP-CLI and rsync
 RUN apt-get update \
-  && apt-get install -y sudo less mariadb-client \
+  && apt-get install -y sudo less mariadb-client rsync \
   && rm -rf /var/lib/apt/lists/*
 RUN curl -o /bin/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 COPY wp-su.sh /bin/wp
