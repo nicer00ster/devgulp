@@ -82,7 +82,7 @@ const StyledLogoContainer = styled.div`
 `;
 
 const StyledLogo = styled(animated.a)`
-  will-change: transform;
+  will-change: transform, opacity;
   img {
     width: ${props => (props.isScrolled ? 75 : 150)}px;
     transition: width 0.25s ease-in-out;

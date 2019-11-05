@@ -108,6 +108,7 @@ function Header(props) {
   });
 
   const logoSpring = useSpring({
+    opacity: isScrolled ? 1 : 0.75,
     transform: isScrolled
       ? 'translate3d(0px,0px,0px)'
       : `translate3d(${width / 2 - 56}px, 80px, 0px)`,
