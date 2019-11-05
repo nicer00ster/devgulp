@@ -155,6 +155,7 @@ const StyledAvatar = styled(animated.button)`
   & img {
     width: ${props => (props.size ? `${props.size}px` : '32px')};
     height: ${props => (props.size ? `${props.size}px` : '32px')};
+    background-color: ${props => props.theme.colors.white};
     object-fit: cover;
     display: inline-block;
     vertical-align: middle;
