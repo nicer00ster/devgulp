@@ -411,6 +411,7 @@ function* registerSaga(data) {
 
     yield put({ type: types.REGISTER_SUCCESS, result });
     yield put({ type: types.VERIFIED_TOKEN_SUCCESS, token });
+    yield put({ type: types.CLOSE_MODAL });
   } catch (error) {
     yield put({ type: types.REGISTER_FAILURE, error });
     yield put({ type: types.VERIFIED_TOKEN_FAILURE, error });

@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
   padding: 1rem 0;
   top: 0;
   margin: 0 auto;
-  z-index: 101;
+  z-index: 1;
   transition: all 0.25s ease-in;
   &.is-scrolled {
     background-color: ${props => props.theme.colors.white};
@@ -82,6 +82,7 @@ const StyledLogoContainer = styled.div`
 `;
 
 const StyledLogo = styled(animated.a)`
+  position: absolute;
   will-change: transform, opacity;
   img {
     width: ${props => (props.isScrolled ? 75 : 150)}px;
