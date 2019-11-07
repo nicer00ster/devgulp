@@ -90,8 +90,7 @@ const GlobalStyles = createGlobalStyle`
       font-size: 1rem;
       padding: 0;
       margin: 0;
-       overflow: ${props => (props.menuOpen ? 'hidden' : 'auto')};
-      //overflow-x: hidden;
+      overflow: ${props => (props.menuOpen ? 'hidden' : 'auto')};
     }
     a {
       text-decoration: none;
