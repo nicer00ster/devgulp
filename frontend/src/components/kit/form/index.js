@@ -86,7 +86,7 @@ function Form(props) {
       <fieldset
         disabled={props.user.isRegistering}
         aria-busy={props.user.isRegistering}>
-        <StyledFormHeading>Register</StyledFormHeading>
+        <StyledFormHeading>Create an account</StyledFormHeading>
         <Input
           type="text"
           name="username"
