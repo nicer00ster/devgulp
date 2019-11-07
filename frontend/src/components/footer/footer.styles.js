@@ -43,9 +43,21 @@ const StyledFooterList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: ${props => props.align};
+  align-items: center;
   width: 100%;
   list-style: none;
   padding: 0;
+`;
+
+const StyledLogo = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 75px;
+    padding: 0.4rem;
+    transition: width 0.25s ease-in-out;
+  }
 `;
 
 const StyledFooterListItem = styled.li`
@@ -64,4 +76,5 @@ export {
   StyledFooterList,
   StyledFooterListItem,
   StyledFooterLogo,
+  StyledLogo,
 };
