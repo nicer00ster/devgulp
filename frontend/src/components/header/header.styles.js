@@ -7,7 +7,7 @@ const StyledHeader = styled.header`
   max-width: ${props => props.theme.breakpoints.desktop}px;
   padding: 1rem 0;
   top: 0;
-  margin: 0 auto;
+  margin: 0 auto 4rem;
   z-index: 1;
   transition: all 0.25s ease-in;
   &.is-scrolled {
@@ -49,6 +49,7 @@ const StyledSignup = styled.button`
   white-space: nowrap;
   border-radius: 4px;
   border: 1px solid ${props => props.theme.colors.lightBlack};
+  background-color: rgba(0, 0, 0, 0);
   color: ${props => props.theme.colors.lightBlack};
   cursor: pointer;
   transition: all 0.25s ease-in;
@@ -82,11 +83,14 @@ const StyledLogoContainer = styled.div`
 `;
 
 const StyledLogo = styled(animated.a)`
-  position: absolute;
   will-change: transform, opacity;
   img {
+    padding: 0.4rem;
     width: ${props => (props.isScrolled ? 75 : 150)}px;
     transition: width 0.25s ease-in-out;
+    ${props => props.theme.mediaQuery.tablet`
+      padding: 0.6rem;
+    `};
   }
 `;
 

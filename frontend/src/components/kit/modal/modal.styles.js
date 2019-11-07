@@ -35,13 +35,14 @@ const StyledModalItem = styled(animated.div)`
 const StyledCloseModal = styled.button`
   cursor: pointer;
   position: absolute;
+  background-color: ${props => props.theme.colors.white};
+  box-shadow: ${props => props.theme.effects.shadow};
   width: 50px;
   height: 50px;
   border: none;
   z-index: 1;
   outline: 0;
   border-radius: 50%;
-  box-shadow: ${props => props.theme.effects.shadow};
   top: 0;
   right: 0;
   padding: 0.4rem;
