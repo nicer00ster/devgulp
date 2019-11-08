@@ -1,20 +1,20 @@
-<p align="center">
-  <img align="center" src="https://github.com/nicer00ster/devgulp/blob/master/devgulp.png?raw=true" width="600" height="350" />
+<p style="text-align: center;">
+  <img style="text-align: center;" src="https://github.com/nicer00ster/devgulp/blob/master/devgulp.png?raw=true" width="600" height="350"  alt="DevGulp Logo"/>
 </p>
 
 
-<p align="center">
+<p style="text-align: center;">
   <a aria-label="DevGulp Logo" href="https://github.com/devgulp">
-    <img src="https://img.shields.io/badge/❤️%20MADE%20WITH%20LOVE%20❤️-1f222e.svg?style=for-the-badge&labelColor=1f222e">
+    <img src="https://img.shields.io/badge/❤️%20MADE%20WITH%20LOVE%20❤️-1f222e.svg?style=for-the-badge&labelColor=1f222e" alt="Made With Love">
   </a>
   <a aria-label="DevGulp Logo" href="https://discordapp.com/channels/642423850390388780">
     <img src="https://img.shields.io/discord/642423850390388780?color=%237189DA&label=Discord&style=for-the-badge&labelColor=1f222e">
   </a>
   <a aria-label="License" href="https://raw.githubusercontent.com/nicer00ster/devgulp/master/LICENSE">
-    <img alt="" src="https://img.shields.io/github/license/nicer00ster/devgulp?color=92c5f8&style=for-the-badge&labelColor=1f222e">
+    <img alt="GPL-3.0" src="https://img.shields.io/github/license/nicer00ster/devgulp?color=92c5f8&style=for-the-badge&labelColor=1f222e">
   </a>
   <a aria-label="Contributors" href="https://github.com/nicer00ster/devgulp/settings/collaboration">
-    <img alt="" src="https://img.shields.io/github/contributors-anon/nicer00ster/devgulp?color=80dad3&style=for-the-badge&labelColor=1f222e">
+    <img alt="Contributors Count" src="https://img.shields.io/github/contributors-anon/nicer00ster/devgulp?color=80dad3&style=for-the-badge&labelColor=1f222e">
   </a>
 </p>
 
@@ -89,6 +89,9 @@ $ docker-compose -f docker-compose.dev.yml down -v
 Head to http://localhost:8000 and confirm WordPress is running. If your Docker instance is not running on localhost, you will need to modify `WORDPRESS_URL` and `API_URL` in `docker-compose.yml` (and `API_URL` in your frontend `.env` file for development).
 
 > Note for Windows Docker users: You may need to enable shared drives to properly mount functions.php in the dev config. See https://docs.docker.com/docker-for-windows/#shared-drives for more details.
+
+## Usage
+Place holder for usage section;
 
 ## Testing
 
