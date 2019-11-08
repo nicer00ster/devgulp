@@ -124,13 +124,14 @@ const StyledPublishCategories = styled.div`
 
 const StyledPublishButton = styled.button`
   position: relative;
+  background-color: ${props => props.theme.colors.white};
+  box-shadow: ${props => props.theme.effects.shadow};
   cursor: pointer;
   width: 50px;
   height: 50px;
   border: none;
   outline: 0;
   border-radius: 50%;
-  box-shadow: ${props => props.theme.effects.shadow};
   transition: all 0.075s ease-in;
   &:active {
     bottom: -3px;
