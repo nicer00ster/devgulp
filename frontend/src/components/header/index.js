@@ -173,8 +173,16 @@ function Header(props) {
             <Burger />
           ) : (
             <>
-              <EnhancedLink href="/publish">Publish</EnhancedLink>
-              <EnhancedLink href="/users">Users</EnhancedLink>
+              <EnhancedLink
+                href="/publish"
+                isAuthenticated={props.user.isAuthenticated}>
+                Publish
+              </EnhancedLink>
+              <EnhancedLink
+                href="/users"
+                isAuthenticated={props.user.isAuthenticated}>
+                Users
+              </EnhancedLink>
               {!props.user.token ? (
                 <>
                   <StyledMenuItem>

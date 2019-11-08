@@ -118,6 +118,13 @@ const StyledMenuItem = styled.li`
     border-radius: ${props => props.theme.effects.radius};
     transition: all 0.25s ease-in;
     outline: 0;
+    ${props =>
+      !props.isAuthenticated
+        ? `
+      pointer-events: none;
+      cursor: default;
+    `
+        : ''};
     &:hover,
     &:focus,
     &.active-route {
