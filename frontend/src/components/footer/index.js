@@ -9,6 +9,7 @@ import {
   StyledFooterLogo,
   StyledLogo,
 } from './footer.styles';
+import { Links } from '../../utils/enumerations/Links';
 
 function Footer(props) {
   return (
@@ -23,28 +24,28 @@ function Footer(props) {
               @ {new Date().getFullYear()} DevGulp, Inc.
             </StyledFooterListItem>
             <StyledFooterListItem>
-              <Link href="/">
+              <Link href={Links.HOME}>
                 <a>Terms</a>
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>
-              <Link href="/policy">
+              <Link href={Links.POLICY}>
                 <a>Privacy</a>
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>
-              <Link href="/">
+              <Link href={Links.HOME}>
                 <a>Status</a>
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>
-              <Link href="/help">
+              <Link href={Links.HELP}>
                 <a>Help</a>
               </Link>
             </StyledFooterListItem>
           </StyledFooterList>
           <StyledFooterLogo>
-            <Link href="/" prefetch scroll={false}>
+            <Link href={Links.HOME} prefetch scroll={false}>
               <StyledLogo href="#">
                 <img src="/static/devgulp-logo.svg" alt="DevGulp" />
               </StyledLogo>
@@ -52,12 +53,12 @@ function Footer(props) {
           </StyledFooterLogo>
           <StyledFooterList align="flex-end">
             <StyledFooterListItem>
-              <Link href="/publish">
+              <Link href={Links.PUBLISH}>
                 <a>Publish</a>
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>
-              <Link href="/users">
+              <Link href={Links.USERS}>
                 <a>Users</a>
               </Link>
             </StyledFooterListItem>
@@ -74,6 +75,4 @@ const mapStateToProps = ({ root }) => ({
   userMenuOpen: root.userMenuOpen,
 });
 
-export default connect(
-  mapStateToProps,
-)(Footer);
+export default connect(mapStateToProps)(Footer);

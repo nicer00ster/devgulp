@@ -3,11 +3,37 @@ import { render } from 'react-testing-library';
 import 'jest-styled-components';
 
 import Footer from '../index';
+import { initializeStore } from '../../../redux';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import {
+  breakpoints,
+  colors,
+  effects,
+  mediaQuery,
+} from '../../layout/layout.styles';
 
 describe('<Footer />', () => {
-    it('should render props passed to it', () => {
+  let testStore;
+  const theme = {
+    breakpoints,
+    mediaQuery,
+    colors,
+    effects,
+  };
 
-        const { container } = render(<Footer />);
-        expect(container.firstChild).toMatchSnapshot();
-    });
+  beforeAll(() => {
+    testStore = initializeStore();
+  });
+
+  it('should render props passed to it', () => {
+    const { container } = render(
+      <Provider store={testStore}>
+        <ThemeProvider theme={theme}>
+          <Footer />
+        </ThemeProvider>
+      </Provider>,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
