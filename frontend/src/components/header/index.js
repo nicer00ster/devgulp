@@ -49,6 +49,7 @@ Router.onRouteChangeComplete = () => {
 function Header(props) {
   const ref = useRef();
   const searchRef = useRef();
+  const donationRef = useRef();
   const [bind, { width }] = useMeasure();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -104,6 +105,13 @@ function Header(props) {
       if (e.keyCode === 27) {
         props.toggleSearch();
         searchRef.current.blur();
+      }
+    });
+
+    donationRef.current.addEventListener('keydown', e => {
+      if (e.keyCode === 27) {
+        props.toggleDonationMenu();
+        donationRef.current.blur();
       }
     });
 
@@ -176,7 +184,7 @@ function Header(props) {
               <span className="bar" />
             </form>
           </StyledSearchInput>
-          <StyledMenuItem data-tooltip>
+          <StyledMenuItem ref={donationRef} data-tooltip>
             <Stripe>
               <i className="fal fa-donate" />
             </Stripe>
