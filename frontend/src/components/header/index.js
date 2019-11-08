@@ -98,6 +98,13 @@ function Header(props) {
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
 
+    searchRef.current.addEventListener('keydown', e => {
+      if (e.keyCode === 27) {
+        props.toggleSearch();
+        searchRef.current.blur();
+      }
+    });
+
     return () => window.removeEventListener('scroll', handleWindowScroll);
   }, [handleWindowScroll]);
 
