@@ -86,10 +86,20 @@ const StyledLogo = styled(animated.a)`
   will-change: transform, opacity;
   height: 100%;
   img {
+    opacity: ${props =>
+      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? '0.4' : '1'};
+    transform: ${props =>
+      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+        ? 'scale(0.95)'
+        : 'scale(1)'};
+    pointer-events: ${props =>
+      props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
+        ? 'none'
+        : 'all'};
     position: absolute;
     padding: 0.4rem;
     width: ${props => (props.isScrolled ? 75 : 150)}px;
-    transition: width 0.25s ease-in-out;
+    transition: all 0.25s linear;
     ${props => props.theme.mediaQuery.tablet`
       padding: 0.6rem;
     `};
