@@ -7,8 +7,8 @@ const StyledHeader = styled.header`
   max-width: ${props => props.theme.breakpoints.desktop}px;
   padding: 1rem 0;
   top: 0;
-  margin: 0 auto;
-  z-index: 101;
+  margin: 0 auto 4rem;
+  z-index: 1;
   transition: all 0.25s ease-in;
   &.is-scrolled {
     background-color: ${props => props.theme.colors.white};
@@ -44,24 +44,23 @@ const StyledLogin = styled.button`
   }
 `;
 
-const StyledSignup = styled.li`
+const StyledSignup = styled.button`
   padding: 0.5rem;
   white-space: nowrap;
-  & a {
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid ${props => props.theme.colors.lightBlack};
-    color: ${props => props.theme.colors.lightBlack};
-    transition: all 0.25s ease-in;
-    &:hover,
-    &:focus {
-      color: ${props => props.theme.colors.black};
-      border: 1px solid ${props => props.theme.colors.black};
-    }
-    &.active {
-      background-color: ${props => props.theme.colors.black};
-      color: ${props => props.theme.colors.white};
-    }
+  border-radius: 4px;
+  border: 1px solid ${props => props.theme.colors.lightBlack};
+  background-color: rgba(0, 0, 0, 0);
+  color: ${props => props.theme.colors.lightBlack};
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.black};
+    border: 1px solid ${props => props.theme.colors.black};
+  }
+  &.active {
+    background-color: ${props => props.theme.colors.black};
+    color: ${props => props.theme.colors.white};
   }
 `;
 
@@ -84,8 +83,17 @@ const StyledLogoContainer = styled.div`
 `;
 
 const StyledLogo = styled(animated.a)`
-  will-change: transform;
-  padding: 0 0.5rem;
+  will-change: transform, opacity;
+  height: 100%;
+  img {
+    position: absolute;
+    padding: 0.4rem;
+    width: ${props => (props.isScrolled ? 75 : 150)}px;
+    transition: width 0.25s ease-in-out;
+    ${props => props.theme.mediaQuery.tablet`
+      padding: 0.6rem;
+    `};
+  }
 `;
 
 const StyledMenu = styled.ul`
@@ -153,6 +161,7 @@ const StyledAvatar = styled(animated.button)`
   & img {
     width: ${props => (props.size ? `${props.size}px` : '32px')};
     height: ${props => (props.size ? `${props.size}px` : '32px')};
+    background-color: ${props => props.theme.colors.white};
     object-fit: cover;
     display: inline-block;
     vertical-align: middle;

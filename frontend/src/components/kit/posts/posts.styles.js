@@ -53,10 +53,17 @@ const StyledPost = styled.li`
     border: 1px solid ${props => props.theme.colors.grey};
     transition: box-shadow 0.15s ease-in, bottom 0.25s ease;
   }
+  a {
+    background-color: rgba(0, 0, 0, 0);
+    transition: all 0.25s ease-in-out;
+  }
   &:hover,
   &:active {
     box-shadow: ${props => props.theme.effects.shadowHover};
     bottom: 3px;
+    & a {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
     & .post-image {
       clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
       &:before {

@@ -17,7 +17,7 @@ export const FILE_TYPE_ERROR = {
   },
 };
 
-// Global types
+// Global Types
 export const SCREEN_RESIZE = 'SCREEN_RESIZE';
 export const INPUT = 'INPUT';
 export const TOGGLE_LOGIN_MENU = 'TOGGLE_LOGIN_MENU';

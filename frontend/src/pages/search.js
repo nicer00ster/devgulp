@@ -8,7 +8,7 @@ import Loading from '../components/kit/loading';
 function Search(props) {
   return (
     <>
-      <Hero></Hero>
+      {/*<Hero></Hero>*/}
       <Container>
         <EnhancedSearch />
         {props.isSearching && <Loading />}

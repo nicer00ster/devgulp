@@ -26,11 +26,13 @@ function Meta() {
       {/*<link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />*/}
       {/*<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />*/}
       {/*<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />*/}
-      {/*<link rel="icon" href="/static/favicon.ico" type="image/x-icon" />*/}
       {/*<link rel="manifest" href="/static/site.webmanifest" />*/}
       <script defer src="https://platform.twitter.com/widgets.js" />
       <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=716860255431426&autoLogAppEvents=1" />
       <script src="https://checkout.stripe.com/checkout.js" />
+      <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
       <link rel="preload" href="/static/fonts/Blinker.ttf" as="font" type="font/ttf" crossOrigin="true" />
       <link rel="preload" href="/static/fonts/Trirong.ttf" as="font" type="font/ttf" crossOrigin="true" />
       <link rel="preload" as="style" href="/static/nprogress.css" />

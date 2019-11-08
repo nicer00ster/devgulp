@@ -1,15 +1,4 @@
-import {
-  apply,
-  takeEvery,
-  takeLatest,
-  throttle,
-  put,
-  call,
-  take,
-  all,
-  fork,
-  delay,
-} from 'redux-saga/effects';
+import { takeEvery, put, call, all, delay } from 'redux-saga/effects';
 import axios from 'axios';
 import { API_URL, TOKEN_URL, ACF_URL } from '../constants';
 import { setToken, verifyToken, arrangeComments } from '../../utils';
@@ -411,6 +400,7 @@ function* registerSaga(data) {
 
     yield put({ type: types.REGISTER_SUCCESS, result });
     yield put({ type: types.VERIFIED_TOKEN_SUCCESS, token });
+    yield put({ type: types.CLOSE_MODAL });
   } catch (error) {
     yield put({ type: types.REGISTER_FAILURE, error });
     yield put({ type: types.VERIFIED_TOKEN_FAILURE, error });
