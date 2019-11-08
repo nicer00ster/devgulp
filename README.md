@@ -74,7 +74,7 @@ $ docker-compose -f docker-compose.dev.yml up -d --build
 
 # To Tear Down WITHOUT destroying database data
 
-$ docker-compose -f docker-compose.dev.yml docker-compose down
+$ docker-compose -f docker-compose.dev.yml down
 
 # To Tear Down and destroy database data
 # Warning! This will delete everything you've done on your WordPress instance, including all posts and user accounts.
