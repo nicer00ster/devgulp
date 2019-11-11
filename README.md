@@ -5,7 +5,7 @@
 
 <p style="text-align: center;">
   <a aria-label="DevGulp Logo" href="https://github.com/devgulp">
-    <img src="https://img.shields.io/badge/❤️%20MADE%20WITH%20LOVE%20❤️-1f222e.svg?style=for-the-badge&labelColor=1f222e" alt="Made With Love">
+    <img style="display: block; margin: 0 auto;" src="https://img.shields.io/badge/❤️%20MADE%20WITH%20LOVE%20❤️-1f222e.svg?style=for-the-badge&labelColor=1f222e" alt="Made With Love">
   </a>
   <a aria-label="DevGulp Logo" href="https://discordapp.com/channels/642423850390388780">
     <img src="https://img.shields.io/discord/642423850390388780?color=%237189DA&label=Discord&style=for-the-badge&labelColor=1f222e">
