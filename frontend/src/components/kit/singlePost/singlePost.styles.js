@@ -65,9 +65,17 @@ const StyledDateViewsDivider = styled.span`
   }
 `;
 
-const StyledSinglePostImage = styled.img`
+const StyledSinglePostImage = styled.div`
+  background-image: ${props => `url(${props.imageUrl})`};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
   padding-top: 2rem;
   width: 100%;
+  height: 450px;
+  ${props => props.theme.mediaQuery.tablet`
+    height: 300px;
+  `};
 `;
 
 const StyledSinglePostContent = styled.div`

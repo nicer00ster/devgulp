@@ -180,7 +180,7 @@ function SinglePost(props) {
           </StyledPostTaxonomies>
         </StyledSinglePostMeta>
         <StyledSinglePostImage
-          src={
+          imageUrl={
             post._embedded['wp:featuredmedia']
               ? post._embedded['wp:featuredmedia']['0'].source_url
               : '/static/images/default_post.jpg'
