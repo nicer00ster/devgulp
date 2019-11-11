@@ -1,10 +1,10 @@
-<p style="text-align: center;">
-  <img style="text-align: center;" src="https://github.com/nicer00ster/devgulp/blob/master/devgulp.png?raw=true" width="600" height="350"  alt="DevGulp Logo"/>
+<p align="center">
+  <img src="https://github.com/nicer00ster/devgulp/blob/master/devgulp.png?raw=true" width="600" height="350"  alt="DevGulp Logo"/>
 </p>
 
 
-<p style="text-align: center;">
-  <a align="center" aria-label="DevGulp Logo" href="https://github.com/devgulp">
+<p align="center>
+  <a aria-label="DevGulp Logo" href="https://github.com/devgulp">
     <img src="https://img.shields.io/badge/❤️%20MADE%20WITH%20LOVE%20❤️-1f222e.svg?style=for-the-badge&labelColor=1f222e" alt="Made With Love">
   </a>
   <a aria-label="DevGulp Logo" href="https://discordapp.com/channels/642423850390388780">
