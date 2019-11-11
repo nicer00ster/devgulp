@@ -12,13 +12,19 @@ function EnhancedLink({
   screenWidth,
   toggleDrawer,
   isAuthenticated,
+  isButton,
+  onClick,
 }) {
   const router = useRouter();
   let activeClass = router.pathname === href ? 'active-route' : '';
 
   function handleClick(e) {
     e.preventDefault();
-    if (href === '/publish' || (href === '/users' && !isAuthenticated)) {
+    if (
+      href === '/publish' ||
+      (href === '/users' && !isAuthenticated) ||
+      isButton
+    ) {
       return;
     }
     if (screenWidth <= 576) {
@@ -27,9 +33,17 @@ function EnhancedLink({
     router.push(href);
   }
 
+  if (isButton) {
+    return (
+      <StyledDrawerItem onClick={onClick} isAuthenticated={isAuthenticated}>
+        <button>{children}</button>
+      </StyledDrawerItem>
+    );
+  }
+
   if (screenWidth <= 576) {
     return (
-      <StyledDrawerItem onClick={handleClick}>
+      <StyledDrawerItem isAuthenticated={isAuthenticated} onClick={handleClick}>
         <Link scroll={false} prefetch href={href}>
           <a className={activeClass}>{children}</a>
         </Link>

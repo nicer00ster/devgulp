@@ -8,7 +8,7 @@ const StyledModalContainer = styled(animated.div)`
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 1001;
   display: flex;
   height: 100vh;
   justify-content: center;

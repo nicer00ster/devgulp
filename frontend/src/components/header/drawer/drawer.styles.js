@@ -32,7 +32,7 @@ const StyledDrawer = styled.div`
 const StyledDrawerList = styled.ul`
   display: flex;
   flex-direction: column;
-  margin-top: 50%;
+  margin-top: 25%;
   padding: 2.4rem;
 `;
 
@@ -41,13 +41,31 @@ const StyledDrawerItem = styled.li`
   font-size: calc(2em + 4vw);
   font-family: 'Trirong', serif;
   font-weight: 600;
-  -webkit-font-smoothing: antialiased;
   line-height: 2em;
-  & a {
+  -webkit-font-smoothing: antialiased;
+  & button {
+    font-size: calc(0.5em + 1vw);
+    font-family: 'Trirong', serif;
+    font-weight: 600;
+    align-self: flex-end;
+    border: 0;
+    line-height: 2em;
+    -webkit-font-smoothing: antialiased;
+  }
+  & a,
+  button {
     position: relative;
     color: ${props => props.theme.colors.lightBlack};
     background-color: unset !important;
     outline: 0;
+    ${props =>
+      !props.isAuthenticated
+        ? `
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
+      `
+        : ''};
     &:hover,
     &:focus {
       color: ${props => props.theme.colors.black};
