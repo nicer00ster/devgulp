@@ -49,6 +49,7 @@ Router.onRouteChangeComplete = () => {
 function Header(props) {
   const ref = useRef();
   const searchRef = useRef();
+  const donationRef = useRef();
   const [bind, { width }] = useMeasure();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -98,6 +99,22 @@ function Header(props) {
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
 
+    console.log(props.userMenuOpen);
+
+    searchRef.current.addEventListener('keydown', e => {
+      if (e.keyCode === 27) {
+        props.toggleSearch();
+        searchRef.current.blur();
+      }
+    });
+
+    donationRef.current.addEventListener('keydown', e => {
+      if (e.keyCode === 27) {
+        props.toggleDonationMenu();
+        donationRef.current.blur();
+      }
+    });
+
     return () => window.removeEventListener('scroll', handleWindowScroll);
   }, [handleWindowScroll]);
 
@@ -124,7 +141,13 @@ function Header(props) {
         {props.screenWidth <= 576 && <Drawer />}
         <StyledLogoContainer>
           <Link href="/" prefetch scroll={false}>
-            <StyledLogo href="#" style={logoSpring} isScrolled={isScrolled}>
+            <StyledLogo
+              loginMenuOpen={props.loginMenuOpen}
+              userMenuOpen={props.userMenuOpen}
+              drawerOpen={props.drawerOpen}
+              href="#"
+              style={logoSpring}
+              isScrolled={isScrolled}>
               <img src="/static/devgulp-logo.svg" alt="DevGulp" />
             </StyledLogo>
           </Link>
@@ -161,7 +184,7 @@ function Header(props) {
               <span className="bar" />
             </form>
           </StyledSearchInput>
-          <StyledMenuItem data-tooltip>
+          <StyledMenuItem ref={donationRef} data-tooltip>
             <Stripe>
               <i className="fal fa-donate" />
             </Stripe>
@@ -173,8 +196,16 @@ function Header(props) {
             <Burger />
           ) : (
             <>
-              <EnhancedLink href="/publish">Publish</EnhancedLink>
-              <EnhancedLink href="/users">Users</EnhancedLink>
+              <EnhancedLink
+                href="/publish"
+                isAuthenticated={props.user.isAuthenticated}>
+                Publish
+              </EnhancedLink>
+              <EnhancedLink
+                href="/users"
+                isAuthenticated={props.user.isAuthenticated}>
+                Users
+              </EnhancedLink>
               {!props.user.token ? (
                 <>
                   <StyledMenuItem>
@@ -223,13 +254,13 @@ const mapStateToProps = ({ root, posts, user }) => ({
   loginMenuOpen: root.loginMenuOpen,
   signUpMenuOpen: root.signUpMenuOpen,
   userMenuOpen: root.userMenuOpen,
+  drawerOpen: root.drawerOpen,
+  donationMenuOpen: root.donationMenuOpen,
   filterTaxonomy: root.filterTaxonomy,
   searchExpanded: root.searchExpanded,
   screenWidth: root.screenWidth,
   categories: posts.categories,
-  drawerOpen: root.drawerOpen,
   modalOpen: root.modalOpen,
-  donationMenuOpen: root.donationMenuOpen,
   user,
 });
 

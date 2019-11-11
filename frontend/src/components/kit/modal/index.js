@@ -28,6 +28,11 @@ function Modal(props) {
   useEffect(() => {
     if (props.modalOpen) {
       ref.current.querySelector('button').focus();
+      ref.current.addEventListener('keydown', e => {
+        if (e.keyCode === 27) {
+          closeModal();
+        }
+      });
     }
   }, [props.modalOpen]);
 

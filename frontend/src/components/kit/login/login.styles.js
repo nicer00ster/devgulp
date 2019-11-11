@@ -49,6 +49,15 @@ const StyledLoginForm = styled.form`
   `};
 `;
 
+const StyledSegwayContainer = styled.div``;
+
+const StyledSegwaySignup = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+`;
+
 const StyledLoginCaret = styled.div`
   left: 214px;
   clip: rect(0px, 18px, 14px, -4px);
@@ -70,4 +79,10 @@ const StyledLoginCaret = styled.div`
   `};
 `;
 
-export { StyledLogin, StyledLoginForm, StyledLoginCaret };
+export {
+  StyledLogin,
+  StyledLoginForm,
+  StyledLoginCaret,
+  StyledSegwayContainer,
+  StyledSegwaySignup,
+};

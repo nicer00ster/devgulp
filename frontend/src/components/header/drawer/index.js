@@ -10,6 +10,7 @@ import {
 import {
   toggleDrawer,
   toggleLoginMenu,
+  toggleSignUpMenu,
   closeDrawer,
   logout,
 } from '../../../redux/actions';
@@ -55,8 +56,15 @@ function Drawer(props) {
         )}
       </StyledDrawerUser>
       <StyledDrawerList>
-        <EnhancedLink href="/publish">Publish</EnhancedLink>
-        <EnhancedLink href="/users">Users</EnhancedLink>
+        <EnhancedLink isAuthenticated={props.user.isAuthenticated} href="/publish">
+          Publish
+        </EnhancedLink>
+        <EnhancedLink isAuthenticated={props.user.isAuthenticated} href="/users">
+          Users
+        </EnhancedLink>
+        <EnhancedLink isAuthenticated={true} href="/help">
+          Help
+        </EnhancedLink>
       </StyledDrawerList>
       {props.isLoggingIn || props.isLoggingOut ? <Loading /> : null}
       {!props.user.token && <DrawerLogin />}
@@ -74,6 +82,7 @@ const mapStateToProps = ({ root, user }) => ({
 const mapDispatchToProps = {
   toggleDrawer,
   toggleLoginMenu,
+  toggleSignUpMenu,
   logout,
   closeDrawer,
 };
