@@ -17,6 +17,7 @@ import Loading from '../../components/kit/loading';
 import Background from '../../components/kit/background';
 import Notifications from '../kit/notifications';
 import Meta from '../meta';
+import Connectivity from '../kit/notifications/connectivity';
 
 const theme = {
   breakpoints,
@@ -48,7 +49,10 @@ function Layout(props) {
     if (props.post.hasError) {
       addNotification(props.post.errorMessage, 'error');
     }
-  }, [props.user.hasError, props.post.hasError]);
+    if (!props.root.online) {
+      addNotification('You are offline!', 'error');
+    }
+  }, [props.user.hasError, props.post.hasError, props.root.online]);
 
   if (props.user.checkingCredentials) {
     return <Loading />;
@@ -67,9 +71,13 @@ function Layout(props) {
           drawerOpen={props.root.drawerOpen}
           userMenuOpen={props.root.userMenuOpen}
           loginMenuOpen={props.root.loginMenuOpen}>
-          <Notifications children={add => (state.notificationRef.current = add)} />
+          <Notifications
+            children={add => (state.notificationRef.current = add)}
+            timeout={!props.root.online ? Infinity : 3000}
+          />
           <GlobalStyles />
           {props.children}
+          <Connectivity />
         </LayoutStyles>
         <Footer />
       </>
