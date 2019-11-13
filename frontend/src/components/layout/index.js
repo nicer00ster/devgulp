@@ -49,10 +49,7 @@ function Layout(props) {
     if (props.post.hasError) {
       addNotification(props.post.errorMessage, 'error');
     }
-    if (!props.root.online) {
-      addNotification('You are offline!', 'error');
-    }
-  }, [props.user.hasError, props.post.hasError, props.root.online]);
+  }, [props.user.hasError, props.post.hasError]);
 
   if (props.user.checkingCredentials) {
     return <Loading />;

@@ -4,15 +4,26 @@ import { setOnline, setOffline } from '../../../../redux/actions';
 import { AppContext } from '../provider';
 
 function Connectivity(props) {
-  useContext(AppContext);
+  const { addNotification } = useContext(AppContext);
+
+  const updateOnline = () => {
+    props.setOnline();
+    addNotification("You're back online!", 'success');
+  };
+
+  const updateOffline = () => {
+    props.setOffline();
+    addNotification('Uh oh! You seem to be offline!', 'error');
+  };
 
   useEffect(() => {
-    if (!window.navigator.onLine) {
-      props.setOffline();
-    } else {
-      props.setOnline();
-    }
-  }, [window.navigator.onLine]);
+    window.addEventListener('offline', updateOffline);
+    window.addEventListener('online', updateOnline);
+    return () => {
+      window.removeEventListener('offline', updateOffline);
+      window.removeEventListener('online', updateOnline);
+    };
+  });
 
   return null;
 }
