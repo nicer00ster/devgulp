@@ -8,12 +8,12 @@ function Connectivity(props) {
 
   const updateOnline = () => {
     props.setOnline();
-    addNotification("You're back online!", 'success');
+    addNotification("You're back online!", 'success', 'online');
   };
 
   const updateOffline = () => {
     props.setOffline();
-    addNotification('Uh oh! You seem to be offline!', 'error');
+    addNotification('Uh oh! You seem to be offline!', 'error', 'offline');
   };
 
   useEffect(() => {

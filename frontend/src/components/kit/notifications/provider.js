@@ -14,7 +14,8 @@ function AppProvider(props) {
           message: notification,
           notificationRef: ref,
         },
-        addNotification: (message, appearance) => ref.current(message, appearance),
+        addNotification: (message, appearance, type) =>
+          ref.current(message, appearance, type),
       }}>
       {props.children}
     </AppContext.Provider>

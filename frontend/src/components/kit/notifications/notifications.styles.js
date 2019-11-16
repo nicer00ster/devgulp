@@ -14,9 +14,9 @@ const StyledNotifications = styled.div`
     transform: translate3d(0px, -5px, 0px);
   }
   ${props => props.theme.mediaQuery.phone`
-        width: 82%;
-        max-width: 100%;
-    `};
+      width: 82%;
+      max-width: 100%;
+  `};
 `;
 
 const StyledNotificationOuter = styled(animated.div)`
@@ -27,7 +27,7 @@ const StyledNotificationOuter = styled(animated.div)`
   right: 0;
   ${props => props.theme.mediaQuery.phone`
         width: 100%;
-    `};
+  `};
 `;
 
 const StyledNotificationInner = styled(animated.div)`
@@ -39,7 +39,7 @@ const StyledNotificationInner = styled(animated.div)`
   border-radius: ${props => props.theme.effects.radius};
   ${props => props.theme.mediaQuery.phone`
         width: 100%;
-    `};
+  `};
 `;
 
 const StyledNotificationContent = styled.div`
