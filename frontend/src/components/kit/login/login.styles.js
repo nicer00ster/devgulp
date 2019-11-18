@@ -25,7 +25,10 @@ const StyledLogin = styled(animated.fieldset)`
   background-color: ${props => props.theme.colors.white};
   transition: box-shadow 0.25s ease-in;
   &[disabled] {
-    opacity: 0.5;
+    opacity: 1;
+    form {
+      opacity: 0.5;
+    }
   }
   &[aria-busy='true']::before {
     background-size: 50% auto;
