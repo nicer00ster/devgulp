@@ -31,7 +31,6 @@ function Checkout(props) {
       },
     }).then(charge => {
       if (charge.status === 200) {
-        console.log(charge);
         addNotification('Thank you for donating!', 'success');
         // TODO: Do something cool here.
       }
