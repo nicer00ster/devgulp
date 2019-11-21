@@ -2,21 +2,18 @@
   <img src="https://github.com/nicer00ster/devgulp/blob/master/devgulp.png?raw=true" width="600" height="350"  alt="DevGulp Logo"/>
 </p>
 
-
-<p align="center>
-  <a aria-label="DevGulp Logo" href="https://github.com/devgulp">
-    <img src="https://img.shields.io/badge/❤️%20MADE%20WITH%20LOVE%20❤️-1f222e.svg?style=for-the-badge&labelColor=1f222e" alt="Made With Love">
-  </a>
-  <a aria-label="DevGulp Logo" href="https://discordapp.com/channels/642423850390388780">
-    <img src="https://img.shields.io/discord/642423850390388780?color=%237189DA&label=Discord&style=for-the-badge&labelColor=1f222e">
-  </a>
-  <a aria-label="License" href="https://raw.githubusercontent.com/nicer00ster/devgulp/master/LICENSE">
-    <img alt="GPL-3.0" src="https://img.shields.io/github/license/nicer00ster/devgulp?color=92c5f8&style=for-the-badge&labelColor=1f222e">
-  </a>
-  <a aria-label="Contributors" href="https://github.com/nicer00ster/devgulp/settings/collaboration">
-    <img alt="Contributors Count" src="https://img.shields.io/github/contributors-anon/nicer00ster/devgulp?color=80dad3&style=for-the-badge&labelColor=1f222e">
-  </a>
-</p>
+<a aria-label="DevGulp Logo" href="https://github.com/devgulp">
+  <img src="https://img.shields.io/badge/❤️%20MADE%20WITH%20LOVE%20❤️-1f222e.svg?style=for-the-badge&labelColor=1f222e" alt="Made With Love">
+</a>
+<a aria-label="DevGulp Discord" href="https://discordapp.com/channels/642423850390388780">
+  <img src="https://img.shields.io/discord/642423850390388780?color=%237189DA&label=Discord&style=for-the-badge&labelColor=1f222e">
+</a>
+<a aria-label="License" href="https://raw.githubusercontent.com/nicer00ster/devgulp/master/LICENSE">
+  <img alt="GPL-3.0" src="https://img.shields.io/github/license/nicer00ster/devgulp?color=92c5f8&style=for-the-badge&labelColor=1f222e">
+</a>
+<a aria-label="Contributors" href="https://github.com/nicer00ster/devgulp/settings/collaboration">
+  <img alt="Contributors Count" src="https://img.shields.io/github/contributors-anon/nicer00ster/devgulp?color=80dad3&style=for-the-badge&labelColor=1f222e">
+</a>
 
 ### A platform built by developers, for developers.
 ###### A place to deliver and digest valuable content on all programming related topics.
