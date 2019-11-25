@@ -1,4 +1,4 @@
-FROM wordpress:latest
+FROM wordpress:5.2.4
 
 # install WP-CLI and rsync
 RUN apt-get update \
