@@ -100,14 +100,14 @@ volumes:
 
 secrets:
   db_root_password:
-    external: true
+    file: secrets/db_root_password.txt
   db_user:
-    external: true
+    file: secrets/db_user.txt
   db_password:
-    external: true
+    file: secrets/db_password.txt
   wp_admin_user:
-    external: true
+    file: secrets/wp_admin_user.txt
   wp_admin_password:
-    external: true
+    file: secrets/wp_admin_password.txt
   jwt_auth_key:
-    external: true
+    file: secrets/jwt_auth_key.txt
