@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import random
+import shutil
 import string
 import subprocess
 import sys
@@ -84,6 +85,24 @@ def clear_secrets():
     if not found:
         print('No secrets found')
 
+def check_docker_dotenv():
+    """
+    Checks to make sure the compose .env exists, and if not, copies the defaults
+    """
+    root_path = Path(__file__).resolve().parent
+    dotenv_path = root_path / '.env'
+    if not dotenv_path.exists():
+        print('No .env file for compose found, copying .env.defaults to .env')
+        defaults_path = root_path / '.env.defaults'
+        shutil.copy(str(defaults_path), str(dotenv_path))
+
+def confirm_destroy_all() -> bool:
+    """
+    Get confirmation that the user really wants to destroy all of the volume data
+    """
+    confirm = input("Performing this action will irreversibly destroy all data in this instance. Proceed? [y]/[n]: ")
+    return confirm.lower() == 'y'
+
 if __name__ == '__main__':
     parser = ArgumentParser(description='Spin up and down the DevGulp application.')
     parser.add_argument('deployment', 
@@ -96,15 +115,19 @@ if __name__ == '__main__':
 
     if args.deployment == 'dev':
         if args.command == 'up':
+            check_docker_dotenv()
             run_cmd(['docker-compose', '-f', 'docker-compose.dev.yml', 'up', '-d', '--build'])
         elif args.command == 'down':
+            check_docker_dotenv()
             run_cmd(['docker-compose', '-f', 'docker-compose.dev.yml', 'down'])
         elif args.command == 'create_secrets':
             print("create_secrets must be run in the 'prod' deployment") #invalid
         elif args.command == 'clear_secrets':
             print("clear_secrets must be run in the 'prod' deployment") #invalid
         elif args.command == 'destroy':
-            run_cmd(['docker-compose', '-f', 'docker-compose.dev.yml', 'down', '-v'])
+            if confirm_destroy_all():
+                check_docker_dotenv()
+                run_cmd(['docker-compose', '-f', 'docker-compose.dev.yml', 'down', '-v'])
     elif args.deployment == 'prod':
         if args.command == 'up':
             run_cmd(['docker-compose', 'up', '-d', '--build'])
@@ -115,4 +138,5 @@ if __name__ == '__main__':
         elif args.command == 'clear_secrets':
             clear_secrets()
         elif args.command == 'destroy':
-            run_cmd(['docker-compose', 'down', '-v'])
+            if confirm_destroy_all():
+                run_cmd(['docker-compose', 'down', '-v'])
