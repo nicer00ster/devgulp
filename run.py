@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-import argparse
-import os
 import random
 import string
 import subprocess
 import sys
+from argparse import ArgumentParser
 from pathlib import Path
 from typing import Dict
 
@@ -25,13 +24,13 @@ def random_string(size: int=64, chars: str=string.ascii_letters + string.digits)
 
 def run_cmd(*args, **kwargs):
     """
-    Runs a process and pipes output to the std streams
+    Runs a process and defaults output to the std streams
     """
     stdout = kwargs.pop('stdout', sys.stdout)
     stderr = kwargs.pop('stderr', sys.stderr)
     return subprocess.run(*args, **kwargs, stdout=stdout, stderr=stderr)
 
-def create_secrets_interactive() -> Dict[str, str]:
+def get_secrets_interactive() -> Dict[str, str]:
     """
     Prompt the user to enter a value for each secret
     """
@@ -48,25 +47,45 @@ def create_secrets_files(secrets_dict: Dict[str, str]):
     """
     Create the secrets files from the given secrets dictionary `secrets_dict`
     """
-    pass
+    root_path = Path(__file__).resolve().parent
+    secrets_root = root_path / 'secrets'
+    if not secrets_root.exists():
+        secrets_root.mkdir()
+    for secret, value in secrets_dict.items():
+        secret_file = secrets_root / f'{secret}.txt'
+        with secret_file.open(mode='w') as f:
+            f.write(value)
+            print(f'Wrote secrets/{secret}.txt')
 
 def create_secrets():
-    [print(f'{x}: {y}') for x,y in create_secrets_interactive().items()]
+    """
+    Prompt the user for secret values and create them
+    """
+    create_secrets_files(get_secrets_interactive())
 
 def clear_secrets():
     """
     Delete all existing secrets
     """
-    secrets_root = Path(os.path.abspath(__file__)) / 'secrets'
+    root_path = Path(__file__).resolve().parent
+    secrets_root = root_path / 'secrets'
     if not secrets_root.exists():
         print('No secrets directory exists')
         return
     
+    found = False
     for secret in SECRETS:
-        os.remove(secrets_root / f'{secret}.txt')
+        secret_file = secrets_root / f'{secret}.txt'
+        if secret_file.exists():
+            found = True
+            secret_file.unlink()
+            print(f'Removed secrets/{secret}.txt')
+    
+    if not found:
+        print('No secrets found')
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Spin up and down the DevGulp application.')
+    parser = ArgumentParser(description='Spin up and down the DevGulp application.')
     parser.add_argument('deployment', 
         choices=['dev', 'prod'],
         help='The deployment configuration.')
