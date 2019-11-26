@@ -1,6 +1,6 @@
 const express = require('express');
 const next = require('next');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv-defaults');
 dotenv.config();
 
 const bodyParser = require('body-parser');
