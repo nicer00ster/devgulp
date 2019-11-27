@@ -17,7 +17,7 @@ SECRETS = {
     'jwt_auth_key': 'JWT authentication secret key'
 }
 
-def random_string(size: int=64, chars: str=string.ascii_letters + string.digits) -> str:
+def random_string(size: int=32, chars: str=string.ascii_letters + string.digits) -> str:
     """
     Generate a random string of `chars` of length `size`
     """
