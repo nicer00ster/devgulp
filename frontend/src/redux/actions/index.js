@@ -35,6 +35,18 @@ export function toggleUserMenu() {
   };
 }
 
+export function openMoreMenu() {
+  return {
+    type: types.OPEN_MORE_MENU,
+  };
+}
+
+export function closeMoreMenu() {
+  return {
+    type: types.CLOSE_MORE_MENU,
+  };
+}
+
 export function toggleModal() {
   return {
     type: types.TOGGLE_MODAL,
