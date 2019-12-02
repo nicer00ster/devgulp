@@ -54,10 +54,12 @@ function Login(props) {
     }
     if (!username || !password) {
       addNotification('Make sure to enter a username & password!', 'error');
+      resetPassword();
       return;
     }
 
     props.login(username, password);
+    resetPassword();
   }
 
   return trail.map(({ x, height, opacity, ...rest }, index) => (
