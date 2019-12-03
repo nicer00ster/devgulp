@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should render props passed to it 1`] = `
+.c0 {
+  position: absolute;
+  padding: 0 0;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  margin: 0 auto;
+  color: rgba(31,34,46,0.75);
+  background-color: #fefefe;
+  border-top: 1px solid #d9d9d9;
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  overflow: visible;
+  pointer-events: all;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.c1 {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0 1.2rem;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c6 img {
+  width: 75px;
+  padding: 0.4rem;
+  -webkit-transition: width 0.25s ease-in-out;
+  transition: width 0.25s ease-in-out;
+}
+
+.c4 {
+  padding: 0.4rem;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <footer
+      class="c2"
+    >
+      <ul
+        class="c3"
+      >
+        <li
+          class="c4"
+        >
+          @ 
+          2019
+           DevGulp, Inc.
+        </li>
+        <li
+          class="c4"
+        >
+          <a
+            href="/"
+          >
+            Terms
+          </a>
+        </li>
+        <li
+          class="c4"
+        >
+          <a
+            href="/policy"
+          >
+            Privacy
+          </a>
+        </li>
+        <li
+          class="c4"
+        >
+          <a
+            href="/"
+          >
+            Status
+          </a>
+        </li>
+        <li
+          class="c4"
+        >
+          <a
+            href="/help"
+          >
+            Help
+          </a>
+        </li>
+      </ul>
+      <div
+        class="c5"
+      >
+        <a
+          class="c6"
+          href="#"
+        >
+          <img
+            alt="DevGulp"
+            src="/static/devgulp-logo.svg"
+          />
+        </a>
+      </div>
+      <ul
+        class="c7"
+      >
+        <li
+          class="c4"
+        >
+          <a
+            href="/publish"
+          >
+            Publish
+          </a>
+        </li>
+        <li
+          class="c4"
+        >
+          <a
+            href="/users"
+          >
+            Users
+          </a>
+        </li>
+      </ul>
+    </footer>
+  </div>
+</div>
+`;

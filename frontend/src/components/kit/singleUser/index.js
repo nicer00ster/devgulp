@@ -60,7 +60,7 @@ function SingleUser(props) {
     const data = new FormData();
 
     // Validate MIME type
-    if (ALLOWED_MIME_TYPES.indexOf(files[0].type) == -1) {
+    if (ALLOWED_MIME_TYPES.indexOf(files[0].type) === -1) {
       return new Error('File type not allowed.');
     } else {
       data.append('file', files[0]);
