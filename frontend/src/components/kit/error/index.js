@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 import {
   StyledError,
   StyledCodeArea,
@@ -15,8 +16,9 @@ function EnhancedError(props) {
           <StyledCodeComment>// 404 page not found.</StyledCodeComment>
           <span style={{ display: 'inline-block' }}>
             <StyledIf>if </StyledIf>(<span style={{ color: '#4ca8ef' }}>!</span>
-            <span style={{ fontStyle: 'italic', color: '#bdbdbd' }}>found</span>){' '}
-            {'{'}
+            <span style={{ fontStyle: 'italic', color: '#bdbdbd' }}>
+              found
+            </span>) {'{'}
           </span>
           <span
             style={{
@@ -31,6 +33,9 @@ function EnhancedError(props) {
             (<span style={{ color: '#a6a61f' }}>"(╯°□°)╯︵ ┻━┻"</span>);
           </span>
           {'}'}
+          <StyledCodeComment>
+            // Go <Link href="/">home</Link>.
+          </StyledCodeComment>
         </StyledCodeArea>
       </StyledError>
     </Container>

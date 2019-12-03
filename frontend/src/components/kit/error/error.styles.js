@@ -22,7 +22,7 @@ const StyledCodeComment = styled.span`
   display: block;
   color: ${props => props.theme.colors.lightBlack};
   font-style: italic;
-  margin-bottom: 12px;
+  margin: 24px 0;
 `;
 
 const StyledIf = styled.span`
