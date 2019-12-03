@@ -14,6 +14,9 @@ const StyledSearch = styled.div`
 `;
 
 const StyledSearchNoResults = styled.p`
+  font-size: 24px;
+  font-style: italic;
+  font-weight: bold;
   color: tomato;
   text-align: center;
 `;
