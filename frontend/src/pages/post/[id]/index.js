@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
-import Error from 'next/error';
+import Error from '../../_error';
 import { fetchPost } from '../../../redux/actions';
 import SinglePost from '../../../components/kit/singlePost';
 import Container from '../../../components/kit/container';
