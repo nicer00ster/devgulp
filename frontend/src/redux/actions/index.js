@@ -128,6 +128,15 @@ export function register(username, email, password, verifyPassword) {
   };
 }
 
+export function resetPassword(email, password, verifyPassword) {
+  return {
+    type: types.RESET_PASSWORD,
+    email,
+    password,
+    verifyPassword,
+  };
+}
+
 export function addPost(token, title, content, categories, featuredMedia) {
   return {
     type: types.ADD_POST,

@@ -82,10 +82,17 @@ const StyledLoginCaret = styled.div`
   `};
 `;
 
+const StyledForgotPassword = styled.div`
+  display: inline-block;
+  padding: 0 12px;
+  margin-left: auto;
+`;
+
 export {
   StyledLogin,
   StyledLoginForm,
   StyledLoginCaret,
   StyledSegwayContainer,
   StyledSegwaySignup,
+  StyledForgotPassword,
 };

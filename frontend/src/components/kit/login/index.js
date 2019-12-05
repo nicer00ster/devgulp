@@ -1,7 +1,13 @@
 import { useContext } from 'react';
 import { connect } from 'react-redux';
 import { useTrail } from 'react-spring';
-import { StyledLogin, StyledLoginForm, StyledLoginCaret } from './login.styles';
+import Link from 'next/link';
+import {
+  StyledLogin,
+  StyledLoginForm,
+  StyledLoginCaret,
+  StyledForgotPassword,
+} from './login.styles';
 import { StyledFormHeading } from '../form/form.styles';
 import { useInput } from '../../../hooks';
 import { login, toggleLoginMenu } from '../../../redux/actions';
@@ -62,6 +68,10 @@ function Login(props) {
     resetPassword();
   }
 
+  function handleResetClick() {
+    props.toggleLoginMenu();
+  }
+
   return trail.map(({ x, height, opacity, ...rest }, index) => (
     <StyledLogin
       key={index}
@@ -97,6 +107,9 @@ function Login(props) {
             bind={bindPassword}
           />
           <Button type="submit">Login</Button>
+          <StyledForgotPassword onClick={handleResetClick}>
+            <Link href="/reset">Forgot password?</Link>
+          </StyledForgotPassword>
         </StyledLoginForm>
       )}
       <StyledLoginCaret />

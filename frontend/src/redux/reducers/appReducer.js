@@ -9,6 +9,7 @@ const initialState = {
   donationMenuOpen: false,
   searchExpanded: false,
   taxonomyFilter: 1,
+  isResettingPassword: false,
   route: '/',
 };
 
@@ -82,6 +83,17 @@ export default function appReducer(state = initialState, action = {}) {
       return {
         ...state,
         taxonomyFilter: action.taxonomy,
+      };
+    case types.RESET_PASSWORD:
+      return {
+        ...state,
+        isResettingPassword: true,
+      };
+    case types.RESET_PASSWORD_SUCCESS:
+    case types.RESET_PASSWORD_FAILURE:
+      return {
+        ...state,
+        isResettingPassword: false,
       };
     default:
       return state;

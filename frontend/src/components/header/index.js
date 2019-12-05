@@ -37,6 +37,7 @@ import Login from '../kit/login';
 import Burger from '../kit/burger';
 import Drawer from './drawer';
 import UserMenu from '../kit/userMenu';
+import { StyledFormHeading } from '../kit/form/form.styles';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -245,7 +246,7 @@ function Header(props) {
       )}
       {!props.user.isAuthenticated && (
         <Modal noPadding={true} width={400}>
-          <Form />
+          <Form type="register" label="Create an account" />
         </Modal>
       )}
     </StyledHeader>

@@ -23,7 +23,8 @@ const check = keyframes`
 
 const StyledForm = styled.form`
   position: relative;
-  width: 100%;
+  min-width: 50%;
+  margin: 0 auto;
   border-radius: ${props => props.theme.effects.radius};
   background-color: ${props => props.theme.colors.white};
   line-height: 1.5;

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { connect } from 'react-redux';
 import { AppContext } from '../notifications/provider';
 import { StyledForm, StyledFormHeading } from './form.styles';
-import { register } from '../../../redux/actions';
+import { register, resetPassword } from '../../../redux/actions';
 import { useInput } from '../../../hooks';
 import Button from '../button';
 import Input from '../input';
@@ -39,7 +39,7 @@ function Form(props) {
     hasError: verifyPasswordError,
   } = useInput('');
 
-  function handleSubmit(e) {
+  function handleRegister(e) {
     e.preventDefault();
 
     setUsernameError(false);
@@ -81,20 +81,61 @@ function Form(props) {
     props.register(username, email, password, verifyPassword);
   }
 
+  function handleReset(e) {
+    e.preventDefault();
+
+    setEmailError(false);
+    setPasswordError(false);
+    setVerifyPasswordError(false);
+
+    if (!email) {
+      setEmailError(true);
+    }
+    if (!password) {
+      setPasswordError(true);
+    }
+    if (!verifyPassword) {
+      setVerifyPasswordError(true);
+    }
+
+    if (password !== verifyPassword) {
+      setPasswordError(true);
+      setVerifyPasswordError(true);
+      addNotification('Passwords must match!', 'error');
+      return;
+    }
+
+    if (!email || !password || !verifyPassword) {
+      addNotification('Make sure to fill out all the fields!', 'error');
+      return;
+    }
+
+    props.resetPassword(username, email, password, verifyPassword);
+  }
+
   return (
-    <StyledForm onSubmit={e => handleSubmit(e)}>
+    <StyledForm
+      onSubmit={e => {
+        if (props.type === 'register') {
+          handleRegister(e);
+        } else if (props.type === 'reset') {
+          handleReset(e);
+        }
+      }}>
       <fieldset
         disabled={props.user.isRegistering}
         aria-busy={props.user.isRegistering}>
-        <StyledFormHeading>Create an account</StyledFormHeading>
-        <Input
-          type="text"
-          name="username"
-          label="Username"
-          styles={{ margin: '5rem 0' }}
-          error={usernameError}
-          bind={bindUsername}
-        />
+        <StyledFormHeading>{props.label}</StyledFormHeading>
+        {props.type === 'register' && (
+          <Input
+            type="text"
+            name="username"
+            label="Username"
+            styles={{ margin: '5rem 0' }}
+            error={usernameError}
+            bind={bindUsername}
+          />
+        )}
         <Input
           type="email"
           name="email"
@@ -126,13 +167,15 @@ function Form(props) {
   );
 }
 
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, root }) => ({
   user,
   isRegistering: user.isRegistering,
+  isResettingPassword: root.isResettingPassword,
 });
 
 const mapDispatchToProps = {
   register,
+  resetPassword,
 };
 
 export default connect(
