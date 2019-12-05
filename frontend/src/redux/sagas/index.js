@@ -51,6 +51,20 @@ async function apiRegister(data) {
   });
 }
 
+async function apiResetPassword(data) {
+  return axios({
+    method: 'post',
+    url: `${TOKEN_URL}/resetpassword`,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {
+      email: data.email,
+      password: data.password,
+    },
+  });
+}
+
 function apiValidateToken() {
   const token = verifyToken('_app');
   return axios({
@@ -661,10 +675,20 @@ function* followUserSaga(data) {
   }
 }
 
+function* resetPasswordSaga(data) {
+  try {
+    const response = yield call(apiResetPassword, data);
+    yield put({ type: types.RESET_PASSWORD_SUCCESS, response });
+  } catch (error) {
+    yield put({ type: types.RESET_PASSWORD_FAILURE, error });
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeEvery(types.VERIFIED_TOKEN, fetchTokenSaga),
     takeEvery(types.REGISTER, registerSaga),
+    takeEvery(types.RESET_PASSWORD, resetPasswordSaga),
     takeEvery(types.LOGIN, loginSaga),
     takeEvery(types.LOGOUT, logoutSaga),
     takeEvery(types.SEARCH, searchSaga),
