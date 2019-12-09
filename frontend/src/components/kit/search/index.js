@@ -10,7 +10,10 @@ function EnhancedSearch(props) {
           Nothing found for your search.
         </StyledSearchNoResults>
       ) : (
-        props.results.map(post => <PostItem key={post.id} post={post} />)
+        props.results.map(
+          post =>
+            post.subtype === 'post' && <PostItem key={post.id} post={post} />,
+        )
       )}
     </StyledSearch>
   );
