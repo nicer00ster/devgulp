@@ -12,7 +12,7 @@ if [[ ! -e '/opt/cert/dhparam.pem' ]]; then
     openssl dhparam -out /opt/cert/dhparam.pem 4096
 fi
 
-if [[ $DEPLOY_ENV == "prod" ]]; then
+if [[ $ENABLE_LETSENCRYPT == 1 ]]; then
     # enable cron for letsencrypt
     crontab /opt/scripts/letsencrypt.cron
 fi

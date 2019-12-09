@@ -81,7 +81,7 @@ services:
     image: devgulp_proxy
     restart: unless-stopped
     environment:
-      DEPLOY_ENV: ${DEPLOY_ENV:-dev}
+      ENABLE_LETSENCRYPT: ${ENABLE_LETSENCRYPT:-0}
       HOST_URL: ${HOST_URL:?Host URL must be set}
     ports:
       - '80:80'
