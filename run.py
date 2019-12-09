@@ -94,6 +94,17 @@ def clear_secrets():
     if not found:
         print('No secrets found')
 
+def generate_dhparam():
+    root_path = Path(__file__).resolve().parent
+    run_cmd(['docker', 'run', '--rm', '-v', '{}:/export'.format(root_path), 'frapsoft/openssl', 'dhparam', '-out', '/export/dhparam.pem', '4096'])
+    dhparam_file = root_path / 'dhparam.pem'
+    if dhparam_file.exists():
+        proxy_dhparam_path = root_path / 'proxy' / 'dhparam.pem'
+        shutil.move(str(dhparam_file), str(proxy_dhparam_path))
+        print('Generated 4096 bit dhparam')
+    else:
+        print('dhparam generation failed')
+
 def check_docker_dotenv():
     """
     Checks to make sure the compose .env exists, and if not, copies the defaults
@@ -118,7 +129,7 @@ if __name__ == '__main__':
         choices=['dev', 'prod'],
         help='The deployment configuration.')
     parser.add_argument('command', 
-        choices=['up', 'down', 'create_secrets', 'clear_secrets', 'destroy'], 
+        choices=['up', 'down', 'create_secrets', 'clear_secrets', 'generate_dhparam', 'destroy'], 
         help='The command to run.')
     args = parser.parse_args()
 
@@ -129,10 +140,8 @@ if __name__ == '__main__':
         elif args.command == 'down':
             check_docker_dotenv()
             run_cmd(['docker-compose', '-f', 'docker-compose.dev.yml', 'down'])
-        elif args.command == 'create_secrets':
-            print("create_secrets must be run in the 'prod' deployment") #invalid
-        elif args.command == 'clear_secrets':
-            print("clear_secrets must be run in the 'prod' deployment") #invalid
+        elif args.command in ['create_secrets', 'clear_secrets', 'generate_dhparam']:
+            print("{} must be run in the 'prod' deployment".format(args.command)) #invalid
         elif args.command == 'destroy':
             if confirm_destroy_all():
                 check_docker_dotenv()
@@ -148,6 +157,8 @@ if __name__ == '__main__':
             create_secrets()
         elif args.command == 'clear_secrets':
             clear_secrets()
+        elif args.command == 'generate_dhparam':
+            generate_dhparam()
         elif args.command == 'destroy':
             if confirm_destroy_all():
                 check_docker_dotenv()

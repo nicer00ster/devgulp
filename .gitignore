@@ -90,3 +90,4 @@ typings/
 
 # secrets
 /secrets
+/proxy/dhparam.pem
