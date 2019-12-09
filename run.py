@@ -13,7 +13,7 @@ class Secret:
     def __init__(self, name, length, description=''):
         self.name = name
         self.description = description
-        self.length=length
+        self.length = length
 
 SECRETS = [
     Secret(name='db_root_password', length=32, description='Root database password'),
