@@ -8,13 +8,19 @@ from argparse import ArgumentParser
 from pathlib import Path
 from typing import Dict
 
+class Secret:
+    __slots__ = 'description', 'length'
+    def __init__(self, length, description=''):
+        self.description = description
+        self.length=length
+
 SECRETS = {
-    'db_root_password': 'Root database password',
-    'db_user': 'Database username',
-    'db_password': 'Database password',
-    'wp_admin_user': 'Wordpress Admin username',
-    'wp_admin_password': 'Wordpress Admin password',
-    'jwt_auth_key': 'JWT authentication secret key'
+    'db_root_password': Secret(length=32, description='Root database password'),
+    'db_user': Secret(length=32, description='Database username'),
+    'db_password': Secret(length=32, description='Database password'),
+    'wp_admin_user': Secret(length=32, description='Wordpress Admin username'),
+    'wp_admin_password': Secret(length=32, description='Wordpress Admin password'),
+    'jwt_auth_key': Secret(length=32, description='JWT authentication secret key')
 }
 
 def random_string(size: int=32, chars: str=string.ascii_letters + string.digits) -> str:
@@ -23,7 +29,7 @@ def random_string(size: int=32, chars: str=string.ascii_letters + string.digits)
     """
     return ''.join(random.choice(chars) for x in range(size))
 
-def run_cmd(*args, **kwargs):
+def run_cmd(*args, **kwargs) -> subprocess.CompletedProcess:
     """
     Runs a process and defaults output to the std streams
     """
@@ -36,12 +42,12 @@ def get_secrets_interactive() -> Dict[str, str]:
     Prompt the user to enter a value for each secret
     """
     secrets_dict = dict()
-    for name, description in SECRETS.items():
-        value = input(f"Enter a value for the {description} [{name}] (Leave blank for random):")
+    for name, secret in SECRETS.items():
+        value = input(f"Enter a value for the {secret.description} [{name}] (Leave blank for random):")
         if len(value) > 0:
             secrets_dict[name] = value
         else:
-            secrets_dict[name] = random_string()
+            secrets_dict[name] = random_string(secret.length)
     return secrets_dict
 
 def create_secrets_files(secrets_dict: Dict[str, str]):
@@ -53,10 +59,11 @@ def create_secrets_files(secrets_dict: Dict[str, str]):
     if not secrets_root.exists():
         secrets_root.mkdir()
     for secret, value in secrets_dict.items():
-        secret_file = secrets_root / f'{secret}.txt'
+        secret_filename = '{}.txt'.format(secret)
+        secret_file = secrets_root / secret_filename
         with secret_file.open(mode='w') as f:
             f.write(value)
-            print(f'Wrote secrets/{secret}.txt')
+            print('Wrote secrets/{}'.format(secret_filename))
 
 def create_secrets():
     """
@@ -76,11 +83,12 @@ def clear_secrets():
     
     found = False
     for secret in SECRETS:
-        secret_file = secrets_root / f'{secret}.txt'
+        secret_filename = '{}.txt'.format(secret)
+        secret_file = secrets_root / secret_filename
         if secret_file.exists():
             found = True
             secret_file.unlink()
-            print(f'Removed secrets/{secret}.txt')
+            print('Removed secrets/{}.txt'.format(secret_filename))
     
     if not found:
         print('No secrets found')
