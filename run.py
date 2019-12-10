@@ -44,7 +44,7 @@ def get_secrets_interactive() -> Dict[str, str]:
     """
     secrets_dict = dict()
     for secret in SECRETS:
-        value = input("Enter a value for the {description} [{name}] (Leave blank for random):".format(description=secret.description, name=secret.name))
+        value = input("Enter a value for the {description} [{name}] (Leave blank for random): ".format(description=secret.description, name=secret.name))
         if len(value) > 0:
             secrets_dict[secret.name] = value
         else:
@@ -62,6 +62,7 @@ def create_secrets_files(secrets_dict: Dict[str, str]):
     for secret, value in secrets_dict.items():
         secret_filename = '{}.txt'.format(secret)
         secret_file = secrets_root / secret_filename
+        secret_file.touch()
         with secret_file.open(mode='w') as f:
             f.write(value)
             print('Wrote secrets/{}'.format(secret_filename))
@@ -81,7 +82,7 @@ def clear_secrets():
     if not secrets_root.exists():
         print('No secrets directory exists')
         return
-    
+
     found = False
     for secret in SECRETS:
         secret_filename = '{}.txt'.format(secret.name)
@@ -90,7 +91,7 @@ def clear_secrets():
             found = True
             secret_file.unlink()
             print('Removed secrets/{}.txt'.format(secret_filename))
-    
+
     if not found:
         print('No secrets found')
 
@@ -125,11 +126,11 @@ def confirm_destroy_all() -> bool:
 
 if __name__ == '__main__':
     parser = ArgumentParser(description='Spin up and down the DevGulp application.')
-    parser.add_argument('deployment', 
+    parser.add_argument('deployment',
         choices=['dev', 'prod'],
         help='The deployment configuration.')
-    parser.add_argument('command', 
-        choices=['up', 'down', 'create_secrets', 'clear_secrets', 'generate_dhparam', 'destroy'], 
+    parser.add_argument('command',
+        choices=['up', 'down', 'create_secrets', 'clear_secrets', 'generate_dhparam', 'destroy'],
         help='The command to run.')
     args = parser.parse_args()
 
