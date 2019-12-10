@@ -108,7 +108,9 @@ function Login(props) {
           />
           <Button type="submit">Login</Button>
           <StyledForgotPassword onClick={handleResetClick}>
-            <Link href="/reset">Forgot password?</Link>
+            <Link href="/reset">
+              <a>Forgot password?</a>
+            </Link>
           </StyledForgotPassword>
         </StyledLoginForm>
       )}
