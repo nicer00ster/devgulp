@@ -193,7 +193,7 @@ EOPHP
 		wp config set SIMPLE_JWT_AUTHENTICATION_SECRET_KEY $JWT_AUTHENTICATION_SECRET_KEY
 		wp config set SIMPLE_JWT_AUTHENTICATION_CORS_ENABLE true --raw
 		wp option update blogdescription "$WORDPRESS_TAGLINE"
-		wp option update default_role "$WORDPRESS_DEFAULT_ROLE"
+		wp option update default_role "author"
 		wp option update users_can_register 1
 		wp option update show_avatars 0
 		wp option update comment_whitelist 0
