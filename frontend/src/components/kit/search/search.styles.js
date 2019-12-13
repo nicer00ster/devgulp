@@ -14,6 +14,7 @@ const StyledSearch = styled.div`
 `;
 
 const StyledSearchNoResults = styled.p`
+  font-family: 'Trirong', serif;
   font-size: 24px;
   font-style: italic;
   font-weight: bold;

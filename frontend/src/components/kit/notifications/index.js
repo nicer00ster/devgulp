@@ -27,7 +27,6 @@ function Notifications({
   const transitions = useTransition(items, item => item.key, {
     from: { opacity: 0, height: 0, life: '100%', zIndex: 1 },
     enter: item => async (next, cancel) => {
-      console.log(item);
       if (item.connection === 'offline') {
         const offlineNotification = item.connection === 'offline' ? item : null;
         setOfflineRef(offlineNotification);
