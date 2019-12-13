@@ -177,6 +177,10 @@ const StyledMoreItem = styled.button`
     color: ${props => props.theme.colors.black};
     bottom: 3px;
   }
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 `;
 
 const StyledMoreMenu = styled(animated.div)`
@@ -208,7 +212,7 @@ const StyledMoreMenu = styled(animated.div)`
 `;
 
 const StyledMoreMenuCaret = styled.div`
-  left: 126px;
+  left: 55px;
   clip: rect(0px, 18px, 14px, -4px);
   top: -14px;
   position: absolute;
@@ -226,6 +230,27 @@ const StyledMoreMenuCaret = styled.div`
   ${props => props.theme.mediaQuery.phone`
     
   `};
+`;
+
+const StyledReportButtons = styled.div`
+  button,
+  a {
+    padding: 6px;
+  }
+`;
+
+const StyledReportButton = styled.button`
+  padding: 0.6rem;
+  margin: 0 0.6rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
+const StyledReportWarning = styled.p`
+  font-size: 16px;
+  max-width: 95%;
+  text-align: center;
 `;
 
 export {
@@ -252,4 +277,7 @@ export {
   StyledMoreItem,
   StyledMoreMenu,
   StyledMoreMenuCaret,
+  StyledReportButtons,
+  StyledReportButton,
+  StyledReportWarning,
 };

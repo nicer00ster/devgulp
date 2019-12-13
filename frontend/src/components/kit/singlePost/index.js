@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import { useEffect, useState, useCallback } from 'react';
 import { useSpring, useTransition, animated, useTrail } from 'react-spring';
-import { useMeasure, useInput } from '../../../hooks';
+import { useMeasure, useInput, useOnClickOutside } from '../../../hooks';
 import {
   StyleSinglePost,
   StyledSinglePostContainer,
@@ -28,6 +28,9 @@ import {
   StyledSidebar,
   StyledMoreMenu,
   StyledMoreMenuCaret,
+  StyledReportButtons,
+  StyledReportButton,
+  StyledReportWarning,
 } from './singlePost.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledDivider } from '../globals/globals.styles';
@@ -40,16 +43,21 @@ import {
   updatePostLikes,
   openMoreMenu,
   closeMoreMenu,
+  closeModal,
+  toggleModal,
 } from '../../../redux/actions';
 import { getTaxonomyIcon } from '../../../utils';
 import LikeButton from '../likeButton';
 import ShareButton from '../shareButton';
+import Button from '../button';
 import Comments from './comments';
 import SocialSharing from '../social';
 import Tooltip from '../tooltip';
 import Achievements from '../achievements';
+import Modal from '../modal';
 
 function SinglePost(props) {
+  const ref = useRef();
   const { post } = props.post;
   const [bind, { width, height }] = useMeasure();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -83,6 +91,17 @@ function SinglePost(props) {
     props.addComment(props.user.token, post.id, reply);
     resetReply();
   }
+
+  function handleReportPost() {
+    props.toggleModal();
+    props.closeMoreMenu();
+  }
+
+  useOnClickOutside(ref, () => {
+    if (props.moreMenuOpen) {
+      props.closeMoreMenu();
+    }
+  });
 
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
@@ -244,15 +263,15 @@ function SinglePost(props) {
             like{post.acf.post_likes.length !== 1 ? 's' : ''}
           </StyledLikeCount>
         </StyledLikeContainer>
-        <StyledMoreItems>
+        <StyledMoreItems ref={ref}>
           <SocialSharing open={open} postName={post.title.rendered} />
           <StyledMoreItem className={open && 'active'} onClick={() => set(!open)}>
             <i className="fal fa-share-alt" />
           </StyledMoreItem>
           {/* TODO: Have different tabs for liked/bookmarked posts? */}
-          {/*<StyledMoreItem>*/}
-          {/*  <i className="fal fa-bookmark" />*/}
-          {/*</StyledMoreItem>*/}
+          <StyledMoreItem disabled>
+            <i className="fal fa-bookmark" />
+          </StyledMoreItem>
           <StyledMoreItem
             onClick={() =>
               props.moreMenuOpen ? props.closeMoreMenu() : props.openMoreMenu()
@@ -268,7 +287,9 @@ function SinglePost(props) {
                 opacity: opacity,
                 ...rest,
               }}>
-              <a>Report Post</a>
+              <StyledReportButton onClick={handleReportPost}>
+                Report Post
+              </StyledReportButton>
               <StyledMoreMenuCaret />
             </StyledMoreMenu>
           ))}
@@ -303,6 +324,15 @@ function SinglePost(props) {
           comments={post.comments}
         />
       </StyledComments>
+      <Modal>
+        <StyledReportWarning>
+          Are you sure you want to report this post for being inapropriate?
+        </StyledReportWarning>
+        <StyledReportButtons>
+          <Button>Yes</Button>
+          <a onClick={props.closeModal}>Cancel</a>
+        </StyledReportButtons>
+      </Modal>
     </StyledSinglePostContainer>
   );
 }
@@ -320,6 +350,8 @@ const mapDispatchToProps = {
   updatePostLikes,
   openMoreMenu,
   closeMoreMenu,
+  closeModal,
+  toggleModal,
 };
 
 export default connect(
