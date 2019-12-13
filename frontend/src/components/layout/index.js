@@ -17,6 +17,7 @@ import Loading from '../../components/kit/loading';
 import Background from '../../components/kit/background';
 import Notifications from '../kit/notifications';
 import Meta from '../meta';
+import Connectivity from '../kit/notifications/connectivity';
 
 const theme = {
   breakpoints,
@@ -67,9 +68,13 @@ function Layout(props) {
           drawerOpen={props.root.drawerOpen}
           userMenuOpen={props.root.userMenuOpen}
           loginMenuOpen={props.root.loginMenuOpen}>
-          <Notifications children={add => (state.notificationRef.current = add)} />
+          <Notifications
+            children={add => (state.notificationRef.current = add)}
+            timeout={!props.root.online ? Infinity : 3000}
+          />
           <GlobalStyles />
           {props.children}
+          <Connectivity />
         </LayoutStyles>
         <Footer />
       </>
