@@ -8,12 +8,23 @@ const initialState = {
   drawerOpen: false,
   donationMenuOpen: false,
   searchExpanded: false,
+  online: true,
   taxonomyFilter: 1,
   route: '/',
 };
 
 export default function appReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case types.SET_ONLINE:
+      return {
+        ...state,
+        online: true,
+      };
+    case types.SET_OFFLINE:
+      return {
+        ...state,
+        online: false,
+      };
     case types.SCREEN_RESIZE:
       return Object.assign({}, state, {
         ...state,

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const MOUSEDOWN = 'mousedown';

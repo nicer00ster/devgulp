@@ -18,6 +18,8 @@ export const FILE_TYPE_ERROR = {
 };
 
 // Global Types
+export const SET_ONLINE = 'SET_ONLINE';
+export const SET_OFFLINE = 'SET_OFFLINE';
 export const SCREEN_RESIZE = 'SCREEN_RESIZE';
 export const INPUT = 'INPUT';
 export const TOGGLE_LOGIN_MENU = 'TOGGLE_LOGIN_MENU';

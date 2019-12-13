@@ -87,3 +87,7 @@ typings/
 /wordpress/**/wp-trackback.php
 /wordpress/**/xmlrpc.php
 /wordpress/**/license.txt
+
+# secrets
+/secrets
+/proxy/dhparam.pem

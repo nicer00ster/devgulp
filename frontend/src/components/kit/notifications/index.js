@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { useTransition } from 'react-spring';
 import debounce from 'lodash.debounce';
 import {
@@ -21,15 +22,28 @@ function Notifications({
   const [items, setItems] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
   const [index, setIndex] = useState(0);
+  const [offlineRef, setOfflineRef] = useState();
 
   const transitions = useTransition(items, item => item.key, {
     from: { opacity: 0, height: 0, life: '100%', zIndex: 1 },
-    enter: item => async next =>
+    enter: item => async (next, cancel) => {
+      if (item.connection === 'offline') {
+        const offlineNotification = item.connection === 'offline' ? item : null;
+        setOfflineRef(offlineNotification);
+      }
+      if (item.connection === 'online') {
+        cancelMap.has(offlineRef) && cancelMap.get(offlineRef)();
+        cancelMap.set(offlineRef, cancel);
+        await next({ life: '0%' });
+        await next({ opacity: 0 });
+        await next({ height: 0 });
+      }
       await next({
         opacity: 1,
         height: refMap.get(item).offsetHeight,
         zIndex: -item.key,
-      }),
+      });
+    },
     leave: item => async (next, cancel) => {
       cancelMap.set(item, cancel);
       await next({ life: '0%' });
@@ -37,20 +51,26 @@ function Notifications({
       await next({ height: 0 });
     },
     onRest: item => setItems(state => state.filter(i => i.key !== item.key)),
-    onDestroyed: () => {
-      setIndex(index - 1);
-    },
+    onDestroyed: () => setIndex(index - 1),
     config: (item, state) =>
-      state === 'leave' ? [{ duration: timeout }, config, config] : config,
+      state === 'leave'
+        ? [
+            {
+              duration: item.connection === 'offline' ? Infinity : timeout,
+            },
+            config,
+            config,
+          ]
+        : config,
   });
 
   useEffect(
     () =>
-      void children((msg, appearance) => {
+      void children((msg, appearance, connection) => {
         setIndex(index + 1);
-        setItems(state => [...state, { key: index, msg, appearance }]);
+        setItems(state => [...state, { key: index, msg, appearance, connection }]);
       }),
-    [index],
+    [index, items],
   );
 
   return (
@@ -64,10 +84,12 @@ function Notifications({
               <StyledNotificationContent
                 className={item.appearance}
                 ref={ref => ref && refMap.set(item, ref)}>
-                <StyledNotificationDuration
-                  className={item.appearance}
-                  style={{ right: life }}
-                />
+                {item.connection === undefined && (
+                  <StyledNotificationDuration
+                    className={item.appearance}
+                    style={{ right: life }}
+                  />
+                )}
                 <p>{item.msg}</p>
                 <StyledNotificationButton
                   onClick={e => {
@@ -85,4 +107,11 @@ function Notifications({
   );
 }
 
-export default Notifications;
+const mapStateToProps = ({ root }) => ({
+  online: root.online,
+});
+
+export default connect(
+  mapStateToProps,
+  null,
+)(Notifications);
