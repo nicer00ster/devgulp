@@ -7,12 +7,7 @@ if [[ ! -e '/opt/cert/public.pem' ]] || [[ ! -e '/opt/cert/private.pem' ]]; then
     -keyout /opt/cert/private.pem -out /opt/cert/public.pem
 fi
 
-if [[ ! -e '/opt/cert/dhparam.pem' ]]; then
-    echo 'Generating dhparam file, this may take a few minutes...'
-    openssl dhparam -out /opt/cert/dhparam.pem 4096
-fi
-
-if [[ $DEPLOY_ENV == "prod" ]]; then
+if [[ $ENABLE_LETSENCRYPT == 1 ]]; then
     # enable cron for letsencrypt
     crontab /opt/scripts/letsencrypt.cron
 fi

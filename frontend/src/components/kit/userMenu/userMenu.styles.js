@@ -16,7 +16,10 @@ const StyledUserMenu = styled(animated.fieldset)`
   padding: 0;
   transition: box-shadow 0.25s ease-in;
   &[disabled] {
-    opacity: 0.5;
+    opacity: 1;
+    ul {
+      opacity: 0.5;
+    }
   }
   &:hover {
     box-shadow: ${props => props.theme.effects.shadowHover};

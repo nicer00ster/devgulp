@@ -33,6 +33,8 @@ const StyledSingleUserInfo = styled.div`
 const StyledSingleUserName = styled.h1`
   color: ${props => props.theme.colors.black};
   font-weight: 600;
+  font-family: 'Trirong', serif;
+  font-size: 32px;
   margin-bottom: 0.4rem;
 `;
 

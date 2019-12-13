@@ -241,9 +241,11 @@ function Header(props) {
           <UserMenu />
         </>
       )}
-      <Modal noPadding={true} width={400}>
-        <Form />
-      </Modal>
+      {!props.user.isAuthenticated && (
+        <Modal noPadding={true} width={400}>
+          <Form />
+        </Modal>
+      )}
     </StyledHeader>
   );
 }
