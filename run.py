@@ -96,6 +96,10 @@ def clear_secrets():
         print('No secrets found')
 
 def generate_dhparam():
+    """
+    Generates a 4096-bit dhparam key to use for DH key exchange. This is required for SSL to function.
+    For more info: https://security.stackexchange.com/questions/94390/whats-the-purpose-of-dh-parameters
+    """
     root_path = Path(__file__).resolve().parent
     run_cmd(['docker', 'run', '--rm', '-v', '{}:/export'.format(root_path), 'frapsoft/openssl', 'dhparam', '-out', '/export/dhparam.pem', '4096'])
     dhparam_file = root_path / 'dhparam.pem'
