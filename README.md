@@ -30,69 +30,65 @@
 
 ## Installation
 
-To spin up the whole application for the first time:
+To spin up the whole application for the first time in dev mode:
 <br/>
 **Make sure to install the latest version of [Docker](https://www.docker.com/) and Python 3.5 or greater before continuing**
 ```sh
 $ git clone https://github.com/nicer00ster/devgulp.git
 $ cd devgulp
-$ run.py prod generate_secrets
-...
-$ run.py prod generate_dhparam
-... #this may take a while
-$ run.py prod up
-```
-
-You may need to wait a while for the dhparam certificate to be generated. This is a one-time process and should not need to be repeated.
-
-Connect to http://localhost and confirm it is working.
-
-If you need to run on different host ports, edit the appropriate port lines in docker-compose.yaml. The ports are declared as \<HostPort\>:\<ContainerPort\>.
-
-To shut down the application:
-```sh
-$ run.py prod down
-```
-
-
-Instructions on how to get a local development copy up & running:
-```sh
-# Initial installation
+# Start the docker containers
+$ run.py dev up
+# Start the next server
 $ cd devgulp/frontend/src
 $ npm install
-# Run dev frontend
 $ npm run dev
 ```
 
-Set up WordPress instance:
+Head to http://localhost:3000 and confirm everything is working. If the page loads, but you do not see any posts, head to http://localhost:8000 to see if WordPress is running. If your Docker instance is not running on localhost, you will need to modify `HOST_URL` in `.env` in the root directory and `API_URL` in your `frontend/src/.env` file for development. If you need to run on different host ports (as may be the case when using docker-machine or older versions of Docker Toolkit), edit the appropriate port lines in docker-compose.yml. The ports are declared as \<HostPort\>:\<ContainerPort\>.
+
+PHPMyAdmin is available at http://localhost:8080 for development. The default login for the dev environment is username: `wordpress` and password: `wordpress`
+
+> Note for Windows Docker users: You may need to enable shared drives to properly mount functions.php in the dev config. See https://docs.docker.com/docker-for-windows/#shared-drives for more details.
+
+To shut down the application:
+```sh
+# Close the foreground npm process (e.g. Ctrl + C)
+# ...
+# Shut down the docker containers
+$ run.py dev down
+```
+
+Dev commands:
 <br />
 ```sh
-# To start up initially
-
-$ cd devgulp
+# Rebuild the wordpress container if there are changes, and start it (as well as the db + phpmyadmin)
 $ run.py dev up
-
 # Using the dev compose config, changes to functions.php will be automatically reflected in WordPress
-# To update other files:
-$ run.py dev up
+# To update other files, run the above command.
 
 # To Tear Down WITHOUT destroying database data
-
 $ run.py dev down
 
 # To Tear Down and destroy database data
 # Warning! This will delete everything you've done on your WordPress instance, including all posts and user accounts.
 # This is irreversible.
-
 $ run.py dev destroy
 ```
 
-Head to http://localhost:8000 and confirm WordPress is running. If your Docker instance is not running on localhost, you will need to modify `HOST_URL` in `.env` in the root directory and `API_URL` in your `frontend/src/.env` file for development.
+## Staging
 
-> Note for Windows Docker users: You may need to enable shared drives to properly mount functions.php in the dev config. See https://docs.docker.com/docker-for-windows/#shared-drives for more details.
+```sh
+$ run.py prod generate_secrets
+... #enter values for the various secrets or leave blank to generate random values
+$ run.py prod generate_dhparam
+... #this may take a while
+$ run.py prod up
+```
 
-## Usage
-Placeholder for usage section;
+You may need to wait a while for the DH parameters to be generated. This is a one-time process and should not need to be repeated.
+
+Connect to http://localhost and confirm it is working.
+
 
 ## Testing
 
