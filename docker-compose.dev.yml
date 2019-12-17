@@ -50,7 +50,7 @@ services:
       WORDPRESS_ADMIN_EMAIL: fake@example.com
       JWT_AUTHENTICATION_SECRET_KEY: secretkey
     volumes:
-      - ./wordpress/src/wp-includes/functions.php:/var/www/html/wp-includes/functions.php:ro
+      - ./wordpress/src/wp-includes/functions.php:/opt/mount/functions.php:ro
     ports:
       - '8000:80'
     networks:

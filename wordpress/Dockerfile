@@ -1,8 +1,8 @@
-FROM wordpress:5.2.4
+FROM wordpress:5.2
 
 # install WP-CLI and rsync
 RUN apt-get update \
-  && apt-get install -y sudo less mariadb-client rsync \
+  && apt-get install -y sudo less mariadb-client \
   && rm -rf /var/lib/apt/lists/*
 RUN curl -o /bin/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 COPY wp-su.sh /bin/wp
