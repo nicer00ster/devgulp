@@ -29,9 +29,7 @@ import {
   StyledSidebar,
   StyledMoreMenu,
   StyledMoreMenuCaret,
-  StyledReportButtons,
   StyledReportButton,
-  StyledReportWarning,
 } from './singlePost.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledDivider } from '../globals/globals.styles';
@@ -221,6 +219,7 @@ function SinglePost(props) {
             )}
           </StyledPostTaxonomies>
         </StyledSinglePostMeta>
+        <StyledDivider />
         <StyledSinglePostImage
           imageUrl={
             post._embedded['wp:featuredmedia']

@@ -70,7 +70,7 @@ const StyledSinglePostImage = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  padding-top: 2rem;
+  margin-top: 2rem;
   width: 100%;
   height: 450px;
   ${props => props.theme.mediaQuery.tablet`
@@ -232,25 +232,12 @@ const StyledMoreMenuCaret = styled.div`
   `};
 `;
 
-const StyledReportButtons = styled.div`
-  button,
-  a {
-    padding: 6px;
-  }
-`;
-
 const StyledReportButton = styled.button`
   padding: 0.6rem;
   margin: 0 0.6rem;
   background: transparent;
   border: none;
   cursor: pointer;
-`;
-
-const StyledReportWarning = styled.p`
-  font-size: 16px;
-  max-width: 95%;
-  text-align: center;
 `;
 
 export {
@@ -277,7 +264,5 @@ export {
   StyledMoreItem,
   StyledMoreMenu,
   StyledMoreMenuCaret,
-  StyledReportButtons,
   StyledReportButton,
-  StyledReportWarning,
 };
