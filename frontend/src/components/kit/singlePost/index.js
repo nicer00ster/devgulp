@@ -2,9 +2,10 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import * as Sentry from '@sentry/browser';
 import { useEffect, useState, useCallback } from 'react';
-import { useSpring, useTransition, animated } from 'react-spring';
-import { useMeasure, useInput } from '../../../hooks';
+import { useSpring, useTransition, animated, useTrail } from 'react-spring';
+import { useMeasure, useInput, useOnClickOutside } from '../../../hooks';
 import {
   StyleSinglePost,
   StyledSinglePostContainer,
@@ -26,6 +27,9 @@ import {
   StyledLikeContainer,
   StyledLikeCount,
   StyledSidebar,
+  StyledMoreMenu,
+  StyledMoreMenuCaret,
+  StyledReportButton,
 } from './singlePost.styles';
 import { StyledAvatar } from '../../header/header.styles';
 import { StyledDivider } from '../globals/globals.styles';
@@ -33,7 +37,14 @@ import {
   StyledPostTaxonomies,
   StyledPostTaxonomyItem,
 } from '../posts/posts.styles';
-import { addComment, updatePostLikes } from '../../../redux/actions';
+import {
+  addComment,
+  updatePostLikes,
+  openMoreMenu,
+  closeMoreMenu,
+  closeModal,
+  toggleModal,
+} from '../../../redux/actions';
 import { getTaxonomyIcon } from '../../../utils';
 import LikeButton from '../likeButton';
 import ShareButton from '../shareButton';
@@ -43,6 +54,7 @@ import Tooltip from '../tooltip';
 import Achievements from '../achievements';
 
 function SinglePost(props) {
+  const ref = useRef();
   const { post } = props.post;
   const [bind, { width, height }] = useMeasure();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -77,6 +89,17 @@ function SinglePost(props) {
     resetReply();
   }
 
+  function handleReportPost() {
+    Sentry.captureException('User Feedback');
+    props.closeMoreMenu();
+  }
+
+  useOnClickOutside(ref, () => {
+    if (props.moreMenuOpen) {
+      props.closeMoreMenu();
+    }
+  });
+
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
     window.addEventListener('resize', handleWindowScroll);
@@ -90,6 +113,23 @@ function SinglePost(props) {
     transform: `translateX(-${width / 2 +
       leftOffset * 6}px) translateY(${scroll}px)`,
     opacity: !isBottom && isScrolled ? 1 : 0,
+  });
+
+  const trail = useTrail(1, {
+    config: {
+      mass: 5,
+      tension: 2000,
+      friction: 100,
+    },
+    opacity: props.moreMenuOpen ? 1 : 0,
+    x: props.moreMenuOpen ? 0 : -20,
+    height: props.moreMenuOpen ? 80 : 0,
+    pointerEvents: props.moreMenuOpen ? 'all' : 'none',
+    from: {
+      opacity: 0,
+      x: 20,
+      height: 0,
+    },
   });
 
   const likesTransition = useTransition(props.isUpdatingLikes, null, {
@@ -179,6 +219,7 @@ function SinglePost(props) {
             )}
           </StyledPostTaxonomies>
         </StyledSinglePostMeta>
+        <StyledDivider />
         <StyledSinglePostImage
           imageUrl={
             post._embedded['wp:featuredmedia']
@@ -220,17 +261,36 @@ function SinglePost(props) {
             like{post.acf.post_likes.length !== 1 ? 's' : ''}
           </StyledLikeCount>
         </StyledLikeContainer>
-        <StyledMoreItems>
+        <StyledMoreItems ref={ref}>
           <SocialSharing open={open} postName={post.title.rendered} />
           <StyledMoreItem className={open && 'active'} onClick={() => set(!open)}>
             <i className="fal fa-share-alt" />
           </StyledMoreItem>
-          <StyledMoreItem>
+          {/* TODO: Have different tabs for liked/bookmarked posts? */}
+          <StyledMoreItem disabled>
             <i className="fal fa-bookmark" />
           </StyledMoreItem>
-          <StyledMoreItem>
+          <StyledMoreItem
+            onClick={() =>
+              props.moreMenuOpen ? props.closeMoreMenu() : props.openMoreMenu()
+            }>
             <i className="fal fa-ellipsis-h-alt" />
           </StyledMoreItem>
+          {trail.map(({ x, height, opacity, ...rest }, index) => (
+            <StyledMoreMenu
+              key={index}
+              disabled={props.moreMenuOpen}
+              style={{
+                transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+                opacity: opacity,
+                ...rest,
+              }}>
+              <StyledReportButton onClick={handleReportPost}>
+                Report Post
+              </StyledReportButton>
+              <StyledMoreMenuCaret />
+            </StyledMoreMenu>
+          ))}
         </StyledMoreItems>
       </StyledSinglePostMetaMore>
       <StyledDivider />
@@ -268,6 +328,7 @@ function SinglePost(props) {
 
 const mapStateToProps = ({ root, user, post }) => ({
   screenWidth: root.screenWidth,
+  moreMenuOpen: post.moreMenuOpen,
   isUpdatingLikes: post.isUpdatingLikes,
   views: post.views,
   user,
@@ -276,6 +337,10 @@ const mapStateToProps = ({ root, user, post }) => ({
 const mapDispatchToProps = {
   addComment,
   updatePostLikes,
+  openMoreMenu,
+  closeMoreMenu,
+  closeModal,
+  toggleModal,
 };
 
 export default connect(

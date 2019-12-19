@@ -49,11 +49,8 @@ function Background(props) {
             alt="Slider Image 5"
           />
         </StyledBackgroundTablet>
-        <StyledBackgroundTablet>
-          <img
-            src="https://stripe.com/img/v3/home/app-illustrations/salesforce.svg"
-            alt="Slider Image 6"
-          />
+        <StyledBackgroundTablet offset={125}>
+          <img src="/static/devgulp-editor.svg" alt="Slider Image 1" />
         </StyledBackgroundTablet>
       </StyledBackgroundDevices>
     </StyledBackground>

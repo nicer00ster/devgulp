@@ -33,6 +33,8 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const CLOSE_DRAWER = 'CLOSE_DRAWER';
 export const OPEN_LOGIN_MENU = 'OPEN_LOGIN_MENU';
 export const OPEN_USER_MENU = 'OPEN_USER_MENU';
+export const OPEN_MORE_MENU = 'OPEN_MORE_MENU';
+export const CLOSE_MORE_MENU = 'CLOSE_MORE_MENU';
 export const FILTER_TAXONOMY = 'FILTER_TAXONOMY';
 
 // Auth Types
