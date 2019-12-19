@@ -1,4 +1,4 @@
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import { Provider } from 'react-redux';
 import { parseCookies } from 'nookies';
 import * as Sentry from '@sentry/browser';
@@ -8,6 +8,16 @@ import Layout from '../components/layout';
 
 Sentry.init({
   dsn: 'https://1f35ab3d6bcd425cb1d3cf43aa31cdfa@sentry.io/1839581',
+  beforeSend(event, hint) {
+    if (event.exception) {
+      Sentry.showReportDialog({
+        eventId: event.event_id,
+        title: 'Submit an issue',
+        labelSubmit: 'Submit',
+      });
+    }
+    return event;
+  },
 });
 
 class CustomApp extends App {

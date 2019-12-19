@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import * as Sentry from '@sentry/browser';
 import { useEffect, useState, useCallback } from 'react';
 import { useSpring, useTransition, animated, useTrail } from 'react-spring';
 import { useMeasure, useInput, useOnClickOutside } from '../../../hooks';
@@ -49,12 +50,10 @@ import {
 import { getTaxonomyIcon } from '../../../utils';
 import LikeButton from '../likeButton';
 import ShareButton from '../shareButton';
-import Button from '../button';
 import Comments from './comments';
 import SocialSharing from '../social';
 import Tooltip from '../tooltip';
 import Achievements from '../achievements';
-import Modal from '../modal';
 
 function SinglePost(props) {
   const ref = useRef();
@@ -93,7 +92,7 @@ function SinglePost(props) {
   }
 
   function handleReportPost() {
-    props.toggleModal();
+    Sentry.captureException('User Feedback');
     props.closeMoreMenu();
   }
 
@@ -324,15 +323,6 @@ function SinglePost(props) {
           comments={post.comments}
         />
       </StyledComments>
-      <Modal>
-        <StyledReportWarning>
-          Are you sure you want to report this post for being inapropriate?
-        </StyledReportWarning>
-        <StyledReportButtons>
-          <Button>Yes</Button>
-          <a onClick={props.closeModal}>Cancel</a>
-        </StyledReportButtons>
-      </Modal>
     </StyledSinglePostContainer>
   );
 }
