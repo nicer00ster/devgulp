@@ -14,7 +14,6 @@ function EnhancedHelp(props) {
   if (!props.page.content) {
     return <Error statusCode={404} />;
   }
-  console.log(props.page);
   return (
     <StyledHelp>
       <StyledHelpHeader>
