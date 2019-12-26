@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
-import { StyledLoginForm } from '../../kit/login/login.styles';
-import { login } from '../../../redux/actions';
+import {
+  StyledLoginForm,
+  StyledSegwayContainer,
+  StyledSegwaySignup,
+} from '../../kit/login/login.styles';
+import { login, toggleSignUpMenu } from '../../../redux/actions';
 import { useInput } from '../../../hooks';
+import EnhancedLink from '../EnhancedLink';
 import Button from '../../kit/button';
 import Input from '../../kit/input';
 
@@ -43,6 +48,15 @@ function DrawerLogin(props) {
         e.preventDefault();
         handleLogin();
       }}>
+      <StyledSegwaySignup>
+        Not a member yet?
+        <EnhancedLink
+          isButton
+          isAuthenticated={true}
+          onClick={() => props.toggleSignUpMenu()}>
+          Sign up
+        </EnhancedLink>
+      </StyledSegwaySignup>
       <Input
         type="text"
         name="drawerUsername"
@@ -66,6 +80,7 @@ function DrawerLogin(props) {
 
 const mapDispatchToProps = {
   login,
+  toggleSignUpMenu,
 };
 
 export default connect(

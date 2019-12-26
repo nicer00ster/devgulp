@@ -25,7 +25,10 @@ const StyledLogin = styled(animated.fieldset)`
   background-color: ${props => props.theme.colors.white};
   transition: box-shadow 0.25s ease-in;
   &[disabled] {
-    opacity: 0.5;
+    opacity: 1;
+    form {
+      opacity: 0.5;
+    }
   }
   &[aria-busy='true']::before {
     background-size: 50% auto;
@@ -49,6 +52,15 @@ const StyledLoginForm = styled.form`
   `};
 `;
 
+const StyledSegwayContainer = styled.div``;
+
+const StyledSegwaySignup = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+`;
+
 const StyledLoginCaret = styled.div`
   left: 214px;
   clip: rect(0px, 18px, 14px, -4px);
@@ -70,4 +82,10 @@ const StyledLoginCaret = styled.div`
   `};
 `;
 
-export { StyledLogin, StyledLoginForm, StyledLoginCaret };
+export {
+  StyledLogin,
+  StyledLoginForm,
+  StyledLoginCaret,
+  StyledSegwayContainer,
+  StyledSegwaySignup,
+};

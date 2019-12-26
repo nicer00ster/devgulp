@@ -69,6 +69,8 @@ const StyledHintContent = styled.div`
 
 const StyledHintButton = styled.button`
   position: absolute;
+  background-color: ${props => props.theme.colors.white};
+  box-shadow: ${props => props.theme.effects.shadow};
   right: 0;
   top: 0;
   cursor: pointer;
@@ -77,7 +79,6 @@ const StyledHintButton = styled.button`
   border: none;
   outline: 0;
   border-radius: 50%;
-  box-shadow: ${props => props.theme.effects.shadow};
   transform: translate(20px, -20px);
   transition: all 0.075s ease-in;
   &[disabled] {

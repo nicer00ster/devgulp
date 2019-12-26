@@ -1,8 +1,7 @@
 // API URL
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = process.env.API_URL;
 export const API_URL = BASE_URL + '/wp-json/wp/v2';
-export const TOKEN_URL =
-    BASE_URL + '/wp-json/simple-jwt-authentication/v1/token';
+export const TOKEN_URL = BASE_URL + '/wp-json/simple-jwt-authentication/v1/token';
 export const ACF_URL = BASE_URL + '/wp-json/acf/v3';
 
 export const ALLOWED_MIME_TYPES = [
@@ -18,7 +17,9 @@ export const FILE_TYPE_ERROR = {
   },
 };
 
-// Global types
+// Global Types
+export const SET_ONLINE = 'SET_ONLINE';
+export const SET_OFFLINE = 'SET_OFFLINE';
 export const SCREEN_RESIZE = 'SCREEN_RESIZE';
 export const INPUT = 'INPUT';
 export const TOGGLE_LOGIN_MENU = 'TOGGLE_LOGIN_MENU';
@@ -32,6 +33,8 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const CLOSE_DRAWER = 'CLOSE_DRAWER';
 export const OPEN_LOGIN_MENU = 'OPEN_LOGIN_MENU';
 export const OPEN_USER_MENU = 'OPEN_USER_MENU';
+export const OPEN_MORE_MENU = 'OPEN_MORE_MENU';
+export const CLOSE_MORE_MENU = 'CLOSE_MORE_MENU';
 export const FILTER_TAXONOMY = 'FILTER_TAXONOMY';
 
 // Auth Types

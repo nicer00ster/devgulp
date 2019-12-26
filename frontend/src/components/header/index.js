@@ -4,6 +4,8 @@ import { useSpring } from 'react-spring';
 import NProgress from 'nprogress';
 import Router, { withRouter } from 'next/router';
 import Link from 'next/link';
+import Modal from '../kit/modal';
+import Form from '../kit/form';
 import {
   StyledHeader,
   StyledNav,
@@ -19,6 +21,7 @@ import {
 } from './header.styles';
 import {
   toggleLoginMenu,
+  toggleSignUpMenu,
   toggleUserMenu,
   toggleSearch,
   toggleDonationMenu,
@@ -46,6 +49,7 @@ Router.onRouteChangeComplete = () => {
 function Header(props) {
   const ref = useRef();
   const searchRef = useRef();
+  const donationRef = useRef();
   const [bind, { width }] = useMeasure();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -95,6 +99,20 @@ function Header(props) {
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
 
+    searchRef.current.addEventListener('keydown', e => {
+      if (e.keyCode === 27) {
+        props.toggleSearch();
+        searchRef.current.blur();
+      }
+    });
+
+    donationRef.current.addEventListener('keydown', e => {
+      if (e.keyCode === 27) {
+        props.toggleDonationMenu();
+        donationRef.current.blur();
+      }
+    });
+
     return () => window.removeEventListener('scroll', handleWindowScroll);
   }, [handleWindowScroll]);
 
@@ -105,9 +123,11 @@ function Header(props) {
   });
 
   const logoSpring = useSpring({
-    transform: isScrolled
-      ? 'translate3d(0px,0px,0px)'
-      : `translate3d(${width / 2 - 24}px, 40px, 0px)`,
+    opacity: isScrolled ? 1 : 0.75,
+    transform:
+      props.screenWidth <= 576 || isScrolled
+        ? 'translate3d(0px,0px,0px)'
+        : `translate3d(${width / 2 - 56}px, 40px, 0px)`,
   });
 
   return (
@@ -119,8 +139,14 @@ function Header(props) {
         {props.screenWidth <= 576 && <Drawer />}
         <StyledLogoContainer>
           <Link href="/" prefetch scroll={false}>
-            <StyledLogo href="#" style={logoSpring}>
-              DevGulp
+            <StyledLogo
+              loginMenuOpen={props.loginMenuOpen}
+              userMenuOpen={props.userMenuOpen}
+              drawerOpen={props.drawerOpen}
+              href="#"
+              style={logoSpring}
+              isScrolled={isScrolled}>
+              <img src="/static/devgulp-logo.svg" alt="DevGulp" />
             </StyledLogo>
           </Link>
         </StyledLogoContainer>
@@ -156,7 +182,7 @@ function Header(props) {
               <span className="bar" />
             </form>
           </StyledSearchInput>
-          <StyledMenuItem data-tooltip>
+          <StyledMenuItem ref={donationRef} data-tooltip>
             <Stripe>
               <i className="fal fa-donate" />
             </Stripe>
@@ -168,15 +194,23 @@ function Header(props) {
             <Burger />
           ) : (
             <>
-              <EnhancedLink href="/publish">Publish</EnhancedLink>
-              <EnhancedLink href="/users">Users</EnhancedLink>
+              <EnhancedLink
+                href="/publish"
+                isAuthenticated={props.user.isAuthenticated}>
+                Publish
+              </EnhancedLink>
+              <EnhancedLink
+                href="/users"
+                isAuthenticated={props.user.isAuthenticated}>
+                Users
+              </EnhancedLink>
               {!props.user.token ? (
                 <>
-                  <StyledSignup>
-                    <Link scroll={false} prefetch href="/register">
-                      <a>Sign Up</a>
-                    </Link>
-                  </StyledSignup>
+                  <StyledMenuItem>
+                    <StyledSignup onClick={() => props.toggleSignUpMenu()}>
+                      Sign Up
+                    </StyledSignup>
+                  </StyledMenuItem>
                   <StyledMenuItem>
                     <StyledLogin onClick={() => props.toggleLoginMenu()}>
                       Login
@@ -190,7 +224,7 @@ function Header(props) {
                       alt="Avatar"
                       src={
                         !props.user.avatar
-                          ? '/static/icons/default_avatar.png'
+                          ? '/static/images/default_avatar.png'
                           : props.user.avatar
                       }
                     />
@@ -207,24 +241,32 @@ function Header(props) {
           <UserMenu />
         </>
       )}
+      {!props.user.isAuthenticated && (
+        <Modal noPadding={true} width={400}>
+          <Form />
+        </Modal>
+      )}
     </StyledHeader>
   );
 }
 
 const mapStateToProps = ({ root, posts, user }) => ({
   loginMenuOpen: root.loginMenuOpen,
+  signUpMenuOpen: root.signUpMenuOpen,
   userMenuOpen: root.userMenuOpen,
+  drawerOpen: root.drawerOpen,
+  donationMenuOpen: root.donationMenuOpen,
   filterTaxonomy: root.filterTaxonomy,
   searchExpanded: root.searchExpanded,
   screenWidth: root.screenWidth,
   categories: posts.categories,
-  drawerOpen: root.drawerOpen,
-  donationMenuOpen: root.donationMenuOpen,
+  modalOpen: root.modalOpen,
   user,
 });
 
 const mapDispatchToProps = {
   toggleLoginMenu,
+  toggleSignUpMenu,
   toggleUserMenu,
   toggleSearch,
   toggleDonationMenu,

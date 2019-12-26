@@ -8,7 +8,7 @@ const StyledModalContainer = styled(animated.div)`
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 1001;
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -19,13 +19,18 @@ const StyledModalContainer = styled(animated.div)`
 
 const StyledModalItem = styled(animated.div)`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   animation-duration: 0.75s;
   border-radius: ${props => props.theme.effects.radius};
-  padding: 0.8rem;
+  padding: ${props => (props.noPadding ? '' : '0.8rem')};
   z-index: 1;
   min-width: 320px;
   background-color: ${props => props.theme.colors.white};
   box-shadow: ${props => props.theme.effects.shadow};
+  width: ${props => (props.width ? `${props.width}px` : 'auto')};
   @media screen and (max-width: 520px) {
     min-width: 284px;
   }
@@ -34,12 +39,14 @@ const StyledModalItem = styled(animated.div)`
 const StyledCloseModal = styled.button`
   cursor: pointer;
   position: absolute;
+  background-color: ${props => props.theme.colors.white};
+  box-shadow: ${props => props.theme.effects.shadow};
   width: 50px;
   height: 50px;
   border: none;
+  z-index: 1;
   outline: 0;
   border-radius: 50%;
-  box-shadow: ${props => props.theme.effects.shadow};
   top: 0;
   right: 0;
   padding: 0.4rem;

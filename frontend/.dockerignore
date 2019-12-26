@@ -1,0 +1,6 @@
+src/node_modules
+src/.env
+src/.prettierignore
+src/.prettierrc
+src/.next
+src/.dockerignore

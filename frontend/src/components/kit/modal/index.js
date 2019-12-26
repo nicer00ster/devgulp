@@ -13,8 +13,8 @@ import { toggleModal, closeModal } from '../../../redux/actions';
 import { useOnClickOutside } from '../../../hooks';
 
 function Modal(props) {
-  const ref = useRef();
-  const { closeModal, toggleModal } = props;
+  const modalRef = useRef();
+  const { closeModal, toggleModal, width, noPadding } = props;
 
   const modalTransition = useTransition(props.modalOpen, null, {
     delay: 0.5,
@@ -23,11 +23,16 @@ function Modal(props) {
     leave: { opacity: 0 },
   });
 
-  useOnClickOutside(ref, () => closeModal());
+  useOnClickOutside(modalRef, () => closeModal());
 
   useEffect(() => {
     if (props.modalOpen) {
-      ref.current.querySelector('button').focus();
+      modalRef.current.querySelector('button').focus();
+      modalRef.current.addEventListener('keydown', e => {
+        if (e.keyCode === 27) {
+          closeModal();
+        }
+      });
     }
   }, [props.modalOpen]);
 
@@ -45,7 +50,12 @@ function Modal(props) {
               style={props}
               aria-modal="true"
               role="dialog">
-              <StyledModalItem ref={ref} key={key} style={props}>
+              <StyledModalItem
+                ref={modalRef}
+                key={key}
+                width={width}
+                noPadding={noPadding}
+                style={props}>
                 <StyledCloseModal onClick={() => closeModal()}>
                   <StyledCloseIcon className="fa fa-times" />
                 </StyledCloseModal>

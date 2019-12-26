@@ -8,7 +8,7 @@ const StyleSinglePost = styled.article`
 const StyledSinglePostContainer = styled.div`
   position: relative;
   margin: 0 auto;
-  max-width: 720px;
+  //max-width: 720px;
   width: 100%;
   background-color: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.effects.radius};
@@ -65,9 +65,17 @@ const StyledDateViewsDivider = styled.span`
   }
 `;
 
-const StyledSinglePostImage = styled.img`
-  padding-top: 2rem;
+const StyledSinglePostImage = styled.div`
+  background-image: ${props => `url(${props.imageUrl})`};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  margin-top: 2rem;
   width: 100%;
+  height: 450px;
+  ${props => props.theme.mediaQuery.tablet`
+    height: 300px;
+  `};
 `;
 
 const StyledSinglePostContent = styled.div`
@@ -169,6 +177,67 @@ const StyledMoreItem = styled.button`
     color: ${props => props.theme.colors.black};
     bottom: 3px;
   }
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+`;
+
+const StyledMoreMenu = styled(animated.div)`
+  position: absolute;
+  will-change: opacity, transform;
+  opacity: 0;
+  top: 52px;
+  right: 0;
+  border-radius: ${props => props.theme.effects.radius};
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: ${props => props.theme.effects.shadow};
+  z-index: 1;
+  width: auto;
+  padding: 12px 0;
+  background-color: ${props => props.theme.colors.white};
+  transition: box-shadow 0.25s ease-in;
+  &[disabled] {
+    opacity: 1;
+  }
+  &:hover {
+    box-shadow: ${props => props.theme.effects.shadowHover};
+  }
+  a {
+    font-size: 14px;
+    white-space: nowrap;
+    margin: 32px;
+    padding: 12px;
+  }
+`;
+
+const StyledMoreMenuCaret = styled.div`
+  left: 55px;
+  clip: rect(0px, 18px, 14px, -4px);
+  top: -14px;
+  position: absolute;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0);
+  &:after {
+    content: '';
+    display: block;
+    height: 14px;
+    width: 14px;
+    box-shadow: rgba(0, 0, 0, 0.54) -1px -1px 1px -1px;
+    background-color: ${props => props.theme.colors.white};
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  ${props => props.theme.mediaQuery.phone`
+    
+  `};
+`;
+
+const StyledReportButton = styled.button`
+  padding: 0.6rem;
+  margin: 0 0.6rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 `;
 
 export {
@@ -193,4 +262,7 @@ export {
   StyledLikeCount,
   StyledMoreItems,
   StyledMoreItem,
+  StyledMoreMenu,
+  StyledMoreMenuCaret,
+  StyledReportButton,
 };

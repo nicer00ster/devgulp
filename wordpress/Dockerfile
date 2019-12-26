@@ -1,6 +1,6 @@
-FROM wordpress:latest
+FROM wordpress:5.2
 
-# install WP-CLI
+# install WP-CLI and rsync
 RUN apt-get update \
   && apt-get install -y sudo less mariadb-client \
   && rm -rf /var/lib/apt/lists/*

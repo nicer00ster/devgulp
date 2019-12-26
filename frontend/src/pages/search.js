@@ -1,19 +1,15 @@
 import { connect } from 'react-redux';
 import { searchQuery } from '../redux/actions';
 import EnhancedSearch from '../components/kit/search';
-import Hero from '../components/kit/hero';
 import Container from '../components/kit/container';
 import Loading from '../components/kit/loading';
 
 function Search(props) {
   return (
-    <>
-      <Hero></Hero>
-      <Container>
-        <EnhancedSearch />
-        {props.isSearching && <Loading />}
-      </Container>
-    </>
+    <Container>
+      <EnhancedSearch />
+      {props.isSearching && <Loading />}
+    </Container>
   );
 }
 

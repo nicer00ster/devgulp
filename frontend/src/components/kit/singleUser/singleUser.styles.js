@@ -22,7 +22,7 @@ const StyledSingleUserContent = styled.div`
   align-items: flex-start;
   ${props => props.theme.mediaQuery.phone`
     flex-direction: column-reverse;
-    align-items: center;
+    padding-bottom: 1.2rem;
   `};
 `;
 
@@ -33,6 +33,8 @@ const StyledSingleUserInfo = styled.div`
 const StyledSingleUserName = styled.h1`
   color: ${props => props.theme.colors.black};
   font-weight: 600;
+  font-family: 'Trirong', serif;
+  font-size: 32px;
   margin-bottom: 0.4rem;
 `;
 
@@ -66,6 +68,9 @@ const StyledSingleUserDescription = styled.div`
     height: 50%;
     bottom: 0;
     pointer-events: none;
+    ${props => props.theme.mediaQuery.phone`
+      width: 100%;
+    `};
   }
   & blockquote {
     padding: 2rem;
@@ -123,6 +128,10 @@ const StyledSingleUserAvatarUpload = styled(StyledPublishImageUpload)`
   }
 `;
 
+const StyledSingleUserPosts = styled.div`
+  padding: 2rem 0;
+`;
+
 export {
   StyledSingleUser,
   StyledSingleUserContainer,
@@ -137,4 +146,5 @@ export {
   StyledSingleUserFollowers,
   StyledSingleUserAvatar,
   StyledSingleUserAvatarUpload,
+  StyledSingleUserPosts,
 };

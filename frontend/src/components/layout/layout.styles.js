@@ -27,17 +27,17 @@ const breakpoints = {
 
 const colors = {
   black: '#1f222e',
-  lightBlack: 'rgba(31, 34, 46, 0.75)',
   grey: '#d9d9d9',
-  lightGrey: 'rgba(27,31,35,.05)',
   white: '#fefefe',
   offWhite: '#fffaf1',
-  lightWhite: 'rgba(254,254,254,0.75)',
   yellow: '#ffeaa7',
   blue: '#92c5f8',
-  lightBlue: 'rgba(155,207,255,0.66)',
   red: '#faa1bc',
   green: '#80dad3',
+  lightWhite: 'rgba(254,254,254,0.75)',
+  lightBlack: 'rgba(31, 34, 46, 0.75)',
+  lightGrey: 'rgba(27,31,35,.05)',
+  lightBlue: 'rgba(155,207,255,0.66)',
   lightGreen: 'rgba(12,242,143,.2)',
   successBackground: 'rgb(227, 252, 239)',
   successDuration: 'rgb(54, 179, 126)',
@@ -65,16 +65,16 @@ const mediaQuery = Object.keys(breakpoints).reduce((acc, label) => {
 }, {});
 
 const GlobalStyles = createGlobalStyle`
-     @font-face {
-       font-family: 'Blinker';
-       font-display: auto;
-       src: local('Blinker'), url('/static/fonts/Blinker.ttf') format('truetype');
-     }
-     @font-face {
-       font-family: 'Trirong';
-       font-display: auto;
-       src: local('Trirong'), url('/static/fonts/Trirong.ttf') format('truetype');
-     }
+    @font-face {
+      font-family: 'Blinker';
+      font-display: auto;
+      src: local('Blinker'), url('/static/fonts/Blinker.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Trirong';
+      font-display: auto;
+      src: local('Trirong'), url('/static/fonts/Trirong.ttf') format('truetype');
+    }
     html {
       box-sizing: border-box;
       font-size: 12px;
@@ -90,35 +90,7 @@ const GlobalStyles = createGlobalStyle`
       font-size: 1rem;
       padding: 0;
       margin: 0;
-      // overflow: ${props => (props.menuOpen ? 'hidden' : 'auto')};
-      overflow-x: hidden;
-      // :before {
-      //   content: "";
-      //   width: 100%;
-      //   height: 100%;
-      //   position: fixed;
-      //   z-index: -1;
-      //   top: 0;
-      //   left: 0;
-      //   background: rgba(0, 0, 0, 0.25);
-      // }
-      //&.show-emoji-picker {
-      //  .emoji-mart-search {
-      //    height: auto !important;
-      //    pointer-events: all !important;
-      //    opacity: 1;
-      //  }
-      //  .emoji-mart-scroll {
-      //    height: 270px !important;
-      //    pointer-events: all !important;
-      //    opacity: 1;
-      //  }
-      //  .emoji-mart-bar {
-      //    height: auto !important;
-      //    pointer-events: all !important;
-      //    opacity: 1;
-      //  }
-      //}
+      overflow: ${props => (props.menuOpen ? 'hidden' : 'auto')};
     }
     a {
       text-decoration: none;
@@ -154,27 +126,6 @@ const GlobalStyles = createGlobalStyle`
         }
       }
     }
-    //.emoji-mart-bar:last-child {
-    //  height: 0px !important;
-    //  opacity: 0;
-    //  pointer-events: none !important;
-    //  transition: all 0.15s ease-in;
-    //  will-change: height, opacity;
-    //}
-    //.emoji-mart-search {
-    //  height: 0px !important;
-    //  opacity: 0;
-    //  pointer-events: none !important;
-    //  transition: all 0.15s ease-in;
-    //  will-change: height, opacity;
-    //}
-    //.emoji-mart-scroll {
-    //  height: 0px !important;
-    //  opacity: 0;
-    //  pointer-events: none !important;
-    //  transition: all 0.15s ease-in;
-    //  will-change: height, opacity;
-    //}
     ::selection {
       color: ${colors.white};
       background: ${colors.lightBlack};
@@ -202,6 +153,11 @@ const GlobalStyles = createGlobalStyle`
           visibility: visible;
         }
       }
+    }
+    .sentry-error-embed-wrapper {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
     }
 `;
 

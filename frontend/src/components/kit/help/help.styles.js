@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledHelp = styled.div`
   position: relative;
   margin: 0 auto;
-  max-width: 50%;
+  width: 100%;
   box-shadow: ${props => props.theme.effects.shadow};
   border-radius: ${props => props.theme.effects.radius};
   background-color: ${props => props.theme.colors.white};
@@ -60,7 +60,8 @@ const StyledHelpContent = styled.div`
     text-align: left;
     font-family: 'Trirong', serif;
     font-size: 16px;
-    margin: 0 24px;
+    margin: 0 16px;
+    padding: 0;
   }
   ul {
     display: flex;
@@ -83,6 +84,15 @@ const StyledHelpContent = styled.div`
         padding: 0.8rem 0.8rem 0.8rem 12px;
         border-left: 6px solid ${props => props.theme.colors.grey};
       }
+    }
+  }
+  .wp-block-columns {
+    display: flex;
+    align-items: center;
+    .wp-block-column {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
     }
   }
 `;

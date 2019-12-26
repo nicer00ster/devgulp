@@ -1,0 +1,1 @@
+27 4 * * * /bin/bash /opt/scripts/letsencrypt-renew.sh

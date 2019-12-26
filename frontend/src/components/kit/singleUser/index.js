@@ -15,6 +15,7 @@ import {
   StyledSingleUserFollowers,
   StyledSingleUserAvatar,
   StyledSingleUserAvatarUpload,
+  StyledSingleUserPosts,
 } from './singleUser.styles';
 import { StyledPosts, StyledNoResults } from '../posts/posts.styles';
 import { StyledAvatar } from '../../header/header.styles';
@@ -143,7 +144,7 @@ function SingleUser(props) {
                 alt="Avatar"
                 src={
                   !author.acf.avatar
-                    ? '/static/icons/default_avatar.png'
+                    ? '/static/images/default_avatar.png'
                     : author.acf.avatar
                 }
               />
@@ -174,17 +175,22 @@ function SingleUser(props) {
             followers={fetchedFollowers}
           />
         ) : null}
-        <p>{author.name}'s posts</p>
-        <StyledDivider />
-        <StyledPosts columns={2} className={!posts.length ? 'no-results' : ''}>
-          {posts &&
-            posts.map(post => (
-              <PostItem className="flatten" key={post.id} post={post} />
-            ))}
-          {!posts.length && (
-            <StyledNoResults>User has not published any posts.</StyledNoResults>
-          )}
-        </StyledPosts>
+        <StyledSingleUserPosts>
+          <p>{author.name}'s posts</p>
+          <StyledDivider />
+          <StyledPosts columns={2} className={!posts.length ? 'no-results' : ''}>
+            {posts &&
+              posts.map(post => (
+                <PostItem className="flatten" key={post.id} post={post} />
+              ))}
+            {!posts.length && (
+              <StyledNoResults>
+                {isUsersProfile ? 'You have ' : `${author.name} has `} not
+                published any stories yet.
+              </StyledNoResults>
+            )}
+          </StyledPosts>
+        </StyledSingleUserPosts>
         {isUsersProfile && <EditProfile user={author} />}
       </StyledSingleUserContainer>
       <Modal>

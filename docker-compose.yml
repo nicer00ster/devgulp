@@ -1,0 +1,113 @@
+version: '3.1'
+
+services:
+  # Database
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER_FILE: /run/secrets/db_user
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+    networks:
+      - wpsite
+    secrets:
+      - db_root_password
+      - db_user
+      - db_password
+
+  # phpmyadmin
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      PMA_ABSOLUTE_URI: ${SCHEMA:?Schema must be set}://${HOST_URL:?Host URL must be set}/phpma/
+    networks:
+      - wpsite
+      - proxysite
+    secrets:
+      - db_root_password
+
+  # Wordpress
+  wordpress:
+    depends_on:
+      - db
+    build: wordpress
+    image: devgulp_wordpress
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER_FILE: /run/secrets/db_user
+      WORDPRESS_DB_PASSWORD_FILE: /run/secrets/db_password
+      WORDPRESS_URL: ${HOST_URL:?Host URL must be set}:8000
+      WORDPRESS_SCHEMA: ${SCHEMA:?Schema must be set}
+      WORDPRESS_TITLE: DevGulp
+      WORDPRESS_TAGLINE: A platform built for developers, by developers.
+      WORDPRESS_ADMIN_USER_FILE: /run/secrets/wp_admin_user
+      WORDPRESS_ADMIN_PASSWORD_FILE: /run/secrets/wp_admin_password
+      WORDPRESS_ADMIN_EMAIL: fake@example.com
+      JWT_AUTHENTICATION_SECRET_KEY_FILE: /run/secrets/jwt_auth_key
+    networks:
+      - wpsite
+      - proxysite
+    secrets:
+      - db_user
+      - db_password
+      - wp_admin_user
+      - wp_admin_password
+      - jwt_auth_key
+
+  # Frontend Express/Next
+  frontend:
+    build:
+      context: frontend
+      args:
+        API_URL: ${SCHEMA:?Schema must be set}://${HOST_URL:?Host URL must be set}:8000
+    image: devgulp_frontend
+    restart: unless-stopped
+    networks:
+      - proxysite
+
+  proxy:
+    build:
+      context: proxy
+    image: devgulp_proxy
+    restart: unless-stopped
+    environment:
+      ENABLE_LETSENCRYPT: ${ENABLE_LETSENCRYPT:-0}
+      HOST_URL: ${HOST_URL:?Host URL must be set}
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8000:8000'
+    networks:
+      - proxysite
+
+
+networks:
+  wpsite:
+  proxysite:
+
+volumes:
+  db_data:
+
+secrets:
+  db_root_password:
+    file: secrets/db_root_password.txt
+  db_user:
+    file: secrets/db_user.txt
+  db_password:
+    file: secrets/db_password.txt
+  wp_admin_user:
+    file: secrets/wp_admin_user.txt
+  wp_admin_password:
+    file: secrets/wp_admin_password.txt
+  jwt_auth_key:
+    file: secrets/jwt_auth_key.txt

@@ -7,8 +7,8 @@ import {
   StyledFooterList,
   StyledFooterListItem,
   StyledFooterLogo,
+  StyledLogo,
 } from './footer.styles';
-import { StyledLogo } from '../header/header.styles';
 
 function Footer(props) {
   return (
@@ -45,8 +45,8 @@ function Footer(props) {
           </StyledFooterList>
           <StyledFooterLogo>
             <Link href="/" prefetch scroll={false}>
-              <StyledLogo href="#" style={{ width: '100%', textAlign: 'center' }}>
-                DevGulp
+              <StyledLogo href="#">
+                <img src="/static/devgulp-logo.svg" alt="DevGulp" />
               </StyledLogo>
             </Link>
           </StyledFooterLogo>

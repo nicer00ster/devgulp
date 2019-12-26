@@ -25,6 +25,7 @@ const StyledLikeButton = styled.button`
   border: none;
   outline: 0;
   border-radius: 50%;
+  background-color: ${props => props.theme.colors.white};
   box-shadow: ${props => props.theme.effects.shadow};
   top: 0;
   transition: all 0.075s ease-in;

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { useTrail } from 'react-spring';
 import {
@@ -31,6 +32,13 @@ function UserMenu(props) {
     },
   });
 
+  const router = useRouter();
+
+  function handleLogout() {
+    props.logout(props.user.token);
+    router.push('/');
+  }
+
   return trail.map(({ x, height, opacity, ...rest }, index) => (
     <StyledUserMenu
       key={index}
@@ -49,7 +57,7 @@ function UserMenu(props) {
                   <img
                     src={
                       !props.user.avatar
-                        ? '/static/icons/default_avatar.png'
+                        ? '/static/images/default_avatar.png'
                         : props.user.avatar
                     }
                     alt={props.user.username}
@@ -106,7 +114,7 @@ function UserMenu(props) {
           </StyledUserMenuListItem>
           <StyledUserMenuDivider />
           <StyledUserMenuListItem>
-            <StyledLogoutButton onClick={() => props.logout(props.user.token)}>
+            <StyledLogoutButton onClick={handleLogout}>
               Sign out
             </StyledLogoutButton>
           </StyledUserMenuListItem>
