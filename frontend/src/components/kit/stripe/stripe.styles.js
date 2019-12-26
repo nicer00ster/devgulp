@@ -40,7 +40,7 @@ const StyledStripeAmount = styled.a`
 `;
 
 const StyledStripeCaret = styled.div`
-  left: 102px;
+  left: 96px;
   clip: rect(0px, 18px, 14px, -4px);
   top: -14px;
   position: absolute;

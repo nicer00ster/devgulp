@@ -42,11 +42,19 @@ export default function appReducer(state = initialState, action = {}) {
       return {
         ...state,
         loginMenuOpen: !state.loginMenuOpen,
+        userMenuOpen: false,
+        modalOpen: false,
+        searchExpanded: false,
+        donationMenuOpen: false,
       };
     case types.OPEN_LOGIN_MENU:
       return {
         ...state,
         loginMenuOpen: true,
+        userMenuOpen: false,
+        modalOpen: false,
+        searchExpanded: false,
+        donationMenuOpen: false,
       };
     case types.TOGGLE_USER_MENU:
       return {
@@ -82,6 +90,7 @@ export default function appReducer(state = initialState, action = {}) {
         donationMenuOpen: !state.donationMenuOpen,
         userMenuOpen: false,
         modalOpen: false,
+        loginMenuOpen: false,
         searchExpanded: false,
       };
     case types.TOGGLE_EMOJIS:
