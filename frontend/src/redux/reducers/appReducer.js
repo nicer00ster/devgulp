@@ -108,6 +108,10 @@ export default function appReducer(state = initialState, action = {}) {
       return {
         ...state,
         modalOpen: !state.modalOpen,
+        userMenuOpen: false,
+        donationMenuOpen: false,
+        searchExpanded: false,
+        loginMenuOpen: false,
       };
     case types.CLOSE_MODAL:
       return {
