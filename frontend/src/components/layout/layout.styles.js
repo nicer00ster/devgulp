@@ -115,6 +115,16 @@ const GlobalStyles = createGlobalStyle`
     }
     .emoji-mart {
       width: 100% !important;
+      &-emoji {
+        &:hover {
+          span {
+            transform: scale(1.25);
+          }
+        }
+        span {
+          transition: 0.05s ease-in;
+        }
+      }
     }
     ::selection {
       color: ${colors.white};

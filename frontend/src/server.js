@@ -9,6 +9,7 @@ const stripe = require('stripe')(process.env.DEVGULP_STRIPE_SECRET_KEY_TEST);
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const fs = require('fs');
 
 app.prepare().then(() => {
   const server = express();
@@ -43,6 +44,16 @@ app.prepare().then(() => {
         console.log('Error: ', err);
         res.status(500).send({ error: 'Donation could not be completed.' });
       });
+  });
+
+  server.post('/emotes', (req, res) => {
+    fs.readdir('./static/emotes/blobs', (err, data) => {
+      if (res.statusCode === 200) {
+        res.status(200).send({
+          emotes: data,
+        });
+      }
+    });
   });
 
   server.listen(3000, err => {

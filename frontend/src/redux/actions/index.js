@@ -89,6 +89,18 @@ export function toggleDonationMenu() {
   };
 }
 
+export function toggleEmojis() {
+  return {
+    type: types.TOGGLE_EMOJIS,
+  };
+}
+
+export function closeEmojis() {
+  return {
+    type: types.CLOSE_EMOJIS,
+  };
+}
+
 export function closeDonationMenu() {
   return {
     type: types.CLOSE_DONATION_MENU,
