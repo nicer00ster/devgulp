@@ -48,7 +48,7 @@ app.prepare().then(() => {
 
   server.post('/emotes', (req, res) => {
     fs.readdir('./static/emotes/blobs', (err, data) => {
-      if(res.statusCode === 200) {
+      if (res.statusCode === 200) {
         res.status(200).send({
           emotes: data,
         });

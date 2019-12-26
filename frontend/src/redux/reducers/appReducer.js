@@ -7,6 +7,7 @@ const initialState = {
   modalOpen: false,
   drawerOpen: false,
   donationMenuOpen: false,
+  emojisOpen: false,
   searchExpanded: false,
   online: true,
   taxonomyFilter: 1,
@@ -82,6 +83,16 @@ export default function appReducer(state = initialState, action = {}) {
         userMenuOpen: false,
         modalOpen: false,
         searchExpanded: false,
+      };
+    case types.TOGGLE_EMOJIS:
+      return {
+        ...state,
+        emojisOpen: !state.emojisOpen,
+      };
+    case types.CLOSE_EMOJIS:
+      return {
+        ...state,
+        emojisOpen: false,
       };
     case types.CLOSE_DONATION_MENU:
       return {
