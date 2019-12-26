@@ -95,6 +95,21 @@ const StyledHelpContent = styled.div`
   }
 `;
 
+const StyledHelpBack = styled.a`
+  position: absolute;
+  padding: 1.2rem;
+  i {
+    padding-right: 0.4rem;
+    transition: all 0.25s ease-in;
+  }
+  &:hover {
+    i {
+      padding-right: 0.6rem;
+      transform: translateX(-2px);
+    }
+  }
+`;
+
 export {
   StyledHelp,
   StyledHelpHeader,
@@ -102,4 +117,5 @@ export {
   StyledHelpHeaderCircle,
   StyledHelpHeaderIcon,
   StyledHelpContent,
+  StyledHelpBack,
 };

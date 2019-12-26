@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/5.2.4" created="2019-12-26 19:19" -->
+	<!-- generator="WordPress/5.2.4" created="2019-12-26 19:39" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>DevGulp</title>
 	<link>http://localhost:8000</link>
 	<description>A platform built for developers, by developers.</description>
-	<pubDate>Thu, 26 Dec 2019 19:19:38 +0000</pubDate>
+	<pubDate>Thu, 26 Dec 2019 19:39:31 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://localhost:8000</wp:base_site_url>
@@ -177,7 +177,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:list -->
-<ul><li><a href="/help/using-devgulp">Using DevGulp.</a></li><li><a href="http://localhost:8000/help/creating-an-account">Creating an account.</a></li><li><a href="http://localhost:8000/help/logging-into-your-account">Logging into your account.</a></li></ul>
+<ul><li><a href="/help/using-devgulp">Using DevGulp.</a></li><li><a href="/help/creating-an-account">Creating an account.</a></li><li><a href="/help/logging-into-your-account">Logging into your account.</a></li></ul>
 <!-- /wp:list -->
 
 <!-- wp:paragraph -->
