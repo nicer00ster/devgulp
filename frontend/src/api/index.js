@@ -32,8 +32,10 @@ server.post('/charge', async (req, res) => {
       res.send(charge);
     })
     .catch(err => {
-      console.log('Error: ', err);
-      res.status(500).send({ error: 'Donation could not be completed.' });
+      console.error('Error: ', err);
+      res.status(500).send({
+        error: 'Donation could not be completed.',
+      });
     });
 });
 
