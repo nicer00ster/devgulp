@@ -65,16 +65,16 @@ const mediaQuery = Object.keys(breakpoints).reduce((acc, label) => {
 }, {});
 
 const GlobalStyles = createGlobalStyle`
-     @font-face {
-       font-family: 'Blinker';
-       font-display: auto;
-       src: local('Blinker'), url('/static/fonts/Blinker.ttf') format('truetype');
-     }
-     @font-face {
-       font-family: 'Trirong';
-       font-display: auto;
-       src: local('Trirong'), url('/static/fonts/Trirong.ttf') format('truetype');
-     }
+    @font-face {
+      font-family: 'Blinker';
+      font-display: auto;
+      src: local('Blinker'), url('/static/fonts/Blinker.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Trirong';
+      font-display: auto;
+      src: local('Trirong'), url('/static/fonts/Trirong.ttf') format('truetype');
+    }
     html {
       box-sizing: border-box;
       font-size: 12px;
@@ -115,6 +115,16 @@ const GlobalStyles = createGlobalStyle`
     }
     .emoji-mart {
       width: 100% !important;
+      &-emoji {
+        &:hover {
+          span {
+            transform: scale(1.25);
+          }
+        }
+        span {
+          transition: 0.05s ease-in;
+        }
+      }
     }
     ::selection {
       color: ${colors.white};
@@ -143,6 +153,11 @@ const GlobalStyles = createGlobalStyle`
           visibility: visible;
         }
       }
+    }
+    .sentry-error-embed-wrapper {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
     }
 `;
 

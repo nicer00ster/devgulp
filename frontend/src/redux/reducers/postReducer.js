@@ -6,6 +6,7 @@ const initialState = {
   isFetchingPost: true,
   isAddingComment: false,
   isUpdatingLikes: false,
+  moreMenuOpen: false,
   hasError: false,
   errorMessage: '',
 };
@@ -117,6 +118,16 @@ export default function postReducer(state = initialState, action = {}) {
       return {
         ...state,
         isUpdatingLikes: false,
+      };
+    case types.OPEN_MORE_MENU:
+      return {
+        ...state,
+        moreMenuOpen: true,
+      };
+    case types.CLOSE_MORE_MENU:
+      return {
+        ...state,
+        moreMenuOpen: false,
       };
     default:
       return state;

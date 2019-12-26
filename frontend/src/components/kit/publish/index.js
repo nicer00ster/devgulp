@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
 import { useState, useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
 import { useSpring } from 'react-spring';
 import { useRouter } from 'next/router';
-import { Picker, Emoji } from 'emoji-mart';
+import { Emoji } from 'emoji-mart';
 import {
   StyledPublish,
   StyledPublishContainer,
@@ -17,31 +17,43 @@ import {
   StyledPublishConfetti,
   StyledPublishIcon,
   StyledPublishEmojis,
+  StyledEmojiPicker,
 } from './publish.styles';
 import Hints from './hints';
 import Checkbox from '../checkbox';
 import Loading from '../loading';
 import Modal from '../modal';
-import {
-  useInput,
-  usePrevious,
-  useMeasure,
-  useOnClickOutside,
-} from '../../../hooks';
+import Emotes from '../emotes';
+import { useInput, usePrevious, useMeasure } from '../../../hooks';
 import { placeCaretAtEnd } from '../../../utils';
-import { addPost, addMedia, toggleModal } from '../../../redux/actions';
+import {
+  addPost,
+  addMedia,
+  toggleModal,
+  toggleEmojis,
+  closeEmojis,
+} from '../../../redux/actions';
 import { ALLOWED_MIME_TYPES } from '../../../redux/constants';
 
 function EnhancedPublish(props) {
   const router = useRouter();
   const bodyRef = useRef();
-  const emojiRef = useRef();
   const [bind, { width, height, left, top }] = useMeasure();
   const [body, setBody] = useState(null);
   const [bodyError, setBodyError] = useState(false);
-  const [showEmojis, setShowEmojis] = useState(false);
+  const [emotes, setEmotes] = useState([]);
   const [active, setActive] = useState();
+  const [emotePicker, setEmotePicker] = useState('heart_eyes');
   const [categories, setCategories] = useState([1]);
+  const randomEmojis = [
+    'smile',
+    'sunglasses',
+    'heart_eyes',
+    'dizzy_face',
+    'face_with_symbols_on_mouth',
+    'sweat_smile',
+    'laughing',
+  ];
   const {
     value: title,
     bind: bindTitle,
@@ -49,16 +61,6 @@ function EnhancedPublish(props) {
     setError: setTitleError,
     hasError: titleError,
   } = useInput('');
-
-  useOnClickOutside(bind.ref, () => {
-    if (showEmojis) {
-      setShowEmojis(false);
-      bodyRef.current.innerHTML = bodyRef.current.innerHTML.replace('::', '');
-      setTimeout(function() {
-        placeCaretAtEnd(bodyRef.current);
-      }, 0);
-    }
-  });
 
   const prevPostId = usePrevious(props.addPostId);
 
@@ -94,7 +96,7 @@ function EnhancedPublish(props) {
       }
 
       if (sequence[0] === ':' && sequence[1] === ':') {
-        setShowEmojis(true);
+        props.toggleEmojis();
         setTimeout(() => {
           document.querySelector('.emoji-mart-search input').focus();
         }, 150);
@@ -103,13 +105,13 @@ function EnhancedPublish(props) {
   }, []);
 
   const emojiSpring = useSpring({
-    opacity: showEmojis ? 1 : 0,
-    transform: showEmojis
+    opacity: props.emojisOpen ? 1 : 0,
+    transform: props.emojisOpen
       ? `translate3d(${left + width / 2 - 144}px, ${top +
           height / 2 -
           226}px, 0px)`
       : `translate3d(0px, 0px, 0px)`,
-    pointerEvents: showEmojis ? 'all' : 'none',
+    pointerEvents: props.emojisOpen ? 'all' : 'none',
   });
 
   function toggleButton() {
@@ -176,37 +178,42 @@ function EnhancedPublish(props) {
     const emojiHTML = Emoji({
       html: true,
       set: 'twitter',
-      emoji: emoji.id,
+      emoji: emoji.custom ? emoji : emoji.id,
       size: 24,
     });
 
     bodyRef.current.innerHTML =
       bodyRef.current.innerHTML.replace('::', '') + emojiHTML + '&nbsp;';
-    setShowEmojis(false);
+    props.closeEmojis();
     placeCaretAtEnd(bodyRef.current);
   }
+
+  useEffect(() => {
+    fetch('http://localhost:3000/emotes', {
+      method: 'post',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setEmotes(data.emotes);
+      });
+  }, []);
 
   return (
     <StyledPublish {...bind}>
       <Hints />
-      <StyledPublishEmojis disabled={!showEmojis} style={emojiSpring}>
-        <Picker
-          ref={emojiRef}
-          onClick={emoji => addEmoji(emoji)}
-          color="#80dad3"
-          title="DevGulp"
-          emoji="smile"
-          set="twitter"
-        />
+      <StyledPublishEmojis disabled={!props.emojisOpen} style={emojiSpring}>
+        {emotes.length <= 0 ? null : (
+          <Emotes emotes={emotes} addEmoji={addEmoji} bodyRef={bodyRef} />
+        )}
       </StyledPublishEmojis>
       <StyledPublishContainer
-        showEmojis={showEmojis}
+        showEmojis={props.emojisOpen}
         disabled={props.posts.isAddingPost}
         aria-busy={props.posts.isAddingPost}>
         <StyledPublishTitle
           className={titleError && 'error'}
-          {...bindTitle}
           placeholder="Title"
+          {...bindTitle}
         />
         <StyledPublishBody
           ref={bodyRef}
@@ -215,6 +222,19 @@ function EnhancedPublish(props) {
           className={bodyError && 'error'}
           placeholder="Tell your story."
         />
+        <StyledEmojiPicker>
+          <Emoji
+            emoji={emotePicker}
+            onOver={() =>
+              setEmotePicker(
+                randomEmojis[Math.floor(Math.random() * randomEmojis.length)],
+              )
+            }
+            set="twitter"
+            size={24}
+            onClick={props.toggleEmojis}
+          />
+        </StyledEmojiPicker>
         <StyledPublishCategories>
           {props.posts.categories.map(
             taxonomy =>
@@ -273,16 +293,19 @@ function EnhancedPublish(props) {
   );
 }
 
-const mapStateToProps = ({ user, posts }) => ({
+const mapStateToProps = ({ root, user, posts }) => ({
+  emojisOpen: root.emojisOpen,
+  addPostId: posts.addPostId,
   user,
   posts,
-  addPostId: posts.addPostId,
 });
 
 const mapDispatchToProps = {
   addPost,
   addMedia,
   toggleModal,
+  toggleEmojis,
+  closeEmojis,
 };
 
 export default connect(

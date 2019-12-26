@@ -274,6 +274,20 @@ const StyledPublishEmojis = styled(animated.fieldset)`
   margin: 0;
 `;
 
+const StyledEmojiPicker = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0.4rem;
+  margin: 0 0.4rem;
+  filter: grayscale(1);
+  &:hover {
+    filter: unset;
+  }
+`;
+
 export {
   StyledPublish,
   StyledPublishContainer,
@@ -288,4 +302,5 @@ export {
   StyledPreviewImageButton,
   StyledPreviewImage,
   StyledPublishEmojis,
+  StyledEmojiPicker,
 };

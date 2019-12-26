@@ -18,6 +18,8 @@ export const FILE_TYPE_ERROR = {
 };
 
 // Global Types
+export const SET_ONLINE = 'SET_ONLINE';
+export const SET_OFFLINE = 'SET_OFFLINE';
 export const SCREEN_RESIZE = 'SCREEN_RESIZE';
 export const INPUT = 'INPUT';
 export const TOGGLE_LOGIN_MENU = 'TOGGLE_LOGIN_MENU';
@@ -26,11 +28,15 @@ export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const TOGGLE_SEARCH = 'TOGGLE_SEARCH';
 export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
 export const TOGGLE_DONATION_MENU = 'TOGGLE_DONATION_MENU';
+export const TOGGLE_EMOJIS = 'TOGGLE_EMOJIS';
 export const CLOSE_DONATION_MENU = 'CLOSE_DONATION_MENU';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const CLOSE_DRAWER = 'CLOSE_DRAWER';
+export const CLOSE_EMOJIS = 'CLOSE_EMOJIS';
 export const OPEN_LOGIN_MENU = 'OPEN_LOGIN_MENU';
 export const OPEN_USER_MENU = 'OPEN_USER_MENU';
+export const OPEN_MORE_MENU = 'OPEN_MORE_MENU';
+export const CLOSE_MORE_MENU = 'CLOSE_MORE_MENU';
 export const FILTER_TAXONOMY = 'FILTER_TAXONOMY';
 
 // Auth Types

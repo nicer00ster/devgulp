@@ -3,17 +3,16 @@ import { StyledSearch, StyledSearchNoResults } from './search.styles';
 import PostItem from '../posts/PostItem';
 
 function EnhancedSearch(props) {
+  const posts = props.results.filter(post => post.subtype === 'post');
+  console.log(posts);
   return (
-    <StyledSearch hasResults={props.results.length > 0}>
-      {props.results && props.hasSearched && !props.results.length ? (
+    <StyledSearch hasResults={posts.length > 0}>
+      {posts && props.hasSearched && !posts.length ? (
         <StyledSearchNoResults>
           Nothing found for your search.
         </StyledSearchNoResults>
       ) : (
-        props.results.map(
-          post =>
-            post.subtype === 'post' && <PostItem key={post.id} post={post} />,
-        )
+        posts.map(post => <PostItem key={post.id} post={post} />)
       )}
     </StyledSearch>
   );

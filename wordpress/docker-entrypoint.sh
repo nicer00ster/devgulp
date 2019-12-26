@@ -179,9 +179,12 @@ EOPHP
 	fi
 
 	# Copy over the application files to ensure they are the latest version
-	rsync -rI --exclude=/wp-includes/functions.php /opt/app/. /var/www/html/
-	if [[ -w /var/www/html/wp-includes/functions.php ]]; then
-		cp -f /opt/app/wp-includes/functions.php /var/www/html/wp-includes/functions.php
+	if [[ -L /var/www/html/wp-includes/functions.php ]]; then
+		rm /var/www/html/wp-includes/functions.php
+	fi
+	cp -rf /opt/app/. /var/www/html/
+	if [[ -e /opt/mount/functions.php ]]; then
+		ln -sf /opt/mount/functions.php /var/www/html/wp-includes/functions.php
 	fi
 
 	# If the instance has not yet been configured, copy the plugins and API and run the wordpress install
@@ -193,7 +196,7 @@ EOPHP
 		wp config set SIMPLE_JWT_AUTHENTICATION_SECRET_KEY $JWT_AUTHENTICATION_SECRET_KEY
 		wp config set SIMPLE_JWT_AUTHENTICATION_CORS_ENABLE true --raw
 		wp option update blogdescription "$WORDPRESS_TAGLINE"
-		wp option update default_role "$WORDPRESS_DEFAULT_ROLE"
+		wp option update default_role "author"
 		wp option update users_can_register 1
 		wp option update show_avatars 0
 		wp option update comment_whitelist 0

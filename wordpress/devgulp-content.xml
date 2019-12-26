@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/5.2.2" created="2019-09-12 05:56" -->
+	<!-- generator="WordPress/5.2.4" created="2019-12-26 19:39" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,13 +29,14 @@
 	<title>DevGulp</title>
 	<link>http://localhost:8000</link>
 	<description>A platform built for developers, by developers.</description>
-	<pubDate>Thu, 12 Sep 2019 05:56:58 +0000</pubDate>
+	<pubDate>Thu, 26 Dec 2019 19:39:31 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://localhost:8000</wp:base_site_url>
 	<wp:base_blog_url>http://localhost:8000</wp:base_blog_url>
 
 		<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_email><![CDATA[fake@example.com]]></wp:author_email><wp:author_display_name><![CDATA[admin]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
+	<wp:author><wp:author_id>2</wp:author_id><wp:author_login><![CDATA[nicer00ster]]></wp:author_login><wp:author_email><![CDATA[abusch1013@gmail.com]]></wp:author_email><wp:author_display_name><![CDATA[nicer00ster]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
 
 		<wp:category>
 		<wp:term_id>2</wp:term_id>
@@ -125,21 +126,21 @@
 		<wp:term_parent><![CDATA[]]></wp:term_parent>
 		<wp:term_name><![CDATA[Uncategorized]]></wp:term_name>
 	</wp:term>
-
-	<generator>https://wordpress.org/?v=5.2.2</generator>
+		
+	<generator>https://wordpress.org/?v=5.2.4</generator>
 
 		<item>
 		<title>Privacy Policy</title>
 		<link>http://localhost:8000/?page_id=3</link>
-		<pubDate>Thu, 12 Sep 2019 05:39:53 +0000</pubDate>
+		<pubDate>Thu, 19 Dec 2019 20:09:24 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost:8000/?page_id=3</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:heading --><h2>Who we are</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Our website address is: http://localhost:8000.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>What personal data we collect and why we collect it</h2><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Comments</h3><!-- /wp:heading --><!-- wp:paragraph --><p>When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor&#8217;s IP address and browser user agent string to help spam detection.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Media</h3><!-- /wp:heading --><!-- wp:paragraph --><p>If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Contact forms</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Cookies</h3><!-- /wp:heading --><!-- wp:paragraph --><p>If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select &quot;Remember Me&quot;, your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Embedded content from other websites</h3><!-- /wp:heading --><!-- wp:paragraph --><p>Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Analytics</h3><!-- /wp:heading --><!-- wp:heading --><h2>Who we share your data with</h2><!-- /wp:heading --><!-- wp:heading --><h2>How long we retain your data</h2><!-- /wp:heading --><!-- wp:paragraph --><p>If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>What rights you have over your data</h2><!-- /wp:heading --><!-- wp:paragraph --><p>If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Where we send your data</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Visitor comments may be checked through an automated spam detection service.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Your contact information</h2><!-- /wp:heading --><!-- wp:heading --><h2>Additional information</h2><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>How we protect your data</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>What data breach procedures we have in place</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>What third parties we receive data from</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>What automated decision making and/or profiling we do with user data</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Industry regulatory disclosure requirements</h3><!-- /wp:heading -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>3</wp:post_id>
-		<wp:post_date><![CDATA[2019-09-12 05:39:53]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2019-09-12 05:39:53]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2019-12-19 20:09:24]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-12-19 20:09:24]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[privacy-policy]]></wp:post_name>
@@ -155,30 +156,6 @@
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Privacy Policy</title>
-		<link>http://localhost:8000/privacy-policy-2/</link>
-		<pubDate>Wed, 11 Sep 2019 19:50:31 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/?page_id=9</guid>
-		<description></description>
-		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>DevGulp's Privacy Policy Page.</p>
-<!-- /wp:paragraph -->]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>9</wp:post_id>
-		<wp:post_date><![CDATA[2019-09-11 19:50:31]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2019-09-11 19:50:31]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[privacy-policy-2]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[page]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-														</item>
-					<item>
 		<title>Help</title>
 		<link>http://localhost:8000/help/</link>
 		<pubDate>Wed, 11 Sep 2019 19:51:29 +0000</pubDate>
@@ -193,23 +170,39 @@
 <p>See below for the FAQ. If you couldn't find what you were looking for you can submit an issue on our <a rel="noreferrer noopener" aria-label=" (opens in a new tab)" href="https://github.com/nicer00ster/devgulp/issues" target="_blank">GitHub</a> or you can contact us.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading -->
+<!-- wp:columns -->
+<div class="wp-block-columns has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading -->
 <h2>Getting Started</h2>
 <!-- /wp:heading -->
 
 <!-- wp:list -->
-<ul><li><a href="/help/using-devgulp">Using DevGulp.</a></li></ul>
+<ul><li><a href="/help/using-devgulp">Using DevGulp.</a></li><li><a href="/help/creating-an-account">Creating an account.</a></li><li><a href="/help/logging-into-your-account">Logging into your account.</a></li></ul>
 <!-- /wp:list -->
 
-<!-- wp:heading -->
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading -->
 <h2>Account Issues</h2>
 <!-- /wp:heading -->
 
 <!-- wp:list -->
-<ul><li><a href="/help/creating-an-account">Creating an account.</a></li><li><a href="/help/logging-into-your-account">Logging into your account.</a></li><li><a href="/help/changing-your-password">Changing your password.</a></li><li><a href="http://localhost:8000/help/updating-your-profile">Updating your profile.</a></li><li><a href="/help/deactivating-your-account">Deactivating your account.</a></li></ul>
+<ul><li><a href="/help/changing-your-password">Changing your password.</a></li><li><a href="/help/updating-your-profile">Updating your profile.</a></li><li><a href="/help/deactivating-your-account">Deactivating your account.</a></li></ul>
 <!-- /wp:list -->
 
-<!-- wp:heading -->
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading -->
 <h2>Reading</h2>
 <!-- /wp:heading -->
 
@@ -217,13 +210,21 @@
 <ul><li><a href="/help/reading-stories">Reading stories.</a></li><li><a href="/help/bookmarking-stories">Bookmarking stories.</a></li><li><a href="/help/liking-stories">Liking stories.</a></li></ul>
 <!-- /wp:list -->
 
-<!-- wp:heading -->
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading -->
 <h2>Publishing</h2>
 <!-- /wp:heading -->
 
 <!-- wp:list -->
 <ul><li><a href="/help/publishing-stories">Publishing stories.</a></li><li><a href="/help/using-emojis">Using emojis.</a></li><li><a href="/help/uploading-featured-image">Uploading featured image.</a></li><li><a href="/help/adding-categories">Adding categories.</a></li></ul>
-<!-- /wp:list -->]]></content:encoded>
+<!-- /wp:list --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>11</wp:post_id>
 		<wp:post_date><![CDATA[2019-09-11 19:51:29]]></wp:post_date>
@@ -237,7 +238,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Using DevGulp</title>
 		<link>http://localhost:8000/help/using-devgulp/</link>
@@ -246,7 +267,11 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=32</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on using DevGulp.</p>
+<p>The purpose of DevGulp is to contribute valuable content to other developers all over the world, as well as indulge as much content as you please. And of course, without charge. We believe that all content on the web should be freely accessible to every individual, without obnoxious fees.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>To get started with DevGulp, just create an account and you'll be able to start publishing your own articles, as well as read articles published by others.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>32</wp:post_id>
@@ -261,7 +286,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Creating An Account</title>
 		<link>http://localhost:8000/help/creating-an-account/</link>
@@ -270,7 +315,7 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=34</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on creating an account.</p>
+<p>Creating an account on DevGulp is easy! Just click the "Sign up" button at the top of the page and fill the form out to get started! You'll automatically be signed in, and can start writing content immediately.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>34</wp:post_id>
@@ -285,7 +330,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Logging Into Your Account</title>
 		<link>http://localhost:8000/help/logging-into-your-account/</link>
@@ -294,7 +359,7 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=36</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on logging into your account.</p>
+<p>To sign in to your DevGulp account, just click "Login" at the top-right of the page and enter your username &amp; password.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>36</wp:post_id>
@@ -309,7 +374,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Changing Your Password</title>
 		<link>http://localhost:8000/help/changing-your-password/</link>
@@ -318,7 +403,7 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=38</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on changing your password.</p>
+<p>Changing your password is not yet implemented on DevGulp.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>38</wp:post_id>
@@ -333,7 +418,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Deactivating Your Account</title>
 		<link>http://localhost:8000/help/deactivating-your-account/</link>
@@ -342,7 +447,7 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=40</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on deactivating your account.</p>
+<p>Deactivating your account is not yet implemented on DevGulp.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>40</wp:post_id>
@@ -357,7 +462,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Updating Your Profile</title>
 		<link>http://localhost:8000/help/updating-your-profile/</link>
@@ -366,7 +491,11 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=42</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on updating your profile.</p>
+<p>To update your DevGulp profile, make sure you're signed in first, then click on your avatar at the top-right of the page. Then you can either click on your image in the menu or click on "Profile".</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>From there you'll be able to update your avatar picture, description, company, and personal website. Updating these settings with up-to-date information is good practice so you can advertise personal brand.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>42</wp:post_id>
@@ -381,7 +510,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Reading Stories</title>
 		<link>http://localhost:8000/help/reading-stories/</link>
@@ -390,7 +539,7 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=45</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on reading stories.</p>
+<p>To read a story just click on any story on the home page that seems interesting to you! You can also filter by category so you can narrow down what you're interested in reading.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>45</wp:post_id>
@@ -405,7 +554,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Bookmarking Stories</title>
 		<link>http://localhost:8000/help/bookmarking-stories/</link>
@@ -414,7 +583,7 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=47</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on bookmarking stories.</p>
+<p>Bookmarking stories is not yet implemented on DevGulp.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>47</wp:post_id>
@@ -429,7 +598,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Liking Stories</title>
 		<link>http://localhost:8000/help/liking-stories/</link>
@@ -438,7 +627,7 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=49</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on liking stories.</p>
+<p>You can like any number of stories. Once you read a story and find that it has brought some value to you, give it a like! Liking others stories is a way of showing gratitude.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>49</wp:post_id>
@@ -453,7 +642,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Publishing Stories</title>
 		<link>http://localhost:8000/help/publishing-stories/</link>
@@ -462,7 +671,11 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=51</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on publishing stories.</p>
+<p>To publish your first story, click on "Publish" at the top of the page. Give your story a title and some meaningful content on whatever you'd like to express! You can also add an image at the bottom left of the publishing page.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When you feel what you wrote in your story is ready for the world to see, click on the button at the bottom right of the publishing page and your article will be ready to read by others!</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>51</wp:post_id>
@@ -477,7 +690,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Using Emojis</title>
 		<link>http://localhost:8000/help/using-emojis/</link>
@@ -486,7 +719,7 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=53</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on how to use emojis.</p>
+<p>To use emojis for your article, you can either click on the emoji icon at the bottom left of your article, or you can consecutively click "::" in the body of your post. Typing this will bring the emoji picker to the front of your article and allow you to choose an emoji.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>53</wp:post_id>
@@ -501,31 +734,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
-					<item>
-		<title>Uploading Featured Image</title>
-		<link>http://localhost:8000/help/uploading-featured-image/</link>
-		<pubDate>Wed, 11 Sep 2019 22:45:06 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/?page_id=55</guid>
-		<description></description>
-		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on uploading featured image for post.</p>
-<!-- /wp:paragraph -->]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>55</wp:post_id>
-		<wp:post_date><![CDATA[2019-09-11 22:45:06]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2019-09-11 22:45:06]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[uploading-featured-image]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>11</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[page]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>User Fields</title>
 		<link>http://localhost:8000/?post_type=acf-field-group&#038;p=69</link>
@@ -645,9 +874,112 @@
 		<wp:is_sticky>0</wp:is_sticky>
 														</item>
 					<item>
+		<title>IMG_2688</title>
+		<link>http://localhost:8000/img_2688/</link>
+		<pubDate>Thu, 19 Dec 2019 23:38:38 +0000</pubDate>
+		<dc:creator><![CDATA[nicer00ster]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2019/12/IMG_2688.jpeg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>81</wp:post_id>
+		<wp:post_date><![CDATA[2019-12-19 23:38:38]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-12-19 23:38:38]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[img_2688]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[http://localhost:8000/wp-content/uploads/2019/12/IMG_2688.jpeg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2019/12/IMG_2688.jpeg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1440;s:6:"height";i:1920;s:4:"file";s:21:"2019/12/IMG_2688.jpeg";s:5:"sizes";a:4:{s:9:"thumbnail";a:4:{s:4:"file";s:21:"IMG_2688-150x150.jpeg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:21:"IMG_2688-225x300.jpeg";s:5:"width";i:225;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:22:"IMG_2688-768x1024.jpeg";s:5:"width";i:768;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:22:"IMG_2688-768x1024.jpeg";s:5:"width";i:768;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:3:"1.8";s:6:"credit";s:0:"";s:6:"camera";s:8:"iPhone X";s:7:"caption";s:0:"";s:17:"created_timestamp";s:10:"1556189592";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"4";s:3:"iso";s:3:"100";s:13:"shutter_speed";s:17:"0.010869565217391";s:5:"title";s:0:"";s:11:"orientation";s:1:"1";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title>Screen-Shot-2019-12-05-at-12.34.19-PM</title>
+		<link>http://localhost:8000/screen-shot-2019-12-05-at-12-34-19-pm/</link>
+		<pubDate>Thu, 19 Dec 2019 23:38:58 +0000</pubDate>
+		<dc:creator><![CDATA[nicer00ster]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2019/12/Screen-Shot-2019-12-05-at-12.34.19-PM.png</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>82</wp:post_id>
+		<wp:post_date><![CDATA[2019-12-19 23:38:58]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-12-19 23:38:58]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[screen-shot-2019-12-05-at-12-34-19-pm]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[http://localhost:8000/wp-content/uploads/2019/12/Screen-Shot-2019-12-05-at-12.34.19-PM.png]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2019/12/Screen-Shot-2019-12-05-at-12.34.19-PM.png]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:724;s:6:"height";i:806;s:4:"file";s:49:"2019/12/Screen-Shot-2019-12-05-at-12.34.19-PM.png";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:49:"Screen-Shot-2019-12-05-at-12.34.19-PM-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:49:"Screen-Shot-2019-12-05-at-12.34.19-PM-269x300.png";s:5:"width";i:269;s:6:"height";i:300;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title>Hello world!</title>
+		<link>http://localhost:8000/hello-world/</link>
+		<pubDate>Thu, 19 Dec 2019 20:09:24 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/?p=1</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:paragraph -->
+<p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!</p>
+<!-- /wp:paragraph -->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>1</wp:post_id>
+		<wp:post_date><![CDATA[2019-12-19 20:09:24]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-12-19 20:09:24]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[open]]></wp:ping_status>
+		<wp:post_name><![CDATA[hello-world]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+						<wp:comment>
+			<wp:comment_id>1</wp:comment_id>
+			<wp:comment_author><![CDATA[A WordPress Commenter]]></wp:comment_author>
+			<wp:comment_author_email><![CDATA[wapuu@wordpress.example]]></wp:comment_author_email>
+			<wp:comment_author_url>https://wordpress.org/</wp:comment_author_url>
+			<wp:comment_author_IP><![CDATA[]]></wp:comment_author_IP>
+			<wp:comment_date><![CDATA[2019-12-19 20:09:24]]></wp:comment_date>
+			<wp:comment_date_gmt><![CDATA[2019-12-19 20:09:24]]></wp:comment_date_gmt>
+			<wp:comment_content><![CDATA[Hi, this is a comment.
+To get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.
+Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.]]></wp:comment_content>
+			<wp:comment_approved><![CDATA[1]]></wp:comment_approved>
+			<wp:comment_type><![CDATA[]]></wp:comment_type>
+			<wp:comment_parent>0</wp:comment_parent>
+			<wp:comment_user_id>0</wp:comment_user_id>
+							</wp:comment>
+					</item>
+					<item>
 		<title>Sample Page</title>
-		<link>http://localhost:8000/sample-page/</link>
-		<pubDate>Thu, 12 Sep 2019 05:39:53 +0000</pubDate>
+		<link>http://localhost:8000/sample-page__trashed-2/</link>
+		<pubDate>Thu, 19 Dec 2019 20:09:24 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost:8000/?page_id=2</guid>
 		<description></description>
@@ -672,12 +1004,12 @@
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2</wp:post_id>
-		<wp:post_date><![CDATA[2019-09-12 05:39:53]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2019-09-12 05:39:53]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2019-12-19 20:09:24]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-12-19 20:09:24]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
-		<wp:post_name><![CDATA[sample-page]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_name><![CDATA[sample-page__trashed-2]]></wp:post_name>
+		<wp:status><![CDATA[trash]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[page]]></wp:post_type>
@@ -686,6 +1018,136 @@
 														<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
 		<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
+		<wp:meta_value><![CDATA[publish]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1577384324]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[sample-page]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title>Privacy Policy</title>
+		<link>http://localhost:8000/privacy-policy__trashed-2/</link>
+		<pubDate>Thu, 12 Sep 2019 05:39:53 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/?page_id=3</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:heading --><h2>Who we are</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Our website address is: http://localhost:8000.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>What personal data we collect and why we collect it</h2><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Comments</h3><!-- /wp:heading --><!-- wp:paragraph --><p>When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor&#8217;s IP address and browser user agent string to help spam detection.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Media</h3><!-- /wp:heading --><!-- wp:paragraph --><p>If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Contact forms</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Cookies</h3><!-- /wp:heading --><!-- wp:paragraph --><p>If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select &quot;Remember Me&quot;, your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Embedded content from other websites</h3><!-- /wp:heading --><!-- wp:paragraph --><p>Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --><h3>Analytics</h3><!-- /wp:heading --><!-- wp:heading --><h2>Who we share your data with</h2><!-- /wp:heading --><!-- wp:heading --><h2>How long we retain your data</h2><!-- /wp:heading --><!-- wp:paragraph --><p>If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>What rights you have over your data</h2><!-- /wp:heading --><!-- wp:paragraph --><p>If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Where we send your data</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Visitor comments may be checked through an automated spam detection service.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>Your contact information</h2><!-- /wp:heading --><!-- wp:heading --><h2>Additional information</h2><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>How we protect your data</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>What data breach procedures we have in place</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>What third parties we receive data from</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>What automated decision making and/or profiling we do with user data</h3><!-- /wp:heading --><!-- wp:heading {"level":3} --><h3>Industry regulatory disclosure requirements</h3><!-- /wp:heading -->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>4</wp:post_id>
+		<wp:post_date><![CDATA[2019-09-12 05:39:53]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-09-12 05:39:53]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[open]]></wp:ping_status>
+		<wp:post_name><![CDATA[privacy-policy__trashed-2]]></wp:post_name>
+		<wp:status><![CDATA[trash]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+		<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
+		<wp:meta_value><![CDATA[draft]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1577384311]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[privacy-policy]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title>Privacy Policy</title>
+		<link>http://localhost:8000/privacy-policy-2__trashed/</link>
+		<pubDate>Wed, 11 Sep 2019 19:50:31 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/?page_id=9</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:paragraph -->
+<p>DevGulp's Privacy Policy Page.</p>
+<!-- /wp:paragraph -->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>9</wp:post_id>
+		<wp:post_date><![CDATA[2019-09-11 19:50:31]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-09-11 19:50:31]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[privacy-policy-2__trashed]]></wp:post_name>
+		<wp:status><![CDATA[trash]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
+		<wp:meta_value><![CDATA[publish]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1577384319]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[privacy-policy-2]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title>Uploading Featured Image</title>
+		<link>http://localhost:8000/help/uploading-featured-image/</link>
+		<pubDate>Wed, 11 Sep 2019 22:45:06 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/?page_id=55</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:paragraph -->
+<p>To upload an image for your article, on the bottom-left of the publishing page you can click on the "Choose an image" button. You can then choose an image in either JPEG, GIF, PNG, or BMP format. The chosen image will be used on the article that you publish. </p>
+<!-- /wp:paragraph -->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>55</wp:post_id>
+		<wp:post_date><![CDATA[2019-09-11 22:45:06]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-09-11 22:45:06]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[uploading-featured-image]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>11</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -696,7 +1158,11 @@
 		<guid isPermaLink="false">http://localhost:8000/?page_id=57</guid>
 		<description></description>
 		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Help doc on how to add categories to your post.</p>
+<p>Adding categories to your story is easy! Just click on any number of relatable programming topics from the radio buttons on the publishing page.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Adding categories will help narrow down what your story is about and will help others find it easier!</p>
 <!-- /wp:paragraph -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>57</wp:post_id>
@@ -711,7 +1177,27 @@
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-														</item>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
+		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Untitled Reusable Block</title>
 		<link>http://localhost:8000/untitled-reusable-block__trashed/</link>
@@ -782,7 +1268,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[views]]></wp:meta_key>
-		<wp:meta_value><![CDATA[18]]></wp:meta_value>
+		<wp:meta_value><![CDATA[21]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[post_likes]]></wp:meta_key>
@@ -829,7 +1315,7 @@
 		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:comment>
-			<wp:comment_id>4</wp:comment_id>
+			<wp:comment_id>2</wp:comment_id>
 			<wp:comment_author><![CDATA[nicer00ster]]></wp:comment_author>
 			<wp:comment_author_email><![CDATA[abusch1013@gmail.com]]></wp:comment_author_email>
 			<wp:comment_author_url></wp:comment_author_url>
@@ -840,17 +1326,73 @@
 			<wp:comment_approved><![CDATA[1]]></wp:comment_approved>
 			<wp:comment_type><![CDATA[]]></wp:comment_type>
 			<wp:comment_parent>0</wp:comment_parent>
-			<wp:comment_user_id>2</wp:comment_user_id>
+			<wp:comment_user_id>0</wp:comment_user_id>
 						<wp:commentmeta>
 	<wp:meta_key><![CDATA[akismet_error]]></wp:meta_key>
 			<wp:meta_value><![CDATA[1568267507]]></wp:meta_value>
 			</wp:commentmeta>
 						<wp:commentmeta>
 	<wp:meta_key><![CDATA[akismet_history]]></wp:meta_key>
-			<wp:meta_value><![CDATA[a:4:{s:4:"time";d:1568267507.564045;s:5:"event";s:11:"check-error";s:4:"user";s:11:"nicer00ster";s:4:"meta";a:1:{s:8:"response";s:7:"invalid";}}]]></wp:meta_value>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
 			</wp:commentmeta>
 							</wp:comment>
 					</item>
+					<item>
+		<title>Sample Page</title>
+		<link>http://localhost:8000/sample-page-2__trashed/</link>
+		<pubDate>Thu, 12 Sep 2019 05:39:53 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/?page_id=2</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:paragraph -->
+<p>This is an example page. It's different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Hi there! I'm a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin' caught in the rain.)</p></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>...or something like this:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</p></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>As a new WordPress user, you should go to <a href="http://localhost:8000/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!</p>
+<!-- /wp:paragraph -->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>78</wp:post_id>
+		<wp:post_date><![CDATA[2019-09-12 05:39:53]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-09-12 05:39:53]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[open]]></wp:ping_status>
+		<wp:post_name><![CDATA[sample-page-2__trashed]]></wp:post_name>
+		<wp:status><![CDATA[trash]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+		<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
+		<wp:meta_value><![CDATA[publish]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1577384311]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[sample-page-2]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
 					<item>
 		<title>Sample Page</title>
 		<link>http://localhost:8000/sample-page__trashed/</link>
@@ -947,3 +1489,4 @@
 							</item>
 				</channel>
 </rss>
+	

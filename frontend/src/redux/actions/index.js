@@ -2,6 +2,18 @@ import * as types from '../constants';
 import { deleteToken } from '../../utils';
 
 // Global Actions
+export function setOnline() {
+  return {
+    type: types.SET_ONLINE,
+  };
+}
+
+export function setOffline() {
+  return {
+    type: types.SET_OFFLINE,
+  };
+}
+
 export function screenResize(width) {
   return {
     type: types.SCREEN_RESIZE,
@@ -35,6 +47,18 @@ export function toggleUserMenu() {
   };
 }
 
+export function openMoreMenu() {
+  return {
+    type: types.OPEN_MORE_MENU,
+  };
+}
+
+export function closeMoreMenu() {
+  return {
+    type: types.CLOSE_MORE_MENU,
+  };
+}
+
 export function toggleModal() {
   return {
     type: types.TOGGLE_MODAL,
@@ -62,6 +86,18 @@ export function toggleDrawer() {
 export function toggleDonationMenu() {
   return {
     type: types.TOGGLE_DONATION_MENU,
+  };
+}
+
+export function toggleEmojis() {
+  return {
+    type: types.TOGGLE_EMOJIS,
+  };
+}
+
+export function closeEmojis() {
+  return {
+    type: types.CLOSE_EMOJIS,
   };
 }
 

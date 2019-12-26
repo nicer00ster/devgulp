@@ -51,7 +51,6 @@ const StyledHelpHeaderIcon = styled.i`
 
 const StyledHelpContent = styled.div`
   p {
-    text-align: center;
     font-family: 'Trirong', serif;
     font-size: 24px;
     margin: 24px;
@@ -88,11 +87,25 @@ const StyledHelpContent = styled.div`
   }
   .wp-block-columns {
     display: flex;
-    align-items: center;
     .wp-block-column {
       display: flex;
       flex-direction: column;
       width: 50%;
+    }
+  }
+`;
+
+const StyledHelpBack = styled.a`
+  position: absolute;
+  padding: 1.2rem;
+  i {
+    padding-right: 0.4rem;
+    transition: all 0.25s ease-in;
+  }
+  &:hover {
+    i {
+      padding-right: 0.6rem;
+      transform: translateX(-2px);
     }
   }
 `;
@@ -104,4 +117,5 @@ export {
   StyledHelpHeaderCircle,
   StyledHelpHeaderIcon,
   StyledHelpContent,
+  StyledHelpBack,
 };

@@ -7,7 +7,9 @@ const initialState = {
   modalOpen: false,
   drawerOpen: false,
   donationMenuOpen: false,
+  emojisOpen: false,
   searchExpanded: false,
+  online: true,
   taxonomyFilter: 1,
   isResettingPassword: false,
   route: '/',
@@ -15,6 +17,16 @@ const initialState = {
 
 export default function appReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case types.SET_ONLINE:
+      return {
+        ...state,
+        online: true,
+      };
+    case types.SET_OFFLINE:
+      return {
+        ...state,
+        online: false,
+      };
     case types.SCREEN_RESIZE:
       return Object.assign({}, state, {
         ...state,
@@ -41,11 +53,19 @@ export default function appReducer(state = initialState, action = {}) {
       return {
         ...state,
         userMenuOpen: !state.userMenuOpen,
+        donationMenuOpen: false,
+        loginMenuOpen: false,
+        modalOpen: false,
+        searchExpanded: false,
       };
     case types.TOGGLE_SEARCH:
       return {
         ...state,
         searchExpanded: !state.searchExpanded,
+        donationMenuOpen: false,
+        loginMenuOpen: false,
+        modalOpen: false,
+        userMenuOpen: false,
       };
     case types.TOGGLE_DRAWER:
       return {
@@ -53,11 +73,27 @@ export default function appReducer(state = initialState, action = {}) {
         drawerOpen: !state.drawerOpen,
         loginMenuOpen: false,
         userMenuOpen: false,
+        donationMenuOpen: false,
+        searchExpanded: false,
+        modalOpen: false,
       };
     case types.TOGGLE_DONATION_MENU:
       return {
         ...state,
         donationMenuOpen: !state.donationMenuOpen,
+        userMenuOpen: false,
+        modalOpen: false,
+        searchExpanded: false,
+      };
+    case types.TOGGLE_EMOJIS:
+      return {
+        ...state,
+        emojisOpen: !state.emojisOpen,
+      };
+    case types.CLOSE_EMOJIS:
+      return {
+        ...state,
+        emojisOpen: false,
       };
     case types.CLOSE_DONATION_MENU:
       return {

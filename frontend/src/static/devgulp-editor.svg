@@ -7,83 +7,66 @@
         <rect fill="#FFFFFF" opacity="0" x="0" y="0" width="420" height="338"></rect>
         <g>
             <g id="Base-+-Header">
-                <rect id="Base" fill="#4D505F" x="105" y="25" width="315" height="313"></rect>
+                <rect id="Base" fill="#F1F1F1" x="105" y="25" width="315" height="313"></rect>
                 <g id="Header">
-                    <path d="M5.00938743,0 C2.24277915,0 0,2.23663401 0,5.0008954 L0,24.7122642 L420,24.7122642 L420,5.0008954 C420,2.23897713 417.765517,0 414.990613,0 L5.00938743,0 Z" id="Base" fill="#EEF1F5"></path>
+                    <path d="M5.00938743,0 C2.24277915,0 0,2.23663401 0,5.0008954 L0,24.7122642 L420,24.7122642 L420,5.0008954 C420,2.23897713 417.765517,0 414.990613,0 L5.00938743,0 Z" id="Base" fill="#FEFEFE"></path>
                     <g id="Options" transform="translate(5.136364, 6.174528)">
                         <circle id="Icon" fill="#FAA1BC" cx="5.86363636" cy="5.8254717" r="5"></circle>
                         <circle id="Icon" fill="#FFEAA7" cx="22.8636364" cy="5.8254717" r="5"></circle>
                         <circle id="Icon" fill="#80DAD3" cx="38.8636364" cy="5.8254717" r="5"></circle>
                     </g>
-                    <text id="DevGulp.js" opacity="0.85" font-family="CourierPrimeCode-Regular, Courier Prime Code" font-size="14" font-weight="normal" fill="#1F222E">
+                    <text id="DevGulp.js" opacity="0.502599516" font-family="CourierPrimeCode-Regular, Courier Prime Code" font-size="14" font-weight="normal" fill="#1F222E">
                         <tspan x="167.595526" y="18">DevGulp.js</tspan>
                     </text>
                 </g>
-                <rect id="Rectangle" fill="#4D505F" x="0" y="25" width="108" height="313"></rect>
+                <rect id="Rectangle" fill="#F1F1F1" x="0" y="25" width="108" height="313"></rect>
             </g>
             <text id="Line-Numbers" opacity="0.8" font-family="AndaleMono, Andale Mono" font-size="14" font-weight="normal" fill="#858585">
-                <tspan x="103.598633" y="49">1</tspan>
-                <tspan x="103.598633" y="69.1999998">2</tspan>
-                <tspan x="103.598633" y="89.3999996">3</tspan>
-                <tspan x="103.598633" y="109.599999">4</tspan>
-                <tspan x="103.598633" y="129.799999">5</tspan>
-                <tspan x="103.598633" y="149.999999">6</tspan>
-                <tspan x="103.598633" y="170.199999">7</tspan>
-                <tspan x="103.598633" y="190.399999">8</tspan>
-                <tspan x="103.598633" y="210.599998">9</tspan>
-                <tspan x="95.1972656" y="230.799998">10</tspan>
-                <tspan x="95.1972656" y="250.999998">11</tspan>
-            </text>
-            <text id="import-{-useState-}" font-family="CourierPrimeCode-Regular, Courier Prime Code" font-size="12" font-weight="normal" line-spacing="16">
-                <tspan x="119" y="48" fill="#FAA1BC">import</tspan>
-                <tspan x="162.171875" y="48" fill="#E2E7ED"> { </tspan>
-                <tspan x="183.757812" y="48" fill="#FFEAA7">useState</tspan>
-                <tspan x="241.320312" y="48" fill="#E2E7ED"> } </tspan>
-                <tspan x="262.90625" y="48" fill="#9D81FF">from</tspan>
-                <tspan x="291.6875" y="48" fill="#E2E7ED"> </tspan>
-                <tspan x="298.882812" y="48" fill="#80DAD3">‘react’</tspan>
-                <tspan x="349.25" y="48" fill="#E2E7ED">;</tspan>
-                <tspan x="119" y="68" fill="#E2E7ED"></tspan>
-                <tspan x="119" y="88" fill="#E2E7ED"> </tspan>
-                <tspan x="126.195312" y="88" fill="#92C5F8">DevGulp</tspan>
-                <tspan x="176.5625" y="88" fill="#E2E7ED">(props) {</tspan>
-                <tspan x="119" y="108" fill="#E2E7ED">	</tspan>
-                <tspan x="147" y="108" fill="#9D81FF">const</tspan>
-                <tspan x="182.976562" y="108" fill="#E2E7ED"> [set, open] = </tspan>
-                <tspan x="290.90625" y="108" fill="#FFEAA7">useState</tspan>
-                <tspan x="348.46875" y="108" fill="#E2E7ED">(false);</tspan>
-                <tspan x="119" y="128" fill="#E2E7ED"></tspan>
-                <tspan x="119" y="148" fill="#E2E7ED">	</tspan>
-                <tspan x="147" y="148" fill="#9D81FF">return</tspan>
-                <tspan x="190.171875" y="148" fill="#E2E7ED"> (</tspan>
-                <tspan x="119" y="168" fill="#E2E7ED">		&lt;</tspan>
-                <tspan x="182.195312" y="168" fill="#FAA1BC">DevGulp </tspan>
-                <tspan x="239.757812" y="168" fill="#FFEAA7">isOpen</tspan>
-                <tspan x="282.929688" y="168" fill="#80DAD3">=</tspan>
-                <tspan x="290.125" y="168" fill="#E2E7ED">{open} /&gt;</tspan>
-                <tspan x="119" y="188" fill="#E2E7ED">	);</tspan>
-                <tspan x="119" y="208" fill="#E2E7ED">}</tspan>
-                <tspan x="119" y="228" fill="#E2E7ED"></tspan>
-                <tspan x="119" y="248" fill="#FAA1BC">export</tspan>
-                <tspan x="162.171875" y="248" fill="#E2E7ED"> </tspan>
-                <tspan x="169.367188" y="248" fill="#9D81FF">default</tspan>
-                <tspan x="219.734375" y="248" fill="#E2E7ED"> </tspan>
-                <tspan x="226.929688" y="248" fill="#92C5F8">DevGulp</tspan>
-                <tspan x="277.296875" y="248" fill="#E2E7ED">;</tspan>
+                <tspan x="107.598633" y="49">1</tspan>
+                <tspan x="107.598633" y="69.1999998">2</tspan>
+                <tspan x="107.598633" y="89.3999996">3</tspan>
+                <tspan x="107.598633" y="109.599999">4</tspan>
+                <tspan x="107.598633" y="129.799999">5</tspan>
+                <tspan x="107.598633" y="149.999999">6</tspan>
+                <tspan x="107.598633" y="170.199999">7</tspan>
+                <tspan x="107.598633" y="190.399999">8</tspan>
+                <tspan x="107.598633" y="210.599998">9</tspan>
+                <tspan x="99.1972656" y="230.799998">10</tspan>
+                <tspan x="99.1972656" y="250.999998">11</tspan>
+                <tspan x="99.1972656" y="271.199998">12</tspan>
+                <tspan x="99.1972656" y="291.399998">13</tspan>
+                <tspan x="99.1972656" y="311.599998">14</tspan>
+                <tspan x="116" y="331.799997"></tspan>
             </text>
         </g>
-        <rect id="Rectangle" fill="#191C28" fill-rule="nonzero" x="7" y="30" width="82" height="302" rx="3"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="40" width="141" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.148251488" x="12" y="65" width="47" height="5" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="7" y="30" width="82" height="302" rx="3"></rect>
         <circle id="Oval" fill="#FAA1BC" fill-rule="nonzero" cx="13.5" cy="135.5" r="1.5"></circle>
-        <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" opacity="0.15" x="18" y="134" width="26" height="3" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.503376116" x="18" y="134" width="26" height="3" rx="1"></rect>
         <circle id="Oval" fill="#FAA1BC" fill-rule="nonzero" cx="13.5" cy="122.5" r="1.5"></circle>
-        <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" opacity="0.15" x="18" y="121" width="30" height="3" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.503376116" x="18" y="121" width="26" height="3" rx="1"></rect>
         <circle id="Oval" fill="#80DAD3" fill-rule="nonzero" cx="13.5" cy="109.5" r="1.5"></circle>
-        <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" opacity="0.15" x="18" y="108" width="26" height="3" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.503376116" x="18" y="108" width="26" height="3" rx="1"></rect>
         <circle id="Oval" fill="#80DAD3" fill-rule="nonzero" cx="13.5" cy="96.5" r="1.5"></circle>
-        <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" opacity="0.15" x="18" y="95" width="26" height="3" rx="1"></rect>
-        <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" opacity="0.5" x="12" y="35" width="22" height="5" rx="1"></rect>
-        <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" opacity="0.2" x="12" y="50" width="36" height="5" rx="1"></rect>
-        <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" opacity="0.2" x="12" y="65" width="47" height="5" rx="1"></rect>
-        <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" opacity="0.2" x="12" y="80" width="36" height="5" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.503376116" x="18" y="95" width="26" height="3" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.5" x="12" y="35" width="22" height="5" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.148251488" x="12" y="50" width="36" height="5" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.148251488" x="12" y="60" width="36" height="5" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.148251488" x="12" y="70" width="36" height="5" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="60" width="213" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="80" width="282" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="101" width="282" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="121" width="141" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="140" width="141" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="161" width="213" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="182" width="141" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="202" width="282" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="222" width="213" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="243" width="141" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="263" width="213" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="282" width="141" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FEFEFE" fill-rule="nonzero" x="125" y="303" width="282" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#000000" fill-rule="nonzero" opacity="0.148251488" x="12" y="80" width="36" height="5" rx="1"></rect>
     </g>
 </svg>

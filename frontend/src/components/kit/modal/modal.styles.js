@@ -19,6 +19,10 @@ const StyledModalContainer = styled(animated.div)`
 
 const StyledModalItem = styled(animated.div)`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   animation-duration: 0.75s;
   border-radius: ${props => props.theme.effects.radius};
   padding: ${props => (props.noPadding ? '' : '0.8rem')};
