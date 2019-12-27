@@ -283,6 +283,10 @@ const StyledEmojiPicker = styled.span`
   padding: 0.4rem;
   margin: 0 0.4rem;
   filter: grayscale(1);
+  button span {
+    cursor: pointer;
+    transition: transform 0.05s ease-in;
+  }
   &:hover {
     filter: unset;
   }
