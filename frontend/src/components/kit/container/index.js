@@ -1,20 +1,27 @@
 import { connect } from 'react-redux';
-import { StyledContainer } from './container.styles';
+import { StyledContainer, StyledContainerWrapper } from './container.styles';
 import Loading from '../loading';
 
 function Container(props) {
   return (
-    <StyledContainer
-      className={props.className}
-      isUpdatingUser={props.isUpdatingUser}
+    <StyledContainerWrapper
       isSearching={props.isSearching}
       isFetchingPosts={props.isFetchingPosts}
       userMenuOpen={props.userMenuOpen}
       drawerOpen={props.drawerOpen}
       loginMenuOpen={props.loginMenuOpen}>
-      {props.children}
-      {props.isUpdatingUser && <Loading />}
-    </StyledContainer>
+      <StyledContainer
+        className={props.className}
+        isUpdatingUser={props.isUpdatingUser}
+        isSearching={props.isSearching}
+        isFetchingPosts={props.isFetchingPosts}
+        userMenuOpen={props.userMenuOpen}
+        drawerOpen={props.drawerOpen}
+        loginMenuOpen={props.loginMenuOpen}>
+        {props.children}
+        {props.isUpdatingUser && <Loading />}
+      </StyledContainer>
+    </StyledContainerWrapper>
   );
 }
 

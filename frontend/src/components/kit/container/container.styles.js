@@ -1,28 +1,13 @@
 import styled from 'styled-components';
 
-const StyledContainer = styled.section`
-  display: flex;
-  flex-direction: column;
+const StyledContainerWrapper = styled.section`
+  background-color: ${props => props.theme.colors.white};
   position: relative;
-  min-height: 400px;
   margin: 8rem 0;
-  opacity: ${props =>
-    props.loginMenuOpen ||
-    props.userMenuOpen ||
-    props.drawerOpen ||
-    props.isFetchingPosts ||
-    props.isSearching ||
-    props.isUpdatingUser
-      ? '0.4'
-      : '1'};
   transform: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? 'scale(0.95)'
       : 'scale(1)'};
-  overflow: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? 'hidden'
-      : 'visible'};
   pointer-events: ${props =>
     props.loginMenuOpen ||
     props.userMenuOpen ||
@@ -34,4 +19,20 @@ const StyledContainer = styled.section`
   transition: all 0.25s linear;
 `;
 
-export { StyledContainer };
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  opacity: ${props =>
+    props.loginMenuOpen ||
+    props.userMenuOpen ||
+    props.drawerOpen ||
+    props.isFetchingPosts ||
+    props.isSearching ||
+    props.isUpdatingUser
+      ? '0.4'
+      : '1'};
+  transition: opacity 0.25s linear;
+`;
+
+export { StyledContainer, StyledContainerWrapper };
