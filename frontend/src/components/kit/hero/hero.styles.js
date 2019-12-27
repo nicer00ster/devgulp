@@ -14,10 +14,6 @@ const StyledHero = styled.div`
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? 'scale(0.95)'
       : ''};
-  overflow: ${props =>
-    props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
-      ? 'hidden'
-      : 'visible'};
   pointer-events: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen
       ? 'none'

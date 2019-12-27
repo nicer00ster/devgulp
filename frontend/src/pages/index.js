@@ -25,18 +25,18 @@ function Index(props) {
               'Or annoying ads that interrupt you.',
             ],
             styles: [
-              'Help the dev community by providing value.',
-              'Express yourself freely.',
-              '.',
-              '.',
-              '.',
+              'A new developer driven platform.',
+              "Intuitive design that's easy to use.",
+              'Help other developers by providing value.',
+              'While easily absorbing content.',
+              'And expressing yourself freely.',
             ],
             server: [
+              'Help the internet become free and open.',
+              'The future of the web is in your hands.',
               'Want to contribute to DevGulp?',
+              'All levels of experience welcomed!',
               'View our GitHub <a href="https://github.com/nicer00ster/devgulp" target="_blank" style="color: #80dad3;">here</a>.',
-              '.',
-              '.',
-              '.',
             ],
           }}
         />
