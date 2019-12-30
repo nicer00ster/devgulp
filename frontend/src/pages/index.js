@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Container from '../components/kit/container';
 import EnhancedPosts from '../components/kit/posts';
+import Headline from '../components/kit/hero/headline';
 import Editor from '../components/kit/editor';
 import Hero from '../components/kit/hero';
 import Loading from '../components/kit/loading';
@@ -15,6 +16,10 @@ function Index(props) {
   return (
     <>
       <Hero>
+        <Headline
+          title="DevGulp"
+          subtitle="A platform built for developers, by developers."
+        />
         <Editor
           lines={{
             index: [

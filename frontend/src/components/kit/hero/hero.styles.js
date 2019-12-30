@@ -7,7 +7,6 @@ const StyledHero = styled.div`
   width: 100%;
   padding: 0 0;
   margin-top: 8rem;
-  text-align: center;
   opacity: ${props =>
     props.loginMenuOpen || props.userMenuOpen || props.drawerOpen ? '0.4' : '1'};
   transform: ${props =>
