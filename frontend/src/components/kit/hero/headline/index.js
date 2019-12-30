@@ -1,3 +1,5 @@
+import Router from 'next/router';
+import { connect } from 'react-redux';
 import {
   StyledHeadlineContainer,
   StyledHeadline,
@@ -6,6 +8,7 @@ import {
   StyledHeadlineBlurb,
 } from './headline.styles';
 import Button from '../../button';
+import { toggleSignUpMenu } from '../../../../redux/actions';
 
 function Headline(props) {
   return (
@@ -21,9 +24,20 @@ function Headline(props) {
           about.
         </StyledHeadlineBlurb>
       </StyledHeadline>
-      <Button>Start writing!</Button>
+      {props.isAuthenticated ? (
+        <Button onClick={() => Router.push('/publish')}>Start writing!</Button>
+      ) : (
+        <Button onClick={() => props.toggleSignUpMenu()}>Sign up!</Button>
+      )}
     </StyledHeadlineContainer>
   );
 }
 
-export default Headline;
+const mapDispatchToProps = {
+  toggleSignUpMenu,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Headline);

@@ -19,6 +19,7 @@ function Index(props) {
         <Headline
           title="DevGulp"
           subtitle="A platform built for developers, by developers."
+          isAuthenticated={props.isAuthenticated}
         />
         <Editor
           lines={{
@@ -54,7 +55,8 @@ function Index(props) {
   );
 }
 
-const mapStateToProps = ({ posts }) => ({
+const mapStateToProps = ({ posts, user }) => ({
+  isAuthenticated: user.isAuthenticated,
   isFetchingPosts: posts.isFetchingPosts,
   postCount: posts.postCount,
   posts: posts.posts,
