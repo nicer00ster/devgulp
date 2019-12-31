@@ -21,7 +21,9 @@ SECRETS = [
     Secret(name='db_password', length=32, description='Database password'),
     Secret(name='wp_admin_user', length=32, description='Wordpress Admin username'),
     Secret(name='wp_admin_password', length=32, description='Wordpress Admin password'),
-    Secret(name='jwt_auth_key', length=64, description='JWT authentication secret key')
+    Secret(name='jwt_auth_key', length=64, description='JWT authentication secret key'),
+    Secret(name='stripe_public_key', length=64, description='Stripe Public Key'),
+    Secret(name='stripe_private_key', length=64, description='Stripe Private Key')
 ]
 
 def random_string(size: int=32, chars: str=string.ascii_letters + string.digits) -> str:
@@ -101,6 +103,7 @@ def generate_dhparam():
     For more info: https://security.stackexchange.com/questions/94390/whats-the-purpose-of-dh-parameters
     """
     root_path = Path(__file__).resolve().parent
+    # Run openssl in a docker container to generate the dhparam file
     run_cmd(['docker', 'run', '--rm', '-v', '{}:/export'.format(root_path), 'frapsoft/openssl', 'dhparam', '-out', '/export/dhparam.pem', '4096'])
     dhparam_file = root_path / 'dhparam.pem'
     if dhparam_file.exists():
