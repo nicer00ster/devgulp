@@ -26,7 +26,7 @@ file_env() {
 envs=(
     DEVGULP_STRIPE_SECRET_KEY_TEST
     DEVGULP_STRIPE_PUBLIC_KEY_TEST
-	API_URL
+    API_URL
 )
 
 for e in "${envs[@]}"; do
