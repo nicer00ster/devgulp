@@ -71,8 +71,8 @@ services:
     image: devgulp_frontend
     restart: unless-stopped
     environment:
-      DEVGULP_STRIPE_SECRET_KEY_TEST_FILE: /run/secrets/stripe_private_key
-      DEVGULP_STRIPE_PUBLIC_KEY_TEST_FILE: /run/secrets/stripe_public_key
+      DEVGULP_STRIPE_SECRET_KEY_FILE: /run/secrets/stripe_private_key
+      DEVGULP_STRIPE_PUBLIC_KEY_FILE: /run/secrets/stripe_public_key
       API_URL: ${SCHEMA:?Schema must be set}://${HOST_URL:?Host URL must be set}:8000
     networks:
       - proxysite
