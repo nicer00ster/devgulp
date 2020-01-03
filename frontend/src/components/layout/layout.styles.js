@@ -116,7 +116,10 @@ const GlobalStyles = createGlobalStyle`
     .emoji-mart {
       width: 100% !important;
       &-emoji {
-        background-size: contain;
+        background-size: 5200% 5200%;
+        &-custom {
+          background-size: contain;
+        }
         &:hover {
           span {
             transform: scale(1.25);
