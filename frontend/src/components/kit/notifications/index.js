@@ -16,6 +16,7 @@ function Notifications({
   config = { tension: 125, friction: 20, precision: 0.1 },
   timeout = 3000,
   children,
+  online,
 }) {
   const [refMap] = useState(() => new WeakMap());
   const [cancelMap] = useState(() => new WeakMap());
@@ -38,9 +39,10 @@ function Notifications({
         await next({ opacity: 0 });
         await next({ height: 0 });
       }
+      const offsetHeight = refMap.get(item) ? refMap.get(item).offsetHeight : 0;
       await next({
         opacity: 1,
-        height: refMap.get(item).offsetHeight,
+        height: offsetHeight,
         zIndex: -item.key,
       });
     },

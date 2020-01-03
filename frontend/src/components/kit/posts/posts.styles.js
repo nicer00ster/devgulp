@@ -62,13 +62,13 @@ const StyledPost = styled.li`
     box-shadow: ${props => props.theme.effects.shadowHover};
     bottom: 3px;
     & a {
-      background-color: rgba(255, 255, 255, 0.5);
+      // background-color: rgba(255, 255, 255, 0.5);
     }
     & .post-image {
       clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
       &:before {
         clip-path: polygon(25% 0, 100% 0, 100% 100%, 50% 100%);
-        opacity: 0.6;
+        opacity: 0.3;
       }
     }
   }

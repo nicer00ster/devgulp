@@ -134,6 +134,8 @@ function apiFetchPostViews(postId) {
 }
 
 function apiAddPost(token, title, content, categories, featuredMedia) {
+  // Replace all &quot; with an empty string.
+  const modifiedContent = content.replace(/&quot;/g, '');
   return axios({
     method: 'post',
     headers: {
@@ -142,7 +144,7 @@ function apiAddPost(token, title, content, categories, featuredMedia) {
     },
     data: {
       title,
-      content,
+      content: modifiedContent,
       categories,
       featured_media: featuredMedia,
       status: 'publish',

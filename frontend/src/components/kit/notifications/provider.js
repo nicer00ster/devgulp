@@ -3,9 +3,8 @@ import React, { useState, useRef, createContext } from 'react';
 const AppContext = createContext();
 
 function AppProvider(props) {
-  const [notification, setNotification] = useState('');
-
   const ref = useRef(null);
+  const [notification, setNotification] = useState('');
 
   return (
     <AppContext.Provider
