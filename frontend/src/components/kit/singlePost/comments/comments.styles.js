@@ -7,6 +7,7 @@ const StyledCommentReplyToArea = styled.textarea`
   width: 100%;
   outline: 0;
   border: 0;
+  padding: 1.2rem;
   color: ${props => props.theme.colors.black};
   font-family: 'Trirong', serif;
   letter-spacing: 1px;
@@ -16,7 +17,7 @@ const StyledCommentReplyToArea = styled.textarea`
   &[value]:not([value='']) ~ label,
   &:focus ~ label {
     top: -20px;
-    left: 3px;
+    left: 14px;
     font-size: 1rem;
     color: ${props => props.theme.colors.lightBlack};
   }
@@ -25,9 +26,12 @@ const StyledCommentReplyToArea = styled.textarea`
 const StyledComment = styled.div`
   display: inline-flex;
   flex-direction: column;
-  padding: 1.2rem 0;
   margin: 1.2rem;
+  border: 1px solid ${props => props.theme.colors.lightGrey};
+  border-radius: 3px;
   &.comment-reply {
+    border: unset;
+    border-radius: unset;
     border-left: 1px dashed ${props => props.theme.colors.black};
     margin-left: 8px;
     padding: 0 0 0 14px;
@@ -36,7 +40,6 @@ const StyledComment = styled.div`
 
 const StyledCommentAuthor = styled.p`
   color: ${props => props.theme.colors.black};
-  margin: 0;
 `;
 
 const StyledCommentDate = styled.time`
@@ -59,7 +62,7 @@ const StyledCommentDateDivider = styled.span`
 const StyledCommentContainer = styled.div``;
 
 const StyledCommentContentContainer = styled.div`
-  padding: 1.2rem 0;
+  padding: 1.2rem;
 `;
 
 const StyledCommentContentUserRef = styled.a`
@@ -69,6 +72,9 @@ const StyledCommentContentUserRef = styled.a`
 `;
 
 const StyledCommentContent = styled.div`
+  p {
+    font-size: 1.6rem;
+  }
   p br {
     content: '' !important;
     display: block !important;
@@ -83,7 +89,7 @@ const StyledCommentUserData = styled.a`
 
 const StyledCommentReplyTo = styled.a`
   align-self: flex-start;
-  padding: 0.4rem;
+  padding: 1.2rem;
   transition: all 0.25s;
   &.active-reply {
     transform: translateY(-25px);
@@ -114,6 +120,13 @@ const StyledEnhancedComments = styled.fieldset`
   }
 `;
 
+const StyledConversationWith = styled.p`
+  font-family: 'Trirong', serif;
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 2.4rem 0;
+`;
+
 export {
   StyledCommentReplyToArea,
   StyledCommentUserData,
@@ -129,4 +142,5 @@ export {
   StyledCommentContentContainer,
   StyledCommentContentUserRef,
   StyledCommentContent,
+  StyledConversationWith,
 };

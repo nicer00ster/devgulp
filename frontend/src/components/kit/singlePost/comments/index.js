@@ -18,7 +18,9 @@ import {
   StyledCommentContentUserRef,
   StyledCommentContent,
   StyledReplyContainer,
+  StyledConversationWith,
 } from './comments.styles';
+import { StyledDivider } from '../../globals/globals.styles';
 import { StyledAvatar } from '../../../header/header.styles';
 import { addCommentReply } from '../../../../redux/actions';
 import { useInput, useOnClickOutside } from '../../../../hooks';
@@ -172,24 +174,30 @@ function Comments(props) {
   return (
     <StyledEnhancedComments disabled={props.isAddingComment}>
       {comments.map(comment => (
-        <EnhancedComment
-          {...props}
-          key={comment.comment_ID}
-          user={props.user}
-          postId={props.postId}
-          comment={comment}>
-          {comment.comment_children &&
-            comment.comment_children.map(child => (
-              <EnhancedComment
-                {...props}
-                key={child.comment_ID}
-                user={props.user}
-                postId={props.postId}
-                comment={child}
-                isChild={true}
-              />
-            ))}
-        </EnhancedComment>
+        <>
+          <StyledConversationWith>
+            Conversation with {comment.comment_author}
+          </StyledConversationWith>
+          <EnhancedComment
+            {...props}
+            key={comment.comment_ID}
+            user={props.user}
+            postId={props.postId}
+            comment={comment}>
+            {comment.comment_children &&
+              comment.comment_children.map(child => (
+                <EnhancedComment
+                  {...props}
+                  key={child.comment_ID}
+                  user={props.user}
+                  postId={props.postId}
+                  comment={child}
+                  isChild={true}
+                />
+              ))}
+          </EnhancedComment>
+          <StyledDivider />
+        </>
       ))}
       {props.isAddingComment && <Loading />}
     </StyledEnhancedComments>

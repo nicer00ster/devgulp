@@ -81,6 +81,7 @@ const StyledSinglePostImage = styled.div`
 const StyledSinglePostContent = styled.div`
   font-family: 'Trirong', serif;
   font-size: 24px;
+  margin: 2rem 0;
 `;
 
 const StyledSidebar = styled(animated.aside)`
