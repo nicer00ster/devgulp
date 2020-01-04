@@ -4,7 +4,7 @@ const dotenv = require('dotenv-defaults');
 dotenv.config();
 
 const bodyParser = require('body-parser');
-const stripe = require('stripe')(process.env.DEVGULP_STRIPE_SECRET_KEY_TEST);
+const stripe = require('stripe')(process.env.DEVGULP_STRIPE_SECRET_KEY);
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
