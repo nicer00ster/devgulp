@@ -44,7 +44,7 @@ function Checkout(props) {
       ComponentClass="div"
       image="/static/devgulp-cards.svg"
       description={`Donating ${formatUSD(props.amount)} to the DevGulp team!`}
-      stripeKey="pk_test_iDbtronjncUeWjca3bAkRjAz"
+      stripeKey={process.env.STRIPE_PUBLIC_KEY}
       currency="USD"
       closed={props.closeDonationMenu}
       email={props.user.email}

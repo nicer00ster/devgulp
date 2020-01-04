@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const stripe = require('stripe')(process.env.DEVGULP_STRIPE_SECRET_KEY_TEST);
+const stripe = require('stripe')(process.env.DEVGULP_STRIPE_SECRET_KEY);
 const server = express();
 
 const handle = app.getRequestHandler();

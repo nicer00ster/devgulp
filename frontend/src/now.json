@@ -18,7 +18,7 @@
   ],
   "env": {
     "API_URL": "@devgulp-api-url",
-    "DEVGULP_STRIPE_PUBLIC_KEY_TEST": "@devgulp-stripe-public-key-test",
-    "DEVGULP_STRIPE_SECRET_KEY_TEST": "@devgulp-stripe-secret-key-test"
+    "DEVGULP_STRIPE_PUBLIC_KEY": "@devgulp-stripe-public-key",
+    "DEVGULP_STRIPE_SECRET_KEY": "@devgulp-stripe-secret-key"
   }
 }

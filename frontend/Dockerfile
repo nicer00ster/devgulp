@@ -2,12 +2,10 @@ FROM node:buster
 
 WORKDIR /usr/src/app
 
-COPY src/package*.json ./
-RUN npm ci --only=production
-
-ARG API_URL
-ENV API_URL ${API_URL}
 COPY src ./
-RUN npm run build
+
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT [ "docker-entrypoint.sh" ]
 
 CMD ["npm", "run", "prod_start"]
