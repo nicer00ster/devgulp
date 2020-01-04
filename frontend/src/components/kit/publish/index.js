@@ -82,6 +82,12 @@ function EnhancedPublish(props) {
       const charList = ':';
       const key = e.key.toLowerCase();
 
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        bodyRef.current.innerHTML = bodyRef.current.innerHTML + '<br /><br />';
+        placeCaretAtEnd(bodyRef.current);
+      }
+
       if (charList.indexOf(key) === -1) return;
 
       const currentTime = Date.now();
