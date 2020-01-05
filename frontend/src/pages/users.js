@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
-import { fetchUsers, openLoginMenu } from '../redux/actions';
+import { fetchUsers, openLoginMenu, logout } from '../redux/actions';
 import { AppContext } from '../components/kit/notifications/provider';
 import EnhancedUsers from '../components/kit/users';
 import Container from '../components/kit/container';
@@ -15,6 +15,7 @@ function Users(props) {
     if (!props.cookie) {
       router.push('/');
       addNotification('Sign in to view other users!', 'warning');
+      props.logout(props.token);
     } else {
       props.fetchUsers();
     }
@@ -29,13 +30,15 @@ function Users(props) {
   );
 }
 
-const mapStateToProps = ({ users }) => ({
+const mapStateToProps = ({ user, users }) => ({
+  token: user.token,
   ...users,
 });
 
 const mapDispatchToProps = {
   fetchUsers,
   openLoginMenu,
+  logout,
 };
 
 export default connect(
