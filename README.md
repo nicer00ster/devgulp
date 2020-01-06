@@ -17,7 +17,7 @@
     </a>
 </p>
 
-### A platform built by developers, for developers.
+### A platform built for developers, by developers.
 ###### A place to deliver and digest valuable content on all programming related topics.
 
 ## Table of Contents
