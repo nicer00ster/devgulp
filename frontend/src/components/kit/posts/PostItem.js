@@ -13,7 +13,7 @@ import {
   StyledPostCommentCount,
 } from './posts.styles';
 import Link from 'next/link';
-import { getTaxonomyIcon } from '../../../utils';
+import { getTaxonomyIcon, truncateText } from '../../../utils';
 import moment from 'moment';
 
 function PostItem(props) {
@@ -43,7 +43,7 @@ function PostItem(props) {
             </StyledPostTitle>
             <StyledPostExcerpt
               dangerouslySetInnerHTML={{
-                __html: props.post.excerpt.rendered,
+                __html: truncateText(props.post.excerpt.rendered, 35),
               }}
             />
             <StyledPostCommentCount>
