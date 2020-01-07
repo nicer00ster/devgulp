@@ -174,7 +174,7 @@ function Comments(props) {
   return (
     <StyledEnhancedComments disabled={props.isAddingComment}>
       {comments.map(comment => (
-        <>
+        <StyledCommentContainer key={comment.comment_ID}>
           <StyledConversationWith>
             Conversation with {comment.comment_author}
           </StyledConversationWith>
@@ -197,7 +197,7 @@ function Comments(props) {
               ))}
           </EnhancedComment>
           <StyledDivider />
-        </>
+        </StyledCommentContainer>
       ))}
       {props.isAddingComment && <Loading />}
     </StyledEnhancedComments>

@@ -195,7 +195,7 @@ function EnhancedPublish(props) {
   }
 
   useEffect(() => {
-    fetch('http://localhost:3000/emotes', {
+    fetch(`http://${process.env.HOST_URL}:3000/emotes`, {
       method: 'post',
     })
       .then(res => res.json())
