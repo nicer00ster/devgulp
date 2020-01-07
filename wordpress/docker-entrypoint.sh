@@ -200,6 +200,7 @@ EOPHP
 		wp option update users_can_register 1
 		wp option update show_avatars 0
 		wp option update comment_whitelist 0
+		wp site empty --yes
 		wp import '/opt/misc/devgulp-content.xml' --authors=create
 	fi
 
