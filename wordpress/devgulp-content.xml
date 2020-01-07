@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/5.2.4" created="2020-01-07 23:21" -->
+	<!-- generator="WordPress/5.2.4" created="2020-01-07 23:56" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,13 +29,14 @@
 	<title>DevGulp</title>
 	<link>http://localhost:8000</link>
 	<description>A platform built for developers, by developers.</description>
-	<pubDate>Tue, 07 Jan 2020 23:21:08 +0000</pubDate>
+	<pubDate>Tue, 07 Jan 2020 23:56:05 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://localhost:8000</wp:base_site_url>
 	<wp:base_blog_url>http://localhost:8000</wp:base_blog_url>
 
 		<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_email><![CDATA[fake@example.com]]></wp:author_email><wp:author_display_name><![CDATA[admin]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
+	<wp:author><wp:author_id>2</wp:author_id><wp:author_login><![CDATA[nicer00ster]]></wp:author_login><wp:author_email><![CDATA[abusch1013@gmail.com]]></wp:author_email><wp:author_display_name><![CDATA[nicer00ster]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
 
 		<wp:category>
 		<wp:term_id>2</wp:term_id>
@@ -939,6 +940,73 @@
 		<wp:is_sticky>0</wp:is_sticky>
 														</item>
 					<item>
+		<title>IMG_2688</title>
+		<link>http://localhost:8000/img_2688/</link>
+		<pubDate>Tue, 07 Jan 2020 23:34:35 +0000</pubDate>
+		<dc:creator><![CDATA[nicer00ster]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2020/01/IMG_2688.jpeg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>134</wp:post_id>
+		<wp:post_date><![CDATA[2020-01-07 23:34:35]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2020-01-07 23:34:35]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[img_2688]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[http://localhost:8000/wp-content/uploads/2020/01/IMG_2688.jpeg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2020/01/IMG_2688.jpeg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1440;s:6:"height";i:1920;s:4:"file";s:21:"2020/01/IMG_2688.jpeg";s:5:"sizes";a:4:{s:9:"thumbnail";a:4:{s:4:"file";s:21:"IMG_2688-150x150.jpeg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:21:"IMG_2688-225x300.jpeg";s:5:"width";i:225;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:22:"IMG_2688-768x1024.jpeg";s:5:"width";i:768;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:22:"IMG_2688-768x1024.jpeg";s:5:"width";i:768;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:3:"1.8";s:6:"credit";s:0:"";s:6:"camera";s:8:"iPhone X";s:7:"caption";s:0:"";s:17:"created_timestamp";s:10:"1556189592";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"4";s:3:"iso";s:3:"100";s:13:"shutter_speed";s:17:"0.010869565217391";s:5:"title";s:0:"";s:11:"orientation";s:1:"1";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title>Untitled Reusable Block</title>
+		<link>http://localhost:8000/untitled-reusable-block__trashed/</link>
+		<pubDate>Wed, 11 Sep 2019 22:53:01 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/untitled-reusable-block/</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:list -->
+<ul><li><a href="/help/creating-an-account">Creating an account.</a></li><li><a href="/help/logging-into-your-account">Logging into your account.</a></li><li><a href="/help/changing-your-password">Changing your password.</a></li><li><a href="http://localhost:8000/help/updating-your-profile">Updating your profile.</a></li><li><a href="/help/deactivating-your-account">Deactivating your account.</a></li></ul>
+<!-- /wp:list -->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>61</wp:post_id>
+		<wp:post_date><![CDATA[2019-09-11 22:53:01]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-09-11 22:53:01]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[untitled-reusable-block__trashed]]></wp:post_name>
+		<wp:status><![CDATA[trash]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[wp_block]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
+		<wp:meta_value><![CDATA[publish]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1568242390]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[untitled-reusable-block]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
 		<title>DevGulp Privacy Policy</title>
 		<link>http://localhost:8000/privacy-policy/</link>
 		<pubDate>Sun, 05 Jan 2020 00:24:06 +0000</pubDate>
@@ -1219,97 +1287,20 @@
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Hello world!</title>
-		<link>http://localhost:8000/hello-world/</link>
-		<pubDate>Tue, 07 Jan 2020 23:17:20 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/?p=1</guid>
+		<title>Whats new in React</title>
+		<link>http://localhost:8000/whats-new-in-react/</link>
+		<pubDate>Tue, 07 Jan 2020 23:45:22 +0000</pubDate>
+		<dc:creator><![CDATA[nicer00ster]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/whats-new-in-react/</guid>
 		<description></description>
-		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!</p>
-<!-- /wp:paragraph -->]]></content:encoded>
+		<content:encoded><![CDATA[Today will be the day we tell you about some cool new features in React. <span style="width: 24px;height: 24px;background-image: url(/static/emotes/blobs/ablobattention.gif)" aria-label="ablobattention" class="emoji-mart-emoji emoji-mart-emoji-custom"></span>&nbsp;<br><div><br class="Apple-interchange-newline">Ex eos illud minim, quo in deleniti inciderint. Libris epicuri instructior no pro, an mazim sensibus eam, ad corpora erroribus vel. Ad quo illum regione salutatus, qui insolens antiopam ne, nec exerci numquam eu. Liber verear invidunt in sea. Sit id alterum epicuri, mea rebum feugait intellegebat an. Diceret explicari per ut.</div><div><br></div><div>Paulo intellegat incorrupte mea ut, antiopam periculis mnesarchum ut mel. Illud maiestatis pri eu. Ne cum omnis brute, nec virtute erroribus ex, sea populo melius legimus ad. Mea harum tamquam in, pro commune verterem eloquentiam no. Delectus evertitur ad qui.</div><div><br></div><div>Minim adolescens elaboraret at vis. Eu dico legimus dissentiunt duo. Soluta mentitum pri eu, nam ut populo inermis tacimates. Vel scripta incorrupte in, quo elitr tollit alterum an.</div><div><br></div><div>Oblique definiebas quo ex, consul postulant id sea. Propriae qualisque prodesset sed ex, duo tota fuisset ancillae ei, ut affert timeam eam. Per in atqui mundi, menandri explicari vituperata duo eu, pro principes conceptam an. Te per exerci ocurreret. Eam alienum fierent neglegentur at.</div>]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>1</wp:post_id>
-		<wp:post_date><![CDATA[2020-01-07 23:17:20]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2020-01-07 23:17:20]]></wp:post_date_gmt>
+		<wp:post_id>139</wp:post_id>
+		<wp:post_date><![CDATA[2020-01-07 23:45:22]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2020-01-07 23:45:22]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
-		<wp:post_name><![CDATA[hello-world]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[post]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
-						<wp:comment>
-			<wp:comment_id>1</wp:comment_id>
-			<wp:comment_author><![CDATA[A WordPress Commenter]]></wp:comment_author>
-			<wp:comment_author_email><![CDATA[wapuu@wordpress.example]]></wp:comment_author_email>
-			<wp:comment_author_url>https://wordpress.org/</wp:comment_author_url>
-			<wp:comment_author_IP><![CDATA[]]></wp:comment_author_IP>
-			<wp:comment_date><![CDATA[2020-01-07 23:17:20]]></wp:comment_date>
-			<wp:comment_date_gmt><![CDATA[2020-01-07 23:17:20]]></wp:comment_date_gmt>
-			<wp:comment_content><![CDATA[Hi, this is a comment.
-To get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.
-Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.]]></wp:comment_content>
-			<wp:comment_approved><![CDATA[1]]></wp:comment_approved>
-			<wp:comment_type><![CDATA[]]></wp:comment_type>
-			<wp:comment_parent>0</wp:comment_parent>
-			<wp:comment_user_id>0</wp:comment_user_id>
-							</wp:comment>
-					</item>
-					<item>
-		<title>Untitled Reusable Block</title>
-		<link>http://localhost:8000/untitled-reusable-block__trashed/</link>
-		<pubDate>Wed, 11 Sep 2019 22:53:01 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/untitled-reusable-block/</guid>
-		<description></description>
-		<content:encoded><![CDATA[<!-- wp:list -->
-<ul><li><a href="/help/creating-an-account">Creating an account.</a></li><li><a href="/help/logging-into-your-account">Logging into your account.</a></li><li><a href="/help/changing-your-password">Changing your password.</a></li><li><a href="http://localhost:8000/help/updating-your-profile">Updating your profile.</a></li><li><a href="/help/deactivating-your-account">Deactivating your account.</a></li></ul>
-<!-- /wp:list -->]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>61</wp:post_id>
-		<wp:post_date><![CDATA[2019-09-11 22:53:01]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2019-09-11 22:53:01]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[untitled-reusable-block__trashed]]></wp:post_name>
-		<wp:status><![CDATA[trash]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[wp_block]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-														<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
-		<wp:meta_value><![CDATA[publish]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1568242390]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
-		<wp:meta_value><![CDATA[untitled-reusable-block]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>Story about React</title>
-		<link>http://localhost:8000/story-about-react/</link>
-		<pubDate>Wed, 11 Sep 2019 23:51:56 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/story-about-react/</guid>
-		<description></description>
-		<content:encoded><![CDATA[This is the first post on DevGulp. I've tagged it with Javascript &amp; React and I've also added a few emojis! <span style="width: 24px; height: 24px; display: inline-block; background-image: url(&quot;https://unpkg.com/emoji-datasource-twitter@4.0.4/img/twitter/sheets-256/64.png&quot;); background-size: 5200% 5200%; background-position: 58.8235% 56.8627%;" aria-label="😅, sweat_smile" class="emoji-mart-emoji"></span>&nbsp;<span style="width: 24px; height: 24px; display: inline-block; background-image: url(&quot;https://unpkg.com/emoji-datasource-twitter@4.0.4/img/twitter/sheets-256/64.png&quot;); background-size: 5200% 5200%; background-position: 58.8235% 72.549%;" aria-label="😍, heart_eyes" class="emoji-mart-emoji"></span>&nbsp;]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>66</wp:post_id>
-		<wp:post_date><![CDATA[2019-09-11 23:51:56]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2019-09-11 23:51:56]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[open]]></wp:ping_status>
-		<wp:post_name><![CDATA[story-about-react]]></wp:post_name>
+		<wp:post_name><![CDATA[whats-new-in-react]]></wp:post_name>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
@@ -1329,72 +1320,36 @@ Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.]]></wp:
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[views]]></wp:meta_key>
-		<wp:meta_value><![CDATA[86]]></wp:meta_value>
+		<wp:meta_value><![CDATA[3]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[post_likes]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:2:{i:0;s:1:"1";i:1;s:1:"2";}]]></wp:meta_value>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:1:"2";}]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_post_likes]]></wp:meta_key>
 		<wp:meta_value><![CDATA[field_5d798a3b2be80]]></wp:meta_value>
 		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_pingme]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_encloseme]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_pingme]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_encloseme]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[avatar]]></wp:meta_key>
-		<wp:meta_value><![CDATA[http://localhost:3000/static/images/default_avatar.png]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_avatar]]></wp:meta_key>
-		<wp:meta_value><![CDATA[field_5d79896fed91b]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[user_followers]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_user_followers]]></wp:meta_key>
-		<wp:meta_value><![CDATA[field_5d798e495721f]]></wp:meta_value>
-		</wp:postmeta>
 							<wp:comment>
-			<wp:comment_id>2</wp:comment_id>
+			<wp:comment_id>3</wp:comment_id>
 			<wp:comment_author><![CDATA[nicer00ster]]></wp:comment_author>
 			<wp:comment_author_email><![CDATA[abusch1013@gmail.com]]></wp:comment_author_email>
 			<wp:comment_author_url></wp:comment_author_url>
-			<wp:comment_author_IP><![CDATA[172.23.0.1]]></wp:comment_author_IP>
-			<wp:comment_date><![CDATA[2019-09-12 05:51:47]]></wp:comment_date>
-			<wp:comment_date_gmt><![CDATA[2019-09-12 05:51:47]]></wp:comment_date_gmt>
-			<wp:comment_content><![CDATA[Really great stuff.]]></wp:comment_content>
+			<wp:comment_author_IP><![CDATA[172.24.0.1]]></wp:comment_author_IP>
+			<wp:comment_date><![CDATA[2020-01-07 23:55:27]]></wp:comment_date>
+			<wp:comment_date_gmt><![CDATA[2020-01-07 23:55:26]]></wp:comment_date_gmt>
+			<wp:comment_content><![CDATA[Great story on React man.]]></wp:comment_content>
 			<wp:comment_approved><![CDATA[1]]></wp:comment_approved>
 			<wp:comment_type><![CDATA[]]></wp:comment_type>
 			<wp:comment_parent>0</wp:comment_parent>
-			<wp:comment_user_id>0</wp:comment_user_id>
+			<wp:comment_user_id>2</wp:comment_user_id>
 						<wp:commentmeta>
 	<wp:meta_key><![CDATA[akismet_error]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1568267507]]></wp:meta_value>
+			<wp:meta_value><![CDATA[1578441327]]></wp:meta_value>
 			</wp:commentmeta>
 						<wp:commentmeta>
 	<wp:meta_key><![CDATA[akismet_history]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
+			<wp:meta_value><![CDATA[a:4:{s:4:"time";d:1578441327.114572;s:5:"event";s:11:"check-error";s:4:"user";s:11:"nicer00ster";s:4:"meta";a:1:{s:8:"response";s:7:"invalid";}}]]></wp:meta_value>
 			</wp:commentmeta>
 							</wp:comment>
 					</item>
