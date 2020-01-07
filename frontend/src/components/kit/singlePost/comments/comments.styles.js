@@ -25,8 +25,9 @@ const StyledCommentReplyToArea = styled.textarea`
 
 const StyledComment = styled.div`
   display: inline-flex;
+  width: 100%;
   flex-direction: column;
-  margin: 1.2rem;
+  margin: 1.2rem 0;
   border: 1px solid ${props => props.theme.colors.lightGrey};
   border-radius: 3px;
   &.comment-reply {
@@ -59,7 +60,9 @@ const StyledCommentDateDivider = styled.span`
   }
 `;
 
-const StyledCommentContainer = styled.div``;
+const StyledCommentContainer = styled.div`
+  display: inline-block;
+`;
 
 const StyledCommentContentContainer = styled.div`
   padding: 1.2rem;
