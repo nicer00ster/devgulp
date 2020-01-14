@@ -118,6 +118,55 @@ export function placeCaretAtEnd(el) {
   }
 }
 
+export function placeCaretAtPosition(el, position) {
+  el.focus();
+
+  if (
+    typeof window.getSelection != 'undefined' &&
+    typeof document.createRange != 'undefined'
+  ) {
+    let range = document.createRange();
+    let sel = window.getSelection();
+    range.selectNodeContents(el);
+    range.setStart(el.childNodes[0], position);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
+  } else if (typeof document.body.createTextRange != 'undefined') {
+    let textRange = document.body.createTextRange();
+    textRange.moveToElementText(el);
+    textRange.collapse(false);
+    textRange.select();
+  }
+}
+
+export function getCaretPosition(editableDiv) {
+  let caretPos = 0;
+  let sel;
+  let range;
+
+  if (window.getSelection) {
+    sel = window.getSelection();
+    if (sel.rangeCount) {
+      range = sel.getRangeAt(0);
+      if (range.commonAncestorContainer.parentNode == editableDiv) {
+        caretPos = range.endOffset;
+      }
+    }
+  } else if (document.selection && document.selection.createRange) {
+    range = document.selection.createRange();
+    if (range.parentElement() == editableDiv) {
+      let tempEl = document.createElement('span');
+      editableDiv.insertBefore(tempEl, editableDiv.firstChild);
+      let tempRange = range.duplicate();
+      tempRange.moveToElementText(tempEl);
+      tempRange.setEndPoint('EndToEnd', range);
+      caretPos = tempRange.text.length;
+    }
+  }
+  return caretPos;
+}
+
 export function formatUSD(amount) {
   const options = {
     style: 'currency',
