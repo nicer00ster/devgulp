@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import Head from 'next/head';
 import { fetchPage } from '../../redux/actions';
 import EnhancedHelp from '../../components/kit/help';
 import Container from '../../components/kit/container';
@@ -12,6 +13,9 @@ function Help(props) {
 
   return (
     <Container>
+      <Head>
+        <title>DevGulp - Help</title>
+      </Head>
       {props.page.isFetchingPage ? (
         <Loading />
       ) : (

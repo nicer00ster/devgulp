@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Error from '../../_error';
 import { fetchPost } from '../../../redux/actions';
 import SinglePost from '../../../components/kit/singlePost';
@@ -24,6 +25,11 @@ function Post(props) {
   }
   return (
     <Container>
+      {props.post.post.title && (
+        <Head>
+          <title>DevGulp - {props.post.post.title.rendered}</title>
+        </Head>
+      )}
       <SinglePost post={props.post} />
     </Container>
   );

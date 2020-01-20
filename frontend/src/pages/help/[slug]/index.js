@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
+import Head from 'next/head';
 import { fetchPage } from '../../../redux/actions';
 import EnhancedHelp from '../../../components/kit/help';
 import Container from '../../../components/kit/container';
@@ -16,6 +17,11 @@ function Help(props) {
 
   return (
     <Container>
+      {props.page.page.title && (
+        <Head>
+          <title>DevGulp - Help - {props.page.page.title.rendered}</title>
+        </Head>
+      )}
       {props.page.isFetchingPage ? (
         <Loading />
       ) : (

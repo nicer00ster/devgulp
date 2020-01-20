@@ -1,6 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
+import Head from 'next/head';
 import { AppContext } from '../components/kit/notifications/provider';
 import { fetchCategories, openLoginMenu, logout } from '../redux/actions';
 import EnhancedPublish from '../components/kit/publish';
@@ -21,6 +22,9 @@ function Publish(props) {
   }, []);
   return (
     <Container>
+      <Head>
+        <title>DevGulp - Publish A Story</title>
+      </Head>
       <EnhancedPublish />
     </Container>
   );

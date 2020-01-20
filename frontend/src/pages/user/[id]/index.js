@@ -1,6 +1,7 @@
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { fetchAuthor, fetchUserPosts } from '../../../redux/actions';
 import SingleUser from '../../../components/kit/singleUser';
 import Container from '../../../components/kit/container';
@@ -13,11 +14,15 @@ function User(props) {
     props.fetchAuthor(id);
     props.fetchUserPosts(id);
   }, [id]);
-
   return (
-    <Container className="panelled">
-      <SingleUser author={props.author} posts={props.author.posts} />
-    </Container>
+      <Container className="panelled">
+        {props.author.author.name && (
+          <Head>
+            <title>{props.author.author.name}</title>
+          </Head>
+        )}
+        <SingleUser author={props.author} posts={props.author.posts} />
+      </Container>
   );
 }
 

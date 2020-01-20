@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import Head from 'next/head';
 import { fetchPage } from '../redux/actions';
 import PrivacyPolicy from '../components/kit/privacyPolicy';
 import Container from '../components/kit/container';
@@ -12,6 +13,9 @@ function Policy(props) {
 
   return (
     <Container>
+      <Head>
+        <title>DevGulp - Privacy Policy</title>
+      </Head>
       {props.page.isFetchingPage ? (
         <Loading />
       ) : (
