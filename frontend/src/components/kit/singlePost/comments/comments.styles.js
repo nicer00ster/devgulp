@@ -28,6 +28,7 @@ const StyledComment = styled.div`
   width: 100%;
   flex-direction: column;
   margin: 1.2rem 0;
+  padding: 1.2rem;
   border: 1px solid ${props => props.theme.colors.lightGrey};
   border-radius: 3px;
   &.comment-reply {
@@ -62,6 +63,7 @@ const StyledCommentDateDivider = styled.span`
 
 const StyledCommentContainer = styled.div`
   display: inline-block;
+  position: relative;
 `;
 
 const StyledCommentContentContainer = styled.div`
@@ -124,10 +126,13 @@ const StyledEnhancedComments = styled.fieldset`
 `;
 
 const StyledConversationWith = styled.p`
+  position: absolute;
   font-family: 'Trirong', serif;
   font-size: 1.6rem;
   text-align: center;
-  margin: 2.4rem 0;
+  top: -22px;
+  padding: 0 0.6rem;
+  background-color: ${props => props.theme.colors.white};
 `;
 
 export {
