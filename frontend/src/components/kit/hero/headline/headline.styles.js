@@ -4,6 +4,9 @@ const StyledHeadlineContainer = styled.div`
   position: relative;
   flex: 1;
   align-items: stretch;
+  ${props => props.theme.mediaQuery.tablet`
+    margin-bottom: 8rem;
+  `};
 `;
 
 const StyledHeadline = styled.div`

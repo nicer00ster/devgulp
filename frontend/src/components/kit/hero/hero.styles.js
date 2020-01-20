@@ -18,6 +18,9 @@ const StyledHero = styled.div`
       ? 'none'
       : 'all'};
   transition: all 0.25s linear;
+  ${props => props.theme.mediaQuery.tablet`
+    flex-direction: column;
+  `};
 `;
 
 const StyledHeroOverlay = styled.div`
