@@ -194,10 +194,10 @@ function EnhancedPublish(props) {
       size: 24,
     });
 
-    bodyRef.current.innerHTML = bodyRef.current.innerHTML.replace('::', emojiHTML);
+    bodyRef.current.innerHTML =
+      bodyRef.current.innerHTML.replace('::', emojiHTML) + '&nbsp;';
     props.closeEmojis();
-    // Keep working on this til it works properly.
-    // placeCaretAtPosition(bodyRef.current, caretPosition);
+    placeCaretAtEnd(bodyRef.current);
   }
 
   useEffect(() => {
