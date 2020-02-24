@@ -187,6 +187,8 @@ function EnhancedPublish(props) {
   }
 
   function addEmoji(emoji) {
+    bodyRef.current.innerHTML = bodyRef.current.innerHTML.replace('::', '');
+
     const emojiHTML = Emoji({
       html: true,
       set: 'twitter',
@@ -194,8 +196,7 @@ function EnhancedPublish(props) {
       size: 24,
     });
 
-    bodyRef.current.innerHTML =
-      bodyRef.current.innerHTML.replace('::', emojiHTML) + '&nbsp;';
+    bodyRef.current.innerHTML = bodyRef.current.innerHTML += emojiHTML + '&nbsp;';
     props.closeEmojis();
     placeCaretAtEnd(bodyRef.current);
   }
