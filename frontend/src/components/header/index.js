@@ -123,7 +123,6 @@ function Header(props) {
     });
 
     userMenuRef.current.addEventListener('keydown', e => {
-      console.log('hey');
       if (e.keyCode === 27) {
         props.toggleUserMenu();
         userMenuRef.current.blur();

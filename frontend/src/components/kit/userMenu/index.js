@@ -52,7 +52,7 @@ function UserMenu(props) {
       {props.userMenuOpen && (
         <StyledUserMenuList>
           <StyledUserDataListItem>
-            <StyledAvatar size={52}>
+            <StyledAvatar autoFocus={true} size={52}>
               <Link href="/user/[id]" as={`/user/${props.user.id}`}>
                 <a onClick={props.toggleUserMenu}>
                   <img
