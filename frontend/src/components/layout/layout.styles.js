@@ -7,8 +7,8 @@ const LayoutStyles = styled.main`
   margin: 0 auto;
   position: relative;
   transition: all 0.25s linear;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
   z-index: ${props =>
     props.userMenuOpen || props.loginMenuOpen ? '-1' : 'unset'};
   ${props => props.theme.mediaQuery.tablet`
