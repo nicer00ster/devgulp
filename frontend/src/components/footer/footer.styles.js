@@ -62,6 +62,10 @@ const StyledLogo = styled.a`
 
 const StyledFooterListItem = styled.li`
   padding: 0.4rem;
+  a.disabled {
+    color: #b4b4b4;
+    pointer-events: none;
+  }
 `;
 
 const StyledFooterLogo = styled.div`
