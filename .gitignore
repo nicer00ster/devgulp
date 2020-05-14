@@ -91,3 +91,6 @@ typings/
 # secrets
 /secrets
 /proxy/dhparam.pem
+
+# venv
+.venv

@@ -51,6 +51,7 @@ services:
       JWT_AUTHENTICATION_SECRET_KEY: secretkey
     volumes:
       - ./wordpress/src/wp-includes/functions.php:/opt/mount/functions.php:ro
+      - wp_data:/var/www/html
     ports:
       - '8000:80'
     networks:
@@ -60,3 +61,4 @@ networks:
   wpsite:
 volumes:
   db_data:
+  wp_data:
