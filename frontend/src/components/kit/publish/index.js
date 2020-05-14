@@ -25,11 +25,7 @@ import Loading from '../loading';
 import Modal from '../modal';
 import Emotes from '../emotes';
 import { useInput, usePrevious, useMeasure } from '../../../hooks';
-import {
-  placeCaretAtEnd,
-  placeCaretAtPosition,
-  getCaretPosition,
-} from '../../../utils';
+import { placeCaretAtEnd } from '../../../utils';
 import {
   addPost,
   addMedia,
@@ -47,7 +43,6 @@ function EnhancedPublish(props) {
   const [bodyError, setBodyError] = useState(false);
   const [emotes, setEmotes] = useState([]);
   const [active, setActive] = useState();
-  const [caretPosition, setCaretPosition] = useState(0);
   const [emotePicker, setEmotePicker] = useState('heart_eyes');
   const [categories, setCategories] = useState([1]);
   const randomEmojis = [
@@ -86,7 +81,6 @@ function EnhancedPublish(props) {
     bodyRef.current.addEventListener('keydown', e => {
       const charList = ':';
       const key = e.key.toLowerCase();
-      setCaretPosition(getCaretPosition(bodyRef.current));
 
       if (e.keyCode === 13) {
         e.preventDefault();
@@ -187,6 +181,8 @@ function EnhancedPublish(props) {
   }
 
   function addEmoji(emoji) {
+    bodyRef.current.innerHTML = bodyRef.current.innerHTML.replace('::', '');
+
     const emojiHTML = Emoji({
       html: true,
       set: 'twitter',
@@ -194,8 +190,7 @@ function EnhancedPublish(props) {
       size: 24,
     });
 
-    bodyRef.current.innerHTML =
-      bodyRef.current.innerHTML.replace('::', emojiHTML) + '&nbsp;';
+    bodyRef.current.innerHTML = bodyRef.current.innerHTML += emojiHTML + '&nbsp;';
     props.closeEmojis();
     placeCaretAtEnd(bodyRef.current);
   }

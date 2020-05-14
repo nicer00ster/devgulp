@@ -50,6 +50,8 @@ function Header(props) {
   const ref = useRef();
   const searchRef = useRef();
   const donationRef = useRef();
+  const loginMenuRef = useRef();
+  const userMenuRef = useRef();
   const [bind, { width }] = useMeasure();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -110,6 +112,20 @@ function Header(props) {
       if (e.keyCode === 27) {
         props.toggleDonationMenu();
         donationRef.current.blur();
+      }
+    });
+
+    loginMenuRef.current.addEventListener('keydown', e => {
+      if (e.keyCode === 27) {
+        props.toggleLoginMenu();
+        loginMenuRef.current.blur();
+      }
+    });
+
+    userMenuRef.current.addEventListener('keydown', e => {
+      if (e.keyCode === 27) {
+        props.toggleUserMenu();
+        userMenuRef.current.blur();
       }
     });
 
@@ -237,8 +253,8 @@ function Header(props) {
       </StyledNav>
       {props.screenWidth >= 578 && (
         <>
-          <Login />
-          <UserMenu />
+          <Login loginMenuRef={loginMenuRef} />
+          <UserMenu userMenuRef={userMenuRef} />
         </>
       )}
       {!props.user.isAuthenticated && (

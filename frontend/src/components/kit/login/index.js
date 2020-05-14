@@ -64,6 +64,7 @@ function Login(props) {
 
   return trail.map(({ x, height, opacity, ...rest }, index) => (
     <StyledLogin
+      ref={props.loginMenuRef}
       key={index}
       style={{
         transform: x.interpolate(x => `translate3d(0,${x}px,0)`),

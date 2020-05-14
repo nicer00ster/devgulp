@@ -23,7 +23,7 @@ const StyledHeader = styled.header`
 
 const StyledNav = styled.nav`
   display: flex;
-  padding: 0 1rem;
+  padding: 0 4rem;
 `;
 
 const StyledLogin = styled.button`

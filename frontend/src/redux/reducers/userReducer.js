@@ -109,7 +109,7 @@ export default function userReducer(state = initialState, action = {}) {
     case types.VERIFIED_TOKEN_SUCCESS:
       return {
         ...state,
-        id: action.token.data.user_id,
+        id: Number(action.token.data.user_id),
         username: action.token.data.user_nicename,
         email: action.token.data.user_email,
         token: action.token.data.token,

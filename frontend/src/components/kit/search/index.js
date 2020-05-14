@@ -4,7 +4,6 @@ import PostItem from '../posts/PostItem';
 
 function EnhancedSearch(props) {
   const posts = props.results.filter(post => post.subtype === 'post');
-  console.log(posts);
   return (
     <StyledSearch hasResults={posts.length > 0}>
       {posts && props.hasSearched && !posts.length ? (

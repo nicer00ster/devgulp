@@ -24,7 +24,7 @@ function Footer(props) {
             </StyledFooterListItem>
             <StyledFooterListItem>
               <Link href="/">
-                <a>Terms</a>
+                <a className="disabled">Terms</a>
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>
@@ -34,7 +34,7 @@ function Footer(props) {
             </StyledFooterListItem>
             <StyledFooterListItem>
               <Link href="/">
-                <a>Status</a>
+                <a className="disabled">Status</a>
               </Link>
             </StyledFooterListItem>
             <StyledFooterListItem>

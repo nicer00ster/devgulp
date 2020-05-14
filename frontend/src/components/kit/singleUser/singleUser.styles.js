@@ -50,6 +50,7 @@ const StyledSingleUserDate = styled.div`
 const StyledSingleUserDescription = styled.div`
   position: relative;
   display: flex;
+  justify-content: center;
   color: ${props => props.theme.colors.white};
   padding: 4px;
   margin-top: 4px;

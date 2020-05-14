@@ -62,7 +62,7 @@ const StyledSegwaySignup = styled.span`
 `;
 
 const StyledLoginCaret = styled.div`
-  left: 214px;
+  left: 178px;
   clip: rect(0px, 18px, 14px, -4px);
   top: -14px;
   position: absolute;

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import {
   StyledEditProfile,
@@ -6,6 +6,7 @@ import {
   StyledEditInputFields,
 } from './editProfile.styles';
 import { StyledDivider } from '../../globals/globals.styles';
+import { AppContext } from '../../notifications/provider';
 import { useInput } from '../../../../hooks';
 import { updateUserInfo } from '../../../../redux/actions';
 import Input from '../../input';
@@ -13,6 +14,7 @@ import Button from '../../button';
 
 function EditProfile(props) {
   const { user } = props;
+  const { addNotification } = useContext(AppContext);
   const {
     value: description,
     bind: bindDescription,
@@ -52,7 +54,15 @@ function EditProfile(props) {
 
   function handleUpdateUser(e) {
     e.preventDefault();
+    if (
+      description === user.description &&
+      companyName === user.company_name &&
+      url === user.url
+    ) {
+      return;
+    }
     props.updateUserInfo(props.token, description, companyName, url);
+    addNotification('Profile updated!', 'success');
   }
 
   return (

@@ -78,7 +78,7 @@ const StyledCommentContentUserRef = styled.a`
 
 const StyledCommentContent = styled.div`
   p {
-    font-size: 1.6rem;
+    font-size: 14px;
   }
   p br {
     content: '' !important;

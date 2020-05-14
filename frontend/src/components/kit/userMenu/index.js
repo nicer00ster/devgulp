@@ -41,17 +41,18 @@ function UserMenu(props) {
 
   return trail.map(({ x, height, opacity, ...rest }, index) => (
     <StyledUserMenu
+      ref={props.userMenuRef}
       key={index}
+      disabled={!props.userMenuOpen || props.user.isLoggingOut}
       style={{
         transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
         opacity: !props.user.isLoggingOut && opacity,
         ...rest,
-      }}
-      disabled={!props.userMenuOpen || props.user.isLoggingOut}>
+      }}>
       {props.userMenuOpen && (
         <StyledUserMenuList>
           <StyledUserDataListItem>
-            <StyledAvatar size={52}>
+            <StyledAvatar autoFocus={true} size={52}>
               <Link href="/user/[id]" as={`/user/${props.user.id}`}>
                 <a onClick={props.toggleUserMenu}>
                   <img
