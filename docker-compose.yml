@@ -54,6 +54,8 @@ services:
       WORDPRESS_ADMIN_PASSWORD_FILE: /run/secrets/wp_admin_password
       WORDPRESS_ADMIN_EMAIL: fake@example.com
       JWT_AUTHENTICATION_SECRET_KEY_FILE: /run/secrets/jwt_auth_key
+    volumes:
+      - wp_data:/var/www/html
     networks:
       - wpsite
       - proxysite
@@ -102,6 +104,7 @@ networks:
 
 volumes:
   db_data:
+  wp_data:
 
 secrets:
   db_root_password:
